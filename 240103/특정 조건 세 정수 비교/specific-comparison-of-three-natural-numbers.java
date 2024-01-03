@@ -9,8 +9,12 @@ public class Main {
         int b = sc.nextInt();
         int c = sc.nextInt();
 
-        int min = (a < b) ? a : b;
-        min = (b < c) ? b : c;
+        int min = a;
+
+        if (a < b) min = a;
+        else min = b;
+
+        if (min > c) min = c;
 
         if (a == min) System.out.print(1);
         else System.out.print(0);
