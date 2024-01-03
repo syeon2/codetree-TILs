@@ -8,6 +8,7 @@ public class Main {
         int change = sc.nextInt();
 
         if (change >= 3000) System.out.println("book");
-        else System.out.println("mask");
+        else if (change >= 1000) System.out.println("mask");
+        else System.out.println("no");
     }
 }
