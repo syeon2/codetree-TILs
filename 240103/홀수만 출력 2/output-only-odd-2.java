@@ -5,8 +5,8 @@ public class Main {
         // 여기에 코드를 작성해주세요.
         Scanner sc = new Scanner(System.in);
 
-        int a = sc.nextInt();
         int b = sc.nextInt();
+        int a = sc.nextInt();
 
         for (int i = b; i >= a; i--) {
             if (i % 2 == 1) System.out.printf("%d ", i);
