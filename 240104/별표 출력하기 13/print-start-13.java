@@ -10,7 +10,7 @@ public class Main {
         for (int i = 1; i <= n; i++) {
 
             if (i % 2 == 1) {
-                for (int k = 0; k < n - ((i + 1) / 2 - 1); k++) {
+                for (int k = 0; k < n - ((i - 1) / 2); k++) {
                     System.out.print("* ");
                 }
             } else {
@@ -25,7 +25,7 @@ public class Main {
         for (int i = n; i >= 1; i--) {
 
             if (i % 2 == 1) {
-                for (int k = 0; k < n - ((i + 1) / 2 - 1); k++) {
+                for (int k = 0; k < n - ((i - 1) / 2); k++) {
                     System.out.print("* ");
                 }
             } else {
