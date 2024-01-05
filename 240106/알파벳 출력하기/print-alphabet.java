@@ -12,6 +12,8 @@ public class Main {
 
             for (int k = 1; k <= i; k++) {
                 System.out.print((char) ('A' + cnt++));
+
+                if ('A' + cnt > 'Z') cnt = 0;
             }
 
             System.out.println();
