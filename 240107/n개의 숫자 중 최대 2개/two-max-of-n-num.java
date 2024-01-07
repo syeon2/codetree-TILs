@@ -7,20 +7,15 @@ public class Main {
 
         int N = sc.nextInt();
 
-        int max = 0;
-        int second = 0;
+        int max = Integer.MIN_VALUE;
+        int second = Integer.MIN_VALUE;
 
         for (int i = 0; i < N; i++) {
             int n = sc.nextInt();
 
-            if (i == 0) {
-                max = n;
-                second = n;
-            } else {
-                if (max < n) max = n;
-                else {
-                    if (second < n) second = n;
-                }
+            if (max < n) max = n;
+            else {
+                if (second < n) second = n;
             }
         }
 
