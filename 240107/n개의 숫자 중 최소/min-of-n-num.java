@@ -6,25 +6,20 @@ public class Main {
         Scanner sc = new Scanner(System.in);
 
         int N = sc.nextInt();
-        int[] list = new int[N];
 
         int min = 0;
+        int cnt = 1;
 
         for (int i = 0; i < N; i++) {
-            int num = sc.nextInt();
+            int n = sc.nextInt();
 
-            list[i] = num;
-
-            if (i == 0) min = num;
+            if (i == 0) min = n;
             else {
-                if (min > num) min = num;
-            }    
-        }
-
-        int cnt = 0;
-
-        for (int i = 0; i < N; i++) {
-            if (list[i] == min) cnt++;
+                if (min > n) {
+                    cnt = 1;
+                    min = n;
+                } else if (min == n) cnt++;
+            }
         }
 
         System.out.printf("%d %d", min, cnt);
