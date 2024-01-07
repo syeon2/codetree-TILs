@@ -13,10 +13,9 @@ public class Main {
         for (int i = 0; i < N; i++) {
             int n = sc.nextInt();
 
-            if (max < n) max = n;
-            else {
-                if (second < n) second = n;
-            }
+            if (n <= max && second < n) second = n;
+            else if (max < n) max = n;
+
         }
 
         System.out.printf("%d %d", max, second);
