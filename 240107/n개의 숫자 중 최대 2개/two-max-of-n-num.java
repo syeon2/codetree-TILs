@@ -8,16 +8,28 @@ public class Main {
         int N = sc.nextInt();
 
         int max = Integer.MIN_VALUE;
-        int second = Integer.MIN_VALUE;
+        int idx = 0;
 
+        int[] list = new int[N];
+        
         for (int i = 0; i < N; i++) {
             int n = sc.nextInt();
 
-            if (n <= max && second < n) second = n;
-            else if (max < n) max = n;
+            if (n > max) {
+                max = n;
+                idx = i;
+            }
 
+            list[i] = n;
         }
 
-        System.out.printf("%d %d", max, second);
+        int max2 = Integer.MIN_VALUE;
+        for (int i = 0; i < N; i++) {
+            if (i == idx) continue;
+
+            if (max2 < list[i]) max2 = list[i];
+        }
+
+        System.out.printf("%d %d", max, max2);
     }
 }
