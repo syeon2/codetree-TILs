@@ -13,10 +13,10 @@ public class Main {
         for (int i = 0; i < N; i++) {
             int num = sc.nextInt();
 
+            list[i] = num;
+
             if (i == 0) min = num;
             else {
-                list[i] = num;
-                
                 if (min > num) min = num;
             }    
         }
