@@ -15,7 +15,7 @@ public class Main {
             list[i] = n;
         }
 
-        while (N > 1) {
+        while (N > 0) {
 
             int max = 0;
             int idx = 0;
