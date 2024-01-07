@@ -9,20 +9,20 @@ public class Main {
         int n = sc.nextInt();
         int m = sc.nextInt();
 
-        int[][] list = new int[m][n];
+        int[][] list = new int[n][m];
 
-        for (int i = 0; i < m; i++) {
+        for (int i = 0; i < n; i++) {
 
-            for (int k = 0; k < n; k++) {
+            for (int k = 0; k < m; k++) {
                 int num = sc.nextInt();
 
                 list[i][k] = num;
             }
         }
 
-        for (int i = 0; i < m; i++) {
+        for (int i = 0; i < n; i++) {
 
-            for (int k = 0; k < n; k++) {
+            for (int k = 0; k < m; k++) {
                 int num = sc.nextInt();
 
                 if (list[i][k] == num) System.out.print("0 ");
