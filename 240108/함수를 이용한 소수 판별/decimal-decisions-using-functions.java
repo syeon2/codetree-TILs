@@ -18,6 +18,8 @@ public class Main {
     }
 
     public static boolean isPrime(int num) {
+        if (num == 1) return false;
+        
         boolean flag = true;
 
         for (int i = 2; i < num; i++) {
