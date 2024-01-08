@@ -13,8 +13,8 @@ public class Main {
 
             if (n == -1) break;
             else {
-                if (n == 0) str = str.substring(2);
-                else str = str.substring(0, n) + str.substring(n + 2);
+                if (n == 0) str = str.substring(s.length());
+                else str = str.substring(0, n) + str.substring(n + s.length());
             }
         }
 
