@@ -14,6 +14,8 @@ public class Main {
     }
 
     public static boolean isExist(int m, int d) {
+        if (m > 12) return false;
+        
         if (list[m - 1] < d) return false;
         else return true;
     }
