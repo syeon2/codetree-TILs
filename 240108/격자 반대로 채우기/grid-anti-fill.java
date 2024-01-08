@@ -13,7 +13,7 @@ public class Main {
 
         for (int i = n - 1; i >= 0; i--) {
 
-            if (i % 2 == 1) {
+            if ((n % 2 == 1 && i % 2 == 0) || (n % 2 == 0 && i % 2 == 1)) {
                 for (int k = n - 1; k >= 0; k--) {
                     list[k][i] = cnt++;
                 }
