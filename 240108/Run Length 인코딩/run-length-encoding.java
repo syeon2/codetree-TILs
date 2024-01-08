@@ -11,10 +11,7 @@ public class Main {
 
         String newString = String.valueOf(s.charAt(0));
 
-        if (s.length() == 1) {
-            System.out.println(1);
-            System.out.println(newString);
-        } else {
+        if (s.length() != 1) {
             for (int i = 1; i < s.length(); i++) {
                 if (s.charAt(i - 1) != s.charAt(i)) {
                     newString = newString + "" + cnt + "" + s.charAt(i);
