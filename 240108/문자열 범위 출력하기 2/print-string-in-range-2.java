@@ -19,7 +19,7 @@ public class Main {
                 System.out.print(s.charAt(i));
             }
         } else {
-            for (int i = s.length() - 1; i > s.length() - 1 - 11; i--) {
+            for (int i = s.length() - 1; i > s.length() - 1 - n; i--) {
                System.out.print(s.charAt(i));
             }
         }
