@@ -12,6 +12,8 @@ public class Main {
 
             if (n >= str.length()) {
                 str = str.substring(0, str.length() - 1);
+
+                System.out.print(str);
             }
             else {
                 str = str.substring(0, n) + str.substring(n + 1);
@@ -19,7 +21,5 @@ public class Main {
                 System.out.println(str);
             }
         }
-
-        System.out.print(str);
     }
 }
