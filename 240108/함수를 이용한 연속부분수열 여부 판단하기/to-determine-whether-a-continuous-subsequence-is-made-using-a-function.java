@@ -26,7 +26,7 @@ public class Main {
     public static boolean isSequence(int[] list1, int[] list2) {
         boolean flag = false;
 
-        for (int i = 0; i < list1.length - list2.length; i++) {
+        for (int i = 0; i < list1.length - list2.length + 1; i++) {
             boolean flag2 = true;
 
             for (int k = 0; k < list2.length; k++) {
