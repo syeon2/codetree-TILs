@@ -10,7 +10,7 @@ public class Main {
         while (str.length() > 1) {
             int n = sc.nextInt();
 
-            if (n > str.length()) {
+            if (n >= str.length()) {
                 str = str.substring(0, str.length() - 1);
             }
             else {
