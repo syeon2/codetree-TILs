@@ -14,7 +14,7 @@ public class Main {
 
     public static void getResult(int a, int b, String command) {
         if (command.equals("+")) {
-            System.out.printf("%d + %d = %d", a, b, a * b);
+            System.out.printf("%d + %d = %d", a, b, a + b);
         } else if (command.equals("-")) {
             System.out.printf("%d - %d = %d", a, b, a - b);
         } else if (command.equals("*")) {
