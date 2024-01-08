@@ -15,6 +15,8 @@ public class Main {
             else idx += 1;
         }
 
+        idx %= str.length();
+
         if (idx < 0) str = str.substring((idx * -1)) + str.substring(0, (idx * -1));
         else if (idx > 0) str = str.substring(str.length() - idx) + str.substring(0, str.length() - idx);
 
