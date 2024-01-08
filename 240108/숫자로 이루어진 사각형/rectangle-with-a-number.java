@@ -10,17 +10,17 @@ public class Main {
         print(N);
     }
 
+    public static int[] list = new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9};
+
     public static void print(int n) {
-        int cnt = 1;
+        int cnt = 0;
 
         for (int i = 0; i < n; i++) {
 
             for (int k = 0; k < n; k++) {
-                System.out.printf("%d ", cnt);
+                System.out.printf("%d ", (cnt % 9) + 1);
 
                 cnt++;
-
-                if (cnt == 10) cnt = 1;
             }
 
             System.out.println();
