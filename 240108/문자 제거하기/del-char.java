@@ -13,7 +13,7 @@ public class Main {
             if (n >= str.length()) {
                 str = str.substring(0, str.length() - 1);
 
-                System.out.print(str);
+                System.out.println(str);
             }
             else {
                 str = str.substring(0, n) + str.substring(n + 1);
