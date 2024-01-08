@@ -2,45 +2,52 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        // 여기에 코드를 작성해주세요.
         Scanner sc = new Scanner(System.in);
 
-        int n = sc.nextInt();
-        int m = sc.nextInt();
+        // n, m을 입력받습니다.
+        int n, m;
+        n = sc.nextInt();
+        m = sc.nextInt();
+        int count = 1;
 
-        int[][] list = new int[n][m];
+        // 2차원 배열을 구현합니다.
+        int[][] arr = new int[100][100];
 
-        int cnt = 1;
-        
-        int x = 0;
-        int y = 0;
+        // Step 1:
+        for(int startCol = 0; startCol < m; startCol++) {
+            int currRow = 0;
+            int currCol = startCol;
 
-        int memoX = x;
-        int memoY = y;
+            while(currCol >= 0 && currRow < n) {
+                arr[currRow][currCol] = count;
 
-        while (!(x == m - 1 && y == n - 1)) {
-            list[y++][x--] = cnt++;
-
-            if ((x < 0 || y >= n) && memoX != m - 1) {
-                y = 0;
-                x = ++memoX;
-            }
-
-            if (y >= n && memoX == m - 1) {
-                x = m - 1;
-                y = ++memoY;
+                // 변수 업데이트 :
+                currRow++;
+                currCol--;
+                count++;
             }
         }
 
-        list[n - 1][m - 1] = cnt;
+        // Step 2:
+        for(int startRow = 1; startRow < n; startRow++) {
+            int currRow = startRow;
+            int currCol = m - 1;
 
-        for (int i = 0; i < n; i++) {
+            while(currCol >= 0 && currRow < n) {
+                arr[currRow][currCol] = count;
 
-            for (int k = 0; k < m; k++) {
-
-                System.out.printf("%d ", list[i][k]);
+                // 변수 업데이트 :
+                currRow++;
+                currCol--;
+                count++;
             }
-
+        }
+                
+        // 출력:
+        for(int row = 0; row < n; row++) {
+            for(int col = 0; col < m; col++) {
+                System.out.print(arr[row][col] + " ");
+            }
             System.out.println();
         }
     }
