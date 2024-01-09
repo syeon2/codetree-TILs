@@ -15,7 +15,7 @@ public class Main {
         char[] list = new char[str.length()];
 
         for (int i = 0; i < str.length(); i++) {
-            list[i] = str.charAt(i);
+            list[str.length() - 1 - i] = str.charAt(i);
         }
 
         return String.valueOf(list);
