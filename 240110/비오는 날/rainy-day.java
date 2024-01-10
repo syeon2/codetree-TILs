@@ -7,82 +7,56 @@ public class Main {
 
         int N = sc.nextInt();
 
-        Day dayClass = null;
+        Day day = null;
 
         for (int i = 0; i < N; i++) {
-            String[] list = splitDay(sc.next());
-            int year = Integer.parseInt(list[0]);
-            int month = Integer.parseInt(list[1]);
-            int day = Integer.parseInt(list[2]);
+            String days = sc.next();
+            String dayOfWeek = sc.next();
+            String weather = sc.next();
 
-            String dayOfWeek2 = sc.next();
-            String weather2 = sc.next();
-
-            if (dayClass == null && weather2.equals("Rain")) {
-                dayClass = new Day(year, month, day, dayOfWeek2, weather2);
-                continue;
-            }
-
-            if (weather2.equals("Rain")) {
-                if (dayClass.isFirstYear(year)) continue;
-                if (dayClass.isFirstMonth(month)) continue;
-                if (dayClass.isFirstDays(day)) continue;
-
-                dayClass = new Day(year, month, day, dayOfWeek2, weather2);
+            if (day == null && isRain(weather)) day = new Day(days, dayOfWeek, weather);
+            else if (day != null) {
+                if (!day.isFirst(days) && isRain(weather)) day = new Day(days, dayOfWeek, weather);
             }
         }
 
-        dayClass.print();
+        day.print();
     }
 
-    public static String[] splitDay(String fullDay) {
-        return fullDay.split("-");
+    public static boolean isRain(String weather) {
+        if (weather.equals("Rain")) return true;
+        else return false;
     }
 
     public static class Day {
-        private int year;
-        private int month;
-        private int days;
-
+        private String days;
         private String dayOfWeek;
         private String weather;
 
-        public Day(int year, int month, int days, String dayOfWeek, String weather) {
-            this.year = year;
-            this.month = month;
+        public Day(String days, String dayOfWeek, String weather) {
             this.days = days;
             this.dayOfWeek = dayOfWeek;
             this.weather = weather;
         }
 
-        public boolean isFirstYear(int year) {
-            if (this.year < year) return true;
-            else return false;
-        }
+        public boolean isFirst(String days) {
+            String[] list1 = this.days.split("-");
+            String[] list2 = days.split("-");
 
-        public boolean isFirstMonth(int month) {
-            if (this.month < month) return true;
-            else return false;
-        }
+            if (Integer.parseInt(list1[0]) < Integer.parseInt(list2[0])) return true;
+            else if (Integer.parseInt(list1[0]) > Integer.parseInt(list2[0])) return false;
 
-        public boolean isFirstDays(int days) {
-            if (this.days < days) return true;
-            else return false;
-        }
+            if (Integer.parseInt(list1[1]) < Integer.parseInt(list2[1])) return true;
+            else if (Integer.parseInt(list1[1]) > Integer.parseInt(list2[1])) return false;
 
-        public String getWeather() {
-            return this.weather;
+            if (Integer.parseInt(list1[2]) < Integer.parseInt(list2[2])) return true;
+            else if (Integer.parseInt(list1[2]) > Integer.parseInt(list2[2])) return false;
+
+            return true;
         }
 
         public void print() {
-            System.out.printf("%d-", year);
-            if (month < 10) System.out.printf("0%d-", month);
-            else System.out.printf("%d-", month);
-            if (days < 10) System.out.printf("0%d ", days);
-            else System.out.printf("%d ", days);
-
-            System.out.printf("%s ", dayOfWeek);
-            System.out.printf("%s ", weather);
+            System.out.printf("%s %s %s", days, dayOfWeek, weather);
         }
     }
 }
