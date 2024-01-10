@@ -34,21 +34,20 @@ public class Main {
         }
 
         public boolean isFirst(String otherName) {
-            int N = Math.min(this.name.length(), otherName.length());
-
-            boolean flag = false;
-
-            for (int i = 0; i < N; i++) {
-                if (name.charAt(i) < otherName.charAt(i)) {
-                    flag = true;
-                    break;
-                }
-            }
-
             if (otherName.startsWith(this.name) && this.name.length() < otherName.length()) return true;
             else if (this.name.startsWith(otherName) && this.name.length() > otherName.length()) return false;
 
-            return flag;
+            int N = Math.min(this.name.length(), otherName.length());
+
+            for (int i = 0; i < N; i++) {
+                if (name.charAt(i) < otherName.charAt(i)) {
+                    return true;
+                } else if (name.charAt(i) > otherName.charAt(i)) {
+                    return false;
+                }
+            }
+
+            return true;
         }
 
         public String getName() {
