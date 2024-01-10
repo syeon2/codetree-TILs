@@ -24,11 +24,13 @@ public class Main {
             String dayOfWeek2 = sc.next();
             String weather2 = sc.next();
 
-            if (dayClass.isFirstYear(year) && dayClass.getWeather().equals("Rain")) continue;
-            if (dayClass.isFirstMonth(month) && dayClass.getWeather().equals("Rain")) continue;
-            if (dayClass.isFirstDays(day) && dayClass.getWeather().equals("Rain")) continue;
+            if (weather2.equals("Rain")) {
+                if (dayClass.isFirstYear(year) && dayClass.getWeather().equals("Rain")) continue;
+                if (dayClass.isFirstMonth(month) && dayClass.getWeather().equals("Rain")) continue;
+                if (dayClass.isFirstDays(day) && dayClass.getWeather().equals("Rain")) continue;
 
-            if (weather2.equals("Rain")) dayClass = new Day(year, month, day, dayOfWeek2, weather2);
+                dayClass = new Day(year, month, day, dayOfWeek2, weather2);
+            }
         }
 
         dayClass.print();
