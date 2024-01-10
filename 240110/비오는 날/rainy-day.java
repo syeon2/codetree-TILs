@@ -7,15 +7,9 @@ public class Main {
 
         int N = sc.nextInt();
 
-        String fullDay = sc.next();
-        String dayOfWeek = sc.next();
-        String weather = sc.next();
+        Day dayClass = null;
 
-        String[] dayList = splitDay(fullDay);
-
-        Day dayClass = new Day(Integer.parseInt(dayList[0]), Integer.parseInt(dayList[1]), Integer.parseInt(dayList[2]), dayOfWeek, weather);
-
-        for (int i = 0; i < N - 1; i++) {
+        for (int i = 0; i < N; i++) {
             String[] list = splitDay(sc.next());
             int year = Integer.parseInt(list[0]);
             int month = Integer.parseInt(list[1]);
@@ -24,10 +18,15 @@ public class Main {
             String dayOfWeek2 = sc.next();
             String weather2 = sc.next();
 
+            if (dayClass == null && weather2.equals("Rain")) {
+                dayClass = new Day(year, month, day, dayOfWeek2, weather2);
+                continue;
+            }
+
             if (weather2.equals("Rain")) {
-                if (dayClass.isFirstYear(year) && dayClass.getWeather().equals("Rain")) continue;
-                if (dayClass.isFirstMonth(month) && dayClass.getWeather().equals("Rain")) continue;
-                if (dayClass.isFirstDays(day) && dayClass.getWeather().equals("Rain")) continue;
+                if (dayClass.isFirstYear(year)) continue;
+                if (dayClass.isFirstMonth(month)) continue;
+                if (dayClass.isFirstDays(day)) continue;
 
                 dayClass = new Day(year, month, day, dayOfWeek2, weather2);
             }
