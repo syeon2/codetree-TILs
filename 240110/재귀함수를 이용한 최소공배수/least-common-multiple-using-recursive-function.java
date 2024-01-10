@@ -14,8 +14,7 @@ public class Main {
 
         int temp = list[0];
 
-        if (N == 1) System.out.print(temp);
-        else {
+        if (N > 1) {
             for (int i = 1; i < N; i++) {
                 int lcm = lcm(temp, list[i]);
 
