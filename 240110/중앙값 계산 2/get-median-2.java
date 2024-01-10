@@ -7,23 +7,23 @@ public class Main {
 
         int N = sc.nextInt();
 
-        int[] list = new int[N];
+        int[] list = new int[N + 1];
 
-        for (int i = 0; i < N; i++) {
+        for (int i = 1; i <= N; i++) {
             list[i] = sc.nextInt();
         }
 
-        for (int i = 0; i < N; i++) {
-            if ((i + 1) % 2 == 1) {
+        for (int i = 1; i <= N; i++) {
+            if (i % 2 == 1) {
                 int[] temp = new int[i + 1];
 
-                for (int k = 0; k < i + 1; k++) {
+                for (int k = 1; k <= i; k++) {
                     temp[k] = list[k];
                 }
 
-                Integer[] temp2 = Arrays.stream(temp).boxed().toArray(Integer[]::new);
+                Arrays.sort(temp);
 
-                System.out.printf("%d ", temp2[i / 2]);
+                System.out.printf("%d ", temp[(i / 2) + 1]);
             }
         }
     }
