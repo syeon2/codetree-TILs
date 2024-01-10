@@ -45,7 +45,8 @@ public class Main {
                 }
             }
 
-            if (!flag && this.name.length() < otherName.length()) return true;
+            if (this.name.startsWith(otherName) && this.name.length() < otherName.length()) return true;
+            else if (otherName.startsWith(this.name) && this.name.length() > otherName.length()) return false;
 
             return flag;
         }
