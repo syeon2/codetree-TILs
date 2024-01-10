@@ -14,10 +14,10 @@ public class Main {
 
         int temp = list[0];
 
-        if (N == 1) System.out.print(list[0]);
+        if (N == 1) System.out.print(temp);
         else {
             for (int i = 1; i < N; i++) {
-                int lcm = lcm(Math.min(temp, list[i]), Math.max(temp, list[i]));
+                int lcm = lcm(temp, list[i]);
 
                 temp = lcm;
             }
@@ -27,7 +27,7 @@ public class Main {
     }
 
     public static int lcm(int a, int b) {
-        return (a * b) / gcd(Math.min(a, b), Math.max(a, b));
+        return (a * b) / gcd(a, b);
     }
 
     public static int gcd(int a, int b) {
