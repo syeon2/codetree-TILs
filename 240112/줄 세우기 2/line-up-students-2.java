@@ -21,7 +21,7 @@ public class Main {
             @Override
             public int compare(Integer[] a, Integer[] b) {
                 if (a[0] == b[0]) {
-                    if (a[1] == b[1]) return b[1] - a[1];
+                    return b[1] - a[1];
                 }
 
                 return a[0] - b[0];
