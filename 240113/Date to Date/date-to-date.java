@@ -20,7 +20,8 @@ public class Main {
             answer += month[i];
         }
 
-        answer += month[m1] - d1 + d2 + 1;
+        if (m1 == m2) answer += (d2 - d1) + 1;
+        else answer += month[m1] - d1 + d2 + 1;
 
         System.out.print(answer);
     }
