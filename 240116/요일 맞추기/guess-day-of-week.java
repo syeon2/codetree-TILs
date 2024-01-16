@@ -23,7 +23,7 @@ public class Main {
 
                 d1++;
 
-                if (d1 == month[m1]) {
+                if (d1 == month[m1] + 1) {
                     d1 = 1;
                     m1++;
                 }
