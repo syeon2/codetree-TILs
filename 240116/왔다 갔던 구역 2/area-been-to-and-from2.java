@@ -24,7 +24,7 @@ public class Main {
 
                 curPos += move;
             } else {
-                for (int k = curPos; k > curPos - move; k--) {
+                for (int k = curPos - 1; k >= curPos - move; k--) {
                     if (k < 0) negative[k * -1]++;
                     else positive[k]++;
                 }
