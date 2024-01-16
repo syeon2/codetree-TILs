@@ -18,8 +18,11 @@ public class Main {
             cnt++;
         }
 
-        for (int i = cnt - 1; i >= 0; i--) {
-            System.out.print(list[i]);
+        if (N == 0) System.out.print(0);
+        else {
+            for (int i = cnt - 1; i >= 0; i--) {
+                System.out.print(list[i]);
+            }
         }
     }
 }
