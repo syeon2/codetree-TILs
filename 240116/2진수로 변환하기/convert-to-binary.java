@@ -18,7 +18,7 @@ public class Main {
             cnt++;
         }
 
-        if (N == 0) System.out.print(0);
+        if (cnt == 0) System.out.print(0);
         else {
             for (int i = cnt - 1; i >= 0; i--) {
                 System.out.print(list[i]);
