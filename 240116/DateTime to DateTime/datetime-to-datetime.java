@@ -15,24 +15,26 @@ public class Main {
 
         int cnt = 0;
 
-        while (!(startD == a && startH == b && startM == c)) {
-            cnt++;
-
-            startM++;
-            if (startM == 60) {
-                startH++;
-                startM = 0;
-            }
-
-            if (startH == 24) {
-                startD++;
-                startH = 0;
-            }
-        }
-
         if (startD > a) System.out.print(-1);
         else if (startD == a && startH > b) System.out.print(-1);
         else if (startD == a && startH == b && startM > c) System.out.print(-1);
-        else System.out.print(cnt);
+        else {
+            while (!(startD == a && startH == b && startM == c)) {
+                cnt++;
+
+                startM++;
+                if (startM == 60) {
+                    startH++;
+                    startM = 0;
+                }
+
+                if (startH == 24) {
+                    startD++;
+                    startH = 0;
+                }
+            }
+
+            System.out.print(cnt);
+        }
     }
 }
