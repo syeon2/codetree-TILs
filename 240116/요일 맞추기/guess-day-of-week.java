@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class Main {
     public static int[] month = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
-    public static String[] dayOfWeek = {"Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"};
+    public static String[] dayOfWeek = {"Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"};
     public static String[] dayOfWeek2 = {"Mon", "Sun", "Sat", "Fri", "Thu", "Wed", "Tue"};
 
     public static void main(String[] args) {
