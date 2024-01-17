@@ -25,6 +25,8 @@ public class Main {
             } 
         }
 
+        ans = Math.max(ans, cnt);
+
         System.out.print(ans);
     }
 }
