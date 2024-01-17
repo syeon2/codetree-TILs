@@ -28,20 +28,16 @@ public class Main {
             }
         }
 
-        boolean flag = false;
+        int minX = Integer.MAX_VALUE;
+        int minY = Integer.MAX_VALUE;
 
-        int minX = 2000;
-        int minY = 2000;
-
-        int maxX = 0;
-        int maxY = 0;
+        int maxX = -1;
+        int maxY = -1;
 
         for (int i = 0; i < board.length; i++) {
 
             for (int k = 0; k < board[i].length; k++) {
                 if (board[i][k] == 1) {
-                    flag = true;
-
                     if (minX > k) minX = k;
                     if (minY > i) minY = i;
 
@@ -51,7 +47,7 @@ public class Main {
             }
         }
 
-        if (flag) System.out.print(Math.abs(maxX - minX) * Math.abs(maxY - minY));
-        else System.out.print(0);
+        if (maxX == -1) System.out.print(0);
+        else System.out.print(Math.abs(maxX - minX) * Math.abs(maxY - minY));
     }
 }
