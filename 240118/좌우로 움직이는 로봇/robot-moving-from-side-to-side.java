@@ -30,8 +30,8 @@ public class Main {
             }
         }
 
-        while (listA.length > curTimeA) {
-            listA[curTimeA++] = listA[curTimeA - 1];
+        while (listA.length > ++curTimeA) {
+            listA[curTimeA] = listA[curTimeA - 1];
         }
 
         for (int m = 0; m < M; m++) {
@@ -47,13 +47,13 @@ public class Main {
             }
         }
 
-        while (listB.length > curTimeB) {
-            listB[curTimeB++] = listB[curTimeB - 1];
+        while (listB.length > ++curTimeB) {
+            listB[curTimeB] = listB[curTimeB - 1];
         }
 
         int cnt = 0;
 
-        for (int i = 1; i <= Math.max(curTimeA, curTimeB); i++) {
+        for (int i = 1; i <= 50000; i++) {
             if (listA[i - 1] != listB[i - 1] && listA[i] == listB[i]) {
                 cnt++;
             }
