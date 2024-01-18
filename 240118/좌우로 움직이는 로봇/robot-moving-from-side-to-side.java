@@ -8,8 +8,8 @@ public class Main {
         int N = sc.nextInt();
         int M = sc.nextInt();
 
-        int[] listA = new int[50001];
-        int[] listB = new int[50001];
+        int[] listA = new int[1000001];
+        int[] listB = new int[1000001];
 
         int curTimeA = 0;
         int curTimeB = 0;
@@ -53,7 +53,7 @@ public class Main {
 
         int cnt = 0;
 
-        for (int i = 1; i <= 50000; i++) {
+        for (int i = 1; i <= 1000000; i++) {
             if (listA[i - 1] != listB[i - 1] && listA[i] == listB[i]) {
                 cnt++;
             }
