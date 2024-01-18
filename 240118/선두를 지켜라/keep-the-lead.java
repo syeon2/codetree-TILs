@@ -45,6 +45,7 @@ public class Main {
             }
         }
 
-        System.out.print(cnt - 1);
+        if (flag == -1) System.out.print(cnt);
+        else System.out.print(cnt - 1);
     }
 }
