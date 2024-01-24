@@ -53,7 +53,7 @@ public class Main {
                     else break;
                 }
 
-                if (cnt2 == 0) {
+                if (cnt2 == 5) {
                     width = k + 1;
                     height = i + 3;
 
