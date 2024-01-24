@@ -7,7 +7,8 @@ public class Main {
 
         String str = sc.next();
 
-        if (str.length() == 1) System.out.print(Math.pow(2, Integer.parseInt(str)));
+        if (str.length() == 1 && str.equals("1")) System.out.print(1);
+        else if (str.length() == 1 && str.equals("0")) System.out.print(0);
         else System.out.print(solution(str));
     }
 
