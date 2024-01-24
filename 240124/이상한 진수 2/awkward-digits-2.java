@@ -7,7 +7,8 @@ public class Main {
 
         String str = sc.next();
 
-        System.out.print(solution(str));
+        if (str.length() == 1) System.out.print(Math.pow(2, Integer.parseInt(str)));
+        else System.out.print(solution(str));
     }
 
     public static int solution(String num) {
