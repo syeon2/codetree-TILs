@@ -20,14 +20,13 @@ public class Main {
         
         for (int i = 0; i < N; i++) {
 
-            int temp = 0;
-            
             for (int k = 0; k <= N - 3; k++) {
+                int temp = 0;
 
                 temp += board[i][k] + board[i][k + 1] + board[i][k + 2];
-            }
 
-            if (max < temp) max = temp;
+                if (max < temp) max = temp;
+            }
         }
 
         System.out.print(max);
