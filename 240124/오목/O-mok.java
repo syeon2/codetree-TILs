@@ -25,7 +25,7 @@ public class Main {
                 int cnt1 = 0;
 
                 if (board[i][k] == 0) continue;
-                if (i + 5 >= 19 || k + 5 >= 19) continue;
+                if (i + 5 > 19 || k + 5 > 19) continue;
 
                 // 가로로 이겼을 경우
                 for (int j = 0; j < 5; j++) {
