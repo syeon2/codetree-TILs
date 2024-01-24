@@ -20,7 +20,7 @@ public class Main {
             for (int k = i + 1; k < N; k++) {
 
                 for (int j = k + 1; j < N; j++) {
-                    if (list[i] < list[k] && list[k] < list[j]) cnt++;
+                    if (list[i] <= list[k] && list[k] <= list[j]) cnt++;
                 }
             }
         }
