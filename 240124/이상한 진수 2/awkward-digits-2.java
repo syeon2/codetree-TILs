@@ -1,34 +1,27 @@
-import java.util.*;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
         // 여기에 코드를 작성해주세요.
         Scanner sc = new Scanner(System.in);
 
-        String str = sc.next();
+        char[] list = sc.next().toCharArray();
 
-        if (str.length() == 1 && str.equals("1")) System.out.print(1);
-        else if (str.length() == 1 && str.equals("0")) System.out.print(0);
-        else System.out.print(solution(str));
-    }
+        int max = 0;
+        for (int i = 0; i < list.length; i++) {
+            int temp = 0;
 
-    public static int solution(String num) {
-        int temp = 0;
+            if (list[i] == '0') temp += Math.pow(2, list.length - i - 1);
 
-        boolean flag = false;
+            for (int k = 0; k < list.length; k++) {
+                if (i == k) continue;
 
-        for (int i = 0; i < num.length(); i++) {
-
-            if (num.charAt(i) == '1') temp += Math.pow(2, num.length() - i - 1);
-            else {
-                if (flag) continue;
-                else {
-                    temp += Math.pow(2, num.length() - i - 1);
-                    flag = true;
-                }
+                if (list[k] == '1') temp += Math.pow(2, list.length - k - 1);
             }
+
+            if (temp > max) max = temp;
         }
 
-        return temp;
+        System.out.print(max);
     }
 }
