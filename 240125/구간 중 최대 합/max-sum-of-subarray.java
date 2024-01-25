@@ -17,7 +17,7 @@ public class Main {
 
         int max = 0;
 
-        for (int i = 0; i < n - 2; i++) {
+        for (int i = 0; i <= n - k; i++) {
 
             int temp = 0;
             for (int j = i; j < i + k; j++) {
