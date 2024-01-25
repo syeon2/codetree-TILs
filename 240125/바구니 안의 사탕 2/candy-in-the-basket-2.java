@@ -15,15 +15,15 @@ public class Main {
             int candy = sc.nextInt();
             int idx = sc.nextInt();
 
-            list[idx - 1] += candy;
+            list[idx] += candy;
         }
 
         int max = 0;
 
-        for (int i = K; i <= 100 - K; i++) {
+        for (int i = K + 1; i <= 100 - K; i++) {
 
             int temp = 0;
-            for (int k = i - K; k <= i + K; k++) {
+            for (int k = i - K - 1; k <= i + K; k++) {
                 temp += list[k];
             }
 
