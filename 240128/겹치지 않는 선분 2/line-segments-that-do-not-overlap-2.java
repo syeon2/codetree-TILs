@@ -24,8 +24,8 @@ public class Main {
             for (int k = 0; k < N; k++) {
                 if (i == k) continue;
 
-                if (list[i][0] > list[k][0] && list[i][1] < list[k][1]) ans--;
-                else if (list[i][0] < list[k][0] && list[i][1] > list[k][1]) ans--;
+                if (list[i][0] >= list[k][0] && list[i][1] <= list[k][1]) ans--;
+                else if (list[i][0] <= list[k][0] && list[i][1] >= list[k][1]) ans--;
             }
         }
 
