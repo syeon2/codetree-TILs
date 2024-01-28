@@ -8,6 +8,7 @@ public class Main {
         int N = sc.nextInt();
 
         int[][] list = new int[N][2];
+        boolean[] check = new boolean[N];
 
         for (int i = 0; i < N; i++) {
             int x1 = sc.nextInt();
@@ -17,22 +18,26 @@ public class Main {
             list[i][1] = x2;
         }
 
-        int ans = N;
-
         for (int i = 0; i < N; i++) {
 
             for (int k = 0; k < N; k++) {
                 if (i == k) continue;
 
-                int startX1 = Math.min(list[i][0], list[i][1]);
-                int endX1 = Math.max(list[i][0], list[i][1]);
-
-                int startX2 = Math.min(list[k][0], list[k][1]);
-                int endX2 = Math.max(list[k][0], list[k][1]);
-
-                if (startX1 <= startX2 && endX1 >= endX2) ans--;
-                else if (startX1 >= startX2 && endX1 <= endX2) ans--;
+                if (!check[i] || !check[k]) {
+                    if (list[i][0] < list[k][0] && list[i][1] > list[k][1]) {
+                        check[i] = true;
+                        check[k] = true;    
+                    } else if (list[i][0] > list[k][0] && list[i][1] < list[k][1]) {
+                        check[i] = true;
+                        check[k] = true;
+                    }                    
+                }
             }
+        }
+
+        int ans = 0;
+        for (int i = 0; i < N; i++) {
+            if (!check[i]) ans++;
         }
 
         System.out.print(ans);
