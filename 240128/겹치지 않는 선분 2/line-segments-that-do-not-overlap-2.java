@@ -30,8 +30,8 @@ public class Main {
                 int startX2 = Math.min(list[k][0], list[k][1]);
                 int endX2 = Math.max(list[k][0], list[k][1]);
 
-                if (startX1 < startX2 && endX1 > endX2) ans--;
-                else if (startX1 > startX2 && endX1 < endX2) ans--;
+                if (startX1 <= startX2 && endX1 >= endX2) ans--;
+                else if (startX1 >= startX2 && endX1 <= endX2) ans--;
             }
         }
 
