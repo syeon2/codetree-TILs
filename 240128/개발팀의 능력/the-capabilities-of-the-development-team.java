@@ -43,7 +43,7 @@ public class Main {
             }
         }
 
-        if (ans = Integer.MAX_VALUE) System.out.print(-1);
+        if (ans == Integer.MAX_VALUE) System.out.print(-1);
         else System.out.print(ans);
     }
 }
