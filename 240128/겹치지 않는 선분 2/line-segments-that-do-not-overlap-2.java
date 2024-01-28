@@ -24,8 +24,14 @@ public class Main {
             for (int k = 0; k < N; k++) {
                 if (i == k) continue;
 
-                if (list[i][0] >= list[k][0] && list[i][1] <= list[k][1]) ans--;
-                else if (list[i][0] <= list[k][0] && list[i][1] >= list[k][1]) ans--;
+                int startX1 = Math.min(list[i][0], list[i][1]);
+                int endX1 = Math.max(list[i][0], list[i][1]);
+
+                int startX2 = Math.min(list[k][0], list[k][1]);
+                int endX2 = Math.max(list[k][0], list[k][1]);
+
+                if (startX1 < startX2 && endX1 > endX2) ans--;
+                else if (startX1 > startX2 && endX1 < endX2) ans--;
             }
         }
 
