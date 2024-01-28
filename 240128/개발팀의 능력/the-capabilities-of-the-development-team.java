@@ -31,7 +31,7 @@ public class Main {
                             int team2 = list[c] + list[d];
                             int team3 = list[e];
 
-                            if (team1 == team2 || team2 == team3) continue;
+                            if (team1 == team2 || team2 == team3 || team1 == team3) continue;
 
                             int max = Math.max(team1, Math.max(team2, team3));
                             int min = Math.min(team1, Math.min(team2, team3));
