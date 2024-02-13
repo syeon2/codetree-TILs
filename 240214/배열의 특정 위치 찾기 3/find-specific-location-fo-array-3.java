@@ -5,24 +5,20 @@ public class Main {
         // 여기에 코드를 작성해주세요.
         Scanner sc = new Scanner(System.in);
 
-        int idx = 0;
-        int[] list = new int[100];
+        int[] list = new int[3];
 
-        for (int i = 0; i < 100; i++) {
+        while (true) {
             int num = sc.nextInt();
 
             if (num == 0) break;
 
-            list[i] = num;
-            idx = i;
+            list[0] = list[1];
+            list[1] = list[2];
+            list[2] = num;
         }
 
-        int sum = 0;
+        int sum = list[0] + list[1] + list[2];
 
-        for (int i = idx; i >= idx - 2; i--) {
-            sum += list[i];
-        }
-
-        System.out.println(sum);
+        System.out.print(sum);
     }
 }
