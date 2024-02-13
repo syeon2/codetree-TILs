@@ -14,6 +14,8 @@ public class Main {
         int sum = a + b + c;
         int avg = sum / 3;
 
-        System.out.printf("%d\n%d", sum, avg);
+        bw.write(String.format("%d\n%d", sum, avg));
+        bw.flush();
+        bw.close();
     }
 }
