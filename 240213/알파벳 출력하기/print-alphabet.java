@@ -13,6 +13,8 @@ public class Main {
             for (int k = 1; k <= i; k++) {
 
                 System.out.print(c++);
+
+                if (c > 'Z') c = 'A';
             }
 
             System.out.println();
