@@ -12,7 +12,11 @@ public class Main {
         int a = Integer.parseInt(list[0]);
         int b = Integer.parseInt(list[1]);
 
-		System.out.printf("%d * %d = %d\n", a, b, a * b);
-		System.out.printf("%d / %d = %d", a, b, a / b);
+		bw.write(String.format("%d * %d = %d", a, b, a * b));
+        bw.newLine();
+        bw.write(String.format("%d / %d = %d", a, b, a / b));
+
+        bw.flush();
+        bw.close();
 	}
 }
