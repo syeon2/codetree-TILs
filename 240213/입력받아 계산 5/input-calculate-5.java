@@ -1,4 +1,5 @@
 import java.io.*;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) throws IOException {
@@ -6,9 +7,12 @@ public class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        String[] list = br.readLine().split(" ");
-        int a = Integer.parseInt(list[0]);
-        int b = Integer.parseInt(list[1]);
+        Integer[] list = Arrays.stream(br.readLine().split(" "))
+            .map(Integer::parseInt)
+            .toArray(Integer[]::new);
+
+        int a = list[0];
+        int b = list[1];
 
         bw.write(String.valueOf(a + b));
         bw.flush();
