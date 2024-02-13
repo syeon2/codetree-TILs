@@ -7,12 +7,10 @@ public class Main {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
-		Integer[] list = Arrays.stream(br.readLine().split(" "))
-            .map(Integer::parseInt)
-            .toArray(Integer[]::new);
+        String[] list = br.readLine().split(" ");
 
-        int a = list[0];
-        int b = list[1];
+        int a = Integer.parseInt(list[0]);
+        int b = Integer.parseInt(list[1]);
 
 		System.out.printf("%d * %d = %d\n", a, b, a * b);
 		System.out.printf("%d / %d = %d", a, b, a / b);
