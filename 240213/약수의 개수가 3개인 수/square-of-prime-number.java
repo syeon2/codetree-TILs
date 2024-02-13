@@ -15,7 +15,7 @@ public class Main {
             int count = 0;
 
             for (int k = 1; k <= i; k++) {
-                if (i % i == 0) count++;
+                if (i % k == 0) count++;
             }
 
             if (count == 3) cnt++;
