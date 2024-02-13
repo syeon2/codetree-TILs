@@ -6,17 +6,16 @@ public class Main {
         Scanner sc = new Scanner(System.in);
 
         int N = sc.nextInt();
+        int[] list = new int[101];
 
-        int value = N;
         int cnt = 0;
+        for (int i = 1; i <= 100; i++) {
+            list[i] = N * i;
 
-        while (cnt != 2) {
-            System.out.printf("%d ", value);
-            value += N;
+            System.out.printf("%d ", list[i]);
 
-            if (value % 5 == 0) cnt++;
+            if (list[i] % 5 == 0) cnt++;
+            if (cnt == 2) break;
         }
-
-        System.out.print(value);
     }
 }
