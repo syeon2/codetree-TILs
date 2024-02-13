@@ -11,9 +11,9 @@ public class Main {
         int corridor = 0;
         int bathroom = 0;
 
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i <= n; i++) {
             if (i == 0) continue;
-            
+
             if (i % 12 == 0) bathroom++;
             else if (i % 3 == 0) corridor++;
             else if (i % 2 == 0) clazz++;
