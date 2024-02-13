@@ -8,6 +8,10 @@ public class Main {
 
         String[] list = br.readLine().split("-");
 
-        System.out.printf("%s%s", list[0], list[1]);
+        bw.write(list[0]);
+        bw.write(list[1]);
+        
+        bw.flush();
+        bw.close();
     }
 }
