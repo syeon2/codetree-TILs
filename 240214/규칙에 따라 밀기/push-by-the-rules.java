@@ -9,6 +9,7 @@ public class Main {
         char[] orders = sc.next().toCharArray();
 
         int move = 0;
+
         for (int i = 0; i < orders.length; i++) {
             if (orders[i] == 'L') move--;
             else move++;
@@ -18,11 +19,13 @@ public class Main {
         else if (move < 0) {
             move *= -1;
 
-            str = str.substring(move).concat(str.substring(0, move));
-        } else {
-            str = str.substring(str.length() - move).concat(str.substring(0, move));
-        }
+            str = str.substring(move) + str.substring(0, move);
 
-        System.out.print(str);
+            System.out.print(str);
+        } else {
+            str = str.substring(str.length() - move) + str.substring(0, move);
+
+            System.out.print(str);
+        }
     }
 }
