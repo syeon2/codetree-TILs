@@ -17,7 +17,7 @@ public class Main {
             int x = i;
             int y = 0;
 
-            while (x >= 0 && y < m) {
+            while (x >= 0 && y < n) {
                 board[y++][x--] = cnt++;
             }
         }
@@ -27,7 +27,7 @@ public class Main {
             int x = m - 1;
             int y = i;
 
-            while (x >= 0 && y < m) {
+            while (x >= 0 && y < n) {
                 board[y++][x--] = cnt++;
             }
         }
