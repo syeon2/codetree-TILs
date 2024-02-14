@@ -15,7 +15,7 @@ public class Main {
             else move++;
         }
 
-        if (move == 0) System.out.print(str);
+        if (move == 0 || Math.abs(move) % orders.length == 0) System.out.print(str);
         else if (move < 0) {
             move *= -1;
 
@@ -23,7 +23,7 @@ public class Main {
 
             System.out.print(str);
         } else {
-            str = str.substring(str.length() - move + 1) + str.substring(0, move);
+            str = str.substring(str.length() - move) + str.substring(0, move);
 
             System.out.print(str);
         }
