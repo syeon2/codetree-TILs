@@ -13,22 +13,20 @@ public class Main {
             list[i] = sc.nextInt();
         }
 
-        int idx = N;
+        int max = 0;
+        int idx = 0;
+        int[] ans = new int[1000];
 
-        while (idx != 0) {
-            int max = 0;
-            int temp = 0;
-
-            for (int i = 0; i < idx; i++) {
-                if (list[i] > max) {
-                    max = list[i];
-                    temp = i;
-                }
+        for (int i = 0; i < N; i++) {
+            if (list[i] > max) {
+                max = list[i];
+                ans[idx] = i;
+                idx++;
             }
+        }
 
-            System.out.printf("%d ", temp + 1);
-
-            idx = temp;
+        for (int i = idx - 1; i >= 0; i--) {
+            System.out.printf("%d ", ans[i] + 1);
         }
     }
 }
