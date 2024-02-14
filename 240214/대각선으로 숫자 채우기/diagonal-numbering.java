@@ -24,7 +24,7 @@ public class Main {
 
         for (int i = 1; i < m; i++) {
 
-            int x = n - 1;
+            int x = m - 1;
             int y = i;
 
             while (x >= 0 && y < m) {
