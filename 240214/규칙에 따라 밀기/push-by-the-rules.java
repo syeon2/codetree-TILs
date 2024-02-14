@@ -23,8 +23,12 @@ public class Main {
         else if (move < 0) {
             move *= -1;
 
+            move %= str.length();
+
             str = str.substring(move) + str.substring(0, move);
         } else {
+            move %= str.length();
+            
             str = str.substring(str.length() - move) + str.substring(0, str.length() - move);
         }
 
