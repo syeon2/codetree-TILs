@@ -8,19 +8,20 @@ public class Main {
         int N = sc.nextInt();
 
         int[] list = new int[N];
+
         for (int i = 0; i < N; i++) {
             list[i] = sc.nextInt();
         }
 
-        int max = 0;
+        int minPrice = list[0];
+        int maxProfit = 0;
 
-        for (int i = 0; i < N; i++) {
+        for (int i = 1; i < N; i++) {
+            if (list[i] - minPrice > maxProfit) maxProfit = list[i] - minPrice;
 
-            for (int k = i + 1; k < N; k++) {
-                if (list[k] - list[i] > max) max = list[k] - list[i];
-            }
+            if (minPrice > list[i]) minPrice = list[i];
         }
 
-        System.out.print(max);
+        System.out.print(maxProfit);
     }
 }
