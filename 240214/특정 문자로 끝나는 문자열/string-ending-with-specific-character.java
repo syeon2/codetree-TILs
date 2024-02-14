@@ -13,8 +13,15 @@ public class Main {
 
         char c = sc.next().charAt(0);
 
+        boolean satis = false;
+
         for (int i = 0; i < 10; i++) {
-            if (list[i].charAt(list[i].length() - 1) == c) System.out.println(list[i]);
+            if (list[i].charAt(list[i].length() - 1) == c) {
+                System.out.println(list[i]);
+                satis = true;
+            }
         }
+
+        if (!satis) System.out.print("None");
     }
 }
