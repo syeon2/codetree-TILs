@@ -23,7 +23,7 @@ public class Main {
 
             System.out.print(str);
         } else {
-            str = str.substring(str.length() - move - 1) + str.substring(0, move);
+            str = str.substring(str.length() - move + 1) + str.substring(0, move);
 
             System.out.print(str);
         }
