@@ -10,7 +10,7 @@ public class Main {
 
         int cnt = 0;
 
-        for (int i = 0; i < 6; i++) {
+        for (int i = 0; i < A.length(); i++) {
             if (A.equals(B)) break;
             else {
                 A = A.substring(A.length() - 1) + A.substring(0, A.length() - 1);
