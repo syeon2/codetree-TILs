@@ -12,7 +12,7 @@ public class Main {
 
         int[][] board = new int[n][m];
 
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < m; i++) {
 
             int x = i;
             int y = 0;
@@ -22,7 +22,7 @@ public class Main {
             }
         }
 
-        for (int i = 1; i < m; i++) {
+        for (int i = 1; i < n; i++) {
 
             int x = m - 1;
             int y = i;
