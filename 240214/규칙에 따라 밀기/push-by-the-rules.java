@@ -10,22 +10,24 @@ public class Main {
 
         int move = 0;
 
+        // L과 R의 위치 종합
         for (int i = 0; i < orders.length; i++) {
             if (orders[i] == 'L') move--;
-            else move++;
+            else if (orders[i] == 'R') move++;
         }
 
-        if (move == 0 || Math.abs(move) % orders.length == 0) System.out.print(str);
+        // move가 음수일 경우 : L로 이동
+        // move가 양수일 경우 : R로 이동
+        // move가 0이거나 move가 음수, 양수로 str.length()의 배수일 경우 : 이동 X
+        if (move == 0 || Math.abs(move) % str.length() == 0) {}
         else if (move < 0) {
             move *= -1;
 
             str = str.substring(move) + str.substring(0, move);
-
-            System.out.print(str);
         } else {
-            str = str.substring(str.length() - move) + str.substring(0, move);
-
-            System.out.print(str);
+            str = str.substring(str.length() - move) + str.substring(0, str.length() - move);
         }
+
+        System.out.print(str);
     }
 }
