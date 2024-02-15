@@ -13,14 +13,29 @@ public class Main {
             list[i] = new Student(sc.nextInt(), sc.nextInt(), i + 1);
         }
 
-        Arrays.sort(list);
+        Comparator<Student> comp = new Comparator<Student>() {
+            @Override
+            public int compare(Student a, Student b) {
+                if (a.height == b.height) {
+                    if (a.weight == b.weight) {
+                        return a.num - b.num;
+                    }
+
+                    return b.weight - a.weight;
+                }
+
+                return b.height - a.height;
+            }
+        };
+
+        Arrays.sort(list, comp);
 
         for (int i = 0; i < N; i++) {
             list[i].print();
         }
     }
 
-    public static class Student implements Comparable<Student> {
+    public static class Student {
         public int height;
         public int weight;
         public int num;
@@ -35,17 +50,17 @@ public class Main {
             System.out.printf("%d %d %d\n", this.height, this.weight, this.num);
         }
 
-        @Override
-        public int compareTo(Student a) {
-            if (this.height == a.height) {
-                if (this.weight == a.weight) {
-                    return this.num - a.num;
-                }
+        // @Override
+        // public int compareTo(Student a) {
+        //     if (this.height == a.height) {
+        //         if (this.weight == a.weight) {
+        //             return this.num - a.num;
+        //         }
 
-                return a.weight - this.weight;
-            }
+        //         return a.weight - this.weight;
+        //     }
 
-            return a.height - this.height;
-        }
+        //     return a.height - this.height;
+        // }
     }
 }
