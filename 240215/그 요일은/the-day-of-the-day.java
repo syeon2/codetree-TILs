@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class Main {
 
-    public static int[] monthes = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+    public static int[] monthes = {0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 
     public static void main(String[] args) {
         // 여기에 코드를 작성해주세요.
@@ -20,13 +20,13 @@ public class Main {
 
         int repeatWeek = diff / 7;
 
-        if (day.equals("Mon") && diff % 7 == 6) repeatWeek++;
-        else if (day.equals("Tue") && diff % 7 >= 0) repeatWeek++;
-        else if (day.equals("Wed") && diff % 7 >= 1) repeatWeek++;
-        else if (day.equals("Thu") && diff % 7 >= 1) repeatWeek++;
-        else if (day.equals("Fri") && diff % 7 >= 3) repeatWeek++;
-        else if (day.equals("Sat") && diff % 7 >= 4) repeatWeek++;
-        else if (day.equals("Sun") && diff % 7 >= 5) repeatWeek++;
+        if (day.equals("Mon") && diff % 7 >= 0) repeatWeek++;
+        else if (day.equals("Tue") && diff % 7 >= 1) repeatWeek++;
+        else if (day.equals("Wed") && diff % 7 >= 2) repeatWeek++;
+        else if (day.equals("Thu") && diff % 7 >= 3) repeatWeek++;
+        else if (day.equals("Fri") && diff % 7 >= 4) repeatWeek++;
+        else if (day.equals("Sat") && diff % 7 >= 5) repeatWeek++;
+        else if (day.equals("Sun") && diff % 7 >= 6) repeatWeek++;
 
         System.out.print(repeatWeek);
     }
