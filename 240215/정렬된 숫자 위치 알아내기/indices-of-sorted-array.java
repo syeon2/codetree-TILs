@@ -7,20 +7,18 @@ public class Main {
 
         int N = sc.nextInt();
 
-        IntWrapper[] list1 = new IntWrapper[N];
-        IntWrapper[] list2 = new IntWrapper[N];
+        int[] ans = new int[N];
+        IntWrapper[] list = new IntWrapper[N];
 
         for (int i = 0; i < N; i++) {
-            IntWrapper obj = new IntWrapper(sc.nextInt(), i + 1);
-            list1[i] = obj;
-            list2[i] = obj;
+            list[i] = new IntWrapper(sc.nextInt(), i);
         }
 
-        Arrays.sort(list1, new Comparator<IntWrapper>() {
+        Arrays.sort(list, new Comparator<IntWrapper>() {
             @Override
             public int compare(IntWrapper a, IntWrapper b) {
                 if (a.value == b.value) {
-                    return a.num - b.num;
+                    return a.idx - b.idx;
                 }
 
                 return a.value - b.value;
@@ -28,21 +26,21 @@ public class Main {
         });
 
         for (int i = 0; i < N; i++) {
-            list1[i].num = i + 1;
+            ans[list[i].idx] = i + 1;
         }
 
         for (int i = 0; i < N; i++) {
-            System.out.printf("%d ", list2[i].num);
+            System.out.printf("%d ", ans[i]);
         }
     }
 
     public static class IntWrapper {
         public int value;
-        public int num;
+        public int idx;
 
-        public IntWrapper(int value, int num) {
+        public IntWrapper(int value, int idx) {
             this.value = value;
-            this.num = num;
+            this.idx = idx;
         }
     }
 }
