@@ -12,8 +12,6 @@ public class Main {
     }
 
     public static int findPos(String str, String s) {
-        int idx = -1;
-
         for (int i = 0; i < str.length() - s.length() + 1; i++) {
             boolean flag = true;
 
@@ -24,12 +22,9 @@ public class Main {
                 }
             }
 
-            if (flag) {
-                idx = i;
-                break;
-            }
+            if (flag) return i;
         }
 
-        return idx;
+        return -1;
     }
 }
