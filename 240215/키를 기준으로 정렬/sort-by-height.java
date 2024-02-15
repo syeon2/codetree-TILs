@@ -8,9 +8,19 @@ public class Main {
         int N = sc.nextInt();
 
         Person[] list = new Person[N];
+
         for (int i = 0; i < N; i++) {
             list[i] = new Person(sc.next(), sc.nextInt(), sc.nextInt());
         }
+
+        // Arrays.sort(list, (a, b) -> a.height - b.height);
+
+        // Comparator<Person> comp = new Comparator<Person>() {
+        //     @Override
+        //     public int compare(Person a, Person b) {
+        //         return a.height - b.height;
+        //     }
+        // };
 
         Arrays.sort(list);
 
