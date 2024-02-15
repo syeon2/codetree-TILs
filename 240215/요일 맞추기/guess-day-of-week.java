@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class Main {
 
     public static int[] monthes = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
-    public static String[] dayOfWeeks = {"Mon", "Tue", "Wed", "Thu", "Fir", "Sat", "Sun"};
+    public static String[] dayOfWeeks = {"Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"};
 
     public static void main(String[] args) {
         // 여기에 코드를 작성해주세요.
