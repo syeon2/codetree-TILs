@@ -13,14 +13,14 @@ public class Main {
             list[i] = new Student(sc.next(), sc.nextInt(), sc.nextInt(), sc.nextInt());
         }
 
-        Arrays.sort(list);
+        Arrays.sort(list, (a, b) -> (a.a + a.b + a.c) - (b.a + b.b + b.c));
 
         for (int i = 0; i < N; i++) {
             list[i].print();
         }
     }
 
-    public static class Student implements Comparable<Student> {
+    public static class Student {
         public String name;
         public int a;
         public int b;
@@ -37,9 +37,9 @@ public class Main {
             System.out.printf("%s %d %d %d\n", this.name, this.a, this.b, this.c);
         }
 
-        @Override
-        public int compareTo(Student student) {
-            return (this.a + this.b + this.c) - (student.a + student.b + student.c);
-        }
+        // @Override
+        // public int compareTo(Student student) {
+        //     return (this.a + this.b + this.c) - (student.a + student.b + student.c);
+        // }
     }
 }
