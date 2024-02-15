@@ -14,6 +14,7 @@ public class Main {
 
     public static boolean isExistDay(int m, int d) {
         if (m == 2 && d <= 28) return true;
+        if (m == 2 && d >= 29) return false;
 
         if (m <= 7 && m % 2 == 1 && d <= 31) return true;
         if (m <= 7 && m % 2 == 0 && d <= 30) return true;
