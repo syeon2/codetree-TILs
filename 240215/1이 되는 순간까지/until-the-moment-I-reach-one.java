@@ -7,13 +7,13 @@ public class Main {
 
         int n = sc.nextInt();
 
-        System.out.print(cnt(n, 0));
+        System.out.print(cnt(n));
     }
 
-    public static int cnt(int n, int c) {
-        if (n <= 1) return c;
+    public static int cnt(int n) {
+        if (n <= 1) return 0;
 
-        if (n % 2 == 0) return cnt(n / 2, c + 1);
-        else return cnt(n / 3, c + 1);
+        if (n % 2 == 0) return cnt(n / 2) + 1;
+        else return cnt(n / 3) + 1;
     }
 }
