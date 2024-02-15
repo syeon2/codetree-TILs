@@ -49,7 +49,7 @@ public class Main {
             else flag2 = false;
         }
 
-        if (minusList[1] >= 2 && plusList[0] >= 2) cnt++;
+        // if (minusList[1] >= 2 && plusList[0] >= 2) cnt++;
 
         System.out.print(cnt);
     }
