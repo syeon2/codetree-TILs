@@ -14,17 +14,17 @@ public class Main {
 
         for (int n = 0; n < N; n++) {
             int move = sc.nextInt();
-            char direc = sc.next().charAt(0);
+            int direc = sc.next().charAt(0);
 
             if (direc == 'L') {
-                for (int i = curPos - 1; i >= curPos - move; i--) {
+                for (int i = curPos; i >= curPos - move; i--) {
                     if (i >= 0) plusList[i]++;
                     else minusList[Math.abs(i)]++;
                 }
 
                 curPos -= move;
             } else {
-                for (int i = curPos + 1; i <= curPos + move; i++) {
+                for (int i = curPos; i <= curPos + move; i++) {
                     if (i >= 0) plusList[i]++;
                     else minusList[Math.abs(i)]++;
                 }
@@ -34,10 +34,22 @@ public class Main {
         }
 
         int cnt = 0;
-        for (int i = 0; i < plusList.length; i++) {
-            if (plusList[i] >= 2) cnt++;
-            if (minusList[i] >= 2) cnt++;
+
+        boolean flag1 = false;
+        for (int i = 0; i < 1001; i++) {
+            if (plusList[i] >= 2 && flag1) cnt++;
+            else if (plusList[i] >= 2 && !flag1) flag1 = true;
+            else flag1 = false;
         }
+
+        boolean flag2 = false;
+        for (int i = 0; i < 1001; i++) {
+            if (minusList[i] >= 2 && flag2) cnt++;
+            else if (minusList[i] >= 2 && !flag2) flag2 = true;
+            else flag2 = false;
+        }
+
+        if (minusList[1] >= 2 && plusList[0] >= 2) cnt++;
 
         System.out.print(cnt);
     }
