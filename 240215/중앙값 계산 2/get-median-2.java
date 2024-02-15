@@ -14,15 +14,9 @@ public class Main {
 
         for (int i = 0; i < N; i++) {
             if ((i + 1) % 2 == 1) {
-                int[] temp = new int[i + 1];
+                Arrays.sort(list, 0, i + 1);
 
-                for (int k = 0; k < i + 1; k++) {
-                    temp[k] = list[k];
-                }
-
-                Arrays.sort(temp);
-
-                System.out.printf("%d ", temp[temp.length / 2]);
+                System.out.printf("%d ", list[i / 2]);
             }
         }
     }
