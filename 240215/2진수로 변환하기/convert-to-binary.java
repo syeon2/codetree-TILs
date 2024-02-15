@@ -11,6 +11,8 @@ public class Main {
     }
 
     public static String convert(int n) {
+        if (n == 0) return "0";
+        
         String binary = "";
 
         while (!(n == 1 || n == 0)) {
