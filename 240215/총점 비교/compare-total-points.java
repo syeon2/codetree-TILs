@@ -13,7 +13,14 @@ public class Main {
             list[i] = new Student(sc.next(), sc.nextInt(), sc.nextInt(), sc.nextInt());
         }
 
-        Arrays.sort(list, (a, b) -> (a.a + a.b + a.c) - (b.a + b.b + b.c));
+        Comparator<Student> comp = new Comparator<Student>() {
+            @Override
+            public int compare(Student a, Student b) {
+                return (a.a + a.b + a.c) - (b.a + b.b + b.c);
+            }
+        };
+
+        Arrays.sort(list, comp);
 
         for (int i = 0; i < N; i++) {
             list[i].print();
