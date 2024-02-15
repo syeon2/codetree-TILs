@@ -8,14 +8,26 @@ public class Main {
         int n = sc.nextInt();
         int m = sc.nextInt();
 
-        printSwap(n, m);
+        IntWrapper a = new IntWrapper(n);
+        IntWrapper b = new IntWrapper(m);
+
+        swap(a, b);
+
+        System.out.printf("%d %d", a.value, b.value);
     }
 
-    public static void printSwap(int a, int b) {
-        int temp = a;
-        a = b;
-        b = temp;
+    public static void swap(IntWrapper a, IntWrapper b) {
+        int temp = a.value;
 
-        System.out.printf("%d %d", a, b);
+        a.value = b.value;
+        b.value = temp;
+    }
+
+    public static class IntWrapper {
+        public int value;
+
+        public IntWrapper(int value) {
+            this.value = value;
+        }
     }
 }
