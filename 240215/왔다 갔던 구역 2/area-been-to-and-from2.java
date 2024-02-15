@@ -7,26 +7,23 @@ public class Main {
 
         int N = sc.nextInt();
 
-        int[] plusList = new int[1001];
-        int[] minusList = new int[1001];
+        int[] list = new int[2002];
 
-        int curPos = 0;
+        int curPos = 1000;
 
         for (int n = 0; n < N; n++) {
             int move = sc.nextInt();
             int direc = sc.next().charAt(0);
 
             if (direc == 'L') {
-                for (int i = curPos; i >= curPos - move; i--) {
-                    if (i >= 0) plusList[i]++;
-                    else minusList[Math.abs(i)]++;
+                for (int i = curPos - 1; i >= curPos - move; i--) {
+                    list[i]++;
                 }
 
                 curPos -= move;
             } else {
-                for (int i = curPos; i <= curPos + move; i++) {
-                    if (i >= 0) plusList[i]++;
-                    else minusList[Math.abs(i)]++;
+                for (int i = curPos + 1; i <= curPos + move; i++) {
+                    list[i]++;
                 }
 
                 curPos += move;
@@ -35,21 +32,9 @@ public class Main {
 
         int cnt = 0;
 
-        boolean flag1 = false;
-        for (int i = 0; i < 1001; i++) {
-            if (plusList[i] >= 2 && flag1) cnt++;
-            else if (plusList[i] >= 2 && !flag1) flag1 = true;
-            else flag1 = false;
+        for (int i = 0; i < list.length; i++) {
+            if (list[i] >= 2) cnt++;
         }
-
-        boolean flag2 = false;
-        for (int i = 0; i < 1001; i++) {
-            if (minusList[i] >= 2 && flag2) cnt++;
-            else if (minusList[i] >= 2 && !flag2) flag2 = true;
-            else flag2 = false;
-        }
-
-        // if (minusList[1] >= 2 && plusList[0] >= 2) cnt++;
 
         System.out.print(cnt);
     }
