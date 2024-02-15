@@ -16,16 +16,20 @@ public class Main {
             int move = sc.nextInt();
             char direc = sc.next().charAt(0);
 
-            if (move < 0) {
-                for (int i = curPos - 1; i >= curPos + move; i--) {
+            if (direc == 'L') {
+                for (int i = curPos - 1; i >= curPos - move; i--) {
                     if (i >= 0) plusList[i]++;
                     else minusList[Math.abs(i)]++;
                 }
+
+                curPos -= move;
             } else {
                 for (int i = curPos + 1; i <= curPos + move; i++) {
                     if (i >= 0) plusList[i]++;
                     else minusList[Math.abs(i)]++;
                 }
+
+                curPos += move;
             }
         }
 
