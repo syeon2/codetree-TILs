@@ -11,7 +11,7 @@ public class Main {
 
         int[] students = new int[N + 1];
 
-        boolean flag = false;
+        int ans = -1;
 
         for (int m = 0; m < M; m++) {
             int num = sc.nextInt();
@@ -19,12 +19,11 @@ public class Main {
             students[num]++;
 
             if (students[num] == K) {
-                System.out.print(num);
-                flag = true;
+                ans = num;
                 break;
             }
         }
 
-        if (!flag) System.out.print(-1);
+        System.out.print(ans);
     }
 }
