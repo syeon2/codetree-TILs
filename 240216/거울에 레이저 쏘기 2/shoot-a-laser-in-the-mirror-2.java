@@ -57,9 +57,9 @@ public class Main {
 
             if (!isRange(N, nx, ny)) break;
 
-            curDir = getTurnDir(curDir, list[curY][curX]);
             curX = nx;
             curY = ny;
+            curDir = getTurnDir(curDir, list[curY][curX]);
             cnt++;
         }
 
