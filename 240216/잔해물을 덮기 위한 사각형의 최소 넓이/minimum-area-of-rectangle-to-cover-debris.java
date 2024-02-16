@@ -38,10 +38,14 @@ public class Main {
         int maxX = -1;
         int maxY = -1;
 
+        boolean flag = false;
+
         for (int i = 0; i < board.length; i++) {
 
             for (int k = 0; k < board[i].length; k++) {
                 if (board[i][k] >= 1) {
+                    flag = true;
+
                     if (i < minY) minY = i;
                     if (i > maxY) maxY = i;
                     if (k < minX) minX = k;
@@ -53,6 +57,7 @@ public class Main {
         int subX = maxX - minX;
         int subY = maxY - minY;
 
-        System.out.print((subX + 1) * (subY + 1));
+        if (flag) System.out.print((subX + 1) * (subY + 1));
+        else System.out.print(0);
     }
 }
