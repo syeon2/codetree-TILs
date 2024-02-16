@@ -39,8 +39,8 @@ public class Main {
 
     public static int getDirec(char c) {
         if (c == 'L') return 0;
-        else if (c == 'D') return 1;
-        else if (c == 'U') return 2;
+        else if (c == 'U') return 1;
+        else if (c == 'D') return 2;
         else return 3;
     }
 }
