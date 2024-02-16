@@ -53,7 +53,7 @@ public class Main {
         }
 
         int ans = -1;
-        for (int i = 1; i <= mSecond; i++) {
+        for (int i = 1; i < mSecond; i++) {
             if (nList[i] == mList[i]) {
                 ans = i;
                 break;
