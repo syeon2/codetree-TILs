@@ -24,6 +24,6 @@ public class Main {
             cur = num;
         }
 
-        System.out.print(max);
+        System.out.print(Math.max(cnt, max));
     }
 }
