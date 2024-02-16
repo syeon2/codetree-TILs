@@ -40,7 +40,10 @@ public class Main {
         int cnt = 0;
 
         for (int i = 0; i < mSecond; i++) {
-            if (isWin != 1 && nList[i] > mList[i]) {
+            if (isWin == 0) {
+                if (nList[i] > mList[i]) isWin = 1;
+                else if (nList[i] < mList[i]) isWin = 2;
+            } else if (isWin != 1 && nList[i] > mList[i]) {
                 isWin = 1;
                 cnt++;
             } else if (isWin != 2 && nList[i] < mList[i]) {
@@ -49,6 +52,6 @@ public class Main {
             }
         }
 
-        System.out.print(cnt - 1);
+        System.out.print(cnt);
     }
 }
