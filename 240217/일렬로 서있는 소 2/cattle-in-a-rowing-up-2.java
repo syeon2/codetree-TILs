@@ -15,7 +15,7 @@ public class Main {
         for (int i = 0; i < N; i++) {
             for (int k = i + 1; k < N; k++) {
                 for (int j = k + 1; j < N; j++) {
-                    if (list[i] < list[k] && list[k] < list[j]) cnt++;
+                    if (list[i] <= list[k] && list[k] <= list[j]) cnt++;
                 }
             }
         }
