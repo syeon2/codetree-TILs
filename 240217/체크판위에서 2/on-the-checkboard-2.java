@@ -19,11 +19,9 @@ public class Main {
         for (int i = 1; i < R; i++) {
             for (int k = 1; k < C; k++) {
                 if (board[0][0] != board[i][k]) {
-                    for (int l = i + 1; l < R; l++) {
-                        for (int m = k + 1; m < C; m++) {
-                            if (board[i][k] != board[l][m]) {
-                                if (l < R - 1 && m < C - 1 && board[l][m] != board[R - 1][C - 1]) cnt++;
-                            }
+                    for (int l = i + 1; l < R - 1; l++) {
+                        for (int m = k + 1; m < C - 1; m++) {
+                            if (board[i][k] != board[l][m] && board[l][m] != board[R - 1][C - 1]) cnt++;
                         }
                     }
                 }
