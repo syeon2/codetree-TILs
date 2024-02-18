@@ -1,15 +1,15 @@
 import java.util.Scanner;
 
 public class Main {
+
+    public static int[][] board = new int[19][19];
+
     public static void main(String[] args) {
         // 여기에 코드를 작성해주세요.
         Scanner sc = new Scanner(System.in);
 
-        int[][] board = new int[20][20];
-
-        for (int i = 1; i <= 19; i++) {
-
-            for (int k = 1; k <= 19; k++) {
+        for (int i = 0; i < 19; i++) {
+            for (int k = 0; k < 19; k++) {
                 board[i][k] = sc.nextInt();
             }
         }
@@ -18,25 +18,26 @@ public class Main {
         int xPos = 0;
         int yPos = 0;
 
-        for (int i = 1; i <= 15; i++) {
-
-            for (int k = 1; k <= 15; k++) {
+        for (int i = 0; i < 19; i++) {
+            for (int k = 0; k < 19; k++) {
                 if (board[i][k] == 0) continue;
 
-                int curStone = board[i][k];
-
-                if (board[i + 1][k] == curStone && board[i + 2][k] == curStone && board[i + 3][k] == curStone && board[i + 4][k] == board[i][k]) {
+                if (checkRightUp(k, i)) {
                     win = board[i][k];
-                    xPos = k;
-                    yPos = i + 2;
-                } else if (board[i][k + 1] == curStone && board[i][k + 2] == curStone && board[i][k + 3] == curStone && board[i][k + 4] == curStone) {
+                    xPos = k + 1 + 2;
+                    yPos = i + 1 - 2;
+                } else if (checkRightDown(k, i)) {
                     win = board[i][k];
-                    xPos = k + 2;
-                    yPos = i;
-                } else if (board[i + 1][k + 1] == curStone && board[i + 2][k + 2] == curStone && board[i + 3][k + 3] == curStone && board[i + 4][k + 4] == curStone) {
+                    xPos = k + 1 + 2;
+                    yPos = i + 1 + 2;
+                } else if (checkRight(k, i)) {
                     win = board[i][k];
-                    xPos = k + 2;
-                    yPos = i + 2;
+                    xPos = k + 1 + 2;
+                    yPos = i + 1;
+                } else if (checkDown(k, i)) {
+                    win = board[i][k];
+                    xPos = k + 1;
+                    yPos = i + 1 + 2;
                 }
 
                 if (win != 0) break;
@@ -50,5 +51,65 @@ public class Main {
             System.out.println(win);
             System.out.printf("%d %d", yPos, xPos);
         }
+    }
+
+    public static boolean checkRightUp(int x, int y) {
+        int cnt = 0;
+        int curStone = board[y][x];
+
+        while (isRange(x, y) && curStone == board[y][x]) {
+            cnt++;
+            y--;
+            x++;
+        }
+
+        if (cnt == 5) return true;
+        else return false;
+    }
+
+    public static boolean checkRightDown(int x, int y) {
+        int cnt = 0;
+        int curStone = board[y][x];
+
+        while (isRange(x, y) && curStone == board[y][x]) {
+            cnt++;
+            y++;
+            x++;
+        }
+
+        if (cnt == 5) return true;
+        else return false;
+    }
+
+    public static boolean checkRight(int x, int y) {
+        int cnt = 0;
+        int curStone = board[y][x];
+
+        while (isRange(x, y) && curStone == board[y][x]) {
+            cnt++;
+            x++;
+        }
+
+        if (cnt == 5) return true;
+        else return false;
+    }
+
+    public static boolean checkDown(int x, int y) {
+        int cnt = 0;
+        int curStone = board[y][x];
+
+        while (isRange(x, y) && curStone == board[y][x]) {
+            cnt++;
+            y++;
+        }
+
+        if (cnt == 5) return true;
+        else return false;
+    }
+
+    public static boolean isRange(int x, int y) {
+        if (x >= 0 && x < 19 && y >= 0 && y < 19) return true;
+
+        return false;
     }
 }
