@@ -8,7 +8,7 @@ public class Main {
         int N = sc.nextInt();
         int K = sc.nextInt();
 
-        int[] people = new int[101];
+        int[] people = new int[10001];
         for (int n = 0; n < N; n++) {
             int person = sc.nextInt();
             char card = sc.next().charAt(0);
@@ -18,7 +18,7 @@ public class Main {
         }
 
         int max = 0;
-        for (int i = 1; i <= 100 - K; i++) {
+        for (int i = 1; i < people.length - K; i++) {
 
             int temp = 0;
             for (int k = i; k <= i + K; k++) {
