@@ -21,7 +21,7 @@ public class Main {
                 for (int y2 = 0; y2 < N; y2++) {
                     for (int x2 = 0; x2 < N - 2; x2++) {
                         if (y1 == y2) {
-                            if (x1 == x2 || x1 == x2 + 1 || x1 == x2 + 2 || x2 + 2 == x1 || x2 + 1 == x1) continue;
+                            if (x1 == x2 || x1 == x2 + 1 || x1 == x2 + 2 || x1 + 2 == x2 || x1 + 1 == x2) continue;
                             else {
                                 int temp = board[y1][x1] + board[y1][x1 + 1] + board[y1][x1 + 2] + board[y2][x2] + board[y2][x2 + 1] + board[y2][x2 + 2];
 
