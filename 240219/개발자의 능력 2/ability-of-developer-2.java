@@ -22,7 +22,7 @@ public class Main {
                 int team1 = list[i] + list[k];
 
                 for (int j = 0; j < 6; j++) {
-                    if (i == j || i == k) continue;
+                    if (i == j || j == k) continue;
 
                     for (int l = j + 1; l < 6; l++) {
 
