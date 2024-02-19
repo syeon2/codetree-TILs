@@ -13,7 +13,7 @@ public class Main {
             int candy = sc.nextInt();
             int pos = sc.nextInt();
 
-            line[pos] = candy;
+            line[pos] += candy;
         }
 
         int ans = 0;
