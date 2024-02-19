@@ -20,7 +20,7 @@ public class Main {
 
         int ans = 0;
         for (int i = 0; i <= N - M; i++) {
-            int[] cnt = new int[10];
+            int[] cnt = new int[101];
 
             for (int k = i; k < i + M; k++) {
                 int idx = nList[k];
