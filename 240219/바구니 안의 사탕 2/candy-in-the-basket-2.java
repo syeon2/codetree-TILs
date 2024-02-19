@@ -17,11 +17,17 @@ public class Main {
         }
 
         int ans = 0;
-        for (int i = K; i <= 100 - K; i++) {
+        for (int c = 0; c <= 100; c++) {
+            int start = c - K;
+
+            if (start < 0) start = 0;
+
+            int end = c + K;
+            if (c + K > 100) end = 100;
 
             int temp = 0;
-            for (int k = i - K; k <= i + K; k++) {
-                temp += line[k];
+            for (int i = start; i <= end; i++) {
+                temp += line[i];
             }
 
             ans = Math.max(ans, temp);
