@@ -17,7 +17,7 @@ public class Main {
         }
 
         int ans = 0;
-        for (int i = K + 1; i <= 100 - K; i++) {
+        for (int i = K; i <= 100 - K; i++) {
 
             int temp = 0;
             for (int k = i - K; k <= i + K; k++) {
