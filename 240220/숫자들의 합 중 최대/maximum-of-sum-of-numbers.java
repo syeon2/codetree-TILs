@@ -19,7 +19,7 @@ public class Main {
                 temp /= 10;
             }
 
-            max = Math.max(max, temp);
+            max = Math.max(max, sum);
         }
 
         System.out.print(max);
