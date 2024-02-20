@@ -18,7 +18,7 @@ public class Main {
             for (int k = i + 1; k < N; k++) {
                 int sum = list[i] + list[k];
 
-                if (sum % 2 == 0) cnt++;
+                if (sum % 2 == 0 && list[k] > list[i]) cnt++;
             }
         }
 
