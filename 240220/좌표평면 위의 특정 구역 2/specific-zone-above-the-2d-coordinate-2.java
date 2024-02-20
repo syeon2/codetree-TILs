@@ -7,8 +7,7 @@ public class Main {
 
         int N = sc.nextInt();
 
-        int ansX = Integer.MAX_VALUE;
-        int ansY = Integer.MAX_VALUE;
+        int ans = Integer.MAX_VALUE;
 
         int[][] list = new int[N][2];
         for (int i = 0; i < N; i++) {
@@ -39,11 +38,8 @@ public class Main {
                 if (minY > y) minY = y;
             }
 
-            if (ansX > (maxX - minX)) ansX = maxX - minX;
-            if (ansY > (maxY - minY)) ansY = maxY - minY;
+            ans = Math.min(ans, (maxX - minX) * (maxY - minY));
         }
-
-        int ans = ansX * ansY;
 
         System.out.print(ans);
     }
