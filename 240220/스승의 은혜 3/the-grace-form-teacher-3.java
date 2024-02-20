@@ -16,7 +16,7 @@ public class Main {
 
 		Arrays.sort(list, (a, b) -> {
 			if ((a[0] + a[1]) == (b[0] + b[1])) {
-				return b[0] - b[0];
+				return b[0] - a[0];
 			}
 
 			return (a[0] + a[1]) - (b[0] + b[1]);
