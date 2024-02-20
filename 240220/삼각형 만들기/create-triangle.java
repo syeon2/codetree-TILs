@@ -33,12 +33,12 @@ public class Main {
                     int cX = list[j][0];
                     int cY = list[j][1];
 
-                    if (aX == bX && aY == cY && aX != aY) ans = Math.max(ans, Math.abs(aX - cX) * Math.abs(aY - bY));
-                    else if (aX == cX && aY == bY && aX != aY) ans = Math.max(ans, Math.abs(aX - bX) * Math.abs(aY - cY));
-                    else if (bX == cX && bY == aY && bX != bY) ans = Math.max(ans, Math.abs(bX - aX) * Math.abs(bY - cY));
-                    else if (bX == aX && bY == cY && bX != bY) ans = Math.max(ans, Math.abs(bX - cX) * Math.abs(bY - aY));
-                    else if (cX == aX && cY == bY && cX != cY) ans = Math.max(ans, Math.abs(cX - bX) * Math.abs(cY - aY));
-                    else if (cX == bX && cY == aY && cX != cY) ans = Math.max(ans, Math.abs(cX - aX) * Math.abs(cY - bY));
+                    if (aX == bX && aY == cY) ans = Math.max(ans, Math.abs(aX - cX) * Math.abs(aY - bY));
+                    else if (aX == cX && aY == bY) ans = Math.max(ans, Math.abs(aX - bX) * Math.abs(aY - cY));
+                    else if (bX == cX && bY == aY) ans = Math.max(ans, Math.abs(bX - aX) * Math.abs(bY - cY));
+                    else if (bX == aX && bY == cY) ans = Math.max(ans, Math.abs(bX - cX) * Math.abs(bY - aY));
+                    else if (cX == aX && cY == bY) ans = Math.max(ans, Math.abs(cX - bX) * Math.abs(cY - aY));
+                    else if (cX == bX && cY == aY) ans = Math.max(ans, Math.abs(cX - aX) * Math.abs(cY - bY));
                 }
             }
         }
