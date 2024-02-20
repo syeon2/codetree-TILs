@@ -14,7 +14,7 @@ public class Main {
 			list[i][1] = sc.nextInt();
 		}
 
-		Arrays.sort(list, (a, b) -> (a[0] + a[1]) - (b[0] + b[1]));
+		Arrays.sort(list, (a, b) -> ((a[0] / 2) + a[1]) - ((b[0] / 2) + b[1]));
 
 		int max = 0;
 		for (int i = 0; i < N; i++) {
