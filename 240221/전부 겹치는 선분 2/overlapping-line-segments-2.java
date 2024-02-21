@@ -24,7 +24,7 @@ public class Main {
                 if (i == k) continue;
 
                 start = Math.max(start, list[k][0]);
-                end = Math.max(end, list[k][1]);
+                end = Math.min(end, list[k][1]);
             }
 
             if (start <= end) {
