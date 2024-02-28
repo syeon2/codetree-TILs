@@ -58,6 +58,7 @@ public class Main {
             }
         }
 
-        System.out.print(cnt);
+        if (cnt == -1) System.out.print(0);
+        else System.out.print(cnt);
     }
 }
