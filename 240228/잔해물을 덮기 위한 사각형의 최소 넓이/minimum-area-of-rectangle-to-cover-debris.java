@@ -30,7 +30,7 @@ public class Main {
             }
         }
 
-        int xMin = 2001;
+        int xMin = 2002;
         int xMax = -1;
         int yMin = 2001;
         int yMax = -1;
@@ -48,6 +48,7 @@ public class Main {
 
         int ans = (xMax - xMin) * (yMax - yMin);
 
-        System.out.print(ans);
+        if (xMin == 2002) System.out.print(0);
+        else System.out.print(ans);
     }
 }
