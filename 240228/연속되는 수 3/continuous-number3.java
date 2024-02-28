@@ -25,6 +25,8 @@ public class Main {
             }
         }
 
+        if (cnt < tempCnt) cnt = tempCnt;
+
         System.out.print(cnt);
     }
 }
