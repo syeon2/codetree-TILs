@@ -37,13 +37,13 @@ public class Main {
         boolean isAWin = true;
         int cnt = -1;
 
-        for (int i = 1; i < aSec; i++) {
+        for (int i = 0; i < aSec; i++) {
             if (cnt == -1) {
                 if (aRecord[i] < bRecord[i]) {
                     isAWin = false;
                     cnt++;
                 }
-                else if (bRecord[i] > aRecord[i]) {
+                else if (aRecord[i] > bRecord[i]) {
                     isAWin = true;
                     cnt++;
                 }
