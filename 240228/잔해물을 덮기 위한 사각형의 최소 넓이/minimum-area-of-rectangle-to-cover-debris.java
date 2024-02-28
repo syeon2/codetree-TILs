@@ -13,8 +13,8 @@ public class Main {
         int x2 = sc.nextInt() + OFFSET;
         int y2 = sc.nextInt() + OFFSET;
 
-        for (int i = y1; i <= y2; i++) {
-            for (int k = x1; k <= x2; k++) {
+        for (int i = y1; i < y2; i++) {
+            for (int k = x1; k < x2; k++) {
                 board[i][k] = 1;
             }
         }
@@ -24,15 +24,15 @@ public class Main {
         int x4 = sc.nextInt() + OFFSET;
         int y4 = sc.nextInt() + OFFSET;
 
-        for (int i = y3; i <= y4; i++) {
-            for (int k = x3; k <= x4; k++) {
+        for (int i = y3; i < y4; i++) {
+            for (int k = x3; k < x4; k++) {
                 board[i][k] = 2;
             }
         }
 
         int xMin = 2002;
         int xMax = -1;
-        int yMin = 2001;
+        int yMin = 2002;
         int yMax = -1;
 
         for (int i = 0; i < board.length; i++) {
@@ -46,7 +46,7 @@ public class Main {
             }
         }
 
-        int ans = (xMax - xMin) * (yMax - yMin);
+        int ans = (xMax - xMin + 1) * (yMax - yMin + 1);
 
         if (xMin == 2002) System.out.print(0);
         else System.out.print(ans);
