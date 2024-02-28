@@ -46,6 +46,6 @@ public class Main {
     }
 
     public static int turnLeft(int curDirec) {
-        return (4 - (curDirec + 1)) % 4;
+        return (4 + (curDirec - 1)) % 4;
     }
 }
