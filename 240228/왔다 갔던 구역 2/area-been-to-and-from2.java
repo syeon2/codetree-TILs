@@ -35,14 +35,9 @@ public class Main {
         boolean lining = false;
         for (int i = 0; i < list.length; i++) {
             if (list[i] >= 2) {
-                ans++;
-                lining = true;
-            } else {
-                if (lining) {
-                    lining = false;
-                    ans--;
-                }
-            }
+                if (lining) ans++;
+                else lining = true;
+            } else lining = false;
         }
 
         System.out.print(ans);
