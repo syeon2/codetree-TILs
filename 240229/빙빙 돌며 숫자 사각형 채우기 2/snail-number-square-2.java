@@ -36,7 +36,7 @@ public class Main {
         }
 
         for (int i = 0; i < N; i++) {
-            for (int k = 0; k < N; k++) {
+            for (int k = 0; k < M; k++) {
                 System.out.printf("%d ", board[i][k]);
             }
 
