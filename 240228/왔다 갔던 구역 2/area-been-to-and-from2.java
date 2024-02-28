@@ -17,13 +17,13 @@ public class Main {
             char direc = sc.next().charAt(0);
 
             if (direc == 'R') {
-                for (int i = curPos; i <= curPos + num; i++) {
+                for (int i = curPos + 1; i <= curPos + num; i++) {
                     list[i]++;
                 }
 
                 curPos += num;
             } else {
-                for (int i = curPos; i >= curPos - num; i--) {
+                for (int i = curPos; i > curPos - num; i--) {
                     list[i]++;
                 }
 
@@ -34,10 +34,7 @@ public class Main {
         int ans = 0;
         boolean lining = false;
         for (int i = 0; i < list.length; i++) {
-            if (list[i] >= 2) {
-                if (lining) ans++;
-                else lining = true;
-            } else lining = false;
+            if (list[i] >= 2) ans++;
         }
 
         System.out.print(ans);
