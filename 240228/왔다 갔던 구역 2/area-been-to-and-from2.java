@@ -7,8 +7,8 @@ public class Main {
 
         int T = sc.nextInt();
 
-        int[] list = new int[203];
-        int OFFSET = 100;
+        int[] list = new int[250];
+        int OFFSET = 125;
 
         int curPos = OFFSET;
 
