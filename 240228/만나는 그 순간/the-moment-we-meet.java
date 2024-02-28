@@ -48,7 +48,7 @@ public class Main {
         }
 
         int ans = 0;
-        for (int i = 1; i < aTime.length; i++) {
+        for (int i = 1; i <= aSec; i++) {
             if (aTime[i] == bTime[i]) {
                 ans = i;
                 break;
