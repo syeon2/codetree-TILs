@@ -35,7 +35,7 @@ public class Main {
                         } else {
                             int temp = 0;
 
-                            if (x2 < x1 - 2 && x2 > x1 + 2) {
+                            if (x2 < x1 - 2 || x2 > x1 + 2) {
                                 for (int i = x1; i < x1 + 3; i++) {
                                     if (board[y1][i] == 1) temp++;
                                 }
