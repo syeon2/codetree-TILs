@@ -23,7 +23,7 @@ public class Main {
                     cnt++;
                 }
 
-                double avg = (double) temp / cnt;
+                int avg = temp / cnt;
 
                 for (int start = k; start < k + i; start++) {
                     if (avg == list[start]) {
