@@ -6,14 +6,13 @@ public class Main {
         Scanner sc = new Scanner(System.in);
 
         int N = sc.nextInt();
-        int[] list = new int[N + 1];
-        for (int i = 1; i <= N; i++) {
+        int[] list = new int[N];
+        for (int i = 0; i < N; i++) {
             list[i] = sc.nextInt();
         }
 
         int ans = 0;
         for (int i = 1; i <= N; i++) {
-
             for (int k = 0; k <= N - i; k++) {
 
                 int temp = 0;
@@ -23,7 +22,7 @@ public class Main {
                     cnt++;
                 }
 
-                int avg = temp / cnt;
+                double avg = (double) temp / cnt;
 
                 for (int start = k; start < k + i; start++) {
                     if (avg == list[start]) {
