@@ -21,10 +21,10 @@ public class Main {
                 for (int j = k + 1; j < N; j++) {
                     if (isRightAngle(list[i], list[k], list[j])) {
                         int maxX = Math.max(list[i][0], Math.max(list[k][0], list[j][0]));
-                        int minX = Math.min(list[i][0], Math.max(list[k][0], list[j][0]));
+                        int minX = Math.min(list[i][0], Math.min(list[k][0], list[j][0]));
 
                         int maxY = Math.max(list[i][1], Math.max(list[k][1], list[j][1]));
-                        int minY = Math.min(list[i][1], Math.max(list[k][1], list[j][1]));
+                        int minY = Math.min(list[i][1], Math.min(list[k][1], list[j][1]));
 
                         int width = maxX - minX;
                         int height = maxY - minY;
