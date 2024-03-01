@@ -44,9 +44,19 @@ public class Main {
 
                 if (person == eatPerson && eatTime < time) {
 
-                    int cnt = 0;
+                    boolean[] people = new boolean[N + 1];
+
                     for (int j = 0; j < D; j++) {
-                        if (records[j][1] == cheese) cnt++;
+                        if (records[j][1] == cheese) {
+                            int idx = records[j][0];
+
+                            people[idx] = true;
+                        }
+                    }
+
+                    int cnt = 0;
+                    for (int l = 1; l < people.length; l++) {
+                        if (people[l]) cnt++;
                     }
 
                     ans = Math.max(ans, cnt);
