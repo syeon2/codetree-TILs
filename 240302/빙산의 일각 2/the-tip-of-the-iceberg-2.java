@@ -7,22 +7,26 @@ public class Main {
 
         int N = sc.nextInt();
         int[] list = new int[N];
+        int height = 0;
 
         for (int i = 0; i < N; i++) {
             list[i] = sc.nextInt();
+
+            height = Math.max(height, list[i]);
         }
 
         int ans = 0;
-
-        for (int i = 1; i <= 1000; i++) {
+        for (int i = 0; i < height; i++) {
 
             int cnt = 0;
+            boolean isLand = false;
 
-            if (list[0] > 0 && list[1] <= 0) cnt++;
-            for (int k = 1; k < N ; k++) {
-                if (list[k - 1] - i <= 0 && list[k] - i > 0) cnt++;
+            for (int k = 0; k < N; k++) {
+                if (list[k] - i > 0 && !isLand) {
+                    cnt++;
+                    isLand = true;
+                } else if (list[k] - i <= 0) isLand = false;
             }
-            if (list[N - 1] > 0 && list[N - 2] > 0) cnt++;
 
             ans = Math.max(ans, cnt);
         }
