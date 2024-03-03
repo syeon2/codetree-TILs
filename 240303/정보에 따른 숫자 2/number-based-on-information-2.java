@@ -9,7 +9,7 @@ public class Main {
         int A = sc.nextInt();
         int B = sc.nextInt();
 
-        char[] list = new char[B + 1];
+        char[] list = new char[1001];
 
         for (int t = 0; t < T; t++) {
             char c = sc.next().charAt(0);
