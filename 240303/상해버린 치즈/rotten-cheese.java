@@ -38,7 +38,6 @@ public class Main {
 
 				if (illPerson == eatPerson && illTime > eatTime) {
 					cheese[eatenCheese]++;
-					break;
 				}
 			}
 		}
@@ -53,7 +52,7 @@ public class Main {
 				for (int k = 0; k < D; k++) {
 					if (i == eatList[k][1]) cnt++;
 				}
-
+				
 				ans = Math.max(ans, cnt);
 			}
 		}
