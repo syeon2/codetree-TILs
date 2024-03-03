@@ -10,49 +10,65 @@ public class Main {
 		int D = sc.nextInt();
 		int S = sc.nextInt();
 
-		// P : 사람, m : 치즈, t : 시간
-		int[][] eatList = new int[D][3];
+		int[][] eatRecord = new int[D][3];
 		for (int i = 0; i < D; i++) {
-			eatList[i][0] = sc.nextInt();
-			eatList[i][1] = sc.nextInt();
-			eatList[i][2] = sc.nextInt();
+			int p = sc.nextInt();
+			int m = sc.nextInt();
+			int t = sc.nextInt();
+
+			eatRecord[i][0] = p;
+			eatRecord[i][1] = m;
+			eatRecord[i][2] = t;
 		}
 
-		// p : 사람, t : 시간
-		int[][] illList = new int[S][2];
+		int[][] illRecord = new int[S][2];
 		for (int i = 0; i < S; i++) {
-			illList[i][0] = sc.nextInt();
-			illList[i][1] = sc.nextInt();
+			int p = sc.nextInt();
+			int t = sc.nextInt();
+
+			illRecord[i][0] = p;
+			illRecord[i][1] = t;
 		}
 
-		int[] cheese = new int[M + 1];
+		boolean[][] doPersonEatCheeses = new boolean[N + 1][M + 1];
+		int[] eatenCheesesCnt = new int[M + 1];
 
 		for (int i = 0; i < S; i++) {
-			int illPerson = illList[i][0];
-			int illTime = illList[i][1];
+			int illPerson = illRecord[i][0];
+			int illTime = illRecord[i][1];
 
 			for (int k = 0; k < D; k++) {
-				int eatPerson = eatList[k][0];
-				int eatenCheese = eatList[k][1];
-				int eatTime = eatList[k][2];
+				int eatPerson = eatRecord[k][0];
+				int eatenCheese = eatRecord[k][1];
+				int eatTime = eatRecord[k][2];
 
-				if (illPerson == eatPerson && illTime > eatTime) {
-					cheese[eatenCheese]++;
+				if (eatPerson == illPerson && illTime > eatTime) {
+					if (!doPersonEatCheeses[eatPerson][eatenCheese]) {
+						eatenCheesesCnt[eatenCheese]++;
+						doPersonEatCheeses[eatPerson][eatenCheese] = true;
+					}
 				}
 			}
 		}
 
 		int ans = 0;
 		for (int i = 1; i <= M; i++) {
-			int eatenCnt = cheese[i];
+			if (eatenCheesesCnt[i] == S) {
 
-			if (eatenCnt == S) {
-				int cnt = 0;
+				boolean[] person = new boolean[N + 1];
 
 				for (int k = 0; k < D; k++) {
-					if (i == eatList[k][1]) cnt++;
+					int eatPerson = eatRecord[k][0];
+					int eatenCheese = eatRecord[k][1];
+
+					if (i == eatenCheese) person[eatPerson] = true;
 				}
-				
+
+				int cnt = 0;
+				for (int k = 0; k <= N; k++) {
+					if (person[k]) cnt++;
+				}
+
 				ans = Math.max(ans, cnt);
 			}
 		}
