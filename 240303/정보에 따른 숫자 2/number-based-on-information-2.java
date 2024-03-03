@@ -9,7 +9,7 @@ public class Main {
         int A = sc.nextInt();
         int B = sc.nextInt();
 
-        char[] list = new char[1001];
+        char[] list = new char[B + 1];
 
         for (int t = 0; t < T; t++) {
             char c = sc.next().charAt(0);
@@ -20,17 +20,17 @@ public class Main {
 
         int ans = 0;
 
-        for (int i = 1; i < list.length; i++) {
+        for (int i = A; i < list.length; i++) {
 
             int sDist = Integer.MAX_VALUE;
 
-            for (int k = 1; k < list.length; k++) {
+            for (int k = A; k < list.length; k++) {
                 if (list[k] == 'S') sDist = Math.min(sDist, Math.abs(k - i));
             }
 
             int nDist = Integer.MAX_VALUE;
 
-            for (int k = 1; k < list.length; k++) {
+            for (int k = A; k < list.length; k++) {
                 if (list[k] == 'N') nDist = Math.min(nDist, Math.abs(k - i));
             }
 
