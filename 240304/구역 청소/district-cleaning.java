@@ -18,8 +18,12 @@ public class Main {
             System.out.print(b - a);
         } else if (c < a && d <= a) {
             System.out.print((b - a) + (d - c));
-        } else {
+        } else if (c < a && d > a) {
             System.out.print((b - a) + (d - c) - (d - a));
+        } else if (a < c && b > d) {
+            System.out.print(b - a);
+        } else {
+            System.out.print(d - c);
         }
     }
 }
