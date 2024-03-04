@@ -20,8 +20,8 @@ public class Main {
 
         for (int i = 0; i < N; i++) {
 
-            int start = Math.max(0, i - K + 1);
-            int end = Math.min(N - 1, i + K - 1);
+            int start = Math.max(0, i - K);
+            int end = Math.min(N - 1, i + K);
 
             for (int k = start; k <= end; k++) {
                 if (k == i) continue;
@@ -36,7 +36,7 @@ public class Main {
         }
 
         for (int i = 0; i < bomb.length; i++) {
-            if (max < bomb[i]) {
+            if (max <= bomb[i]) {
                 max = bomb[i];
                 ans = i;
             }
