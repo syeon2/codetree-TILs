@@ -31,7 +31,7 @@ public class Main {
             if (yLine[i] >= 2) yCnt++;
         }
 
-        if (xCnt + yCnt == 3) System.out.print(1);
+        if (xCnt + yCnt <= 3) System.out.print(1);
         else System.out.print(0);
     }
 }
