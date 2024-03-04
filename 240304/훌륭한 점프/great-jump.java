@@ -9,13 +9,16 @@ public class Main {
         int K = sc.nextInt();
 
         int[] list = new int[N];
+        int max = 0;
         for (int i = 0; i < N; i++) {
             list[i] = sc.nextInt();
+
+            max = Math.max(max, list[i]);
         }
 
         int ans = N;
 
-        for (int i = N; i >= 1; i--) {
+        for (int i = max; i >= 1; i--) {
             boolean flag = true;
             int cnt = 0;
 
