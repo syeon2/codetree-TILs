@@ -19,7 +19,7 @@ public class Main {
             boolean flag = true;
             int cnt = 0;
 
-            for (int k = 0; k < N; k++) {
+            for (int k = 1; k < N - 1; k++) {
                 if (list[k] > i) cnt++;
                 else cnt = 0;
 
