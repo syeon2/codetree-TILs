@@ -5,9 +5,8 @@ public class Main {
         // 여기에 코드를 작성해주세요.
         Scanner sc = new Scanner(System.in);
 
-        int N = 15;
-        int[] list = new int[N];
-        for (int i = 0; i < N; i++) {
+        int[] list = new int[15];
+        for (int i = 0; i < 15; i++) {
             list[i] = sc.nextInt();
         }
 
@@ -18,160 +17,105 @@ public class Main {
         int ansC = 0;
         int ansD = 0;
 
-        for (int a = 0; a < N; a++) {
+        for (int i = 0; i < 15; i++) {
+            for (int k = i + 1; k < 15; k++) {
+                for (int j = k + 1; j < 15; j++) {
+                    for (int l = j + 1; l < 15; l++) {
 
-            for (int b = 0; b < N; b++) {
-                if (a == b) continue;
-
-                for (int c = 0; c < N; c++) {
-                    if (a == c || b == c) continue;
-
-                    for (int d = 0; d < N; d++) {
-                        if (a == d || b == d || c == d) continue;
-
-                        int[] copy = new int[N];
-                        for (int x = 0; x < N; x++) {
+                        int[] copy = new int[15];
+                        for (int x = 0; x < 15; x++) {
                             copy[x] = list[x];
                         }
 
-                        boolean flag = false;
+                        int a = copy[i];
+                        int b = copy[k];
+                        int c = copy[j];
+                        int d = copy[l];
 
-                        for (int x = 0; x < N; x++) {
-                            if (copy[x] == list[a] + list[b]) {
-                                flag = true;
+                        copy[i] = 0;
+                        copy[k] = 0;
+                        copy[j] = 0;
+                        copy[l] = 0;
+
+                        for (int x = 0; x < 15; x++) {
+                            // a + b
+                            if (isSame(list, x, a + b)) {
                                 copy[x] = 0;
-                                break;
+                            }
+
+                            // b + c
+                            if (isSame(list, x, b + c)) {
+                                copy[x] = 0;
+                            }
+
+                            // c + d
+                            if (isSame(list, x, c + d)) {
+                                copy[x] = 0;
+                            }
+
+                            // d + a
+                            if (isSame(list, x, d + a)) {
+                                copy[x] = 0;
+                            }
+
+                            // a + c
+                            if (isSame(list, x, a + c)) {
+                                copy[x] = 0;
+                            }
+
+                            // b + d
+                            if (isSame(list, x, b + d)) {
+                                copy[x] = 0;
+                            }
+
+                            // a + b + c
+                            if (isSame(list, x, a + b + c)) {
+                                copy[x] = 0;
+                            }
+
+                            // a + b + d
+                            if (isSame(list, x, a + b + d)) {
+                                copy[x] = 0;
+                            }
+
+                            // a + c + d
+                            if (isSame(list, x, a + c + d)) {
+                                copy[x] = 0;
+                            }
+
+                            // b + c + d
+                            if (isSame(list, x, b + c + d)) {
+                                copy[x] = 0;
+                            }
+
+                            // a + b + c + d
+                            if (isSame(list, x, a + b + c + d)) {
+                                copy[x] = 0;
                             }
                         }
 
-                        if (!flag) break;
-                        flag = false;
-
-                        for (int x = 0; x < N; x++) {
-                            if (copy[x] == list[b] + list[c]) {
-                                flag = true;
-                                copy[x] = 0;
-                                break;
-                            }
+                        boolean flag = true;
+                        for (int x = 0; x < 15; x++) {
+                            if (copy[x] != 0) flag = false;
                         }
-
-                        if (!flag) break;
-                        flag = false;
-
-                        for (int x = 0; x < N; x++) {
-                            if (copy[x] == list[c] + list[d]) {
-                                flag = true;
-                                copy[x] = 0;
-                                break;
-                            }
-                        }
-
-                        if (!flag) break;
-                        flag = false;
-
-                        for (int x = 0; x < N; x++) {
-                            if (copy[x] == list[d] + list[a]) {
-                                flag = true;
-                                copy[x] = 0;
-                                break;
-                            }
-                        }
-
-                        if (!flag) break;
-                        flag = false;
-
-                        for (int x = 0; x < N; x++) {
-                            if (copy[x] == list[a] + list[c]) {
-                                flag = true;
-                                copy[x] = 0;
-                                break;
-                            }
-                        }
-
-                        if (!flag) break;
-                        flag = false;
-
-                        for (int x = 0; x < N; x++) {
-                            if (copy[x] == list[b] + list[d]) {
-                                flag = true;
-                                copy[x] = 0;
-                                break;
-                            }
-                        }
-
-                        if (!flag) break;
-                        flag = false;
-
-                        for (int x = 0; x < N; x++) {
-                            if (copy[x] == list[a] + list[b] + list[c]) {
-                                flag = true;
-                                copy[x] = 0;
-                                break;
-                            }
-                        }
-
-                        if (!flag) break;
-                        flag = false;
-
-                        for (int x = 0; x < N; x++) {
-                            if (copy[x] == list[a] + list[b] + list[d]) {
-                                flag = true;
-                                copy[x] = 0;
-                                break;
-                            }
-                        }
-
-                        if (!flag) break;
-                        flag = false;
-
-                        for (int x = 0; x < N; x++) {
-                            if (copy[x] == list[a] + list[c] + list[d]) {
-                                flag = true;
-                                copy[x] = 0;
-                                break;
-                            }
-                        }
-
-                        if (!flag) break;
-                        flag = false;
-
-                        for (int x = 0; x < N; x++) {
-                            if (copy[x] == list[b] + list[c] + list[d]) {
-                                flag = true;
-                                copy[x] = 0;
-                                break;
-                            }
-                        }
-
-                        if (!flag) break;
-                        flag = false;
-
-                        for (int x = 0; x < N; x++) {
-                            if (copy[x] == list[a] + list[b] + list[c] + list[c]) {
-                                flag = true;
-                                copy[x] = 0;
-                                break;
-                            }
-                        }
-
-                        if (!flag) break;
 
                         if (flag) {
-                            ansA = list[a];
-                            ansB = list[b];
-                            ansC = list[c];
-                            ansD = list[d];
+                            ansA = list[i];
+                            ansB = list[k];
+                            ansC = list[j];
+                            ansD = list[l];
                         }
                     }
                 }
             }
         }
 
-        int[] ans = {ansA, ansB, ansC, ansD};
-        Arrays.sort(ans);
+        System.out.printf("%d %d %d %d", ansA, ansB, ansC, ansD);
+    }
 
-        for (int i = 0; i < 4; i++) {
-            System.out.printf("%d ", ans[i]);
-        }
+    public static boolean isSame(int[] list, int idx, int num) {
+        if (list[idx] == num) return true;
+
+        return false;
     }
 }
