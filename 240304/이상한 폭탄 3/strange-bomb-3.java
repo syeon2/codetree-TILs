@@ -42,6 +42,7 @@ public class Main {
             }
         }
 
-        System.out.print(ans);
+        if (max == 0) System.out.print(max);
+        else System.out.print(ans);
     }
 }
