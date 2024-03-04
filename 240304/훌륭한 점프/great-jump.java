@@ -19,6 +19,8 @@ public class Main {
             boolean flag = true;
             int cnt = 0;
 
+            if (list[0] > i || list[N - 1] > i) break;
+            
             for (int k = 0; k < N; k++) {
                 if (list[k] > i) cnt++;
                 else cnt = 0;
@@ -29,10 +31,7 @@ public class Main {
                 }
             }
 
-            if (flag) {
-                ans = i;
-                break;
-            }
+            if (flag) ans = i;
         }
 
         System.out.print(ans);
