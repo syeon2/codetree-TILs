@@ -34,8 +34,6 @@ public class Main {
                             copy[x] = list[x];
                         }
 
-                        copy[a] = copy[b] = copy[c] = copy[d] = 0;
-
                         boolean flag = false;
 
                         for (int x = 0; x < N; x++) {
