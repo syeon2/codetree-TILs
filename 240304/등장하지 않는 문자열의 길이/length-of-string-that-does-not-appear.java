@@ -18,7 +18,7 @@ public class Main {
             for (int k = 0; k <= N - i; k++) {
                 String subStr = str.substring(k, k + i);
 
-                if (str.indexOf(subStr, k + i) != -1) flag = true;
+                if (str.indexOf(subStr, k + 1) != -1) flag = true;
             }
 
             if (!flag) {
