@@ -15,7 +15,7 @@ public class Main {
         Arrays.sort(list);
 
         int ans = Integer.MAX_VALUE;
-        for (int i = 0; i < N / 2; i++) {
+        for (int i = 0; i <= N / 2; i++) {
             int sub = list[N / 2 + i] - list[i];
 
             ans = Math.min(ans, sub);
