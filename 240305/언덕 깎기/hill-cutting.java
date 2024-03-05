@@ -18,60 +18,36 @@ public class Main {
 
         if (max - min <= 17) System.out.print(0);
         else {
-            int sub = max - min - 17;
+            int ans = Integer.MAX_VALUE;
 
-            if (sub % 2 == 0) {
-                int downCut = min + (sub / 2);
-                int upCut = max - (sub / 2);
+            for (int i = 0; i < N; i++) {
+                for (int k = 0; k < N; k++) {
+                    if (i == k) continue;
 
-                int tempSum = 0;
-                for (int i = 0; i < N; i++) {
-                    if (list[i] < downCut) {
-                        tempSum += (downCut - list[i]) * (downCut - list[i]);
+                    max = list[i];
+                    min = list[k];
+
+                    int sub = max - min - 17;
+
+                    int downCut = min + (sub / 2);
+                    int upCut = max - (sub / 2);
+
+                    int tempSum = 0;
+                    for (int j = 0; j < N; j++) {
+                        if (list[j] < downCut) {
+                            tempSum += (downCut - list[j]) * (downCut - list[j]);
+                        }
+
+                        if (list[j] > upCut) {
+                            tempSum += (list[j] - upCut) * (list[j] - upCut);
+                        }
                     }
 
-                    if (list[i] > upCut) {
-                        tempSum += (list[i] - upCut) * (list[i] - upCut);
-                    }
+                    ans = Math.min(ans, tempSum);
                 }
-
-                System.out.print(tempSum);
-            } else {
-                int downCut = min + (sub / 2);
-                int upCut = max - (sub / 2);
-
-                // case1
-                downCut += 1;
-                int case1Sum = 0;
-                for (int i = 0; i < N; i++) {
-                    if (list[i] < downCut) {
-                        case1Sum += (downCut - list[i]) * (downCut - list[i]);
-                    }
-
-                    if (list[i] > upCut) {
-                        case1Sum += (list[i] - upCut) * (list[i] - upCut);
-                    }
-                }
-
-                // case2
-                downCut -=1;
-                upCut -= 1;
-
-                int case2Sum = 0;
-                for (int i = 0; i < N; i++) {
-                    if (list[i] < downCut) {
-                        case2Sum += (downCut - list[i]) * (downCut - list[i]);
-                    }
-
-                    if (list[i] > upCut) {
-                        case2Sum += (list[i] - upCut) * (list[i] - upCut);
-                    }
-                }
-
-                upCut += 1;
-
-                System.out.print(Math.min(case1Sum, case2Sum));
             }
+
+            System.out.print(ans);
         }
     }
 }
