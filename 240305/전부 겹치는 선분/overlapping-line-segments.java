@@ -13,7 +13,8 @@ public class Main {
             list[i][1] = sc.nextInt();
         }
 
-        boolean ans = true;
+        boolean[] ans = new boolean[N];
+        Arrays.fill(ans, true);
 
         for (int i = 0; i < N; i++) {
 
@@ -38,13 +39,16 @@ public class Main {
                 }
             }
 
-            if (!flag) {
-                ans = false;
-                break;
-            }
+            if (!flag) ans[i] = false;
         }
 
-        if (ans) System.out.print("Yes");
+        boolean ansFlag = true;
+
+        for (int i = 0; i < N; i++) {
+            if (!ans[i]) ansFlag = false;
+        }
+
+        if (ansFlag) System.out.print("Yes");
         else System.out.print("No");
     }
 }
