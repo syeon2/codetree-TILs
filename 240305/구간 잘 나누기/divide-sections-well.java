@@ -1,8 +1,8 @@
 import java.util.*;
 
 public class Main {
-    public static void main(String[] args) {
-        // 여기에 코드를 작성해주세요.
+	public static void main(String[] args) {
+		// 여기에 코드를 작성해주세요.
 		Scanner sc = new Scanner(System.in);
 
 		int N = sc.nextInt();
@@ -16,21 +16,20 @@ public class Main {
 		}
 
 		int ans = Integer.MAX_VALUE;
-		
-		for (int i = 0; i < total; i++) {
+
+		for (int i = 0; i <= total; i++) {
 			int[] sumList = new int[M];
 
 			int idx = 0;
 
 			for (int k = 0; k < N; k++) {
-				sumList[idx] += list[k];
-
-				if (sumList[idx] > i) {
-					idx++;
-				}
-
 				if (idx == M) {
-					idx--;
+					sumList[idx - 1] += list[k];
+				} else if (sumList[idx] + list[k] > i) {
+					k--;
+					idx++;
+				} else {
+					sumList[idx] += list[k];
 				}
 			}
 
@@ -43,5 +42,5 @@ public class Main {
 		}
 
 		System.out.print(ans);
-    }
+	}
 }
