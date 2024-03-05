@@ -31,9 +31,15 @@ public class Main {
             readPerson[idx] = true;
         }
 
-        for (int i = 0; i < readPerson.length; i++) {
-            if (!readPerson[i]) {
+        if (readList[P] == 0) {
+            for (int i = 0; i < N; i++) {
                 System.out.printf("%s ", (char) ((char) i + 'A'));
+            }
+        } else {
+            for (int i = 0; i < readPerson.length; i++) {
+                if (!readPerson[i]) {
+                    System.out.printf("%s ", (char) ((char) i + 'A'));
+                }
             }
         }
     }
