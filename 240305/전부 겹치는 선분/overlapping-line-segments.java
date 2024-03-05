@@ -13,26 +13,38 @@ public class Main {
             list[i][1] = sc.nextInt();
         }
 
-        int ans = 0;
+        boolean ans = true;
 
         for (int i = 0; i < N; i++) {
+
+            int tempX1 = list[i][0];
+            int tempX2 = list[i][1];
+            boolean flag = false;
+
             for (int k = 0; k < N; k++) {
                 if (i == k) continue;
-                
-                int x1 = list[i][0];
-                int x2 = list[i][1];
 
                 int x3 = list[k][0];
                 int x4 = list[k][1];
 
-                if (x2 >= x3 || x4 >= x1) {
-                    ans++;
-                    break;
+                if (tempX2 >= x3) {
+                    tempX1 = Math.max(tempX1, x3);
+                    tempX2 = Math.min(tempX2, x4);
+                    flag = true;
+                } else if (tempX1 >= x4) {
+                    tempX1 = Math.max(tempX1, x3);
+                    tempX2 = Math.min(tempX2, x4);
+                    flag = true;
                 }
+            }
+
+            if (!flag) {
+                ans = false;
+                break;
             }
         }
 
-        if (ans == N) System.out.print("Yes");
+        if (ans) System.out.print("Yes");
         else System.out.print("No");
     }
 }
