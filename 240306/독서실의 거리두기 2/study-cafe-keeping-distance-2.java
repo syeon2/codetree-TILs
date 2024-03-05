@@ -44,10 +44,10 @@ public class Main {
             else break;
         }
 
-        if (firstGap < minGap) firstGap = minGap;
-        if (lastGap < minGap) lastGap = minGap;
+        if (maxGap / 2 > firstGap) firstGap = minGap;
+        if (maxGap / 2 > lastGap) lastGap = minGap;
 
-        int ans = Math.min(maxGap / 2, Math.min(minGap, Math.min(firstGap, lastGap)));
+        int ans = Math.min(maxGap / 2, Math.min(lastGap, Math.min(firstGap, lastGap)));
 
         System.out.print(ans);
     }
