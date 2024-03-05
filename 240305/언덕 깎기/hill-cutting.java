@@ -61,13 +61,13 @@ public class Main {
 
                 for (int i = 0; i < N; i++) {
                     if (list[i] < min + sub) {
-                        sumMin1 += ((min + sub) - list[i]) * ((min + sub) - list[i]);
+                        sumMin2 += ((min + sub) - list[i]) * ((min + sub) - list[i]);
                     }
                 }
 
                 for (int i = 0; i < N; i++) {
                     if (list[i] > max - sub - 1) {
-                        sumMin1 += ((max - sub - 1) - list[i]) * ((max - sub - 1) - list[i]);
+                        sumMin2 += ((max - sub - 1) - list[i]) * ((max - sub - 1) - list[i]);
                     }
                 }
 
