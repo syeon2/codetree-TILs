@@ -16,10 +16,10 @@ public class Main {
 		Arrays.sort(list);
 
 		int ans = 0;
-		for (int i = 0; i < N; i++) {
+		for (int i = 0; i < 101; i++) {
 			int cnt = 0;
 			int sub = L;
-			int target = list[i];
+			int target = i;
 
 			for (int k = 0; k < N; k++) {
 				if (target <= list[k]) {
