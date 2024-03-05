@@ -6,13 +6,11 @@ public class Main {
         Scanner sc = new Scanner(System.in);
 
         int[][] board = new int[3][3];
-
         for (int i = 0; i < 3; i++) {
-            int num = sc.nextInt();
+            String str = sc.next();
 
-            for (int k = 2; k >= 0; k--) {
-                board[i][k] = num % 10;
-                num /= 10;
+            for (int k = 0; k < 3; k++) {
+                board[i][k] = str.charAt(k) - '0';
             }
         }
 
@@ -28,43 +26,51 @@ public class Main {
 
                     for (int l = 0; l < 3; l++) {
                         if (board[j][l] == i) iCnt++;
-                        if (board[j][l] == k) kCnt++;
+                        if (board[j][l] == k) kCnt++;    
                     }
 
                     if (iCnt != 3 && kCnt != 3 && (iCnt + kCnt) == 3) {
-                        ans++;
                         flag = true;
                     }
                 }
 
-                if (flag) continue;
+                for (int j = 0; j < 3; j++) {
+                    int iCnt = 0;
+                    int kCnt = 0;
+
+                    for (int l = 0; l < 3; l++) {
+                        if (board[l][j] == i) iCnt++;
+                        if (board[l][j] == k) kCnt++;
+                    }
+
+                    if (iCnt != 3 && kCnt != 3 && (iCnt + kCnt) == 3) {
+                        flag = true;
+                    }
+                }
 
                 int iCnt = 0;
                 int kCnt = 0;
-                for (int j = 0; j < 2; j++) {
+                for (int j = 0; j < 3; j++) {
                     if (board[j][j] == i) iCnt++;
                     if (board[j][j] == k) kCnt++;
                 }
 
                 if (iCnt != 3 && kCnt != 3 && (iCnt + kCnt) == 3) {
-                    ans++;
                     flag = true;
                 }
-
-                if (flag) continue;
 
                 iCnt = 0;
                 kCnt = 0;
-
-                for (int j = 2; j >= 0; j--) {
-                    if (board[j][j] == i) iCnt++;
-                    if (board[j][j] == k) kCnt++;
+                for (int j = 0; j < 3; j++) {
+                    if (board[j][2 - j] == i) iCnt++;
+                    if (board[j][2 - j] == k) kCnt++;
                 }
 
                 if (iCnt != 3 && kCnt != 3 && (iCnt + kCnt) == 3) {
-                    ans++;
                     flag = true;
                 }
+
+                if (flag) ans++;
             }
         }
 
