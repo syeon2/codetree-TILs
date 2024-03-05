@@ -14,28 +14,12 @@ public class Main {
 
         int ans = 0;
         while (true) {
-            int min = Integer.MAX_VALUE;
-            int minIdx = 0;
+            Arrays.sort(list);
 
-            int max = Integer.MIN_VALUE;
-            int maxIdx = 0;
-
-            for (int i = 0; i < N; i++) {
-                if (list[i] < min) {
-                    min = list[i];
-                    minIdx = i;
-                }
-
-                if (list[i] > max) {
-                    max = list[i];
-                    maxIdx = i;
-                }
-            }
-
-            if (min == max) break;
+            if (list[0] == list[list.length - 1]) break;
             else {
-                list[maxIdx]--;
-                list[minIdx]++;
+                list[0]++;
+                list[list.length - 1]--;
                 ans++;
             }
         }
