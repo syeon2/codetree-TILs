@@ -13,7 +13,7 @@ public class Main {
 
         Arrays.sort(list);
 
-        int max = 0;
+        int max = Integer.MIN_VALUE;
 
         if (list[0] < 0 && list[1] < 0 && list[list.length - 1] > 0) {
             max = Math.max(max, list[0] * list[1] * list[list.length - 1]);
