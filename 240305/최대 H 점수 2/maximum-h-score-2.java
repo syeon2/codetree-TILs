@@ -1,8 +1,8 @@
 import java.util.*;
 
 public class Main {
-    public static void main(String[] args) {
-        // 여기에 코드를 작성해주세요.
+	public static void main(String[] args) {
+		// 여기에 코드를 작성해주세요.
 		Scanner sc = new Scanner(System.in);
 
 		int N = sc.nextInt();
@@ -25,10 +25,10 @@ public class Main {
 				if (target <= list[k]) {
 					cnt++;
 				} else {
-					if (target - list[k] <= sub) {
+					if (target <= list[k] + 1 && sub > 0) {
 						cnt++;
-						sub -= (target - list[k]);
-					};
+						sub--;
+					}
 				}
 			}
 
@@ -37,5 +37,5 @@ public class Main {
 		}
 
 		System.out.print(ans);
-    }
+	}
 }
