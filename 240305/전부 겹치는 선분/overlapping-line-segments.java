@@ -13,42 +13,19 @@ public class Main {
             list[i][1] = sc.nextInt();
         }
 
-        boolean[] ans = new boolean[N];
-        Arrays.fill(ans, true);
+        boolean flag = true;
 
         for (int i = 0; i < N; i++) {
-
-            int tempX1 = list[i][0];
-            int tempX2 = list[i][1];
-            boolean flag = false;
-
             for (int k = 0; k < N; k++) {
                 if (i == k) continue;
 
-                int x3 = list[k][0];
-                int x4 = list[k][1];
-
-                if (tempX2 >= x3) {
-                    tempX1 = Math.max(tempX1, x3);
-                    tempX2 = Math.min(tempX2, x4);
-                    flag = true;
-                } else if (tempX1 >= x4) {
-                    tempX1 = Math.max(tempX1, x3);
-                    tempX2 = Math.min(tempX2, x4);
-                    flag = true;
+                if (list[i][1] < list[k][0] || list[i][0] > list[k][1]) {
+                    flag = false;
                 }
             }
-
-            if (!flag) ans[i] = false;
         }
 
-        boolean ansFlag = true;
-
-        for (int i = 0; i < N; i++) {
-            if (!ans[i]) ansFlag = false;
-        }
-
-        if (ansFlag) System.out.print("Yes");
+        if (flag) System.out.print("Yes");
         else System.out.print("No");
     }
 }
