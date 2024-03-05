@@ -6,7 +6,7 @@ public class Main {
         Scanner sc = new Scanner(System.in);
 
         int N = sc.nextInt();
-        int[] list = new int[N + 1];
+        int[] list = new int[11];
         Arrays.fill(list, -1);
 
         int ans = 0;
