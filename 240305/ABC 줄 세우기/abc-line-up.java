@@ -17,15 +17,18 @@ public class Main {
             char target = alp[i];
             char comp = (char) (i + 'A');
 
-            if (target == comp) continue;
-            
-            for (int k = i + 1; k < N; k++) {
-                if (comp == alp[k]) {
-                    alp[k] = target;
-                    alp[i] = comp;
-                    ans++;
-                    break;
-                }
+            if (comp == target) continue;
+
+            int idx = 0;
+            for (int k = i; k < N; k++) {
+                if (alp[k] == comp) idx = k;
+            }
+
+            for (int k = idx; k > i; k--) {
+                char temp = alp[k];
+                alp[k] = alp[k - 1];
+                alp[k - 1] = temp;
+                ans++;
             }
         }
 
