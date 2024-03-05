@@ -6,24 +6,29 @@ public class Main {
         Scanner sc = new Scanner(System.in);
 
         int N = sc.nextInt();
-
         int[] list = new int[N];
+
+        int max = 0;
+        int min = 10001;
         for (int i = 0; i < N; i++) {
             list[i] = sc.nextInt();
+
+            max = Math.max(max, list[i]);
+            min = Math.min(min, list[i]);
         }
 
-        int ans = 0;
-        while (true) {
-            Arrays.sort(list);
+        int ans = Integer.MAX_VALUE;
 
-            if (list[0] == list[list.length - 1]) break;
-            else {
-                list[0]++;
-                list[list.length - 1]--;
-                ans++;
+        for (int i = min; i <= max; i++) {
+
+            int temp = 0;
+            for (int k = 0; k < N; k++) {
+                temp += Math.abs(list[k] - i);
             }
+
+            ans = Math.min(ans, temp);
         }
 
-        System.out.print(ans);
+        System.out.print(ans / 2);
     }
 }
