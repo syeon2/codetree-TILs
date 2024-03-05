@@ -46,7 +46,7 @@ public class Main {
 		if (lX == rX && rX == bX && (Math.min(lY, bY) < rY && Math.max(lY, bY) > rY)) {
 			int height = Math.abs(lY - bY) - 1;
 			int turn = 2;
-			
+
 			System.out.print(height + turn);
 		} else if (lY == rY && rY == bY && (Math.min(lX, bX) < rX && Math.max(lX, bX) > rX)) {
 			int width = Math.abs(lX - bX) - 1;
@@ -55,9 +55,9 @@ public class Main {
 			System.out.print(width + turn);
 		} else {
 			if (lX == bX) {
-				System.out.print(Math.abs(lX - bX) - 1);
-			} else if (lY == bY) {
 				System.out.print(Math.abs(lY - bY) - 1);
+			} else if (lY == bY) {
+				System.out.print(Math.abs(lX - bX) - 1);
 			} else {
 				int width = Math.abs(lX - bX);
 				int height = Math.abs(lY - bY);
