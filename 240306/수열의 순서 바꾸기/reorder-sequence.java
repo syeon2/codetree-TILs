@@ -29,7 +29,7 @@ public class Main {
 			int maxIdx = 0;
 
 			for (int i = 0; i < N; i++) {
-				if (maxNum < list[i] && list[i] != i) {
+				if (maxNum < list[i] && list[i] != i + 1) {
 					maxNum = list[i];
 					maxIdx = i;
 				}
