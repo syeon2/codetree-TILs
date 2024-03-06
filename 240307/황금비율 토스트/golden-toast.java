@@ -34,8 +34,10 @@ public class Main {
 			} else if (c == 'R') {
 				if (iter.hasNext()) iter.next();
 			} else {
-				iter.next();
-				iter.remove();
+                if (iter.hasNext()) {
+                    iter.next();
+				    iter.remove();
+                }
 			}
 		}
 
