@@ -19,6 +19,14 @@ public class Main {
 				copy[i] = list[i];
 			}
 
+            boolean flag = true;
+
+            for (int i = 1; i < N; i++) {
+				if (copy[i] >= copy[i + 1]) flag = false;
+			}
+
+            if (flag) break;
+
 			int maxIdx = -1;
 			int maxNum = 0;
 
@@ -46,18 +54,9 @@ public class Main {
 
 			ans++;
 
-			boolean flag = true;
-
-			for (int i = 1; i < N; i++) {
-				if (copy[i] >= copy[i + 1]) flag = false;
-			}
-
-			if (flag) break;
-			else {
-				for (int i = 1; i <= N; i++) {
-					list[i] = copy[i];
-				}
-			}
+            for (int i = 1; i <= N; i++) {
+                list[i] = copy[i];
+            }
 		}
 
 		System.out.print(ans);
