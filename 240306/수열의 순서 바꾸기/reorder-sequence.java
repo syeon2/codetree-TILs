@@ -7,7 +7,6 @@ public class Main {
 
 		int N = sc.nextInt();
 		int[] list = new int[N];
-
 		for (int i = 0; i < N; i++) {
 			list[i] = sc.nextInt();
 		}
@@ -25,20 +24,21 @@ public class Main {
 
 			int curNum = list[0];
 
-			int maxNum = 0;
-			int maxIdx = 0;
+			int changeIdx = 0;
 
-			for (int i = 0; i < N; i++) {
-				if (maxNum < list[i] && list[i] != i + 1) {
-					maxNum = list[i];
-					maxIdx = i;
-				}
-			}
+			for (int i = N - 1; i >= 0; i--) {
+				if (curNum < list[i]) {
+					boolean isSmaller = false;
 
-			int changeIdx = maxIdx;
+					for (int k = i + 1; k < N; k++) {
+						if (list[i] > list[k]) isSmaller = true;
+					}
 
-			for (int i = N - 1; i >= maxIdx; i--) {
-				if (curNum > list[i]) {
+					if (isSmaller) {
+						changeIdx = i;
+						break;
+					}
+				} else {
 					changeIdx = i;
 					break;
 				}
