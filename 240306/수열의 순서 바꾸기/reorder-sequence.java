@@ -32,7 +32,7 @@ public class Main {
             int changeIdx = N + 1;
             
             for (int i = 1; i <= N; i++) {
-                if (copy[i] > curNum) {
+                if (copy[i] > curNum && copy[i] != i) {
                     changeIdx = i;
                 }
             }
