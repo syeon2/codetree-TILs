@@ -1,39 +1,58 @@
 import java.util.*;
 
 public class Main {
-    public static void main(String[] args) {
-        // 여기에 코드를 작성해주세요.
-        Scanner sc = new Scanner(System.in);
+	public static void main(String[] args) {
+		// 여기에 코드를 작성해주세요.
+		Scanner sc = new Scanner(System.in);
 
-        int N = sc.nextInt();
+		int N = sc.nextInt();
 
-        System.out.print(shortestTime(N) + 1);
-        
-    }
+		int curV = 1; // 현재 속력
+		int curD = 1; // 현재 거리
 
-    public static int shortestTime(int X) {
-        int time = 0;
-        int speed = 1;
+		int ans = 1;
 
-        while (X > 0) {
-            time++;
-            X -= speed;
-            if (X <= speed) {
-                break; // 남은 거리가 속력보다 작거나 같으면 반복문 종료
-            }
-            speed++; // 속력을 1m/s 씩 증가시킴
-        }
+		while (true) {
+			if (curD == N) break;
+			// 속력이 증가하는 경우
+			int nextV = curV + 1;
+			int nextD = curD + nextV;
 
-        // 마지막에는 속력을 감소시켜서 1m/s로 맞춤
-        while (speed > 1) {
-            time++;
-            X -= speed;
-            if (X <= 0) {
-                break; // 도착지에 도달했으면 반복문 종료
-            }
-            speed--; // 속력을 1m/s 씩 감소시킴
-        }
+			int willRemain = 0;
+			for (int i = 1; i < nextV; i++) {
+				willRemain += i;
+			}
 
-        return time;
-    }
+			if (N - nextD - willRemain >= 0) {
+				curV = nextV;
+				curD = nextD;
+				ans++;
+
+				continue;
+			}
+
+			// 속력이 유지되는 경우
+			nextV = curV;
+			nextD = curD + curV;
+
+			willRemain = 0;
+			for (int i = 1; i < nextV; i++) {
+				willRemain += i;
+			}
+
+			if (N - nextD - willRemain >= 0) {
+				curD = nextD;
+				ans++;
+
+				continue;
+			}
+
+			// 속력이 증가 및 유지가 안되는 경우
+			curV -= 1;
+			curD += curV;
+			ans++;
+		}
+
+		System.out.print(ans);
+	}
 }
