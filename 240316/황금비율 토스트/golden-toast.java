@@ -8,14 +8,14 @@ public class Main {
         int N = sc.nextInt();
         int M = sc.nextInt();
 
-        char[] list = sc.next().toCharArray();
-        LinkedList<Character> list2 = new LinkedList<>();
+        String str = sc.next();
+        LinkedList<Character> list = new LinkedList<>();
 
         for (int i = 0; i < N; i++) {
-            list2.add(list[i]);
+            list.add(str.charAt(i));
         }
 
-        ListIterator<Character> iterator = list2.listIterator(list2.size());
+        ListIterator<Character> iterator = list.listIterator(list.size());
 
         for (int m = 0; m < M; m++) {
             char cmd = sc.next().charAt(0);
@@ -36,8 +36,9 @@ public class Main {
             }
         }
 
-        for (int i = 0; i < list2.size(); i++) {
-            System.out.print(list2.get(i));
+        iterator = list.listIterator();
+        while (iterator.hasNext()) {
+            System.out.print(iterator.next());
         }
     }
 }
