@@ -4,7 +4,6 @@ public class Main {
     public static void main(String[] args) {
         // 여기에 코드를 작성해주세요.
         Scanner sc = new Scanner(System.in);
-        StringBuilder sb = new StringBuilder();
 
         int N = sc.nextInt();
 
@@ -22,21 +21,19 @@ public class Main {
 
                 list.addLast(num);
             } else if (cmd.equals("pop_front")) {
-                sb.append(list.pollFirst()).append("\n");
+                System.out.println(list.pollFirst());
             } else if (cmd.equals("pop_back")) {
-                sb.append(list.pollLast()).append("\n");
+                System.out.println(list.pollLast());
             } else if (cmd.equals("size")) {
-                sb.append(list.size()).append("\n");
+                System.out.println(list.size());
             } else if (cmd.equals("empty")) {
-                if (cmd.isEmpty()) sb.append(1).append("\n");
-                else sb.append(0).append("\n");
+                if (cmd.isEmpty()) System.out.println(1);
+                else System.out.println(0);
             } else if (cmd.equals("front")) {
-                sb.append(list.peekFirst()).append("\n");
+                System.out.println(list.peekFirst());
             } else {
-                sb.append(list.peekLast()).append("\n");
+                System.out.println(list.peekLast());
             }
         }
-
-        System.out.print(sb);
     }
 }
