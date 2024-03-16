@@ -32,22 +32,20 @@ public class Main {
     public static int partition(int[] arr, int low, int high) {
         int pivot = arr[high];
 
-        int point = low - 1;
+        int point = low;
 
         for (int i = low; i < high; i++) {
             if (arr[i] < pivot) {
-                point += 1;
-
                 int temp = arr[i];
                 arr[i] = arr[point];
-                arr[point] = temp;
+                arr[point++] = temp;
             }
         }
 
-        int temp = arr[point + 1];
-        arr[point + 1] = arr[high];
+        int temp = arr[point];
+        arr[point] = arr[high];
         arr[high] = temp;
 
-        return point + 1;
+        return point;
     }
 }
