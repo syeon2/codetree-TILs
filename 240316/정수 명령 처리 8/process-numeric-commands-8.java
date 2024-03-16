@@ -31,9 +31,9 @@ public class Main {
                 if (cmd.isEmpty()) sb.append(1).append("\n");
                 else sb.append(0).append("\n");
             } else if (cmd.equals("front")) {
-                sb.append(list.get(0)).append("\n");
+                sb.append(list.peekFirst()).append("\n");
             } else {
-                sb.append(list.get(list.size() - 1)).append("\n");
+                sb.append(list.peekLast()).append("\n");
             }
         }
 
