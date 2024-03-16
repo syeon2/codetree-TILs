@@ -30,7 +30,7 @@ public class Main {
     }
 
     public static int partition(int[] arr, int low, int high) {
-        int pivot = arr[high];
+        int pivot = selectPivot(arr);
 
         int point = low;
 
@@ -43,6 +43,17 @@ public class Main {
         swap(arr, point, high);
 
         return point;
+    }
+
+    public static int selectPivot(int[] arr) {
+        int idx = arr.length / 2;
+
+        int pivot = arr[idx];
+
+        arr[idx] = arr[arr.length - 1];
+        arr[arr.length - 1] = pivot;
+
+        return pivot;
     }
 
     public static void swap(int[] arr, int x1, int x2) {
