@@ -1,9 +1,6 @@
 import java.util.*;
 
 public class Main {
-
-    public static int[] mergedArr;
-
     public static void main(String[] args) {
         // 여기에 코드를 작성해주세요.
         Scanner sc = new Scanner(System.in);
@@ -13,7 +10,6 @@ public class Main {
         for (int i = 0; i < N; i++) {
             arr[i] = sc.nextInt();
         }
-        mergedArr = new int[N];
 
         int low = 0;
         int high = N - 1;
@@ -36,10 +32,12 @@ public class Main {
     }
 
     public static void merge(int[] arr, int low, int mid, int high) {
+        int[] mergedArr = new int[high - low + 1];
+
         int x1 = low;
         int x2 = mid + 1;
 
-        int idx = low;
+        int idx = 0;
         while (x1 <= mid && x2 <= high) {
             if (arr[x1] < arr[x2]) mergedArr[idx++] = arr[x1++];
             else mergedArr[idx++] = arr[x2++];
@@ -53,8 +51,8 @@ public class Main {
             mergedArr[idx++] = arr[x2++];
         }
 
-        for (int i = low; i <= high; i++) {
-            arr[i] = mergedArr[i];
+        for (int i = 0; i < idx; i++) {
+            arr[i + low] = mergedArr[i];
         }
     }
 }
