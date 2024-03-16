@@ -36,16 +36,18 @@ public class Main {
 
         for (int i = low; i < high; i++) {
             if (arr[i] < pivot) {
-                int temp = arr[i];
-                arr[i] = arr[point];
-                arr[point++] = temp;
+                swap(arr, i, point++);
             }
         }
 
-        int temp = arr[point];
-        arr[point] = arr[high];
-        arr[high] = temp;
+        swap(arr, point, high);
 
         return point;
+    }
+
+    public static void swap(int[] arr, int x1, int x2) {
+        int temp = arr[x1];
+        arr[x1] = arr[x2];
+        arr[x2] = temp;
     }
 }
