@@ -14,7 +14,7 @@ public class Main {
             que.add(i);
         }
 
-        while (que.size() != 1) {
+        while (que.size() != 0) {
             for (int i = 1; i < K; i++) {
                 que.add(que.remove());
             }
