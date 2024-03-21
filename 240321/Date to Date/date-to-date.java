@@ -14,7 +14,7 @@ public class Main {
         int m2 = sc.nextInt();
         int d2 = sc.nextInt();
 
-        if (m1 == m2) System.out.print(d2 - d1);
+        if (m1 == m2) System.out.print(d2 - d1 + 1);
         else {
             int ans = 0;
 
