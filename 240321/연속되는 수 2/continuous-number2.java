@@ -9,10 +9,10 @@ public class Main {
 
         int ans = 0;
 
-        int cnt = 0;
-        int curValue = -1;
+        int cnt = 1;
+        int curValue = sc.nextInt();
 
-        for (int n = 0; n < N; n++) {
+        for (int n = 0; n < N - 1; n++) {
             int num = sc.nextInt();
 
             if (num != curValue) {
