@@ -11,7 +11,7 @@ public class Main {
             list[i] = sc.nextInt();
         }
 
-        int ans = 0;
+        int ans = -1;
 
         for (int i = 0; i < N; i++) {
             for (int k = i + 1; k < N; k++) {
