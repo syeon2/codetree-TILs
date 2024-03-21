@@ -8,8 +8,8 @@ public class Main {
         int N = sc.nextInt();
         int M = sc.nextInt();
 
-        int[] aTime = new int[50001];
-        int[] bTime = new int[50001];
+        int[] aTime = new int[1000001];
+        int[] bTime = new int[1000001];
 
         int curSec = 1;
 
