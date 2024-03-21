@@ -12,7 +12,7 @@ public class Main {
         int N = sc.nextInt();
         int T = sc.nextInt();
 
-        int[][] board = new int[N][N];
+        int[][] board = new int[N + 1][N + 1];
 
         int y = sc.nextInt();
         int x = sc.nextInt();
@@ -29,11 +29,11 @@ public class Main {
             } else curDirec = turnDirec(curDirec);
         }
 
-        System.out.printf("%d %d", x, y);
+        System.out.printf("%d %d", y, x);
     }
 
     public static boolean isRange(int x, int y, int N) {
-        if (x >= 0 && x < N && y >= 0 && y < N) return true;
+        if (x >= 1 && x <= N && y >= 1 && y <= N) return true;
 
         return false;
     }
