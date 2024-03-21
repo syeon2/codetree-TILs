@@ -20,6 +20,8 @@ public class Main {
         int startD = d1;
 
         while (true) {
+            if (startM == m2 && startD == d2) break;
+            
             startD++;
 
             if (month[startM] < startD) {
@@ -28,8 +30,6 @@ public class Main {
             }
 
             ans++;
-            
-            if (startM == m2 && startD == d2) break;
         }
 
         System.out.print(ans);
