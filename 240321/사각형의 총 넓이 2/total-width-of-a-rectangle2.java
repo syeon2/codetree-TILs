@@ -14,11 +14,11 @@ public class Main {
         int curY = OFFSET;
 
         for (int n = 0; n < N; n++) {
-            int x1 = sc.nextInt();
-            int y1 = sc.nextInt();
+            int x1 = sc.nextInt() + OFFSET;
+            int y1 = sc.nextInt() + OFFSET;
             
-            int x2 = sc.nextInt();
-            int y2 = sc.nextInt();
+            int x2 = sc.nextInt() + OFFSET;
+            int y2 = sc.nextInt() + OFFSET;
 
             for (int i = y1; i < y2; i++) {
 
