@@ -31,11 +31,8 @@ public class Main {
         
         int ans = sub / 7;
 
-        if (day.equals("Mon")) ans++;
-        else {
-            for (int i = 1; i < 7; i++) {
-                if (day.equals(dayOfWeek[i]) && sub % 7 >= i) ans++;
-            }
+        for (int i = 0; i < 7; i++) {
+            if (day.equals(dayOfWeek[i]) && sub % 7 >= i) ans++;
         }
 
         System.out.print(ans);
