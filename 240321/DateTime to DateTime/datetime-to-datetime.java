@@ -9,10 +9,32 @@ public class Main {
         int b = sc.nextInt();
         int c = sc.nextInt();
 
-        int start = (60 * 24 * 11) + (60 * 11) + 11;
-        int end = (60 * 24 * a) + (60 * b) + c;
+        if (a <= 11 && b <= 11 && c < 11) System.out.print(-1);
+        else {
+            int ans = 0;
 
-        if (end < start) System.out.print(-1);
-        else System.out.print(end - start);
+            int startD = 11;
+            int startH = 11;
+            int startM = 11;
+
+            while (true) {
+                if (startD == a && startH == b && startM == c) break;
+
+                ans++;
+                startM++;
+
+                if (startM >= 60) {
+                    startH++;
+                    startM = 0;
+                }
+
+                if (startH >= 24) {
+                    startD++;
+                    startH = 0;
+                }
+            }
+
+            System.out.print(ans);
+        }
     }
 }
