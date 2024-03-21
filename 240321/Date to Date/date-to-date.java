@@ -14,19 +14,24 @@ public class Main {
         int m2 = sc.nextInt();
         int d2 = sc.nextInt();
 
-        if (m1 == m2) System.out.print(d2 - d1 + 1);
-        else {
-            int ans = 0;
+        int ans = 1;
 
-            for (int i = m1 + 1; i < m2; i++) {
-                ans += month[i];
+        int startM = m1;
+        int startD = d1;
+
+        while (true) {
+            startD++;
+
+            if (month[startM] < startD) {
+                startM++;
+                startD = 1;
             }
 
-
-            ans += month[m1] - d1 + 1;
-            ans += d2;
-
-            System.out.print(ans);
+            ans++;
+            
+            if (startM == m2 && startD == d2) break;
         }
+
+        System.out.print(ans);
     }
 }
