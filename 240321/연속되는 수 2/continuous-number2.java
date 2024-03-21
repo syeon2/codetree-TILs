@@ -7,12 +7,12 @@ public class Main {
 
         int N = sc.nextInt();
 
-        int ans = 0;
+        int ans = 1;
 
-        int cnt = 1;
-        int curValue = sc.nextInt();
+        int cnt = 0;
+        int curValue = -1;
 
-        for (int n = 0; n < N - 1; n++) {
+        for (int n = 0; n < N; n++) {
             int num = sc.nextInt();
 
             if (num != curValue) {
