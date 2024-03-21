@@ -53,6 +53,7 @@ public class Main {
         System.out.print(ans);
     }
 
+    // 우, 하, 좌, 상
     public static int reflect(int direc, char m) {
         if (direc == 0) { // 우로 갈때
             if (m == '/') return 3;
@@ -61,8 +62,8 @@ public class Main {
             if (m == '/') return 2;
             else return 0;
         } else if (direc == 2) { // 좌로 갈때
-            if (m == '/') return 3;
-            else return 1;
+            if (m == '/') return 1;
+            else return 3;
         } else { // 상 갈때
             if (m == '/') return 0;
             else return 2;
