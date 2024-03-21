@@ -28,10 +28,14 @@ public class Main {
         }
 
         int sub = end - start;
-        int ans = sub / 7 + 1;
+        
+        int ans = sub / 7;
 
-        for (int i = 0; i < 7; i++) {
-            if (day.equals(month[i]) && sub % 7 >= i) ans++;
+        if (day.equals("Mon")) ans++;
+        else {
+            for (int i = 1; i < 7; i++) {
+                if (day.equals(dayOfWeek[i]) && sub % 7 >= i) ans++;
+            }
         }
 
         System.out.print(ans);
