@@ -34,6 +34,8 @@ public class Main {
                 curY = ny;
                 cnt++;
             } else direc = turnDirec(direc);
+
+            if (c > 'Z') c = 'A';
         }
 
         for (int i = 0; i < N; i++) {
