@@ -21,8 +21,7 @@ public class Main {
                 for (int j = 0; j < N; j++) {
                     for (int l = 0; l < N - 2; l++) {
                         if (i == j) {
-                            if ((k >= l && k <= l + 2) || (k + 1 >= l && k + 1 <= l + 2) || (k + 2 >= l && k + 2 <= l + 2)) continue;
-                            if ((l >= k && l <= k + 2) || (l + 1 >= k && l + 1 <= k + 2) || (l + 2 >= k && l + 2 <= k + 2)) continue;
+                            if (k == l || k == l + 1 || k == l + 2 || k + 1 == l || k + 2 == l) continue;
                         }
 
                         int sum = 0;
