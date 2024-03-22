@@ -21,7 +21,10 @@ public class Main {
         for (int i = 0; i < 101; i++) {
             int temp = 0;
 
-            for (int k = Math.max(0, i - K); k <= Math.min(100, i + K); k++) {
+            int start = Math.max(0, i - K);
+            int end = Math.min(100, i + K);
+
+            for (int k = start; k <= end; k++) {
                 temp += list[k];
             }
 
