@@ -26,11 +26,11 @@ public class Main {
 
                         int sum = 0;
 
-                        for (int n = 0; n < k + 3; n++) {
+                        for (int n = k; n < k + 3; n++) {
                             sum += board[i][n];
                         }
 
-                        for (int n = 0; n < l + 3; n++) {
+                        for (int n = l; n < l + 3; n++) {
                             sum += board[j][n];
                         }
 
