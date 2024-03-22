@@ -18,10 +18,10 @@ public class Main {
         }
 
         int ans = 0;
-        for (int i = K; i < 101 - K; i++) {
+        for (int i = Math.max(0, N - K); i < 101 - K; i++) {
             int temp = 0;
 
-            for (int k = i - K; k <= i + K; k++) {
+            for (int k = Math.max(0, i - K); k <= i + K; k++) {
                 temp += list[k];
             }
 
