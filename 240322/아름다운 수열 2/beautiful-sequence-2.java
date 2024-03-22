@@ -18,28 +18,21 @@ public class Main {
             bList[i] = sc.nextInt();
         }
 
+        Arrays.sort(bList);
+
         int ans = 0;
         for (int i = 0; i <= N - M; i++) {
-            int[] memo = new int[M];
-            for (int k = 0; k < M; k++) {
-                memo[k] = bList[k];
+            int[] temp = new int[M];
+
+            for (int k = i; k < i + M; k++) {
+                temp[k - i] = aList[k];
             }
 
-            for (int k = 0; k < M; k++) {
-                for (int j = 0; j < M; j++) {
-                    if (aList[k + i] == memo[j]) {
-                        memo[j] = 0;
-                        break;
-                    }
-                }
-            }
+            Arrays.sort(temp);
 
             boolean flag = true;
             for (int k = 0; k < M; k++) {
-                if (memo[k] != 0) {
-                    flag = false;
-                    break;
-                }
+                if (temp[k] != bList[k]) flag = false;
             }
 
             if (flag) ans++;
