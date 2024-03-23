@@ -33,7 +33,8 @@ public class Main {
                         int max = Math.max(team1, Math.max(team2, team3));
                         int min = Math.min(team1, Math.min(team2, team3));
 
-                        ans = Math.min(ans, max - min);
+                        if (ans == -1) ans = max - min;
+                        else ans = Math.min(ans, max - min);
                     }
                 }
             }
