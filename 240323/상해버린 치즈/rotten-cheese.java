@@ -52,6 +52,8 @@ public class Main {
 
         int ans = 0;
         for (int i = 1; i <= M; i++) {
+            if (!cheeses[i]) continue;
+            
             int cnt = 0;
             
             for (int k = 1; k <= N; k++) {
