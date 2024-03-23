@@ -11,7 +11,7 @@ public class Main {
         int S = sc.nextInt(); // illRecords
 
         boolean[] people = new boolean[N + 1];
-        boolean[] cheeses = new boolean[M + 1];
+        int[] cheeses = new int[M + 1];
         int[][] eatRecords = new int[D][3]; // p, m, t
         int[][] illRecords = new int[S][2]; // p, t
 
@@ -42,12 +42,12 @@ public class Main {
                 int eatenCheese = eatRecords[d][1];
                 int eatSeconds = eatRecords[d][2];
 
-                if (eatPerson == sickPerson && sickSeconds > eatSeconds) cheeses[eatenCheese] = true;
+                if (eatPerson == sickPerson && sickSeconds > eatSeconds) cheeses[eatenCheese]++;
             }
         }
 
         for (int i = 1; i < cheeses.length; i++) {
-            if (!cheeses[i]) continue;
+            if (cheeses[i] != S) continue;
 
             for (int d = 0; d < D; d++) {
                 int eatPerson = eatRecords[d][0];
