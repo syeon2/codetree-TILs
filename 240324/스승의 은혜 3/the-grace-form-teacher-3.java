@@ -31,7 +31,7 @@ public class Main {
                 if (i == k) temp += (list[k][0] / 2) + list[k][1];
                 else temp += list[k][0] + list[k][1];
 
-                if (temp < B) ans = Math.max(ans, k + 1);
+                if (temp <= B) ans = Math.max(ans, k + 1);
             }
         }
 
