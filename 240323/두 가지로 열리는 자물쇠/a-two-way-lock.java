@@ -29,22 +29,19 @@ public class Main {
         System.out.print(ans);
     }
 
-    public static boolean canOpen(int i, int k, int N) {
-        if (i == 1) {
-            if (k <= 3 || k >= N - 2) return true;
-            else return false;
-        } else if (i == 2) {
-            if (k <= 4 || k >= N - 1) return true;
-            else return false;
-        } else if (i == N - 1) {
-            if (k <= 1 || k >= N - 3) return true;
-            else return false;
-        } else if (i == N) {
-            if (k <= 2 || k >= N - 2) return true;
-            else return false;
-        } else {
-            if (Math.abs(i - k) <= 2) return true;
-            else return false;
-        }
+    public static boolean canOpen(int a, int b, int N) {
+        if (Math.abs(a - b) <= 2) return true;
+
+        if (a == 2 && b >= N) return true;
+        if (a == 1 && b >= N - 1) return true;
+        if (a == N && b <= 2) return true;
+        if (a == N - 1 && b <= 1) return true;
+
+        if (b == 2 && a >= N) return true;
+        if (b == 1 && a >= N - 1) return true;
+        if (b == N && a <= 2) return true;
+        if (b == N - 1 && a <= 1) return true;
+
+        return false;
     }
 }
