@@ -36,11 +36,11 @@ public class Main {
         } else if (i == 2) {
             if (k <= 4 || k >= N - 1) return true;
             else return false;
-        } else if (i == 8) {
-            if (k <= 1 || k >= 6) return true;
+        } else if (i == N - 1) {
+            if (k <= 1 || k >= N - 3) return true;
             else return false;
-        } else if (i == 9) {
-            if (k <= 2 || k >= 7) return true;
+        } else if (i == N) {
+            if (k <= 2 || k >= N - 2) return true;
             else return false;
         } else {
             if (Math.abs(i - k) <= 2) return true;
