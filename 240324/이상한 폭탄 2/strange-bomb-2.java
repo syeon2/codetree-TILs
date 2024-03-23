@@ -15,7 +15,7 @@ public class Main {
 
         int ans = -1;
 
-        for (int i = 0; i <= N - K; i++) {
+        for (int i = 0; i < N; i++) {
 
             int start = Math.max(0, i - K);
             int end = Math.min(N - 1, i + K);
