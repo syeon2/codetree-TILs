@@ -12,7 +12,7 @@ public class Main {
             total += list[i];
         }
 
-        int ans = Integer.MAX_VALUE;
+        int ans = -1;
 
         for (int i = 0; i < 5; i++) {
             for (int k = 0; k < 5; k++) {
@@ -28,7 +28,7 @@ public class Main {
                         int team2 = list[j] + list[l];
                         int team3 = total - team1 - team2;
 
-                        if (team1 == team2 && team1 == team3 && team2 == team3) continue;
+                        if (team1 == team2 || team1 == team3 || team2 == team3) continue;
 
                         int max = Math.max(team1, Math.max(team2, team3));
                         int min = Math.min(team1, Math.min(team2, team3));
