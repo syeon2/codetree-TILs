@@ -8,20 +8,32 @@ public class Main {
         int N = sc.nextInt();
         int M = sc.nextInt();
 
-        int[][] list = new int[N + 1][N + 1];
+        int[] aList = new int[M];
+        int[] bList = new int[M];
 
         for (int i = 0; i < M; i++) {
             int a = sc.nextInt();
             int b = sc.nextInt();
 
-            list[a][b] += 1;
-            list[b][a] += 1;
+            aList[i] = a;
+            bList[i] = b;
         }
 
         int ans = 0;
-        for (int i = 0; i <= N; i++) {
-            for (int k = 0; k <= N; k++) {
-                ans = Math.max(ans, list[i][k]);
+
+        for (int i = 1; i <= N; i++) {
+            for (int k = 1; k <= N; k++) {
+                if (i == k) continue;
+
+                int cnt = 0;
+                for (int j = 0; j < M; j++) {
+                    int a = aList[j];
+                    int b = bList[j];
+
+                    if ((i == a && k == b) || (i == b && k == a)) cnt++;
+                }
+
+                ans = Math.max(ans, cnt);
             }
         }
 
