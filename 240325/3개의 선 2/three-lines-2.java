@@ -2,7 +2,7 @@ import java.util.*;
 
 public class Main {
 
-    public static int[][] pos = {{0, 0, 0}, {0, 0, 1}, {0, 1, 0}, {1, 0, 0}, {0, 1, 1}, {1, 0, 1}, {1, 1, 0}, {1, 1, 1}};
+    public static int[][] pos = {{0, 0, 0}, {0, 0, 1}, {1, 1, 0}, {1, 1, 1}};
 
     public static void main(String[] args) {
         // 여기에 코드를 작성해주세요.
@@ -20,7 +20,7 @@ public class Main {
             for (int k = 0; k <= 10; k++) {
                 for (int j = 0; j <= 10; j++) {
 
-                    for (int l = 0; l < 8; l++) {
+                    for (int l = 0; l < 4; l++) {
                         boolean[] isCovered = new boolean[N];
 
                         int first = pos[l][0];
