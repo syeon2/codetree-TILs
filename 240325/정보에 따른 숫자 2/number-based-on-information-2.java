@@ -24,12 +24,12 @@ public class Main {
             int d1 = 1001;
             int d2 = 1001;
 
-            for (int k = i; k <= b; k++) {
+            for (int k = i; k <= 1000; k++) {
                 if (line[k] == 'S') d1 = Math.min(d1, k - i);
                 if (line[k] == 'N') d2 = Math.min(d2, k - i);
             }
 
-            for (int k = i; k >= a; k--) {
+            for (int k = i; k >= 0; k--) {
                 if (line[k] == 'S') d1 = Math.min(d1, i - k);
                 if (line[k] == 'N') d2 = Math.min(d2, i - k);
             }
