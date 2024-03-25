@@ -28,7 +28,7 @@ public class Main {
                     if (nx > x && ny > y) first++;
                     else if (nx < x && ny > y) second++;
                     else if (nx < x && ny < y) third++;
-                    else fourth++;
+                    else if (nx > x && ny < y) fourth++;
                 }
 
                 int max = Math.max(Math.max(first, second), Math.max(third, fourth));
