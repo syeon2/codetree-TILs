@@ -14,8 +14,8 @@ public class Main {
 
         int ans = Integer.MAX_VALUE;
 
-        for (int x = 0; x < 101; x++) {
-            for (int y = 0; y < 101; y++) {
+        for (int x = 0; x < 101; x += 2) {
+            for (int y = 0; y < 101; y += 2) {
                 int first = 0;
                 int second = 0;
                 int third = 0;
