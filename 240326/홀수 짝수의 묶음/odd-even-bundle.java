@@ -20,9 +20,8 @@ public class Main {
 
         int ans = 0;
 
-        int idx = 1;
         while (true) {
-            if (idx % 2 == 1) {
+            if (ans % 2 == 0) {
                 if (even > 0) even--;
                 else if (odd >= 2) odd -= 2;
                 else if (odd == 0) break;
@@ -35,7 +34,6 @@ public class Main {
                 else break;
             }
 
-            idx++;
             ans++;
         }
 
