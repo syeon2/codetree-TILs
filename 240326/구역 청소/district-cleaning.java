@@ -12,26 +12,9 @@ public class Main {
         int d = sc.nextInt();
 
         if ((a < c && b < c) || (c < a && d < a)) {
-            int total = 0;
-            total += (b - a) + (d - c);
-
-            System.out.print(total);
-        } else if ((a <= c && b >= d) || (c <= a && d >= b)) {
-            int total = 0;
-
-            total += Math.max(b, d) - Math.min(a, c);
-
-            System.out.print(total);
+            System.out.print((b - a) + (d - c));
         } else {
-            int total = 0;
-
-            if (a < c) {
-                total += (b - a) + (d - c) - (b - c);
-            } else {
-                total += (b - a) + (d - c) - (d - a);
-            }
-
-            System.out.print(total);
+            System.out.print(Math.max(b, d) - Math.min(a, c));
         }
     }
 }
