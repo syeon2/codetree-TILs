@@ -11,7 +11,7 @@ public class Main {
         int c = sc.nextInt();
         int d = sc.nextInt();
 
-        if ((a < c && b < d) || (c < a && d < a)) {
+        if ((a < c && b < c) || (c < a && d < a)) {
             int total = 0;
             total += (b - a) + (d - c);
 
