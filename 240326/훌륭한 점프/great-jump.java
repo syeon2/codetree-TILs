@@ -14,29 +14,24 @@ public class Main {
         }
 
         int ans = Integer.MAX_VALUE;
-        for (int i = N; i >= Math.max(list[0], list[list.length - 1]); i--) {
-            if (isPossible(i, list, K)) {
-                ans = Math.min(ans, i);
+        for (int i = Math.max(list[0], list[list.length - 1]); i <= N; i++) {
+            int[] arr = new int[N];
+            int idx = 0;
+
+            for (int k = 0; k < N; k++) {
+                if (i >= list[k]) arr[idx++] = k;
             }
+
+            boolean flag = true;
+            for (int k = 1; k < idx; k++) {
+                int dist = arr[k] - arr[k - 1];
+
+                if (dist > K) flag = false;
+            }
+
+            if (flag) ans = Math.min(ans, i);
         }
 
         System.out.print(ans);
-    }
-
-    public static boolean isPossible(int n, int[] list, int K) {
-        int[] arr = new int[list.length];
-        int cnt = 0;
-
-        for (int i = 0; i < list.length; i++) {
-            if (n >= list[i]) arr[cnt++] = i;
-        }
-
-        for (int i = 1; i < cnt; i++) {
-            int dist = arr[i] - arr[i - 1];
-
-            if (dist > K) return false;
-        }
-
-        return true;
     }
 }
