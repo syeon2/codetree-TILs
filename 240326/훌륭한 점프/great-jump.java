@@ -14,7 +14,7 @@ public class Main {
         }
 
         int ans = Integer.MAX_VALUE;
-        for (int i = Math.max(list[0], list[list.length - 1]); i <= N + 1; i++) {
+        for (int i = Math.max(list[0], list[list.length - 1]); i <= 100; i++) {
             int[] arr = new int[N];
             int idx = 0;
 
