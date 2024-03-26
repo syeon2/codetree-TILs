@@ -41,7 +41,7 @@ public class Main {
         if (right >= max || left >= max) {
             System.out.print(min);
         } else {
-            System.out.print(Math.min(max / 2, min));
+            System.out.print(Math.max(Math.min(max / 2, min), Math.max(left, right)));
         }
     }
 }
