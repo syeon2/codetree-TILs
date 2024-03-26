@@ -12,7 +12,7 @@ public class Main {
         int[] list = {a, b, c};
         Arrays.sort(list);
 
-        if (a + 1 == b && b + 1 == c) System.out.print(1);
+        if (a + 1 == b && b + 1 == c) System.out.print(0);
         else {
             int fGap = b - a;
             int sGap = c - b;
