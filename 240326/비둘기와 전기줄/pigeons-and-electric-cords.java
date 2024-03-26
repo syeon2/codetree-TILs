@@ -7,7 +7,7 @@ public class Main {
 
         int N = sc.nextInt();
 
-        int[] list = new int[N];
+        int[] list = new int[N + 1];
         Arrays.fill(list, 2);
 
         int ans = 0;
