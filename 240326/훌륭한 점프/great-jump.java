@@ -37,8 +37,6 @@ public class Main {
             if (dist > K) return false;
         }
 
-        if (cnt <= 1) return false;
-
         return true;
     }
 }
