@@ -16,6 +16,12 @@ public class Main {
             total += (b - a) + (d - c);
 
             System.out.print(total);
+        } else if ((a <= c && b >= d) || (c <= a && d >= b)) {
+            int total = 0;
+
+            total += Math.min(a, c) + Math.max(b, d);
+
+            System.out.print(total);
         } else {
             int total = 0;
 
