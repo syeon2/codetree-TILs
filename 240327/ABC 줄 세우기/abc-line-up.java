@@ -17,14 +17,22 @@ public class Main {
             char c = (char) (i + 'A');
 
             if (list[i] == c) continue;
+            else {
+                int idx = 0;
 
-            for (int k = i + 1; k < N; k++) {
-                if (list[k] == c) {
-                    char temp = list[i];
-                    list[i] = c;
-                    list[k] = temp;
+                for (int k = i + 1; k < N; k++) {
+                    if (list[k] == c) {
+                        idx = k;
+                        break;
+                    }
+                }
+
+                while (list[i] != c) {
+                    char temp = list[idx];
+                    list[idx] = list[idx - 1];
+                    list[idx - 1] = temp;
+                    idx--;
                     ans++;
-                    break;
                 }
             }
         }
