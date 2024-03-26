@@ -21,26 +21,27 @@ public class Main {
 
                 max = Math.max(max, dist);
                 min = Math.min(min, dist);
+
                 prev = i;
             }
         }
 
-        int middle = Math.min(max / 2, min);
-
         int right = 0;
         int left = 0;
         for (int i = 0; i < N; i++) {
-            if (list[i] == '0') right++;
-            else break;
-        }
-
-        for (int i = N - 1; i >= 0; i--) {
             if (list[i] == '0') left++;
             else break;
         }
 
-        int ans = Math.max(middle, Math.max(right, left));
+        for (int i = N - 1; i >= 0; i--) {
+            if (list[i] == '0') right++;
+            else break;
+        }
 
-        System.out.print(ans);
+        if (right >= max || left >= max) {
+            System.out.print(min);
+        } else {
+            System.out.print(Math.min(max / 2, min));
+        }
     }
 }
