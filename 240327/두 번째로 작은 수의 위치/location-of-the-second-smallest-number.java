@@ -18,7 +18,9 @@ public class Main {
             if (list[i] < first) {
                 second = first;
                 first = list[i];
-            } else if (second > list[i]) {
+            }
+            
+            if (first < list[i] && second > list[i]) {
                 second = list[i];
             }
         }
