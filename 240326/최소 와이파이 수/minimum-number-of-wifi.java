@@ -14,21 +14,10 @@ public class Main {
         }
 
         int ans = 0;
-        for (int i = M; i < N; i++) {
-            if (list[i - M] == 1) {
-
-                for (int k = i - M; k <= Math.min(N - 1, i + M); k++) {
-                    list[k] = 0;
-                }
-
-                ans++;
-            }
-        }
-
         for (int i = 0; i < N; i++) {
             if (list[i] == 1) {
                 ans++;
-                break;
+                i += 2 * M;
             }
         }
 
