@@ -14,7 +14,7 @@ public class Main {
         }
 
         int ans = Integer.MAX_VALUE;
-        for (int i = N; i >= 1; i--) {
+        for (int i = N; i >= Math.min(list[0], list[list.length - 1]); i--) {
             if (isPossible(i, list, K)) {
                 ans = Math.min(ans, i);
             }
@@ -30,14 +30,14 @@ public class Main {
         for (int i = 0; i < list.length; i++) {
             if (n >= list[i]) arr[cnt++] = i;
         }
-        
-        if (cnt <= 1) return false;
 
         for (int i = 1; i < cnt; i++) {
-            int dist = arr[i] - arr[i -1];
+            int dist = arr[i] - arr[i - 1];
 
             if (dist > K) return false;
         }
+
+        if (cnt <= 1) return false;
 
         return true;
     }
