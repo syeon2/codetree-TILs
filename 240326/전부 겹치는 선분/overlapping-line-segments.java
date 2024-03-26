@@ -7,32 +7,33 @@ public class Main {
 
         int N = sc.nextInt();
         int[][] list = new int[N][2];
+
         for (int i = 0; i < N; i++) {
             list[i][0] = sc.nextInt();
             list[i][1] = sc.nextInt();
         }
 
-        boolean isAllCross = true;
+        boolean flag = true;
+
+        int comX1 = -1;
+        int comX2 = -1;
 
         for (int i = 0; i < N; i++) {
-            boolean flag = false;
-
-            int x1 = list[i][0];
-            int x2 = list[i][1];
-
-            for (int k = 0; k < N; k++) {
-                if (i == k) continue;
-                
-                int x3 = list[k][0];
-                int x4 = list[k][1];
-
-                if ((x1 <= x3 && x3 <= x2) || (x3 <= x1 && x4 >= x1)) flag = true;
+            if (comX1 == -1) {
+                comX1 = list[i][0];
+                comX2 = list[i][1];
+            } else {
+                if ((comX1 < list[i][0] && comX2 < list[i][0]) || (list[i][0] < comX1 && list[i][1] < comX1)) {
+                    flag = false;
+                    break;
+                } else {
+                    comX1 = Math.max(comX1, list[i][0]);
+                    comX2 = Math.min(comX2, list[i][1]);
+                }
             }
-
-            if (!flag) isAllCross = false;
         }
 
-        if (isAllCross) System.out.print("Yes");
+        if (flag) System.out.print("Yes");
         else System.out.print("No");
     }
 }
