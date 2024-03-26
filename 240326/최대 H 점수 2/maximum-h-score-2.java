@@ -16,13 +16,13 @@ public class Main {
         Arrays.sort(list);
 
         int ans = 0;
-        for (int i = 0; i < N; i++) {
+        for (int i = 0; i <= N; i++) {
             int[] temp = new int[N];
             for (int k = 0; k < N; k++) {
                 temp[k] = list[k];
             }
 
-            int pivot = temp[i];
+            int pivot = i;
             int cnt = 0;
 
             int tempL = L;
