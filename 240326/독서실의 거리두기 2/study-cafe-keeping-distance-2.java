@@ -39,7 +39,7 @@ public class Main {
             else break;
         }
 
-        int ans = Math.max(middle, Math.max(right - 1, left - 1));
+        int ans = Math.max(middle, Math.max(right, left));
 
         System.out.print(ans);
     }
