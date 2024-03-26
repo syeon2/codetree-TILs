@@ -23,12 +23,15 @@ public class Main {
 
             if (order < P) continue;
             else if (order == P) {
-                for (int k = i; k >= 0; k--) {
-                    if (uList[i] == uList[k]) {
-                        int personIdx = cList[k] - 'A';
+                if (uList[i] == 0) Arrays.fill(people, true);
+                else {
+                    for (int k = i; k >= 0; k--) {
+                        if (uList[i] == uList[k]) {
+                            int personIdx = cList[k] - 'A';
 
-                        people[personIdx] = true;
-                    } else break;
+                            people[personIdx] = true;
+                        } else break;
+                    }
                 }
             } else {
                 if (uList[i] == 0) Arrays.fill(people, true);
