@@ -12,17 +12,11 @@ public class Main {
         int v = 0;
         while (X > 0) {
             X -= v;
+            ans++;
 
-            int tempV = v + 1;
-            if (move(tempV) <= X) {
-                v++;
-                ans++;
-            } else if (move(v) <= X) {
-                ans++;
-            } else {
-                v--;
-                ans++;
-            }
+            if (move(v + 1) <= X) v++;
+            else if (move(v) <= X) continue;
+            else v--;
         }
 
         System.out.print(ans - 1);
