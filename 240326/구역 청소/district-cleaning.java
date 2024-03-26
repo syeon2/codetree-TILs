@@ -19,7 +19,7 @@ public class Main {
         } else if ((a <= c && b >= d) || (c <= a && d >= b)) {
             int total = 0;
 
-            total += Math.min(a, c) + Math.max(b, d);
+            total += Math.max(b, d) - Math.min(a, c);
 
             System.out.print(total);
         } else {
