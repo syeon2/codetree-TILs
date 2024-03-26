@@ -9,7 +9,7 @@ public class Main {
 
         int ans = 0;
 
-        int v = 0;
+        int v = 1;
         while (X > 0) {
             X -= v;
             ans++;
@@ -19,7 +19,7 @@ public class Main {
             else v--;
         }
 
-        System.out.print(ans - 1);
+        System.out.print(ans);
     }
 
     public static int move(int n) {
