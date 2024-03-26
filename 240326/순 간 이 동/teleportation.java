@@ -11,7 +11,7 @@ public class Main {
         int a = sc.nextInt();
         int b = sc.nextInt();
 
-        int case1 = Y - X;
+        int case1 = Math.abs(X - Y);
         int case2 = Math.abs(X - a) + Math.abs(b - Y);
         int case3 = Math.abs(X - b) + Math.abs(a - Y);
 
