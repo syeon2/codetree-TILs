@@ -20,7 +20,7 @@ public class Main {
             int total = 0;
 
             if (a < c) {
-                total += (b - a) + (d - c) - (c - b);
+                total += (b - a) + (d - c) - (b - c);
             } else {
                 total += (b - a) + (d - c) - (d - a);
             }
