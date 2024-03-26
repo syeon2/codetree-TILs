@@ -23,25 +23,20 @@ public class Main {
         int idx = 1;
         while (true) {
             if (idx % 2 == 1) {
-                if (even > 0) {
-                    even--;
-                    ans++;
-                } else if (odd >= 2) {
-                    odd -= 2;
-                    ans++;
-                } else if (odd == 0) break;
+                if (even > 0) even--;
+                else if (odd >= 2) odd -= 2;
+                else if (odd == 0) break;
                 else {
                     ans--;
                     break;
                 }
             } else {
-                if (odd > 0) {
-                    odd--;
-                    ans++;
-                } else break;
+                if (odd > 0) odd--;
+                else break;
             }
 
             idx++;
+            ans++;
         }
 
         System.out.print(ans);
