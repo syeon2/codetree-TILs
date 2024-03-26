@@ -9,27 +9,38 @@ public class Main {
         int M = sc.nextInt();
         int P = sc.nextInt();
 
+        char[] cList = new char[N];
+        int[] uList = new int[N];
+        for (int i = 0; i < N; i++) {
+            cList[i] = sc.next().charAt(0);
+            uList[i] = sc.nextInt();
+        }
+
         boolean[] people = new boolean[N];
-        int[] records = new int[N];
 
-        for (int i = 1; i <= M; i++) {
-            char c = sc.next().charAt(0);
-            int u = sc.nextInt();
+        for (int i = 0; i < N; i++) {
+            int order = i + 1;
 
-            if (i < P) continue;
+            if (order < P) continue;
+            else if (order == P) {
+                for (int k = i; i >= 0; k--) {
+                    if (uList[i] == uList[k]) {
+                        int personIdx = cList[k] - 'A';
 
-            if (u == 0) Arrays.fill(people, true);
-            else {
-                int idx = c - 'A';
-
-                people[idx] = true;
+                        people[personIdx] = true;
+                    } else break;
+                }
+            } else {
+                if (uList[i] == 0) Arrays.fill(people, true);
+                else {
+                    int personIdx = cList[i] - 'A';
+                    people[personIdx] = true;
+                }
             }
         }
 
         for (int i = 0; i < N; i++) {
-            if (!people[i]) {
-                System.out.printf("%s ", (char) (i + 'A'));
-            }
+            if (!people[i]) System.out.printf("%s ", (char) (i + 'A'));
         }
     }
 }
