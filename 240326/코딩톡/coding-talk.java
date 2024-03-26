@@ -23,7 +23,7 @@ public class Main {
 
             if (order < P) continue;
             else if (order == P) {
-                for (int k = i; i >= 0; k--) {
+                for (int k = i; k >= 0; k--) {
                     if (uList[i] == uList[k]) {
                         int personIdx = cList[k] - 'A';
 
