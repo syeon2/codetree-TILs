@@ -26,17 +26,13 @@ public class Main {
 
                 int other = sum - temp[i];
 
-                if (other <= 0 || other > N || isUsed[other]) {
+                if (other <= 0 || isUsed[other]) {
                     flag = false;
                     break;
                 }
 
                 temp[i + 1] = other;
                 isUsed[other] = true;
-            }
-
-            for (int i = 1; i <= N; i++) {
-                if (!isUsed[i]) flag = false;
             }
 
             if (flag) {
