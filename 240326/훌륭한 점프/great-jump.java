@@ -14,7 +14,7 @@ public class Main {
         }
 
         int ans = Integer.MAX_VALUE;
-        for (int i = N; i >= Math.min(list[0], list[list.length - 1]); i--) {
+        for (int i = N; i >= Math.max(list[0], list[list.length - 1]); i--) {
             if (isPossible(i, list, K)) {
                 ans = Math.min(ans, i);
             }
