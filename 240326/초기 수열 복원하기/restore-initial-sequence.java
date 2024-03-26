@@ -26,7 +26,7 @@ public class Main {
 
                 int other = sum - temp[i];
 
-                if (other <= 0 || isUsed[other]) {
+                if (other <= 0 || other > N || isUsed[other]) {
                     flag = false;
                     break;
                 }
