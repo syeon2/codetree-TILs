@@ -14,7 +14,7 @@ public class Main {
 
         int ans = Integer.MAX_VALUE;
 
-        for (int i = 1; i <= N; i++) {
+        for (int i = 1; i <= 10000; i++) {
             int totalCost = 0;
 
             for (int k = 0; k < N; k++) {
