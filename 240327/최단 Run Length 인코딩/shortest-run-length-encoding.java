@@ -9,7 +9,7 @@ public class Main {
 
         int ans = 10;
 
-        int L = base.length;
+        int L = base.length + 1;
 
         while (L-- > 0) {
             char temp = base[base.length - 1];
