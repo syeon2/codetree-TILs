@@ -6,58 +6,18 @@ public class Main {
         Scanner sc = new Scanner(System.in);
 
         int N = sc.nextInt();
-        int[] list = new int[N + 1];
-        for (int i = 1; i <= N; i++) {
+        int[] list = new int[N];
+        for (int i = 0; i < N; i++) {
             list[i] = sc.nextInt();
         }
 
-        int ans = 0;
-        while (true) {
-            boolean isAsc = true;
-            for (int i = 2; i <= N; i++) {
-                if (list[i - 1] > list[i]) isAsc = false;
-            }
+        int cnt = 1;
 
-            if (isAsc) break;
-
-            int idx = 0;
-            int value = 0;
-
-            for (int i = N; i >= 1; i--) {
-                if (i == list[i]) continue;
-
-                if (value < list[i]) {
-                    value = list[i];
-                    idx = i;
-                }
-            }
-
-            if (idx == 1) {
-                ans++;
-                
-                for (int i = 2; i <= value; i++) {
-                    list[i - 1] = list[i];
-                }
-
-                list[value] = value;
-            } else {
-                ans++;
-                value = list[1];
-
-                for (int i = idx + 1; i <= N; i++) {
-                    if (list[i] > value) {
-
-                        for (int k = 2; k < i; k++) {
-                            list[k - 1] = list[k];
-                        }
-
-                        list[i - 1] = value;
-                        break;
-                    }
-                }
-            }
+        for (int i = N - 1; i >= 1; i--) {
+            if (list[i - 1] < list[i]) cnt++;
+            else break;
         }
 
-        System.out.print(ans);
+        System.out.print(N - cnt);
     }
 }
