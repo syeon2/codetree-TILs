@@ -1,10 +1,6 @@
 import java.util.*;
 
 public class Main {
-
-    public static int[] dx = {0, 0, -1, 1};
-    public static int[] dy = {-1, 1, 0, 0};
-
     public static void main(String[] args) {
         // 여기에 코드를 작성해주세요.
         Scanner sc = new Scanner(System.in);
@@ -21,42 +17,62 @@ public class Main {
 
         for (int y = 0; y < N; y++) {
             for (int x = 0; x < N; x++) {
-                boolean isPossible = true;
-                int sum = 0;
+                int tempSum1 = board[y][x];
 
-                for (int i = 0; i < 4; i++) {
-                    int nx = x + dx[i];
-                    int ny = y + dy[i];
+                int tempX1 = x - 1;
+                int tempY1 = y - 1;
 
-                    if (!isRange(nx, ny, N)) isPossible = false;
-                    else sum += board[ny][nx];
+                while (isRange(tempX1, tempY1, N)) {
+                    tempSum1 += board[tempY1][tempX1];
+
+                    int tempX2 = tempX1 - 1;
+                    int tempY2 = tempY1 + 1;
+
+                    int tempSum2 = tempSum1;
+
+                    while (isRange(tempX2, tempY2, N)) {
+                        tempSum2 += board[tempY2][tempX2];
+
+                        int tempX3 = tempX2 + 1;
+                        int tempY3 = tempY2 + 1;
+
+                        int tempSum3 = tempSum2;
+
+                        while (isRange(tempX3, tempY3, N)) {
+                            tempSum3 += board[tempY3][tempX3];
+
+                            int tempX4 = tempX3 + 1;
+                            int tempY4 = tempY3 - 1;
+
+                            int tempSum4 = tempSum3;
+
+                            boolean flag = false;
+
+                            while (isRange(tempX4, tempY4, N)) {
+                                tempSum4 += board[tempY4][tempX4];
+
+                                tempX4 += 1;
+                                tempY4 -= 1;
+
+                                if (tempX4 == x && tempY4 == y) {
+                                    flag = true;
+                                    break;
+                                }
+                            }
+
+                            if (flag) ans = Math.max(ans, tempSum4);
+
+                            tempX3++;
+                            tempY3++;
+                        }
+
+                        tempX2--;
+                        tempY2++;
+                    }
+
+                    tempX1 -= 1;
+                    tempY1 -= 1;
                 }
-
-                if (!isPossible) continue;
-
-                int tempSum1 = sum;
-                int nx = x - 1;
-                int ny = y + 1;
-
-                while (isRange(nx, ny, N) && isRange(nx - 1, ny, N) && isRange(nx, ny + 1, N)) {
-                    tempSum1 += board[ny][nx - 1] + board[ny + 1][nx];
-
-                    nx--;
-                    ny++;
-                }
-
-                int tempSum2 = sum;
-                nx = x + 1;
-                ny = y + 1;
-
-                while (isRange(nx, ny, N) && isRange(nx + 1, ny, N) && isRange(nx, ny + 1, N)) {
-                    tempSum2 += board[ny][nx + 1] + board[ny + 1][nx];
-
-                    nx++;
-                    ny++;
-                }
-
-                ans = Math.max(ans, Math.max(tempSum1, tempSum2));
             }
         }
 
