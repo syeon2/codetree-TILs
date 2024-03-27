@@ -7,7 +7,6 @@ public class Main {
 
         int N = sc.nextInt();
         int M = sc.nextInt();
-
         int[][] board = new int[N][N];
         for (int i = 0; i < N; i++) {
             for (int k = 0; k < N; k++) {
@@ -16,12 +15,16 @@ public class Main {
         }
 
         int ans = 0;
+
         for (int i = 0; i < N; i++) {
+            boolean isPossible = false;
 
             int value = 0;
             int cnt = 1;
 
             for (int k = 0; k < N; k++) {
+                if (cnt == M) isPossible = true;
+
                 if (k == 0) value = board[i][k];
                 else {
                     if (value == board[i][k]) cnt++;
@@ -29,15 +32,22 @@ public class Main {
                         value = board[i][k];
                         cnt = 1;
                     }
-
-                    if (cnt == M) ans++;
                 }
             }
 
-            value = 0;
-            cnt = 1;
+            if (cnt >= M) isPossible = true;
+            if (isPossible) ans++;
+        }
+
+        for (int i = 0; i < N; i++) {
+            boolean isPossible = false;
+
+            int value = 0;
+            int cnt = 1;
 
             for (int k = 0; k < N; k++) {
+                if (cnt == M) isPossible = true;
+
                 if (k == 0) value = board[k][i];
                 else {
                     if (value == board[k][i]) cnt++;
@@ -45,10 +55,11 @@ public class Main {
                         value = board[k][i];
                         cnt = 1;
                     }
-
-                    if (cnt == M) ans++;
                 }
             }
+
+            if (cnt >= M) isPossible = true;
+            if (isPossible) ans++;
         }
 
         System.out.print(ans);
