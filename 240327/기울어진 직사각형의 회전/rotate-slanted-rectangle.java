@@ -58,8 +58,8 @@ public class Main {
                 int moving = move[i];
 
                 while (moving-- > 0) {
-                    int nx = curX + dx[i];
-                    int ny = curY + dy[i];
+                    int nx = curX + (dx[i] * -1);
+                    int ny = curY + (dy[i] * -1);
 
                     int temp = board[ny][nx];
                     board[ny][nx] = prevValue;
