@@ -7,9 +7,9 @@ public class Main {
 
         char[] base = sc.next().toCharArray();
 
-        int ans = 10;
+        int ans = Integer.MAX_VALUE;
 
-        int L = base.length + 1;
+        int L = base.length;
 
         while (L-- > 0) {
             char temp = base[base.length - 1];
