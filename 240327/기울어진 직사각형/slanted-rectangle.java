@@ -49,15 +49,15 @@ public class Main {
                             boolean flag = false;
 
                             while (isRange(tempX4, tempY4, N)) {
-                                tempSum4 += board[tempY4][tempX4];
-
-                                tempX4 += 1;
-                                tempY4 -= 1;
-
                                 if (tempX4 == x && tempY4 == y) {
                                     flag = true;
                                     break;
                                 }
+
+                                tempSum4 += board[tempY4][tempX4];
+
+                                tempX4 += 1;
+                                tempY4 -= 1;
                             }
 
                             if (flag) ans = Math.max(ans, tempSum4);
