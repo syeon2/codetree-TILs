@@ -25,7 +25,8 @@ public class Main {
             }
         }
 
-        while (Q-- > 0) {
+        while (Q > 0) {
+            Q--;
             int y1 = sc.nextInt() - 1;
             int x1 = sc.nextInt() - 1;
 
@@ -82,14 +83,14 @@ public class Main {
                     board[i][k] = avg;
                 }
             }
+        }
 
-            for (int i = 0; i < N; i++) {
-                for (int k = 0; k < M; k++) {
-                    System.out.printf("%d ", board[i][k]);
-                }
-
-                System.out.println();
+        for (int i = 0; i < N; i++) {
+            for (int k = 0; k < M; k++) {
+                System.out.printf("%d ", board[i][k]);
             }
+
+            System.out.println();
         }
     }
 
