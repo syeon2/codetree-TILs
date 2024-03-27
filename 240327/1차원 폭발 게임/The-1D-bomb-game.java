@@ -37,6 +37,12 @@ public class Main {
                 }
             }
 
+            if (value == list[N - 1] && (N - 1 - prevIdx + 1) >= M) {
+                for (int i = prevIdx; i < N; i++) {
+                    list[i] = 0;
+                }
+            }
+
             for (int i = 0; i < N; i++) {
                 if (list[i] != 0) continue;
 
