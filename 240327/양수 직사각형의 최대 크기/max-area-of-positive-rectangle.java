@@ -15,7 +15,7 @@ public class Main {
             }
         }
 
-        int ans = 0;
+        int ans = -1;
 
         for (int y1 = 0; y1 < N; y1++) {
             for (int x1 = 0; x1 < M; x1++) {
