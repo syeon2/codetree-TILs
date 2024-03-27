@@ -28,7 +28,7 @@ public class Main {
                                 for (int b2 = b1; b2 < N; b2++) {
                                     for (int a2 = a1; a2 < M; a2++) {
 
-                                        if (x2 < a1 || a2 < x1 || y2 < b1 || b2 < y2) {
+                                        if (x2 < a1 || a2 < x1 || y2 < b1 || b2 < y1) {
 
                                             int sum1 = 0;
                                             for (int i = y1; i <= y2; i++) {
