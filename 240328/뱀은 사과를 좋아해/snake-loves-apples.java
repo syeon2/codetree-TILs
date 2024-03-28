@@ -34,6 +34,7 @@ public class Main {
             int move = sc.nextInt();
 
             while (move-- > 0) {
+                ans++;
                 Snake s = que.peekFirst();
 
                 int nx = s.x + dx[direc];
@@ -46,7 +47,6 @@ public class Main {
                     else appleBoard[ny][nx] = 0;
                 } else {
                     isEnd = true;
-                    ans++;
                     break;
                 }
 
@@ -57,21 +57,13 @@ public class Main {
                     int nx2 = snake.x;
                     int ny2 = snake.y;
 
-                    if (board[ny2][nx2] == 1) {
+                    if (board[ny2][nx2] == ans) {
                         isEnd = true;
                         break;
-                    } else board[ny2][nx2] = 1;
+                    } else board[ny2][nx2] = ans;
 
                     que.addLast(snake);
                 }
-
-                for (int i = 0; i < N; i++) {
-                    for (int k = 0; k < N; k++) {
-                        board[i][k] = 0;
-                    }
-                }
-
-                ans++;
 
                 if (isEnd) break;
             }
