@@ -70,6 +70,38 @@ public class Main {
             drop();
         }
 
+            for (int c = 0; c < N; c++) {
+                int prevValue = -1;
+                int prevIdx = N;
+
+                for (int r = 0; r < N; r++) {
+                    if (board[r][c] == 0) continue;
+
+                    if (prevValue == -1) {
+                        prevValue = board[r][c];
+                        prevIdx = r;
+                    } else {
+                        if (prevValue == board[r][c]) continue;
+                        else {
+                            if ((r - 1) - prevIdx + 1 >= M) {
+                                for (int i = prevIdx; i < r; i++) {
+                                    board[i][c] = 0;
+                                }
+                            }
+
+                            prevValue = board[r][c];
+                            prevIdx = r;
+                        }
+                    }
+                }
+
+                if ((N - 1) - prevIdx + 1 >= M) {
+                    for (int i = prevIdx; i < N; i++) {
+                        board[i][c] = 0;
+                    }
+                }
+            }
+
         int ans = 0;
         for (int i = 0; i < N; i++) {
             for (int k = 0; k < N; k++) {
