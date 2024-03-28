@@ -28,7 +28,7 @@ public class Main {
 
             int sec = 0;
             while (sec++ <= 2 * N) {
-                Queue<String> delete = new LinkedList<>();
+                int[][] memo = new int[N][N];
                 HashMap<String, Integer> renewMap = new HashMap<>();
 
                 for (String key : map.keySet()) {
@@ -43,16 +43,16 @@ public class Main {
                     int ny = y + dy[direc];
 
                     if (isRange(nx, ny, N)) {
-                        if (renewMap.containsKey(makeKey(nx, ny))) delete.add(makeKey(nx, ny));
+                        memo[ny][nx] += 1;
+
+                        if (memo[ny][nx] > 1) renewMap.remove(makeKey(nx, ny));
                         else renewMap.put(makeKey(nx, ny), direc);
                     } else {
-                        if (renewMap.containsKey(makeKey(x, y))) delete.add(makeKey(x, y));
+                        memo[y][x] += 1;
+
+                        if (memo[y][x] > 1) renewMap.remove(makeKey(x, y));
                         else renewMap.put(makeKey(x, y), turnDirec(direc));
                     }
-                }
-
-                while (!delete.isEmpty()) {
-                    renewMap.remove(delete.remove());
                 }
 
                 map = renewMap;
@@ -75,7 +75,10 @@ public class Main {
     }
 
     public static String makeKey(int x, int y) {
-        return x + "," + y;
+        StringBuilder sb = new StringBuilder();
+        sb.append(x).append(",").append(y);
+
+        return sb.toString();
     }
 
     public static int turnDirec(int direc) {
