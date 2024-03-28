@@ -26,7 +26,7 @@ public class Main {
             }
 
             int cnt = 0;
-            while (cnt <= 2 * N) {
+            while (cnt <= 4 * N) {
                 cnt++;
 
                 int[][] memo = new int[N][N];
