@@ -135,7 +135,7 @@ public class Main {
                             prevIdx = -1;
                         } else {
                             prevValue = board[r][c];
-                            prevIdx = c;
+                            prevIdx = r;
                         }
                     }
                 }
