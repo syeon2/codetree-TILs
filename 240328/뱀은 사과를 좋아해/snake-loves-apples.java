@@ -45,7 +45,10 @@ public class Main {
                 int nx = headX + dx[direc];
                 int ny = headY + dy[direc];
 
-                if (!isRange(nx, ny, N)) break;
+                if (!isRange(nx, ny, N)) {
+                    isEnd = true;
+                    break;
+                }
 
                 if (appleBoard[ny][nx] == 1) {
                     appleBoard[ny][nx] = 0;
