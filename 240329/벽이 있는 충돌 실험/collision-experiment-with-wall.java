@@ -1,27 +1,34 @@
 import java.util.*;
+import java.io.*;
 
 public class Main {
 
     public static int[] dx = {0, 0, 0, -1, 1};
     public static int[] dy = {0, -1, 1, 0, 0};
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         // 여기에 코드를 작성해주세요.
-        Scanner sc = new Scanner(System.in);
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        StringTokenizer st;
+        StringBuilder sb = new StringBuilder();
 
-        int T = sc.nextInt();
+        int T = Integer.parseInt(br.readLine());
 
         while (T-- > 0) {
             HashMap<String, Integer> map = new HashMap<>();
             
-            int N = sc.nextInt();
-            int M = sc.nextInt();
+            st = new StringTokenizer(br.readLine());
+            int N = Integer.parseInt(st.nextToken());
+            int M = Integer.parseInt(st.nextToken());
 
             for (int i = 0; i < M; i++) {
-                int R = sc.nextInt() - 1;
-                int C = sc.nextInt() - 1;
+                st = new StringTokenizer(br.readLine());
 
-                int direc = getDirec(sc.next().charAt(0));
+                int R = Integer.parseInt(st.nextToken()) - 1;
+                int C = Integer.parseInt(st.nextToken()) - 1;
+
+                int direc = getDirec(st.nextToken().charAt(0));
 
                 map.put(makeKey(C, R), direc);
             }
@@ -60,8 +67,12 @@ public class Main {
 
             int ans = map.size();
 
-            System.out.println(ans);
+            sb.append(ans).append("\n");
         }
+
+        bw.write(sb.toString());
+        bw.flush();
+        bw.close();
     }
 
     public static int[] parseKey(String str) {
