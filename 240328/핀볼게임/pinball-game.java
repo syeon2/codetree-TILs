@@ -18,127 +18,49 @@ public class Main {
             }
         }
 
+        int[][] order = {{1, 0}, {N - 1, 1}, {1, N - 1}, {0, 1}};
+        int[] orderDirec = {1, 2, 0, 3};
+
         int ans = 0;
 
-        // 아래로 
-        for (int i = 0; i < N; i++) {
-            int curX = i;
-            int curY = 0;
+        for (int n = 0; n < 4; n++) {
 
-            int direc = 1;
-            if (board[curY][curX] != 0) {
-                direc = turnDirec(direc, board[curY][curX]);
+            for (int i = 0; i < N; i++) {
+                int curX = 0;
+                int curY = 0;
+
+                if (order[n][0] == 1) curX = i;
+                else curX = order[n][0];
+
+                if (order[n][1] == 1) curY = i;
+                else curY = order[n][1];
+
+                int direc = orderDirec[n];
+
+                if (board[curY][curX] != 0) {
+                    direc = turnDirec(direc, board[curY][curX]);
+                }
+
+                int sec = 1;
+                while (true) {
+                    sec++;
+
+                    int nx = curX + dx[direc];
+                    int ny = curY + dy[direc];
+
+                    if (isRange(nx, ny, N) && board[ny][nx] == 0) {
+                        curX = nx;
+                        curY = ny;
+                    } else if (isRange(nx, ny, N) && board[ny][nx] != 0) {
+                        direc = turnDirec(direc, board[ny][nx]);
+
+                        curX = nx;
+                        curY = ny;
+                    } else break;
+                }
+
+                ans = Math.max(ans, sec);
             }
-
-            int sec = 1;
-            while (true) {
-                sec++;
-
-                int nx = curX + dx[direc];
-                int ny = curY + dy[direc];
-
-                if (isRange(nx, ny, N) && board[ny][nx] == 0) {
-                    curX = nx;
-                    curY = ny;
-                } else if (isRange(nx, ny, N) && board[ny][nx] != 0) {
-                    direc = turnDirec(direc, board[ny][nx]);
-
-                    curX = nx;
-                    curY = ny;
-                } else break;
-            }
-
-            ans = Math.max(ans, sec);
-        }
-
-        for (int i = 0; i < N; i++) {
-            int curX = N - 1;
-            int curY = i;
-
-            int direc = 2;
-            if (board[curY][curX] != 0) {
-                direc = turnDirec(direc, board[curY][curX]);
-            }
-
-            int sec = 1;
-            while (true) {
-                sec++;
-
-                int nx = curX + dx[direc];
-                int ny = curY + dy[direc];
-
-                if (isRange(nx, ny, N) && board[ny][nx] == 0) {
-                    curX = nx;
-                    curY = ny;
-                } else if (isRange(nx, ny, N) && board[ny][nx] != 0) {
-                    direc = turnDirec(direc, board[ny][nx]);
-
-                    curX = nx;
-                    curY = ny;
-                } else break;
-            }
-
-            ans = Math.max(ans, sec);
-        }
-
-        for (int i = 0; i < N; i++) {
-            int curX = i;
-            int curY = N - 1;
-
-            int direc = 0;
-            if (board[curY][curX] != 0) {
-                direc = turnDirec(direc, board[curY][curX]);
-            }
-
-            int sec = 1;
-            while (true) {
-                sec++;
-
-                int nx = curX + dx[direc];
-                int ny = curY + dy[direc];
-
-                if (isRange(nx, ny, N) && board[ny][nx] == 0) {
-                    curX = nx;
-                    curY = ny;
-                } else if (isRange(nx, ny, N) && board[ny][nx] != 0) {
-                    direc = turnDirec(direc, board[ny][nx]);
-
-                    curX = nx;
-                    curY = ny;
-                } else break;
-            }
-
-            ans = Math.max(ans, sec);
-        }
-
-        for (int i = 0; i < N; i++) {
-            int curX = 0;
-            int curY = i;
-
-            int direc = 3;
-            if (board[curY][curX] != 0) {
-                direc = turnDirec(direc, board[curY][curX]);
-            }
-
-            int sec = 1;
-            while (true) {
-                sec++;
-
-                int nx = curX + dx[direc];
-                int ny = curY + dy[direc];
-
-                if (isRange(nx, ny, N) && board[ny][nx] == 0) {
-                    curX = nx;
-                    curY = ny;
-                } else if (isRange(nx, ny, N) && board[ny][nx] != 0) {
-                    direc = turnDirec(direc, board[ny][nx]);
-
-                    curX = nx;
-                    curY = ny;
-                } else break;
-            }
-
-            ans = Math.max(ans, sec);
         }
 
         System.out.println(ans);
