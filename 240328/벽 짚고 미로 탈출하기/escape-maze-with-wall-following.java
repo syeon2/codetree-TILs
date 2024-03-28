@@ -44,12 +44,12 @@ public class Main {
 
             if (isRange(nx1, ny1, N) && board[ny1][nx1] != '#') {
                 ans++;
+                memo[curY][curX] = curDirec;
+                
                 curX = nx1;
                 curY = ny1;
 
                 curDirec = rightDirec;
-
-                memo[curY][curX] = curDirec;
             } else if (isRange(nx2, ny2, N) && board[ny2][nx2] != '#') {
                 ans++;
 
