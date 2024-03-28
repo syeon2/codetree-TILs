@@ -55,7 +55,7 @@ public class Main {
                 int ny = curY + dy[i];
 
                 if (isRange(nx, ny)) {
-                    board[ny][nx] = 0;
+                    copy[ny][nx] = 0;
 
                     curX = nx;
                     curY = ny;
@@ -76,7 +76,7 @@ public class Main {
                 int value = copy[i][k];
 
                 if (value == 0) continue;
-                
+
                 if (isRange(k + 1, i) && copy[i][k + 1] == value) cnt++;
                 if (isRange(i + 1, k) && copy[i + 1][k] == value) cnt++;
             }
