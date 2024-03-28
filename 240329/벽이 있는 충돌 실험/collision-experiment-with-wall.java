@@ -10,9 +10,10 @@ public class Main {
         Scanner sc = new Scanner(System.in);
 
         int T = sc.nextInt();
-        HashMap<String, Integer> map = new HashMap<>();
 
         while (T-- > 0) {
+            HashMap<String, Integer> map = new HashMap<>();
+            
             int N = sc.nextInt();
             int M = sc.nextInt();
 
