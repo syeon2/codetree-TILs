@@ -26,7 +26,7 @@ public class Main {
             }
 
             int cnt = 0;
-            while (cnt <= 4 * N) {
+            while (cnt <= 2 * N) {
                 cnt++;
 
                 int[][] memo = new int[N][N];
@@ -45,9 +45,12 @@ public class Main {
                         } else if (isRange(nx, ny, N)) {
                             memo[ny][nx] = direc;
                         } else {
-                            direc = turnDirec(direc);
+                            if (memo[i][k] != 0) memo[i][k] = 0;
+                            else {
+                                direc = turnDirec(direc);
 
-                            memo[i][k] = direc;
+                                memo[i][k] = direc;
+                            }
                         }
                     }
                 }
