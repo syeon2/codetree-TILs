@@ -45,7 +45,10 @@ public class Main {
                 int nx = headX + dx[direc];
                 int ny = headY + dy[direc];
 
-                if (appleBoard[ny][nx] == 1) body++;
+                if (appleBoard[ny][nx] == 1) {
+                    appleBoard[ny][nx] = 0;
+                    body++;
+                }
                 else {
                     if (body == 1) {
                         board[tailY][tailX] = false;
@@ -67,8 +70,6 @@ public class Main {
                         tailY = ty;
                     }
                 }
-
-                System.out.printf("%d %d\n", tailX, tailY);
 
                 if (isRange(nx, ny, N) && !board[ny][nx]) {
                     board[ny][nx] = true;
