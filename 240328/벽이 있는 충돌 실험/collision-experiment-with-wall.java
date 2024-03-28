@@ -16,18 +16,17 @@ public class Main {
             int M = sc.nextInt();
 
             int[][] board = new int[N][N];
-
             for (int i = 0; i < M; i++) {
                 int R = sc.nextInt() - 1;
                 int C = sc.nextInt() - 1;
+
                 int direc = getDirec(sc.next().charAt(0));
 
                 board[R][C] = direc;
             }
 
-            int cnt = 0;
-            while (cnt <= 4 * N) {
-                cnt++;
+            int sec = 0;
+            while (sec++ <= 2 * N) {
 
                 int[][] memo = new int[N][N];
 
@@ -40,17 +39,13 @@ public class Main {
                         int nx = k + dx[direc];
                         int ny = i + dy[direc];
 
-                        if (isRange(nx, ny, N) && memo[ny][nx] != 0) {
-                            memo[ny][nx] = 0;
-                        } else if (isRange(nx, ny, N)) {
+                        if (isRange(nx, ny, N) && memo[ny][nx] == 0) {
                             memo[ny][nx] = direc;
+                        } else if (isRange(nx, ny, N)) {
+                            memo[ny][nx] = 0;
                         } else {
-                            if (memo[i][k] != 0) memo[i][k] = 0;
-                            else {
-                                direc = turnDirec(direc);
-
-                                memo[i][k] = direc;
-                            }
+                            if (memo[i][k] == 0) memo[i][k] = turnDirec(direc);
+                            else memo[i][k] = 0;
                         }
                     }
                 }
@@ -69,17 +64,17 @@ public class Main {
         }
     }
 
-    public static boolean isRange(int x, int y, int N) {
-        if (x >= 0 && x < N && y >= 0 && y < N) return true;
-
-        return false;
-    }
-
     public static int turnDirec(int direc) {
         if (direc == 1) return 2;
         else if (direc == 2) return 1;
         else if (direc == 3) return 4;
         else return 3;
+    }
+
+    public static boolean isRange(int x, int y, int N) {
+        if (x >= 0 && x < N && y >= 0 && y < N) return true;
+
+        return false;
     }
 
     public static int getDirec(char direc) {
