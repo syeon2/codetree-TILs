@@ -40,7 +40,6 @@ public class Main {
             int move = sc.nextInt();
 
             while (move-- > 0) {
-                System.out.printf("%d %d\n", tailX, tailY);
                 ans++;
                 
                 int nx = headX + dx[direc];
@@ -68,6 +67,8 @@ public class Main {
                         tailY = ty;
                     }
                 }
+
+                System.out.printf("%d %d\n", tailX, tailY);
 
                 if (isRange(nx, ny, N) && !board[ny][nx]) {
                     board[ny][nx] = true;
