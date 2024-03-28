@@ -20,6 +20,7 @@ public class Main {
 
             appleBoard[r][c] = 1;
         }
+        int[][] board = new int[N][N];
 
         Deque<Snake> que = new LinkedList<>();
         que.addFirst(new Snake(0, 0));
@@ -49,7 +50,6 @@ public class Main {
                     break;
                 }
 
-                int[][] board = new int[N][N];
                 int size = que.size();
                 while (size-- > 0) {
                     Snake snake = que.removeFirst();
@@ -63,6 +63,12 @@ public class Main {
                     } else board[ny2][nx2] = 1;
 
                     que.addLast(snake);
+                }
+
+                for (int i = 0; i < N; i++) {
+                    for (int k = 0; k < N; k++) {
+                        board[i][k] = 0;
+                    }
                 }
 
                 ans++;
