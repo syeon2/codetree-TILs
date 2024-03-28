@@ -125,7 +125,7 @@ public class Main {
                 int prevIdx = 0;
 
                 for (int r = 3; r >= 0; r--) {
-                    if (r == 0) prevValue = board[r][c];
+                    if (r == 3) prevValue = board[r][c];
                     else if (board[r][c] == 0) continue;
                     else {
                         if (prevValue == board[r][c]) {
