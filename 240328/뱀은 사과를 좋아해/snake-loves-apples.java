@@ -39,7 +39,7 @@ public class Main {
             int direc = getDirec(sc.next().charAt(0));
             int move = sc.nextInt();
 
-            if (tailX == -1) direcBoard[0][0] = direc;
+            if (ans == 0) direcBoard[0][0] = direc;
 
             while (move-- > 0) {
                 ans++;
