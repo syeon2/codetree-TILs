@@ -43,6 +43,10 @@ public class Main {
 
                     if (appleBoard[ny][nx] != 1) que.removeLast();
                     else appleBoard[ny][nx] = 0;
+                } else {
+                    isEnd = true;
+                    ans++;
+                    break;
                 }
 
                 int[][] board = new int[N][N];
