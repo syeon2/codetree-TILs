@@ -20,12 +20,18 @@ public class Main {
 
             appleBoard[r][c] = 1;
         }
-        int[][] board = new int[N][N];
 
-        Deque<Snake> que = new LinkedList<>();
-        que.addFirst(new Snake(0, 0));
+        boolean[][] board = new boolean[N][N];
+        int[][] direcBoard = new int[N][N];
+        board[0][0] = true;
 
         int ans = 0;
+        int headX = 0;
+        int headY = 0;
+        int tailX = 0;
+        int tailY = 0;
+
+        int body = 1;
 
         boolean isEnd = false;
 
@@ -35,37 +41,48 @@ public class Main {
 
             while (move-- > 0) {
                 ans++;
-                Snake s = que.peekFirst();
+                
+                int nx = headX + dx[direc];
+                int ny = headY + dy[direc];
 
-                int nx = s.x + dx[direc];
-                int ny = s.y + dy[direc];
+                if (appleBoard[ny][nx] == 1) body++;
+                else {
+                    if (body == 1) {
+                        board[tailY][tailX] = false;
+                    } else if (body == 2) {
+                        board[tailY][tailX] = false;
+                        direcBoard[tailY][tailX] = 0;
+                        tailX = headX;
+                        tailY = headY;
+                    } else {
+                        int nextDirec = direcBoard[tailY][tailX];
 
-                if (isRange(nx, ny, N)) {
-                    que.addFirst(new Snake(nx, ny));
+                        int tx = tailX + dx[nextDirec];
+                        int ty = tailY + dy[nextDirec];
 
-                    if (appleBoard[ny][nx] != 1) que.removeLast();
-                    else appleBoard[ny][nx] = 0;
+                        direcBoard[tailY][tailX] = 0;
+                        board[tailY][tailX] = false;
+
+                        tailX = tx;
+                        tailY = ty;
+                    }
+                }
+
+                if (isRange(nx, ny, N) && !board[ny][nx]) {
+                    board[ny][nx] = true;
+                    direcBoard[headY][headX] = direc;
+
+                    headX = nx;
+                    headY = ny;
+
+                    if (body == 1) {
+                        tailX = headX;
+                        tailY = headY;
+                    }
                 } else {
                     isEnd = true;
                     break;
                 }
-
-                int size = que.size();
-                while (size-- > 0) {
-                    Snake snake = que.removeFirst();
-
-                    int nx2 = snake.x;
-                    int ny2 = snake.y;
-
-                    if (board[ny2][nx2] == ans) {
-                        isEnd = true;
-                        break;
-                    } else board[ny2][nx2] = ans;
-
-                    que.addLast(snake);
-                }
-
-                if (isEnd) break;
             }
 
             if (isEnd) break;
@@ -74,26 +91,16 @@ public class Main {
         System.out.print(ans);
     }
 
-    public static int getDirec(char direc) {
-        if (direc == 'U') return 0;
-        else if (direc == 'D') return 1;
-        else if (direc == 'L') return 2;
-        else return 3;
-    }
-
     public static boolean isRange(int x, int y, int N) {
         if (x >= 0 && x < N && y >= 0 && y < N) return true;
 
         return false;
     }
 
-    public static class Snake {
-        public int x;
-        public int y;
-
-        public Snake(int x, int y) {
-            this.x = x;
-            this.y = y;
-        }
+    public static int getDirec(char c) {
+        if (c == 'U') return 0;
+        else if (c == 'D') return 1;
+        else if (c == 'L') return 2;
+        else return 3;
     }
 }
