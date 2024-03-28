@@ -29,6 +29,7 @@ public class Main {
             while (sec++ <= 2 * N) {
 
                 int[][] memo = new int[N][N];
+                int[][] memoCnt = new int[N][N];
 
                 for (int i = 0; i < N; i++) {
                     for (int k = 0; k < N; k++) {
@@ -39,18 +40,22 @@ public class Main {
                         int nx = k + dx[direc];
                         int ny = i + dy[direc];
 
-                        if (isRange(nx, ny, N) && memo[ny][nx] == 0) {
+                        if (isRange(nx, ny, N)) {
+                            memoCnt[ny][nx]++;
                             memo[ny][nx] = direc;
-                        } else if (isRange(nx, ny, N)) {
-                            memo[ny][nx] = 0;
                         } else {
-                            if (memo[i][k] == 0) memo[i][k] = turnDirec(direc);
-                            else memo[i][k] = 0;
+                            memoCnt[i][k]++;
+                            memo[i][k] = turnDirec(direc);
                         }
                     }
                 }
 
-                board = memo;
+                for (int i = 0; i < N; i++) {
+                    for (int k = 0; k < N; k++) {
+                        if (memo[i][k] != 0 && memoCnt[i][k] == 1) board[i][k] = memo[i][k];
+                        else board[i][k] = 0;
+                    }
+                }
             }
 
             int ans = 0;
