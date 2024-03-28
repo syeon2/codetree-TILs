@@ -45,11 +45,12 @@ public class Main {
                 int nx = headX + dx[direc];
                 int ny = headY + dy[direc];
 
+                if (!isRange(nx, ny, N)) break;
+
                 if (appleBoard[ny][nx] == 1) {
                     appleBoard[ny][nx] = 0;
                     body++;
-                }
-                else {
+                } else {
                     if (body == 1) {
                         board[tailY][tailX] = false;
                     } else if (body == 2) {
