@@ -76,18 +76,18 @@ public class Main {
     }
 
     public static int[] parseKey(String str) {
-        String[] list = str.split(",");
+        StringTokenizer st = new StringTokenizer(str);
 
         int[] pos = new int[2];
-        pos[0] = Integer.parseInt(list[0]);
-        pos[1] = Integer.parseInt(list[1]);
+        pos[0] = Integer.parseInt(st.nextToken());
+        pos[1] = Integer.parseInt(st.nextToken());
 
         return pos;
     }
 
     public static String makeKey(int x, int y) {
         StringBuilder sb = new StringBuilder();
-        sb.append(x).append(",").append(y);
+        sb.append(x).append(" ").append(y);
 
         return sb.toString();
     }
