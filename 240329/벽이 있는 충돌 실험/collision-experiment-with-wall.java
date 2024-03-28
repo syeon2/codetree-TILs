@@ -3,8 +3,8 @@ import java.io.*;
 
 public class Main {
 
-    public static int[] dx = {0, 0, 0, -1, 1};
-    public static int[] dy = {0, -1, 1, 0, 0};
+    public static int[] dx = {0, 0, -1, 1};
+    public static int[] dy = {-1, 1, 0, 0};
 
     public static void main(String[] args) throws IOException {
         // 여기에 코드를 작성해주세요.
@@ -34,7 +34,7 @@ public class Main {
             }
 
             int sec = 0;
-            while (sec++ <= 2 * N) {
+            while (sec++ < 2 * N) {
                 int[][] memo = new int[N][N];
                 HashMap<String, Integer> renewMap = new HashMap<>();
 
@@ -93,10 +93,10 @@ public class Main {
     }
 
     public static int turnDirec(int direc) {
-        if (direc == 1) return 2;
-        else if (direc == 2) return 1;
-        else if (direc == 3) return 4;
-        else return 3;
+        if (direc == 0) return 1;
+        else if (direc == 1) return 0;
+        else if (direc == 2) return 3;
+        else return 2;
     }
 
     public static boolean isRange(int x, int y, int N) {
@@ -106,9 +106,9 @@ public class Main {
     }
 
     public static int getDirec(char direc) {
-        if (direc == 'U') return 1;
-        else if (direc == 'D') return 2;
-        else if (direc == 'L') return 3;
-        else return 4;
+        if (direc == 'U') return 0;
+        else if (direc == 'D') return 1;
+        else if (direc == 'L') return 2;
+        else return 3;
     }
 }
