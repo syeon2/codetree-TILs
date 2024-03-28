@@ -22,11 +22,9 @@ public class Main {
         }
 
         Deque<Snake> que = new LinkedList<>();
+        que.addFirst(new Snake(0, 0));
 
         int ans = 0;
-
-        int curX = 0;
-        int curY = 0;
 
         boolean isEnd = false;
 
@@ -35,8 +33,10 @@ public class Main {
             int move = sc.nextInt();
 
             while (move-- > 0) {
-                int nx = curX + dx[direc];
-                int ny = curY + dy[direc];
+                Snake s = que.peekFirst();
+
+                int nx = s.x + dx[direc];
+                int ny = s.y + dy[direc];
 
                 if (isRange(nx, ny, N)) {
                     que.addFirst(new Snake(nx, ny));
