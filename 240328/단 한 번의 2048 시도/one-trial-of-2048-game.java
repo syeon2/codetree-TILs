@@ -122,7 +122,7 @@ public class Main {
         } else {
             for (int c = 0; c < 4; c++) {
                 int prevValue = 0;
-                int prevIdx = 0;
+                int prevIdx = 3;
 
                 for (int r = 3; r >= 0; r--) {
                     if (r == 3) prevValue = board[r][c];
