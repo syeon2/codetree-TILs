@@ -63,7 +63,9 @@ public class Main {
                     }
 
                     String posKey = makeKey(curX, curY);
-                    copy.put(posKey, new ArrayList());
+                    if (copy.get(posKey) == null) {
+                        copy.put(posKey, new ArrayList());
+                    }
                     copy.get(posKey).add(new Ball(speed, direc));
                 }
             }
