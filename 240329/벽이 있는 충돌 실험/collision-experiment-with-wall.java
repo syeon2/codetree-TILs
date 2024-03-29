@@ -3,8 +3,8 @@ import java.io.*;
 
 public class Main {
 
-    public static int[] dx = {0, 0, -1, 1};
-    public static int[] dy = {-1, 1, 0, 0};
+    public static int[] dx = {0, 0, 0, -1, 1};
+    public static int[] dy = {0, -1, 1, 0, 0};
 
     public static void main(String[] args) throws IOException {
         // 여기에 코드를 작성해주세요.
@@ -16,12 +16,11 @@ public class Main {
         int T = Integer.parseInt(br.readLine());
 
         while (T-- > 0) {
-            HashMap<String, Integer> map = new HashMap<>();
-            
             st = new StringTokenizer(br.readLine());
             int N = Integer.parseInt(st.nextToken());
             int M = Integer.parseInt(st.nextToken());
 
+            int[][] board = new int[N][N];
             for (int i = 0; i < M; i++) {
                 st = new StringTokenizer(br.readLine());
 
@@ -30,42 +29,48 @@ public class Main {
 
                 int direc = getDirec(st.nextToken().charAt(0));
 
-                map.put(makeKey(C, R), direc);
+                board[R][C] = direc;
             }
 
             int sec = 0;
-            while (sec++ < 2 * N) {
+            while (sec++ <= 2 * N) {
+
                 int[][] memo = new int[N][N];
-                HashMap<String, Integer> renewMap = new HashMap<>();
+                int[][] memoCnt = new int[N][N];
 
-                for (String key : map.keySet()) {
-                    int[] pos = parseKey(key);
+                for (int i = 0; i < N; i++) {
+                    for (int k = 0; k < N; k++) {
+                        if (board[i][k] == 0) continue;
 
-                    int x = pos[0];
-                    int y = pos[1];
+                        int direc = board[i][k];
 
-                    int direc = map.get(key);
+                        int nx = k + dx[direc];
+                        int ny = i + dy[direc];
 
-                    int nx = x + dx[direc];
-                    int ny = y + dy[direc];
-
-                    if (isRange(nx, ny, N)) {
-                        memo[ny][nx] += 1;
-
-                        if (memo[ny][nx] > 1) renewMap.remove(makeKey(nx, ny));
-                        else renewMap.put(makeKey(nx, ny), direc);
-                    } else {
-                        memo[y][x] += 1;
-
-                        if (memo[y][x] > 1) renewMap.remove(makeKey(x, y));
-                        else renewMap.put(makeKey(x, y), turnDirec(direc));
+                        if (isRange(nx, ny, N)) {
+                            memoCnt[ny][nx]++;
+                            memo[ny][nx] = direc;
+                        } else {
+                            memoCnt[i][k]++;
+                            memo[i][k] = turnDirec(direc);
+                        }
                     }
                 }
 
-                map = renewMap;
+                for (int i = 0; i < N; i++) {
+                    for (int k = 0; k < N; k++) {
+                        if (memo[i][k] != 0 && memoCnt[i][k] == 1) board[i][k] = memo[i][k];
+                        else board[i][k] = 0;
+                    }
+                }
             }
 
-            int ans = map.size();
+            int ans = 0;
+            for (int i = 0; i < N; i++) {
+                for (int k = 0; k < N; k++) {
+                    if (board[i][k] != 0) ans++;
+                }
+            }
 
             sb.append(ans).append("\n");
         }
@@ -75,28 +80,11 @@ public class Main {
         bw.close();
     }
 
-    public static int[] parseKey(String str) {
-        StringTokenizer st = new StringTokenizer(str);
-
-        int[] pos = new int[2];
-        pos[0] = Integer.parseInt(st.nextToken());
-        pos[1] = Integer.parseInt(st.nextToken());
-
-        return pos;
-    }
-
-    public static String makeKey(int x, int y) {
-        StringBuilder sb = new StringBuilder();
-        sb.append(x).append(" ").append(y);
-
-        return sb.toString();
-    }
-
     public static int turnDirec(int direc) {
-        if (direc == 0) return 1;
-        else if (direc == 1) return 0;
-        else if (direc == 2) return 3;
-        else return 2;
+        if (direc == 1) return 2;
+        else if (direc == 2) return 1;
+        else if (direc == 3) return 4;
+        else return 3;
     }
 
     public static boolean isRange(int x, int y, int N) {
@@ -106,9 +94,9 @@ public class Main {
     }
 
     public static int getDirec(char direc) {
-        if (direc == 'U') return 0;
-        else if (direc == 'D') return 1;
-        else if (direc == 'L') return 2;
-        else return 3;
+        if (direc == 'U') return 1;
+        else if (direc == 'D') return 2;
+        else if (direc == 'L') return 3;
+        else return 4;
     }
 }
