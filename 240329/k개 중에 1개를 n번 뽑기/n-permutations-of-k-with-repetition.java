@@ -13,7 +13,9 @@ public class Main {
             list[i] = i + 1;
         }
 
-        recur(list, 0, "", K);
+        for (int i = 0; i < N; i++) {
+            recur(list, 1, String.valueOf(list[i]), K);
+        }
     }
 
     public static void recur(int[] list, int cnt, String str, int K) {
@@ -23,9 +25,7 @@ public class Main {
         }
 
         for (int i = 0; i < list.length; i++) {
-            String renewStr = (str + " " + list[i]).trim();
-            
-            recur(list, cnt + 1, renewStr, K);
+            recur(list, cnt + 1, str + " " + list[i], K);
         }
     }
 }
