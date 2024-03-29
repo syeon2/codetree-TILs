@@ -71,7 +71,7 @@ public class Main {
             for (String key : copy.keySet()) {
                 List<Ball> list = copy.get(key);
 
-                if (list.size() > K) {
+                while (list.size() > K) {
                     int minIdx = -1;
                     int minValue = 10000;
 
