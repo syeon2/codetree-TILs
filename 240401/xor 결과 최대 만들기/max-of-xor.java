@@ -7,6 +7,7 @@ public class Main {
 
     public static int[] list;
     public static int[] ansList;
+    public static boolean[] isVisit;
 
     public static int ans = 0;
 
@@ -17,18 +18,19 @@ public class Main {
         N = sc.nextInt();
         M = sc.nextInt();
         list = new int[N];
+        isVisit = new boolean[N];
         ansList = new int[M];
         for (int i = 0; i < N; i++) {
             list[i] = sc.nextInt();
         }
 
-        recur(0, 0);
+        recur(0);
 
         System.out.print(ans);
     }
 
-    public static void recur(int idx, int depth) {
-        if (depth == M) {
+    public static void recur(int depth) {
+        if (depth >= M) {
             int temp = ansList[0];
 
             for (int i = 1; i < M; i++) {
@@ -39,9 +41,13 @@ public class Main {
             return;
         }
 
-        for (int i = idx; i < N; i++) {
+        for (int i = 0; i < N; i++) {
+            if (isVisit[i]) continue;
+
+            isVisit[i] = true;
             ansList[depth] = list[i];
-            recur(idx + 1, depth + 1);
+            recur(depth + 1);
+            isVisit[i] = false;
         }
     }
 }
