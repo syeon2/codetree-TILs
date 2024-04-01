@@ -32,6 +32,8 @@ public class Main {
             list.add(new Width(left, right, depth));
         }
 
+        list.sort((a, b) -> a.depth - b.depth);
+        
         permutation(0);
 
         System.out.print(ans);
@@ -42,8 +44,6 @@ public class Main {
         for (int i = 1; i <= N; i++) {
             temp[i] = i;
         }
-
-        ansList.sort((a, b) -> a.depth - b.depth);
 
         for (int i = 0; i < ansList.size(); i++) {
             int left = ansList.get(i).left;
