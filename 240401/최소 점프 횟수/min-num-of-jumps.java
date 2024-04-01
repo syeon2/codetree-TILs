@@ -16,7 +16,6 @@ public class Main {
         for (int i = 0; i < N; i++) {
             list[i] = sc.nextInt();
         }
-        ans = N;
 
         permutation(0, 0);
 
@@ -26,7 +25,9 @@ public class Main {
     public static void permutation(int idx, int cnt) {
         if (idx > N - 1) return;
         else if (idx == N - 1) {
-            ans = Math.min(ans, cnt);
+            if (ans == -1) ans = cnt;
+            else ans = Math.min(ans, cnt);
+            
             return;
         }
 
