@@ -47,20 +47,20 @@ public class Main {
 
         for (int i = 0; i < ansList.size(); i++) {
             int left = ansList.get(i).left;
+            int right = ansList.get(i).right;
             
             int tempValue = temp[left];
-            temp[left] = temp[left + 1];
-            temp[left + 1] = tempValue;
+            temp[left] = temp[right];
+            temp[right] = tempValue;
         }
 
         if (ansList.size() == M) init = temp;
         else {
-            boolean isSame = true;
             for (int i = 1; i <= N; i++) {
-                if (temp[i] != init[i]) isSame = false;
+                if (temp[i] != init[i]) return;
             }
 
-            if (isSame) ans = Math.min(ans, ansList.size());
+            ans = Math.min(ans, ansList.size());
         }
     }
 
