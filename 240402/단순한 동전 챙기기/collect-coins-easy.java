@@ -18,20 +18,20 @@ public class Main {
         Scanner sc = new Scanner(System.in);
 
         int N = sc.nextInt();
-        for (int i = 0; i < N; i++) {
+        for (int i = 1; i <= N; i++) {
             char[] list = sc.next().toCharArray();
 
             for (int k = 0; k < N; k++) {
                 if (list[k] >= '1' && list[k] <= '9') {
                     int num = list[k] - '0';
 
-                    pos[num][0] = k;
+                    pos[num][0] = k + 1;
                     pos[num][1] = i;
                 } else if (list[k] == 'S') {
-                    startX = k;
+                    startX = k + 1;
                     startY = i;
                 } else if (list[k] == 'E') {
-                    endX = k;
+                    endX = k + 1;
                     endY = i;
                 }
             }
