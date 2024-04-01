@@ -53,15 +53,8 @@ public class Main {
             if (board[y][x] > board[ny][nx]) {
                 move++;
             } else {
-                int temp = board[y][x];
-                board[y][x] = board[ny][nx];
-                board[ny][nx] = temp;
-
-                ans = Math.max(ans, cnt);
+                ans = Math.max(ans, cnt + 1);
                 permutation(cnt + 1, nx, ny);
-
-                board[ny][nx] = board[y][x];
-                board[y][x] = temp;
                 move++;
             }
         }
