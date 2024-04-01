@@ -22,12 +22,12 @@ public class Main {
             list[i] = sc.nextInt();
         }
 
-        recur(0);
+        recur(0, 0);
 
         System.out.print(ans);
     }
 
-    public static void recur(int depth) {
+    public static void recur(int idx, int depth) {
         if (depth == M) {
             int temp = ansList[0];
 
@@ -39,9 +39,9 @@ public class Main {
             return;
         }
 
-        for (int i = 0; i < N; i++) {
+        for (int i = idx; i < N; i++) {
             ansList[depth] = list[i];
-            recur(depth + 1);
+            recur(idx + 1, depth + 1);
         }
     }
 }
