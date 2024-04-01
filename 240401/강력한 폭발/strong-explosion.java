@@ -6,6 +6,7 @@ public class Main {
     public static int[][] dy = {{0, -2, -1, 1, 2}, {0, -1, 0, 1, 0}, {0, -1, 1, 1, -1}};
 
     public static int[][] memo;
+    public static int[][] board;
     public static List<Pos> list = new ArrayList<>();
 
     public static int N;
@@ -17,12 +18,13 @@ public class Main {
 
         N = sc.nextInt();
         memo = new int[N][N];
+        board = new int[N][N];
 
         for (int i = 0; i < N; i++) {
             for (int k = 0; k < N; k++) {
-                memo[i][k] = sc.nextInt();
+                board[i][k] = sc.nextInt();
 
-                if (memo[i][k] == 1) list.add(new Pos(k, i));
+                if (board[i][k] == 1) list.add(new Pos(k, i));
             }
         }
 
@@ -42,7 +44,7 @@ public class Main {
 
         for (int i = 0; i < N; i++) {
             for (int k = 0; k < N; k++) {
-                if (memo[i][k] == 0) continue;
+                if (board[i][k] == 0) continue;
 
                 int block = memo[i][k];
 
