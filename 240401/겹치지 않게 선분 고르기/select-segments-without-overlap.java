@@ -44,11 +44,10 @@ public class Main {
 
                 if (last.x2 < curLine.x1) {
                     ansList.add(curLine);
-                    permutation(idx + 1);
+                    permutation(i + 1);
                     ansList.remove(ansList.size() - 1);
-                } else permutation(idx + 1);
+                } else permutation(i + 1);
             }
-
         }
     }
 
