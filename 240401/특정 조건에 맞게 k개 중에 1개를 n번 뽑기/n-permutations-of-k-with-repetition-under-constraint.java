@@ -2,10 +2,10 @@ import java.util.*;
 
 public class Main {
 
-    public static List<Integer> list = new ArrayList<>();
-    public static int K;
     public static int N;
+    public static int K;
 
+    public static int[] list;
     public static StringBuilder sb = new StringBuilder();
 
     public static void main(String[] args) {
@@ -15,19 +15,17 @@ public class Main {
         K = sc.nextInt();
         N = sc.nextInt();
 
-        recur();
+        list = new int[N];
 
-        System.out.print(sb.toString());
+        permutation(0);
+
+        System.out.print(sb);
     }
 
-    public static void recur() {
-        if (list.size() >= 3 && (list.get(list.size() - 1) == list.get(list.size() - 2) && list.get(list.size() - 1) == list.get(list.size() - 3))) {
-            return;
-        }
-
-        if (list.size() == N) {
-            for (int i = 0; i < list.size(); i++) {
-                sb.append(list.get(i)).append(" ");
+    public static void permutation(int idx) {
+        if (idx == N) {
+            for (int i = 0; i < idx; i++) {
+                sb.append(list[i]).append(" ");
             }
 
             sb.append("\n");
@@ -35,9 +33,16 @@ public class Main {
         }
 
         for (int i = 1; i <= K; i++) {
-            list.add(i);
-            recur();
-            list.remove(list.size() - 1);
+            if (idx >= 2) {
+                if (list[idx - 2] == list[idx - 1] && list[idx - 1] == i) continue;
+                else {
+                    list[idx] = i;
+                    permutation(idx + 1);
+                }
+            } else {
+                list[idx] = i;
+                permutation(idx + 1);
+            }
         }
     }
 }
