@@ -46,7 +46,7 @@ public class Main {
                     ansList.add(curLine);
                     permutation(idx + 1);
                     ansList.remove(ansList.size() - 1);
-                }
+                } else permutation(idx + 1);
             }
 
         }
