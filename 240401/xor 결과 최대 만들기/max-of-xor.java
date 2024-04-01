@@ -31,7 +31,7 @@ public class Main {
         if (depth >= M) {
             int temp = ansList[0];
 
-            for (int i = 0; i < M; i++) {
+            for (int i = 1; i < M; i++) {
                 temp ^= ansList[i];
             }
 
