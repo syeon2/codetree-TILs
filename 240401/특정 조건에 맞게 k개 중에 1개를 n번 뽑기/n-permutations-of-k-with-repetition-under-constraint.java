@@ -21,7 +21,7 @@ public class Main {
     }
 
     public static void recur() {
-        if (list.size() == 3 && (list.get(list.size() - 1) == list.get(list.size() - 2) && list.get(list.size() - 1) == list.get(list.size() - 3))) {
+        if (list.size() >= 3 && (list.get(list.size() - 1) == list.get(list.size() - 2) && list.get(list.size() - 1) == list.get(list.size() - 3))) {
             return;
         }
 
