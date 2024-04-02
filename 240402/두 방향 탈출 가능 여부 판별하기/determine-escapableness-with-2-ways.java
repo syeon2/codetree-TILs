@@ -48,6 +48,7 @@ public class Main {
             if (isRange(nx, ny) && board[ny][nx] != 1 && !isVisit[ny][nx]) {
                 isVisit[ny][nx] = true;
                 dfs(nx, ny);
+                isVisit[ny][nx] = false;
             }
         }
     }
