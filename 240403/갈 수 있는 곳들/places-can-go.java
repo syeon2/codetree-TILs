@@ -31,6 +31,7 @@ public class Main {
             int r = sc.nextInt() - 1;
             int c = sc.nextInt() - 1;
 
+            isVisit[r][c] = true;
             que.add(new Pos(c, r));
         }
 
