@@ -28,8 +28,8 @@ public class Main {
         }
 
         for (int i = 0; i < K; i++) {
-            int r = sc.nextInt();
-            int c = sc.nextInt();
+            int r = sc.nextInt() - 1;
+            int c = sc.nextInt() - 1;
 
             que.add(new Pos(c, r));
         }
