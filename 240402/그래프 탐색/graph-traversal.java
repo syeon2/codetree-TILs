@@ -4,7 +4,7 @@ public class Main {
 
     public static int N;
     public static int M;
-    public static int[][] arr;
+    public static List<List<Integer>> list = new ArrayList<>();
     public static boolean[] isVisit;
 
     public static int ans = 0;
@@ -15,14 +15,18 @@ public class Main {
 
         N = sc.nextInt();
         M = sc.nextInt();
-        arr = new int[N][N];
         isVisit = new boolean[N];
+
+        for (int i = 0; i < N; i++) {
+            list.add(new ArrayList<>());
+        }
+
         for (int m = 0; m < M; m++) {
             int s = sc.nextInt() - 1;
             int e = sc.nextInt() - 1;
 
-            arr[s][e] = 1;
-            arr[e][s] = 1;
+            list.get(s).add(e);
+            list.get(e).add(s);
         }
 
         isVisit[0] = true;
@@ -32,14 +36,16 @@ public class Main {
     }
 
     public static void dfs(int node) {
-        for (int i = 0; i < N; i++) {
-            if (isVisit[i]) continue;
+        List<Integer> arr = list.get(node);
+
+        for (int i = 0; i < arr.size(); i++) {
+            int nextNode = arr.get(i);
+
+            if (isVisit[nextNode]) continue;
             else {
-                if (arr[node][i] == 1) {
-                    isVisit[i] = true;
-                    ans++;
-                    dfs(i);
-                }
+                isVisit[nextNode] = true;
+                ans++;
+                dfs(nextNode);
             }
         }
     }
