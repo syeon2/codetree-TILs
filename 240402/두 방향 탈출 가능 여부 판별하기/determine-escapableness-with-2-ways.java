@@ -9,8 +9,8 @@ public class Main {
 
     public static int ans = 0;
 
-    public static int[] dx = {0, 1, 0, -1};
-    public static int[] dy = {-1, 0, 1, 0};
+    public static int[] dx = {1, 0};
+    public static int[] dy = {0, 1};
 
     public static void main(String[] args) {
         // 여기에 코드를 작성해주세요.
@@ -41,14 +41,13 @@ public class Main {
             return;
         }
 
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < 2; i++) {
             int nx = x + dx[i];
             int ny = y + dy[i];
 
-            if (isRange(nx, ny) && board[ny][nx] != 1 && !isVisit[ny][nx]) {
+            if (isRange(nx, ny) && board[ny][nx] != 0 && !isVisit[ny][nx]) {
                 isVisit[ny][nx] = true;
                 dfs(nx, ny);
-                isVisit[ny][nx] = false;
             }
         }
     }
