@@ -1,6 +1,10 @@
 import java.util.*;
 
 public class Main {
+
+    public static int[] dx = {0, -1, 1, 0};
+    public static int[] dy = {-1, 0, 0, 1};
+
     public static void main(String[] args) {
         // 여기에 코드를 작성해주세요.
         Scanner sc = new Scanner(System.in);
@@ -30,14 +34,23 @@ public class Main {
 
             int maxValue = 0;
 
-            for (int i = 0; i < N; i++) {
-                for (int k = 0; k < N; k++) {
-                    if (i == tempY && k == tempX) continue;
+            for (int i = 0; i < 4; i++) {
+                int nx = tempX + dx[i];
+                int ny = tempY + dy[i];
 
-                    if (board[i][k] < value && maxValue < board[i][k]) {
+                if (isRange(nx, ny, N) && value > board[ny][nx] && maxValue < board[ny][nx]) {
+                    tempX = nx;
+                    tempY = ny;
+
+                    maxValue = board[ny][nx];
+                }
+            }
+
+            for (int i = N - 1; i >= 0; i--) {
+                for (int k = N - 1; i >= 0; i--) {
+                    if (maxValue == board[i][k]) {
                         tempX = k;
                         tempY = i;
-                        maxValue = board[i][k];
                     }
                 }
             }
@@ -48,7 +61,13 @@ public class Main {
             value = board[ansY][ansX];
         }
 
-        System.out.printf("%d %d", ansY, ansX);
+        System.out.printf("%d %d", ansY + 1, ansX + 1);
+    }
+
+    public static boolean isRange(int x, int y, int N) {
+        if (x >= 0 && x < N && y >= 0 && y < N) return true;
+
+        return false;
     }
 
     public static class Pos {
