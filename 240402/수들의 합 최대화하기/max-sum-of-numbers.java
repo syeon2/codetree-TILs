@@ -5,6 +5,7 @@ public class Main {
     public static int N;
     public static int[][] board;
     public static boolean[][] isVisit;
+    public static List<Pos> list = new ArrayList<>();
 
     public static int ans = 0;
 
@@ -30,23 +31,22 @@ public class Main {
     public static void check() {
         int sum = 0;
 
-        for (int r = 0; r < N; r++) {
-            for (int c = 0; c < N; c++) {
-                if (isVisit[r][c]) {
-                    sum += board[r][c];
+        for (int i = 0; i < N; i++) {
+            int x = list.get(i).x;
+            int y = list.get(i).y;
 
-                    for (int i = 0; i < N; i++) {
-                        if (i == c) continue;
+            sum += board[y][x];
 
-                        if (isVisit[r][i]) return;
-                    }
+            for (int k = 0; k < N; k++) {
+                if (k == x) continue;
 
-                    for (int i = 0; i < N; i++) {
-                        if (i == r) continue;
+                if (isVisit[y][k]) return;
+            }
 
-                        if (isVisit[i][c]) return;
-                    }
-                }
+            for (int k = 0; k < N; k++) {
+                if (k == y) continue;
+
+                if (isVisit[k][x]) return;
             }
         }
 
@@ -63,9 +63,21 @@ public class Main {
             for (int x = 0; x < N; x++) {
                 if (isVisit[y][x]) continue;
                 isVisit[y][x] = true;
+                list.add(new Pos(x, y));
                 recur(depth + 1);
+                list.remove(list.size() - 1);
                 isVisit[y][x] = false;
             }
+        }
+    }
+
+    public static class Pos {
+        public int x;
+        public int y;
+        
+        public Pos(int x, int y) {
+            this.x = x;
+            this.y = y;
         }
     }
 }
