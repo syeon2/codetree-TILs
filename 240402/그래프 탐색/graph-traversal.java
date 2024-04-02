@@ -25,21 +25,20 @@ public class Main {
             arr[e][s] = 1;
         }
 
+        isVisit[0] = true;
         dfs(0);
 
         System.out.print(ans);
     }
 
     public static void dfs(int node) {
-        isVisit[node] = true;
-
         for (int i = 0; i < N; i++) {
             if (isVisit[i]) continue;
             else {
                 if (arr[node][i] == 1) {
-                    dfs(i);
+                    isVisit[i] = true;
                     ans++;
-                    return;
+                    dfs(i);
                 }
             }
         }
