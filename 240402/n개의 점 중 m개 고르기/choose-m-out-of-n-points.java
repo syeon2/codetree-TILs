@@ -30,7 +30,7 @@ public class Main {
             posList[n][1] = y;
         }
 
-        recur(0);
+        recur(0, 0);
 
         System.out.print(ans);
     }
@@ -55,19 +55,19 @@ public class Main {
         ans = Math.min(ans, dist);
     }
 
-    public static void recur(int depth) {
+    public static void recur(int idx, int depth) {
         if (depth == M) {
             check();
             return;
         }
 
-        for (int i = 0; i < N; i++) {
-            if (isVisit[i]) continue;
-            isVisit[i] = true;
-            ansList[depth][0] = posList[i][0];
-            ansList[depth][1] = posList[i][1];
-            recur(depth + 1);
-            isVisit[i] = false;
-        }
+        if (idx == N || isVisit[idx]) return;
+
+        isVisit[idx] = true;
+        ansList[depth][0] = posList[idx][0];
+        ansList[depth][1] = posList[idx][1];
+        recur(idx + 1, depth + 1);
+        isVisit[idx] = false;
+        recur(idx + 1, depth);
     }
 }
