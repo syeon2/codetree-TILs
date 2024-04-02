@@ -19,7 +19,7 @@ public class Main {
         M = sc.nextInt();
 
         posList = new int[N][2];
-        ansList = new int[2][2];
+        ansList = new int[M][2];
         isVisit = new boolean[N];
 
         for (int n = 0; n < N; n++) {
@@ -35,18 +35,29 @@ public class Main {
         System.out.print(ans);
     }
 
+    public static void check() {
+        int dist = 0;
+
+        for (int i = 0; i < M; i++) {
+            int x1 = ansList[i][0];
+            int y1 = ansList[i][1];
+
+            for (int k = i + 1; k < M; k++) {
+                int x2 = ansList[k][0];
+                int y2 = ansList[k][1];
+
+                int temp = (Math.abs(x1 - x2) * Math.abs(x1 - x2)) + (Math.abs(y1 - y2) * Math.abs(y1 - y2));
+
+                dist = Math.max(dist, temp);
+            }
+        }
+
+        ans = Math.min(ans, dist);
+    }
+
     public static void recur(int depth) {
-        if (depth == 2) {
-            int dist = 0;
-            int x1 = ansList[0][0];
-            int y1 = ansList[0][1];
-
-            int x2 = ansList[1][0];
-            int y2 = ansList[1][1];
-
-            dist += (Math.abs(x1 - x2) * Math.abs(x1 - x2)) + (Math.abs(y1 - y2) * Math.abs(y1 - y2));
-
-            ans = Math.min(ans, dist);
+        if (depth == M) {
+            check();
             return;
         }
 
