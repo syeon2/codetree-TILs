@@ -4,7 +4,8 @@ public class Main {
 
     public static int N;
     public static int[][] board;
-    public static boolean[] isVisit;
+
+    public static boolean[] memo;
 
     public static int ans = 0;
 
@@ -14,11 +15,11 @@ public class Main {
 
         N = sc.nextInt();
         board = new int[N][N];
-        isVisit = new boolean[N];
+        memo = new boolean[N];
 
-        for (int i = 0; i < N; i++) {
-            for (int k = 0; k < N; k++) {
-                board[i][k] = sc.nextInt();
+        for (int r = 0; r < N; r++) {
+            for (int c = 0; c < N; c++) {
+                board[r][c] = sc.nextInt();
             }
         }
 
@@ -27,19 +28,19 @@ public class Main {
         System.out.print(ans);
     }
 
-    public static void permutation(int sum, int x) {
-        if (x == N) {
+    public static void permutation(int row, int sum) {
+        if (row == N) {
             ans = Math.max(ans, sum);
             return;
         }
 
-        for (int y = 0; y < N; y++) {
-            if (isVisit[y]) continue;
-            isVisit[y] = true;
+        for (int col = 0; col < N; col++) {
+            if (memo[col]) continue;
+            memo[col] = true;
 
-            permutation(sum + board[y][x], x + 1);
+            permutation(row + 1, sum + board[col][row]);
 
-            isVisit[y] = false;
+            memo[col] = false;
         }
     }
 }
