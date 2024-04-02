@@ -37,7 +37,7 @@ public class Main {
             recur(nextY, sum + board[nextY][0], depth + 1);
         } else {
             for (int i = 1; i < N; i++) {
-                if (nextY == i || memo[i]) continue;
+                if (nextY == i || memo[i] || board[nextY][i] == 0) continue;
 
                 memo[i] = true;
                 recur(i, sum + board[nextY][i], depth + 1);
