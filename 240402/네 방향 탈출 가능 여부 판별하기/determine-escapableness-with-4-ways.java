@@ -28,6 +28,7 @@ public class Main {
         }
 
         Queue<Pos> que = new LinkedList<>();
+        isVisit[0][0] = true;
         que.add(new Pos(0, 0));
 
         while (!que.isEmpty()) {
@@ -40,13 +41,12 @@ public class Main {
                 break;
             }
 
-            isVisit[y][x] = true;
-
             for (int i = 0; i < 4; i++) {
                 int nx = x + dx[i];
                 int ny = y + dy[i];
 
                 if (isRange(nx, ny) && !isVisit[ny][nx] && board[ny][nx] == 1) {
+                    isVisit[ny][nx] = true;
                     que.add(new Pos(nx, ny));
                 }
             }
