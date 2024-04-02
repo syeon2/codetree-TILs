@@ -4,7 +4,8 @@ public class Main {
 
     public static int N;
     public static int[][] board;
-    public static boolean[][] isVisit;
+    public static boolean[] isVisitX;
+    public static boolean[] isVisitY;
 
     public static int[][] ansList;
 
@@ -16,7 +17,9 @@ public class Main {
 
         N = sc.nextInt();
         board = new int[N][N];
-        isVisit = new boolean[N][N];
+        isVisitX = new boolean[N];
+        isVisitY = new boolean[N];
+
         ansList = new int[N][2];
 
         for (int i = 0; i < N; i++) {
@@ -38,13 +41,6 @@ public class Main {
             int y1 = ansList[i][1];
 
             sum += board[y1][x1];
-
-            for (int k = i + 1; k < N; k++) {
-                int x2 = ansList[k][0];
-                int y2 = ansList[k][1];
-
-                if (x1 == x2 || y1 == y2) return;
-            }
         }
 
         ans = Math.max(ans, sum);
@@ -57,14 +53,21 @@ public class Main {
         }
 
         for (int r = 0; r < N; r++) {
+            if (isVisitY[r]) continue;
+            isVisitY[r] = true;
+
             for (int c = 0; c < N; c++) {
-                if (isVisit[r][c]) continue;
-                isVisit[r][c] = true;
+                if (isVisitX[c]) continue;
+                isVisitX[c] = true;
+
                 ansList[depth][0] = c;
                 ansList[depth][1] = r;
                 permutation(depth + 1);
-                isVisit[r][c] = false;
+
+                isVisitX[c] = false;
             }
+
+            isVisitY[r] = false;
         }
     }
 }
