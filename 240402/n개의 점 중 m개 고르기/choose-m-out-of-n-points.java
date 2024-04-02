@@ -6,7 +6,6 @@ public class Main {
     public static int M;
 
     public static int[][] posList;
-    public static boolean[] isVisit;
     public static int[][] ansList;
 
     public static int ans = Integer.MAX_VALUE;
@@ -20,7 +19,6 @@ public class Main {
 
         posList = new int[N][2];
         ansList = new int[M][2];
-        isVisit = new boolean[N];
 
         for (int n = 0; n < N; n++) {
             int x = sc.nextInt();
@@ -61,13 +59,11 @@ public class Main {
             return;
         }
 
-        if (idx == N || isVisit[idx]) return;
+        if (idx == N) return;
 
-        isVisit[idx] = true;
+        recur(idx + 1, depth);
         ansList[depth][0] = posList[idx][0];
         ansList[depth][1] = posList[idx][1];
         recur(idx + 1, depth + 1);
-        isVisit[idx] = false;
-        recur(idx + 1, depth);
     }
 }
