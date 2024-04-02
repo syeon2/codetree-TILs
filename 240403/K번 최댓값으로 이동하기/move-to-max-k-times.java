@@ -46,6 +46,8 @@ public class Main {
                 }
             }
 
+            if (tempX == node.x && tempY == node.y) break;
+
             for (int i = N - 1; i >= 0; i--) {
                 for (int k = N - 1; i >= 0; i--) {
                     if (maxValue == board[i][k]) {
