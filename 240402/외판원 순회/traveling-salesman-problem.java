@@ -34,8 +34,8 @@ public class Main {
         }
 
         if (depth == N - 1) {
-            if (board[nextY][0] == 0) continue;
-            
+            if (board[nextY][0] == 0) return;
+
             recur(nextY, sum + board[nextY][0], depth + 1);
         } else {
             for (int i = 1; i < N; i++) {
