@@ -31,12 +31,13 @@ public class Main {
 
             int tempX = node.x;
             int tempY = node.y;
+            value = board[tempY][tempX];
 
             int maxValue = 0;
 
             for (int i = 0; i < 4; i++) {
-                int nx = tempX + dx[i];
-                int ny = tempY + dy[i];
+                int nx = node.x + dx[i];
+                int ny = node.y + dy[i];
 
                 if (isRange(nx, ny, N) && value > board[ny][nx] && maxValue < board[ny][nx]) {
                     tempX = nx;
@@ -49,7 +50,7 @@ public class Main {
             if (tempX == node.x && tempY == node.y) break;
 
             for (int i = N - 1; i >= 0; i--) {
-                for (int k = N - 1; i >= 0; i--) {
+                for (int k = N - 1; k >= 0; k--) {
                     if (maxValue == board[i][k]) {
                         tempX = k;
                         tempY = i;
@@ -60,7 +61,6 @@ public class Main {
             que.add(new Pos(tempX, tempY));
             ansX = tempX;
             ansY = tempY;
-            value = board[ansY][ansX];
         }
 
         System.out.printf("%d %d", ansY + 1, ansX + 1);
