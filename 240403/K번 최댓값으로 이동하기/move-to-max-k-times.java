@@ -9,10 +9,9 @@ public class Main {
         // 여기에 코드를 작성해주세요.
         Scanner sc = new Scanner(System.in);
 
-        Queue<Pos> que = new LinkedList<>();
-
         int N = sc.nextInt();
         int K = sc.nextInt();
+
         int[][] board = new int[N][N];
         for (int i = 0; i < N; i++) {
             for (int k = 0; k < N; k++) {
@@ -20,50 +19,69 @@ public class Main {
             }
         }
 
-        int ansY = sc.nextInt() - 1;
-        int ansX = sc.nextInt() - 1;
+        int curY = sc.nextInt() - 1;
+        int curX = sc.nextInt() - 1;
 
-        int value = board[ansY][ansX];
-        que.add(new Pos(ansX, ansY));
+        int curValue = board[curY][curX];
 
-        while (K-- > 0 && !que.isEmpty()) {
-            Pos node = que.remove();
+        while (K-- > 0) {
+            Queue<Pair> que = new LinkedList<>();
+            boolean[][] isVisit = new boolean[N][N];
 
-            int tempX = node.x;
-            int tempY = node.y;
-            value = board[tempY][tempX];
+            que.add(new Pair(curX, curY));
+            isVisit[curY][curX] = true;
 
-            int maxValue = 0;
+            int nextX = -1;
+            int nextY = -1;
+            int nextValue = -1;
 
-            for (int i = 0; i < 4; i++) {
-                int nx = node.x + dx[i];
-                int ny = node.y + dy[i];
+            int targetValue = board[curY][curX];
 
-                if (isRange(nx, ny, N) && value > board[ny][nx] && maxValue < board[ny][nx]) {
-                    tempX = nx;
-                    tempY = ny;
+            while (!que.isEmpty()) {
+                Pair node = que.remove();
 
-                    maxValue = board[ny][nx];
-                }
-            }
+                int x = node.x;
+                int y = node.y;
+                int v = board[y][x];
 
-            if (tempX == node.x && tempY == node.y) break;
+                for (int i = 0; i < 4; i++) {
+                    int nx = x + dx[i];
+                    int ny = y + dy[i];
 
-            for (int i = N - 1; i >= 0; i--) {
-                for (int k = N - 1; k >= 0; k--) {
-                    if (maxValue == board[i][k]) {
-                        tempX = k;
-                        tempY = i;
+                    if (isRange(nx, ny, N) && board[ny][nx] < targetValue && !isVisit[ny][nx]) {
+                        isVisit[ny][nx] = true;
+                        que.add(new Pair(nx, ny));
+
+                        if (nextValue == board[ny][nx]) {
+                            if (nextY == ny) {
+                                if (nextX > nx) {
+                                    nextX = nx;
+                                    nextY = ny;
+                                    nextValue = board[ny][nx];
+                                }
+                            } else if (nextY > ny) {
+                                nextX = nx;
+                                nextY = ny;
+                                nextValue = board[ny][nx];
+                            }
+                        } else if (nextValue < board[ny][nx]) {
+                            nextX = nx;
+                            nextY = ny;
+                            nextValue = board[ny][nx];
+                        }
                     }
                 }
             }
 
-            que.add(new Pos(tempX, tempY));
-            ansX = tempX;
-            ansY = tempY;
+            if (nextValue == -1) break;
+            else {
+                curX = nextX;
+                curY = nextY;
+                curValue = nextValue;
+            }
         }
 
-        System.out.printf("%d %d", ansY + 1, ansX + 1);
+        System.out.printf("%d %d", curY + 1, curX + 1);
     }
 
     public static boolean isRange(int x, int y, int N) {
@@ -72,11 +90,11 @@ public class Main {
         return false;
     }
 
-    public static class Pos {
+    public static class Pair {
         public int x;
         public int y;
 
-        public Pos(int x, int y) {
+        public Pair(int x, int y) {
             this.x = x;
             this.y = y;
         }
