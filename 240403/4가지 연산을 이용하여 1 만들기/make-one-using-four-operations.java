@@ -6,7 +6,7 @@ public class Main {
         Scanner sc = new Scanner(System.in);
 
         int N = sc.nextInt();
-        boolean[] isVisit = new boolean[1000001];
+        boolean[] isVisit = new boolean[2000001];
         isVisit[N] = true;
         
         Queue<Node> que = new LinkedList<>();
