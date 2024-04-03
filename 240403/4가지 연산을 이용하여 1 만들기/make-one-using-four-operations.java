@@ -23,16 +23,16 @@ public class Main {
                 break;
             }
 
-            que.add(new Node(num - 1, cnt + 1));
-            que.add(new Node(num + 1, cnt + 1));
+            if (num % 3 == 0) {
+                que.add(new Node(num / 3, cnt + 1));
+            }
 
             if (num % 2 == 0) {
                 que.add(new Node(num / 2, cnt + 1));
             }
-
-            if (num % 3 == 0) {
-                que.add(new Node(num / 3, cnt + 1));
-            }
+            
+            que.add(new Node(num - 1, cnt + 1));
+            que.add(new Node(num + 1, cnt + 1));
         }
 
         System.out.print(ans);
