@@ -66,36 +66,36 @@ public class Main {
             newBoard[y][x] = 0;
         }
 
-        for (int i = 0; i < start.size(); i++) {
-            boolean[][] isVisit = new boolean[N][N];
-            Pair node = start.get(i);
+        boolean[][] isVisit = new boolean[N][N];
+        Queue<Pair> que = new LinkedList<>();
 
-            Queue<Pair> que = new LinkedList<>();
+        for (int i = 0; i < start.size(); i++) {
+            Pair node = start.get(i);
             que.add(node);
             isVisit[node.y][node.x] = true;
+        }
 
-            int cnt = 1;
+        int cnt = que.size();
 
-            while (!que.isEmpty()) {
-                Pair pop = que.remove();
+        while (!que.isEmpty()) {
+            Pair pop = que.remove();
 
-                int x = pop.x;
-                int y = pop.y;
+            int x = pop.x;
+            int y = pop.y;
 
-                for (int k = 0; k < 4; k++) {
-                    int nx = x + dx[k];
-                    int ny = y + dy[k];
+            for (int k = 0; k < 4; k++) {
+                int nx = x + dx[k];
+                int ny = y + dy[k];
 
-                    if (isRange(nx, ny) && newBoard[ny][nx] == 0 && !isVisit[ny][nx]) {
-                        isVisit[ny][nx] = true;
-                        cnt++;
-                        que.add(new Pair(nx, ny));
-                    }
+                if (isRange(nx, ny) && newBoard[ny][nx] == 0 && !isVisit[ny][nx]) {
+                    isVisit[ny][nx] = true;
+                    cnt++;
+                    que.add(new Pair(nx, ny));
                 }
             }
-
-            ans = Math.max(ans, cnt);
         }
+
+        ans = Math.max(ans, cnt);
     }
 
     public static boolean isRange(int x, int y) {
