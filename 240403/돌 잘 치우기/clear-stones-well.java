@@ -37,8 +37,8 @@ public class Main {
         }
 
         for (int k = 0; k < K; k++) {
-            int r = sc.nextInt();
-            int c = sc.nextInt();
+            int r = sc.nextInt() - 1;
+            int c = sc.nextInt() - 1;
 
             start.add(new Pair(c, r));
         }
@@ -74,7 +74,7 @@ public class Main {
             que.add(node);
             isVisit[node.y][node.x] = true;
 
-            int cnt = 0;
+            int cnt = 1;
 
             while (!que.isEmpty()) {
                 Pair pop = que.remove();
