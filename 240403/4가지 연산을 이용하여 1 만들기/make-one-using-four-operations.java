@@ -6,7 +6,9 @@ public class Main {
         Scanner sc = new Scanner(System.in);
 
         int N = sc.nextInt();
-
+        boolean[] isVisit = new boolean[1000001];
+        isVisit[N] = true;
+        
         Queue<Node> que = new LinkedList<>();
         que.add(new Node(N, 0));
 
@@ -23,16 +25,25 @@ public class Main {
                 break;
             }
 
-            if (num % 3 == 0) {
+            if (num % 3 == 0 && !isVisit[num / 3]) {
+                isVisit[num / 3] = true;
                 que.add(new Node(num / 3, cnt + 1));
             }
 
-            if (num % 2 == 0) {
+            if (num % 2 == 0 && !isVisit[num / 2]) {
+                isVisit[num / 2] = true;
                 que.add(new Node(num / 2, cnt + 1));
             }
             
-            que.add(new Node(num - 1, cnt + 1));
-            que.add(new Node(num + 1, cnt + 1));
+            if (!isVisit[num - 1]) {
+                isVisit[num - 1] = true;
+                que.add(new Node(num - 1, cnt + 1));
+            }
+
+            if (!isVisit[num + 1]) {
+                isVisit[num + 1] = true;
+                que.add(new Node(num + 1, cnt + 1));
+            }
         }
 
         System.out.print(ans);
