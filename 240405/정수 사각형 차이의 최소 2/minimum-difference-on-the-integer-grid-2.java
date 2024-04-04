@@ -29,7 +29,7 @@ public class Main {
                 int case1 = Math.max(memo[i - 1][k][1], board[i][k]) - Math.min(memo[i - 1][k][0], board[i][k]);
                 int case2 = Math.max(memo[i][k - 1][1], board[i][k]) - Math.min(memo[i][k - 1][0], board[i][k]);
 
-                if (case1 < case2) {
+                if (case1 <= case2) {
                     memo[i][k][0] = Math.min(memo[i - 1][k][0], board[i][k]);
                     memo[i][k][1] = Math.max(memo[i - 1][k][1], board[i][k]);
                 } else {
