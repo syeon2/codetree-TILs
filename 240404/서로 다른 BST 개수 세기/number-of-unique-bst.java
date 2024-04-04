@@ -23,7 +23,8 @@ public class Main {
         if (visited[n]) return ans[n];
         visited[n] = true;
 
-        if (n <= 2) ans[n] = n;
+        if (n <= 1) ans[n] = 1;
+        else if (n == 2) ans[n] = 2;
         else {
             for (int i = 0; i < n - 1; i++) {
                 ans[n] += dp(i) + dp(n - i - 1);
