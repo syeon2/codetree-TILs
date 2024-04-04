@@ -27,7 +27,7 @@ public class Main {
         else if (n == 2) ans[n] = 2;
         else {
             for (int i = 0; i < n - 1; i++) {
-                ans[n] += dp(i) + dp(n - i - 1);
+                ans[n] += dp(i) * dp(n - i - 1);
             }
         }
 
