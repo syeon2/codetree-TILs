@@ -14,13 +14,14 @@ public class Main {
 
         N = sc.nextInt();
         ans = new long[N + 1];
+        ans[0] = 1;
         ans[1] = 2;
         if (N >= 2) ans[2] = 7;
 
         for (int i = 3; i <= N; i++) {
             ans[i] = ((2 * ans[i - 1] % MOD) + ((3 * ans[i - 2]) % MOD)) % MOD;
 
-            for (int j = 1; j <= i - 3; j++) {
+            for (int j = 0; j <= i - 3; j++) {
                 ans[i] = (ans[i] + ((2 * ans[j]) % MOD)) % MOD;
             }
         }
