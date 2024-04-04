@@ -19,7 +19,7 @@ public class Main {
         if (N >= 3) ans[3] = 22;
 
         for (int i = 4; i <= N; i++) {
-            ans[i] = (((2 * ans[i - 1]) % MOD) + ((3 * ans[i - 2]) % MOD)) % MOD;
+            ans[i] = (2 * ans[i - 1]) % MOD + ((ans[i - 2] * ans[i - 1]) % MOD) - ((ans[i - 2] * 3) % MOD) % MOD;
         }
 
         System.out.print(ans[N]);
