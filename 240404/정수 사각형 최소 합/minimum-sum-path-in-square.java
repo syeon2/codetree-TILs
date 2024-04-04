@@ -26,7 +26,7 @@ public class Main {
     }
 
     public static int dp(int x, int y) {
-        if (!isRange(x, y)) return 1000001;
+        if (!isRange(x, y)) return 2000001;
         else if (visited[y][x]) return board[y][x];
         visited[y][x] = true;
 
@@ -34,9 +34,9 @@ public class Main {
         else {
             int min = Math.min(dp(x + 1, y), dp(x, y - 1));
             board[y][x] += min;
-        }
 
-        return board[y][x];
+            return board[y][x];
+        }
     }
 
     public static boolean isRange(int x, int y) {
