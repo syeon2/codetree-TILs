@@ -14,8 +14,8 @@ public class Main {
         for (int i = 3; i <= N; i++) {
             list[i] = list[i - 1];
 
-            for (int k = 1; k <= N - 1; k++) {
-                list[i] += (list[N - k] * list[N - (N - k)]);
+            for (int k = 0; k <= N - 1; k++) {
+                list[i] += (list[N - k - 1] * list[N - (N - k)]);
             }
         }
 
