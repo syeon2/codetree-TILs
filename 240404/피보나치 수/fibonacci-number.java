@@ -9,7 +9,7 @@ public class Main {
 
         int[] list = new int[N + 1];
         list[1] = 1;
-        list[2] = 1;
+        if (N >= 2) list[2] = 1;
 
         for (int i = 3; i <= N; i++) {
             list[i] = list[i - 1] + list[i - 2];
