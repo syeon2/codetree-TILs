@@ -7,7 +7,7 @@ public class Main {
 
         int N = sc.nextInt();
 
-        int[] list = new int[N + 1];
+        long[] list = new long[N + 1];
         list[2] = 1;
         if (N >= 3) list[3] = 1;
 
@@ -15,6 +15,6 @@ public class Main {
             list[i] = list[i - 2] + list[i - 3];
         }
 
-        System.out.print(list[N]);
+        System.out.print(list[N] % 10007);
     }
 }
