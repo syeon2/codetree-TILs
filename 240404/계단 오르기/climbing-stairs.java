@@ -3,7 +3,7 @@ import java.util.*;
 public class Main {
 
     public static int N;
-    public static int[] ans;
+    public static long[] ans;
     public static boolean[] visited;
 
     public static void main(String[] args) {
@@ -11,7 +11,7 @@ public class Main {
         Scanner sc = new Scanner(System.in);
 
         N = sc.nextInt();
-        ans = new int[N + 1];
+        ans = new long[N + 1];
         visited = new boolean[N + 1];
         
         dp(N);
@@ -19,13 +19,13 @@ public class Main {
         System.out.print(ans[N]);
     }
 
-    public static int dp(int n) {
+    public static long dp(int n) {
         if (visited[n]) return ans[n];
         visited[n] = true;
 
         if (n == 2 || n == 3) ans[n] = 1;
         else if (n <= 1) return 0;
-        else ans[n] = dp(n - 2) + dp(n - 3);
+        else ans[n] = (dp(n - 2) + dp(n - 3)) % 10007;
 
         return ans[n];
     }
