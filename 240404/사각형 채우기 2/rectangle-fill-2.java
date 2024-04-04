@@ -7,12 +7,12 @@ public class Main {
 
         int N = sc.nextInt();
 
-        int[] list = new int[N + 1];
+        long[] list = new long[N + 1];
         list[1] = 1;
         if (N >= 2) list[2] = 3;
 
         for (int i = 3; i <= N; i++) {
-            list[i] = list[i - 1] + (2 * list[i - 2]);
+            list[i] = (list[i - 1] + (2 * list[i - 2])) % 10007;
         }
 
         System.out.print(list[N]);
