@@ -12,9 +12,9 @@ public class Main {
         if (N >= 3) list[3] = 1;
 
         for (int i = 4; i <= N; i++) {
-            list[i] = list[i - 2] + list[i - 3];
+            list[i] = (list[i - 2] + list[i - 3]) % 10007;
         }
 
-        System.out.print(list[N] % 10007);
+        System.out.print(list[N]);
     }
 }
