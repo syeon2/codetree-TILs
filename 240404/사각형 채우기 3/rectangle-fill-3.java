@@ -33,7 +33,7 @@ public class Main {
             ans[n] = ((2 * dp(n - 1)) % MOD) + ((3 * dp(n - 2)) % MOD);
             
             for (int i = 0; i <= n - 3; i++) {
-                ans[n] = (2 * (dp(i)) + ans[n]) % MOD;
+                ans[n] = (((2 * dp(i)) % MOD) + ans[n]) % MOD;
             }
         }
 
