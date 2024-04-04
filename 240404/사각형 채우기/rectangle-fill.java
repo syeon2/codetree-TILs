@@ -11,7 +11,7 @@ public class Main {
         
         for (int i = 1; i <= N; i++) {
             if (i <= 2) list[i] = i;
-            else list[i] = list[i - 1] + list[i - 2];
+            else list[i] = (list[i - 1] + list[i - 2]) % 10007;
         }
 
         System.out.print(list[N]);
