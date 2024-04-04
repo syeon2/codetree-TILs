@@ -26,7 +26,7 @@ public class Main {
     }
 
     public static int dp(int x, int y) {
-        if (!isRange(x, y)) return 2000001;
+        if (!isRange(x, y)) return Integer.MAX_VALUE;
         else if (visited[y][x]) return board[y][x];
         visited[y][x] = true;
 
