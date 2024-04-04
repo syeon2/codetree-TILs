@@ -22,8 +22,9 @@ public class Main {
     public static int dp(int n) {
         if (visited[n]) return ans[n];
         visited[n] = true;
-        
+
         if (n == 2 || n == 3) ans[n] = 1;
+        else if (n <= 1) return 0;
         else ans[n] = dp(n - 2) + dp(n - 3);
 
         return ans[n];
