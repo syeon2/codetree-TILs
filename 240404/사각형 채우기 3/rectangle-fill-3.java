@@ -18,7 +18,7 @@ public class Main {
         if (N >= 2) ans[2] = 7;
 
         for (int i = 3; i <= N; i++) {
-            ans[i] = ((2 * ans[i - 1]) + (4 * ans[i - 2])) % MOD;
+            ans[i] = (((2 * ans[i - 1]) % MOD) + ((4 * ans[i - 2]) % MOD)) % MOD;
         }
 
         System.out.print(ans[N]);
