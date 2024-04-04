@@ -20,15 +20,14 @@ public class Main {
             }
         }
 
-        dp(0, N - 1);
+        int ans = dp(0, N - 1);
 
-        System.out.print(board[N - 1][0]);
+        System.out.print(ans);
     }
 
     public static int dp(int x, int y) {
         if (!isRange(x, y)) return 1000001;
         else if (visited[y][x]) return board[y][x];
-
         visited[y][x] = true;
 
         if (x == N - 1 && y == 0) return board[0][N - 1];
