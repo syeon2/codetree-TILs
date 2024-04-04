@@ -3,29 +3,40 @@ import java.util.*;
 public class Main {
 
     public static int N;
-    public static long[] ans;
+    public static int[] ans;
     public static boolean[] visited;
 
-    public static long MOD = 1000000007;
+    public static int MOD = 1000000007;
 
     public static void main(String[] args) {
         // 여기에 코드를 작성해주세요.
         Scanner sc = new Scanner(System.in);
 
         N = sc.nextInt();
-        ans = new long[N + 1];
-        ans[0] = 1;
-        ans[1] = 2;
-        if (N >= 2) ans[2] = 7;
+        ans = new int[N + 1];
+        visited = new boolean[N + 1];
+        
+        dp(N);
 
-        for (int i = 3; i <= N; i++) {
-            ans[i] = ((2 * ans[i - 1] % MOD) + ((3 * ans[i - 2]) % MOD)) % MOD;
+        System.out.print(ans[N]);
+    }
 
-            for (int j = 0; j <= i - 3; j++) {
-                ans[i] = (ans[i] + ((2 * ans[j]) % MOD)) % MOD;
+    public static int dp(int n) {
+        if (visited[n]) return ans[n];
+
+        visited[n] = true;
+
+        if (n == 0) ans[n] = 1;
+        else if (n == 1) ans[n] = 2;
+        else if (n == 2) ans[n] = 7;
+        else {
+            ans[n] = ((2 * dp(n - 1)) % MOD) + ((3 * dp(n - 2)) % MOD);
+            
+            for (int i = 0; i <= n - 3; i++) {
+                ans[n] = (2 * (dp(i)) + ans[n]) % MOD;
             }
         }
 
-        System.out.print(ans[N]);
+        return ans[n];
     }
 }
