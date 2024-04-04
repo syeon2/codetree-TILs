@@ -30,7 +30,7 @@ public class Main {
         else if (n == 1) ans[n] = 2;
         else if (n == 2) ans[n] = 7;
         else {
-            ans[n] = ((2 * dp(n - 1)) % MOD) + ((3 * dp(n - 2)) % MOD);
+            ans[n] = (((2 * dp(n - 1)) % MOD) + ((3 * dp(n - 2)) % MOD)) % MOD;
             
             for (int i = 0; i <= n - 3; i++) {
                 ans[n] = (((2 * dp(i)) % MOD) + ans[n]) % MOD;
