@@ -1,20 +1,35 @@
 import java.util.*;
 
 public class Main {
+
+    public static int N;
+    public static int[] ans;
+    public static boolean[] visited;
+
     public static void main(String[] args) {
         // 여기에 코드를 작성해주세요.
         Scanner sc = new Scanner(System.in);
 
-        int N = sc.nextInt();
+        N = sc.nextInt();
+        ans = new int[N + 1];
+        visited = new boolean[N + 1];
 
-        long[] list = new long[N + 1];
-        list[1] = 1;
-        if (N >= 2) list[2] = 3;
+        dp(N);
 
-        for (int i = 3; i <= N; i++) {
-            list[i] = (list[i - 1] + (2 * list[i - 2])) % 10007;
+        System.out.print(ans[N]);
+    }
+
+    public static int dp(int n) {
+        if (visited[n]) return ans[n];
+
+        visited[n] = true;
+
+        if (n == 1) ans[n] = 1;
+        else if (n == 2) ans[n] = 3;
+        else {
+            ans[n] = (dp(n - 1) + (2 * dp(n - 2))) % 10007;
         }
 
-        System.out.print(list[N]);
+        return ans[n];
     }
 }
