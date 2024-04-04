@@ -35,6 +35,6 @@ public class Main {
         }
 
         // 결과 출력
-        System.out.println(dp[n-1][n-1] - dp[0][0]);
+        System.out.println(Math.max(0, dp[n-1][n-1] - dp[0][0]));
     }
 }
