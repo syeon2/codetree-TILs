@@ -16,10 +16,13 @@ public class Main {
         ans = new long[N + 1];
         ans[1] = 2;
         if (N >= 2) ans[2] = 7;
-        if (N >= 3) ans[3] = 22;
 
-        for (int i = 4; i <= N; i++) {
-            ans[i] = (2 * ans[i - 1]) % MOD + ((ans[i - 2] * ans[i - 1]) % MOD) - ((ans[i - 2] * 3) % MOD) % MOD;
+        for (int i = 3; i <= N; i++) {
+            ans[i] = ((2 * ans[i - 1] % MOD) + ((3 * ans[i - 2]) % MOD)) % MOD;
+
+            for (int j = 1; j <= i - 3; j++) {
+                ans[i] = (ans[i] + ((2 * ans[j]) % MOD)) % MOD;
+            }
         }
 
         System.out.print(ans[N]);
