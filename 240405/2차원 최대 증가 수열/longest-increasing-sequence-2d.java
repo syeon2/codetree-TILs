@@ -27,7 +27,7 @@ public class Main {
 
                 for (int r2 = 0; r2 < r1; r2++) {
                     for (int c2 = 0; c2 < c1; c2++) {
-                        if (target > board[r2][c2]) {
+                        if (target > board[r2][c2] && memo[r2][c2] != 0) {
                             max = Math.max(max, memo[r2][c2] + 1);
                         }
                     }
