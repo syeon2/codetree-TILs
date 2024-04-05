@@ -13,9 +13,9 @@ public class Main {
         if (N >= 2) list[2] = 2;
 
         for (int i = 3; i <= N; i++) {
-            list[i] = list[i - 1] + list[i - 2];
+            list[i] = (list[i - 1] + list[i - 2]) % 10007;
 
-            if (i >= 5) list[i] += list[i - 5];
+            if (i >= 5) list[i] = (list[i] + list[i - 5]) % 10007;
         }
 
         System.out.print(list[N]);
