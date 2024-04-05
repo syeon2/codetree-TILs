@@ -17,7 +17,7 @@ public class Main {
 
     public static int recur(int n, int cnt) {
         if (memo[n] != 0) return memo[n];
-
+        
         if (n == 0) return cnt;
         else if (n < 0) return 100000;
 
@@ -25,7 +25,7 @@ public class Main {
 
         int result = 100001;
 
-        for (int i = 1; i <= sqrt; i++) {
+        for (int i = sqrt; i >= 1; i--) {
             int num = i * i;
 
             result = Math.min(result, recur(n - num, cnt + 1));
