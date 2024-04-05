@@ -14,7 +14,7 @@ public class Main {
         }
 
         int[] list = new int[M + 1];
-        Arrays.fill(list, Integer.MAX_VALUE);
+        Arrays.fill(list, 10001);
 
         list[0] = 0;
 
@@ -26,7 +26,7 @@ public class Main {
             }
         }
 
-        if (list[M] == Integer.MAX_VALUE) System.out.print(-1);
+        if (list[M] == 10001) System.out.print(-1);
         else System.out.print(list[M]);
     }
 }
