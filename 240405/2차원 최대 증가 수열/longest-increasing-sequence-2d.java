@@ -8,18 +8,18 @@ public class Main {
         int N = sc.nextInt();
         int M = sc.nextInt();
 
-        int[][] board = new int[N][N];
-        int[][] memo = new int[N][N];
+        int[][] board = new int[N][M];
+        int[][] memo = new int[N][M];
         memo[0][0] = 1;
 
         for (int i = 0; i < N; i++) {
-            for (int k = 0; k < N; k++) {
+            for (int k = 0; k < M; k++) {
                 board[i][k] = sc.nextInt();
             }
         }
 
         for (int r1 = 1; r1 < N; r1++) {
-            for (int c1 = 1; c1 < N; c1++) {
+            for (int c1 = 1; c1 < M; c1++) {
 
                 int target = board[r1][c1];
 
@@ -39,7 +39,7 @@ public class Main {
 
         int max = 0;
         for (int i = 0; i < N; i++) {
-            for (int k = 0; k < N; k++) {
+            for (int k = 0; k < M; k++) {
                 max = Math.max(max, memo[i][k]);
             }
         }
