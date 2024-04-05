@@ -5,7 +5,7 @@ public class Main {
     public static int N;
     public static int[] list;
     public static int[] memo;
-    
+
     public static void main(String[] args) {
         // 여기에 코드를 작성해주세요.
         Scanner sc = new Scanner(System.in);
@@ -22,7 +22,7 @@ public class Main {
 
         int ans = 0;
         for (int i = 0; i < N; i++) {
-            ans = Math.max(ans, memo[i]);
+            ans = Math.max(ans, dp(i));
         }
 
         System.out.print(ans);
