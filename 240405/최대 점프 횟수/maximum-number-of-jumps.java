@@ -7,28 +7,29 @@ public class Main {
 
         int N = sc.nextInt();
         int[] list = new int[N];
+        boolean[] fromFirst = new boolean[N];
         for (int i = 0; i < N; i++) {
             list[i] = sc.nextInt();
         }
 
         int[] memo = new int[N];
+        fromFirst[0] = true;
 
         for (int i = 1; i < N; i++) {
 
-            int cnt = 0;
-
+            int max = 0;
             for (int k = 0; k < i; k++) {
-                if (k + list[k] >= i) cnt = Math.max(cnt, memo[k] + 1);
+                if (k + list[k] >= i && fromFirst[k]) {
+                    max = Math.max(max, memo[k] + 1);
+                }
             }
 
-            memo[i] = cnt;
+            if (max != 0) {
+                memo[i] = max;
+                fromFirst[i] = true;
+            }
         }
 
-        int ans = 0;
-        for (int i = 0; i < N; i++) {
-            ans = Math.max(ans, memo[i]);
-        }
-
-        System.out.print(ans);
+        System.out.print(memo[N - 1]);
     }
 }
