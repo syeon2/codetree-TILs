@@ -14,15 +14,15 @@ public class Main {
         }
 
         int[] list = new int[M + 1];
-        Arrays.fill(list, Integer.MAX_VALUE);
+        Arrays.fill(list, -1);
 
         list[0] = 0;
 
         for (int i = 1; i <= M; i++) {
-            int min = Integer.MAX_VALUE;
+            int min = 100000;
 
             for (int k = 0; k < N; k++) {
-                if (i - coin[k] >= 0 && list[i - coin[k]] != Integer.MAX_VALUE) {
+                if (i - coin[k] >= 0 && list[i - coin[k]] != -1) {
                     min = Math.min(min, list[i - coin[k]]);
                 }
             }
@@ -30,7 +30,6 @@ public class Main {
             list[i] = min + 1;
         }
 
-        if (list[M] == Integer.MAX_VALUE) System.out.print(-1);
-        else System.out.print(list[M]);
+        System.out.print(list[M]);
     }
 }
