@@ -39,6 +39,8 @@ public class Main {
     }
 
     public static boolean isNotCross(int[] a, int[] b) {
+        if ((a[0] <= b[0] && a[1] >= b[1]) || (b[0] <= a[0] && b[1] >= a[1])) return false;
+        
         if ((a[1] < b[0] && a[1] < b[1]) || (b[1] < a[0] && b[1] < a[1])) return true;
 
         return false;
