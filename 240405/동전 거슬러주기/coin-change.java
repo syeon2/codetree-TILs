@@ -14,7 +14,7 @@ public class Main {
         }
 
         int[] list = new int[M + 1];
-        Arrays.fill(list, -1);
+        Arrays.fill(list, Integer.MAX_VALUE);
 
         list[0] = 0;
 
