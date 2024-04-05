@@ -30,6 +30,11 @@ public class Main {
             }
         }
 
-        System.out.print(memo[N - 1]);
+        int ans = 0;
+        for (int i = 0; i < N; i++) {
+            ans = Math.max(ans, memo[i]);
+        }
+
+        System.out.print(ans);
     }
 }
