@@ -29,7 +29,7 @@ public class Main {
     }
 
     public static int dp(int n) {
-        if (memo[n] == 1) return memo[n];
+        if (memo[n] != 0) return memo[n];
 
         if (n == 0) memo[n] = 1;
         else {
