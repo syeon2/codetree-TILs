@@ -14,23 +14,19 @@ public class Main {
         }
 
         int[] list = new int[M + 1];
-        Arrays.fill(list, -1);
+        Arrays.fill(list, Integer.MAX_VALUE);
 
         list[0] = 0;
 
         for (int i = 1; i <= M; i++) {
-            int min = -1;
-
             for (int k = 0; k < N; k++) {
-                if (i - coin[k] >= 0 && list[i - coin[k]] != -1) {
-                    if (min == -1) min = list[i - coin[k]] + 1;
-                    else min = Math.min(min, list[i - coin[k]] + 1);
+                if (i - coin[k] >= 0) {
+                    list[i] = Math.min(list[i], list[i - coin[k]] + 1);
                 }
             }
-
-            list[i] = min;
         }
 
-        System.out.print(list[M]);
+        if (list[M] == Integer.MAX_VALUE) System.out.print(-1);
+        else System.out.print(list[M]);
     }
 }
