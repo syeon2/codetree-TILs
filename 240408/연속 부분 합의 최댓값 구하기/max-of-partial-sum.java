@@ -16,7 +16,7 @@ public class Main {
 
         for (int i = 1; i < N; i++) {
             if (memo[i - 1] + list[i] < 0) memo[i] = list[i];
-            else memo[i]  = memo[i - 1] + list[i];
+            else memo[i]  = Math.max(list[i], memo[i - 1] + list[i]);
         }
 
         int ans = Integer.MIN_VALUE;
