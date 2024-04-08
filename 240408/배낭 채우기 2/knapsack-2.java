@@ -18,19 +18,21 @@ public class Main {
         }
 
         int[] memo = new int[M + 1];
-        Arrays.fill(memo, -1);
         memo[0] = 0;
 
         for (int i = 0; i < N; i++) {
             int targetWeight = jewels[i][0];
             int targetValue = jewels[i][1];
 
-            for (int k = M; k >= 0; k--) {
-                if (k >= targetWeight) {
-                    if (memo[k - targetWeight] != -1) {
-                        memo[k] = Math.max(memo[k], memo[k - targetWeight] + targetValue);
-                    } else if (k % targetWeight == 0) {
-                        memo[k] = Math.max(memo[k], targetValue * (k / targetWeight));
+            for (int k = 1; k <= M; k++) {
+                if (k - targetWeight >= 0) {
+                    if (k % targetWeight == 0) {
+                        memo[k] = Math.max(memo[k],
+                                Math.max(targetValue * (k / targetWeight),
+                                        targetValue + memo[k - targetWeight])
+                        );
+                    } else {
+                        memo[k] = Math.max(memo[k], targetValue + memo[k - targetWeight]);
                     }
                 }
             }
