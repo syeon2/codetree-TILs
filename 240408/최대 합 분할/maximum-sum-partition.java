@@ -35,7 +35,9 @@ public class Main {
             if (memo[i] != -1) {
                 int a = memo[i];
 
-                if (memo[(M - a) / 2] != -1) ans = Math.max(ans, memo[(M - a) / 2]);
+                if ((M - a) % 2 == 0) {
+                    if (memo[(M - a) / 2] != -1) ans = Math.max(ans, memo[(M - a) / 2]);
+                }
             }
         }
 
