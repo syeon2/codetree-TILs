@@ -18,7 +18,6 @@ public class Main {
         }
 
         int[] memo = new int[M + 1];
-        Arrays.fill(memo, -1);
         memo[0] = 0;
 
         for (int i = 0; i < N; i++) {
@@ -28,10 +27,10 @@ public class Main {
             for (int k = 1; k <= M; k++) {
                 if (k - targetWeight >= 0) {
                     if (k % targetWeight == 0) {
-                        memo[k] = Math.max(memo[k], 
-                            Math.max(targetValue * (k / targetWeight),
-                            targetValue + memo[k - targetWeight])
-                            );
+                        memo[k] = Math.max(memo[k],
+                                Math.max(targetValue * (k / targetWeight),
+                                        targetValue + memo[k - targetWeight])
+                        );
                     } else {
                         memo[k] = Math.max(memo[k], targetValue + memo[k - targetWeight]);
                     }
@@ -40,7 +39,7 @@ public class Main {
         }
 
         int ans = 0;
-        for (int i = 0; i < M; i++) {
+        for (int i = 0; i <= M; i++) {
             ans = Math.max(ans, memo[i]);
         }
 
