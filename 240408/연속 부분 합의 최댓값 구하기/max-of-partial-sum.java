@@ -19,7 +19,7 @@ public class Main {
             else memo[i]  = memo[i - 1] + list[i];
         }
 
-        int ans = 0;
+        int ans = Integer.MIN_VALUE;
         for (int i = 0; i < N; i++) {
             ans = Math.max(ans, memo[i]);
         }
