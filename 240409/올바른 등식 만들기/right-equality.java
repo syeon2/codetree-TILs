@@ -16,13 +16,12 @@ public class Main {
             list[i] = sc.nextInt();
         }
 
-        int[][] memo = new int[N][41];
+        long[][] memo = new long[N][41];
 
         memo[0][list[0] + OFFSET]++;
         memo[0][(list[0] * -1) + OFFSET]++;
 
         for (int i = 1; i < N; i++) {
-
             int value = list[i];
 
             for (int k = 0; k <= 40; k++) {
