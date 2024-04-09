@@ -13,12 +13,12 @@ public class Main {
             list[i] = sc.nextInt();
         }
 
-        int[][] memo = new int[N + 1][K + 1];
+        long[][] memo = new long[N + 1][K + 1];
         for (int i = 0; i <= N; i++) {
             Arrays.fill(memo[i], Integer.MIN_VALUE);
         }
         memo[0][0] = 0;
-        
+
         for (int i = 1; i <= N; i++) {
             int value = list[i];
 
@@ -31,7 +31,7 @@ public class Main {
             }
         }
 
-        int ans = Integer.MIN_VALUE;
+        long ans = Integer.MIN_VALUE;
 
         for (int i = 0; i <= N; i++) {
             for (int k = 0; k <= K; k++) {
