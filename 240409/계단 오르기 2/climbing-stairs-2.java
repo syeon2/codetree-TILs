@@ -22,10 +22,10 @@ public class Main {
         memo[2][2] = memo[1][1] + list[2];
 
         for (int i = 3; i <= N; i++) {
-            
+
             for (int k = 0; k <= 3; k++) {
-                if (k == 0 && i % 2 == 0) memo[i][k] = memo[i - 2][k] + list[i];
-                else if (k >= 1 && memo[i - 1][k - 1] != -1) memo[i][k] = memo[i - 1][k - 1] + list[i];
+                if (memo[i - 2][k] != -1) memo[i][k] = memo[i - 2][k] + list[i];
+                if (k >= 1 && memo[i - 1][k - 1] != -1) memo[i][k] = Math.max(memo[i][k], memo[i - 1][k - 1] + list[i]);
             }
         }
 
