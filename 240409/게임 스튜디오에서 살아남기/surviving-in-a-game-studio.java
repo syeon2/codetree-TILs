@@ -25,7 +25,9 @@ public class Main {
 
         for (int i = 3; i <= N; i++) {
             memo[i][0] = (memo[i - 1][0] + memo[i - 1][1]) % MOD;
-            memo[i][1] = (memo[i - 1][0] + (memo[i - 1][1] - memo[i - 2][1])) % MOD;
+            if (memo[i - 1][1] < memo[i - 2][1]) {
+                memo[i][1] = (memo[i - 1][0] + ((memo[i - 1][1] * MOD) - memo[i - 2][1]) % MOD) % MOD;
+            } else memo[i][1] = (memo[i - 1][0] + (memo[i - 1][1] - memo[i - 2][1])) % MOD;
             memo[i][2] = ((memo[i - 1][0] + memo[i - 1][1]) % MOD + (memo[i - 1][2] * 2) % MOD) % MOD;
             memo[i][3] = ((memo[i - 1][3] * 2) % MOD + memo[i - 1][2]) % MOD;
         }
