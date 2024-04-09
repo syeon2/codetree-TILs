@@ -18,8 +18,8 @@ public class Main {
 
         int[][] memo = new int[N][41];
 
-        memo[0][list[0] + OFFSET] = 1;
-        memo[0][(list[0] * -1) + OFFSET] = 1;
+        memo[0][list[0] + OFFSET]++;
+        memo[0][(list[0] * -1) + OFFSET]++;
 
         for (int i = 1; i < N; i++) {
 
@@ -27,16 +27,12 @@ public class Main {
 
             for (int k = 0; k <= 40; k++) {
                 if (memo[i - 1][k] > 0) {
-                    if (k - value >= 0 && memo[i][k - value] == 0) memo[i][k - value] = memo[i - 1][k];
-                    else if (k - value >= 0) memo[i][k - value]++;
-
-                    if (k + value <= 40 && memo[i][k + value] == 0) memo[i][k + value] = memo[i - 1][k];
-                    else if (k + value <= 40) memo[i][k + value]++;
+                    if (k - value >= 0) memo[i][k - value] += memo[i - 1][k];
+                    if (k + value <= 40) memo[i][k + value] += memo[i - 1][k];
                 }
             }
         }
 
         System.out.print(memo[N - 1][M + OFFSET]);
     }
-
 }
