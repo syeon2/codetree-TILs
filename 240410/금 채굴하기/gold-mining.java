@@ -23,47 +23,31 @@ public class Main {
 
         for (int r = 0; r < N; r++) {
             for (int c = 0; c < N; c++) {
-                int cnt = getGoldCnt(c, r);
 
-                ans = Math.max(ans, cnt);
+                for (int k = 0; k <= N; k++) {
+                    int cnt = getGoldCnt(c, r, k);
+
+                    if ((cnt * M) >= getCost(k)) ans = Math.max(ans, cnt);
+                }
             }
         }
 
         System.out.print(ans);
     }
 
-    public static int getGoldCnt(int x, int y) {
-        int maxCnt = 0;
+    public static int getGoldCnt(int x, int y, int k) {
+        int cnt = 0;
 
-        for (int i = 0; i <= N; i++) {
-            int K = i;
-
-            int cost = (K * K) + ((K + 1) * (K + 1));
-            int cnt = 0;
-
-            for (int k = 0; k <= K; k++) {
-                if (k == 0) {
-                    for (int j = x - K; j <= x + K; j++) {
-                        if (isRange(j, y)) cnt += board[y][j];
-                    }
-                } else {
-                    int y1 = y - k;
-                    int y2 = y + k;
-
-                    for (int j = x - (K - k); j <= x + (K - k); j++) {
-                        if (isRange(j, y1)) cnt += board[y1][j];
-                        if (isRange(j, y2)) cnt += board[y2][j];
-                    }
-                }
+        for (int r = 0; r < N; r++) {
+            for (int c = 0; c < N; c++) {
+                if (Math.abs(x - c) + Math.abs(y - r) <= k) cnt += board[r][c];
             }
-
-            if ((cnt * M) >= cost) maxCnt = Math.max(maxCnt, cnt);
         }
 
-        return maxCnt;
+        return cnt;
     }
 
-    public static boolean isRange(int x, int y) {
-        return x >= 0 && x < N && y >= 0 && y < N;
+    public static int getCost(int k) {
+        return ((k * k) + ((k + 1) * (k + 1)));
     }
 }
