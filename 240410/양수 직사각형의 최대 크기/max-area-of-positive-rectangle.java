@@ -43,7 +43,7 @@ public class Main {
 
         for (int i = y1; i <= y2; i++) {
             for (int k = x1; k <= x2; k++) {
-                if (board[i][k] == -1) return -1;
+                if (board[i][k] < 0) return -1;
 
                 cnt++;
             }
