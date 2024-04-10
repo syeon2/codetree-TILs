@@ -21,16 +21,15 @@ public class Main {
             int value = 0;
 
             for (int k = 0; k < N; k++) {
-                if (board[i][k] == value) {
-                    cnt++;
-
-                    if (cnt == M) {
-                        ans++;
-                        break;
-                    }
-                } else {
+                if (board[i][k] == value) cnt++;
+                else {
                     value = board[i][k];
                     cnt = 1;
+                }
+
+                if (cnt == M) {
+                    ans++;
+                    break;
                 }
             }
 
@@ -38,16 +37,15 @@ public class Main {
             value = 0;
 
             for (int k = 0; k < N; k++) {
-                if (board[k][i] == value) {
-                    cnt++;
-
-                    if (cnt == M) {
-                        ans++;
-                        break;
-                    }
-                } else {
-                    value = board[i][k];
+                if (board[k][i] == value) cnt++;
+                else {
+                    value = board[k][i];
                     cnt = 1;
+                }
+
+                if (cnt == M) {
+                    ans++;
+                    break;
                 }
             }
         }
