@@ -6,7 +6,7 @@ public class Main {
     public static int M;
     public static int[][] board;
 
-    public static int[] dx = {-1, 1, 1, -1};
+    public static int[] dx = {-1, -1, 1, 1};
     public static int[] dy = {1, 1, -1, -1};
 
     public static void main(String[] args) {
@@ -26,10 +26,11 @@ public class Main {
 
         for (int r = 0; r < N; r++) {
             for (int c = 0; c < N; c++) {
+                int cnt = 0;
 
                 for (int k = 0; k <= N; k++) {
-                    int cnt = getGoldCnt(c, r, k);
-
+                    cnt += getGoldCnt(c, r, k);
+                    
                     if ((cnt * M) >= getCost(k)) ans = Math.max(ans, cnt);
                 }
             }
@@ -39,26 +40,22 @@ public class Main {
     }
 
     public static int getGoldCnt(int x, int y, int k) {
-        if (k == 0) return board[y][x];
+        int cnt = 0;
 
-        int cnt = board[y][x];
+        int curX = x;
+        int curY = y - k;
 
-        for (int i = 1; i <= k; i++) {
-            int curX = x;
-            int curY = y - i;
+        for (int i = 0; i < 4; i++) {
+            int temp = k;
 
-            for (int j = 0; j < 4; j++) {
-                int temp = i;
+            while (temp-- > 0) {
+                int nx = curX + dx[i];
+                int ny = curY + dy[i];
 
-                while (temp-- > 0) {
-                    int nx = curX + dx[j];
-                    int ny = curY + dy[j];
+                if (isRange(nx, ny)) cnt += board[ny][nx];
 
-                    if (isRange(nx, ny)) cnt += board[ny][nx];
-
-                    curX = nx;
-                    curY = ny;
-                }
+                curX = nx;
+                curY = ny;
             }
         }
 
