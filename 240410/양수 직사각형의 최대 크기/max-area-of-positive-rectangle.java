@@ -14,7 +14,7 @@ public class Main {
         M = sc.nextInt();
         board = new int[N][M];
         for (int i = 0; i < N; i++) {
-            for (int k = 0; k < N; k++) {
+            for (int k = 0; k < M; k++) {
                 board[i][k] = sc.nextInt();
             }
         }
@@ -22,10 +22,10 @@ public class Main {
         int ans = -1;
 
         for (int y1 = 0; y1 < N; y1++) {
-            for (int x1 = 0; x1 < N; x1++) {
+            for (int x1 = 0; x1 < M; x1++) {
 
                 for (int y2 = y1; y2 < N; y2++) {
-                    for (int x2 = x1; x2 < N; x2++) {
+                    for (int x2 = x1; x2 < M; x2++) {
 
                         int sum = getSum(x1, y1, x2, y2);
 
