@@ -6,7 +6,7 @@ public class Main {
     public static int M;
     public static int[][] board;
 
-    public static int[] dx = {-1, -1, 1, 1};
+    public static int[] dx = {-1, 1, 1, -1};
     public static int[] dy = {1, 1, -1, -1};
 
     public static void main(String[] args) {
@@ -30,7 +30,7 @@ public class Main {
 
                 for (int k = 0; k <= N; k++) {
                     cnt += getGoldCnt(c, r, k);
-                    
+
                     if ((cnt * M) >= getCost(k)) ans = Math.max(ans, cnt);
                 }
             }
@@ -40,6 +40,8 @@ public class Main {
     }
 
     public static int getGoldCnt(int x, int y, int k) {
+        if (k == 0) return board[y][x];
+
         int cnt = 0;
 
         int curX = x;
