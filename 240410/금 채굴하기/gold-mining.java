@@ -27,7 +27,7 @@ public class Main {
         for (int r = 0; r < N; r++) {
             for (int c = 0; c < N; c++) {
 
-                for (int k = 0; k < N; k++) {
+                for (int k = 0; k <= N; k++) {
                     int cnt = getGoldCnt(c, r, k);
 
                     if ((cnt * M) >= getCost(k)) ans = Math.max(ans, cnt);
