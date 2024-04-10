@@ -48,10 +48,7 @@ public class Main {
                 int ny = y + dy[i][k];
 
                 if (isRange(nx, ny)) sum += board[ny][nx];
-                else {
-                    flag = false;
-                    break;
-                }
+                else flag = false;
             }
 
             if (flag) result = Math.max(result, sum);
