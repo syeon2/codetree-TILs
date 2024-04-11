@@ -31,37 +31,32 @@ public class Main {
             blowWind(col, direc);
 
             // 아래로
-            int cnt = 1;
+            int cnt = 0;
             int tempDown = col;
             while (checkRow(tempDown, tempDown + 1)) {
                 tempDown++;
+                cnt++;
+
                 if (cnt % 2 == 0) blowWind(tempDown, direc);
                 else {
-                    char d = direc;
-                    if (direc == 'L') d = 'R';
-                    else direc = 'L';
+                    char d = (direc == 'L') ? 'R' : 'L';
 
                     blowWind(tempDown, d);
                 }
-
-                cnt++;
             }
 
-            cnt = 1;
+            cnt = 0;
             int tempUp = col;
             while (checkRow(tempUp, tempUp - 1)) {
                 tempUp--;
+                cnt++;
 
                 if (cnt % 2 == 0) blowWind(tempUp, direc);
                 else {
-                    char d = direc;
-                    if (direc == 'L') d = 'R';
-                    else direc = 'L';
+                    char d = (direc == 'L') ? 'R' : 'L';
 
                     blowWind(tempUp, d);
                 }
-
-                cnt++;
             }
         }
 
