@@ -40,7 +40,7 @@ public class Main {
                 }
             }
 
-            if (N - idx >= M) {
+            if (N - idx + 1>= M) {
                 for (int i = idx; i < N; i++) {
                     list[i] = 0;
                 }
@@ -58,6 +58,13 @@ public class Main {
             N = idx;
         }
 
-        System.out.print(N);
+        StringBuilder sb = new StringBuilder();
+        sb.append(N).append("\n");
+
+        for (int i = 0; i < N; i++) {
+            sb.append(list[i]).append("\n");
+        }
+
+        System.out.print(sb);
     }
 }
