@@ -8,22 +8,22 @@ public class Main {
         int N = sc.nextInt();
         int T = sc.nextInt();
 
-        int[] aList = new int[3];
-        int[] bList = new int[3];
+        int[] aList = new int[N];
+        int[] bList = new int[N];
 
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < N; i++) {
             aList[i] = sc.nextInt();
         }
 
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < N; i++) {
             bList[i] = sc.nextInt();
         }
 
         while (T-- > 0) {
-            int tempA = aList[2];
-            int tempB = bList[2];
+            int tempA = aList[N - 1];
+            int tempB = bList[N - 1];
 
-            for (int i = 2; i >= 1; i--) {
+            for (int i = N - 1; i >= 1; i--) {
                 aList[i] = aList[i - 1];
                 bList[i] = bList[i - 1];
             }
@@ -33,11 +33,11 @@ public class Main {
         }
 
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < N; i++) {
             sb.append(aList[i]).append(" ");
         }
         sb.append("\n");
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < N; i++) {
             sb.append(bList[i]).append(" ");
         }
 
