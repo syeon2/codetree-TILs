@@ -21,16 +21,18 @@ public class Main {
             int start = sc.nextInt() - 1;
             int end = sc.nextInt() - 1;
 
-            total -= (end - start + 1);
+            int cutLen = (end - start + 1);
 
-            for (int k = 0; k < 100; k++) {
-                list[k + start] = list[k + end + 1];
+            for (int k = end + 1; k < total; k++) {
+                list[k - cutLen] = list[k];
             }
+
+            total -= cutLen;
         }
 
         StringBuilder sb = new StringBuilder();
         sb.append(total).append("\n");
-        
+
         for (int i = 0; i < total; i++) {
             sb.append(list[i]).append("\n");
         }
