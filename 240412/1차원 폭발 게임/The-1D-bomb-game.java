@@ -40,7 +40,7 @@ public class Main {
                 }
             }
 
-            if (N - idx + 1>= M) {
+            if (N - idx >= M) {
                 for (int i = idx; i < N; i++) {
                     list[i] = 0;
                 }
