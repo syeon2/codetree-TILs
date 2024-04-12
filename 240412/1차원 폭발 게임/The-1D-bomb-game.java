@@ -15,52 +15,60 @@ public class Main {
         M = sc.nextInt();
 
         list = new int[N];
+        for (int i = 0; i < N; i++) {
+            list[i] = sc.nextInt();
+        }
 
-        boolean bombed = true;
+        boolean bomed = true;
 
-        while (bombed) {
-            bombed = false;
+        while (bomed) {
+            if (N == 0) break;
+            
+            bomed = false;
 
-            int idx = 0;
-            int value = list[0];
+            int prev = 0;
+            int v = list[0];
+
+            int cnt = 0;
 
             for (int i = 1; i < N; i++) {
-                if (list[i] == value) continue;
+                if (v == list[i]) continue;
                 else {
-                    if (i - idx >= M) {
-                        for (int k = idx; k < i; k++) {
+                    if (i - prev >= M) {
+                        for (int k = prev; k < i; k++) {
                             list[k] = 0;
+                            cnt++;
                         }
 
-                        bombed = true;
+                        prev = i;
+                        v = list[i];
+                        bomed = true;
                     }
-
-                    idx = i;
-                    value = list[i];
                 }
             }
 
-            if (N - idx >= M) {
-                for (int i = idx; i < N; i++) {
+            if (N - prev >= M) {
+                for (int i = prev; i < N; i++) {
                     list[i] = 0;
+                    cnt++;
                 }
-
-                bombed = true;
+                bomed = true;
             }
 
-            int[] memo = new int[101];
-            idx = 0;
-            for (int i = 0; i < N; i++) {
-                if (list[i] > 0) memo[idx++] = list[i];
+            N -= cnt;
+            int[] memo = new int[N];
+
+            int idx = 0;
+            for (int i = 0; i < list.length; i++) {
+                if (list[i] == 0) continue;
+                else memo[idx++] = list[i];
             }
 
             list = memo;
-            N = idx;
         }
 
         StringBuilder sb = new StringBuilder();
         sb.append(N).append("\n");
-
         for (int i = 0; i < N; i++) {
             sb.append(list[i]).append("\n");
         }
