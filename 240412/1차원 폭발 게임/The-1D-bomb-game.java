@@ -22,13 +22,17 @@ public class Main {
         do {
             bombed = false;
 
-            for (int i = 0; i < N; i++) {
-                int endIdx = findEndValue(i);
+            int startIdx = 0;
 
-                if (endIdx - i + 1 >= M) {
-                    checkBomb(i, endIdx);
+            while (startIdx < N) {
+                int endIdx = findEndValue(startIdx);
+
+                if (endIdx - startIdx + 1 >= M) {
+                    checkBomb(startIdx, endIdx);
                     bombed = true;
                 }
+
+                startIdx = endIdx + 1;
             }
 
             sorted();
