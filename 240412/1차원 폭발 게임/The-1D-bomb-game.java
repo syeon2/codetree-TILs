@@ -23,7 +23,7 @@ public class Main {
 
         while (bomed) {
             if (N == 0) break;
-            
+
             bomed = false;
 
             int prev = 0;
@@ -43,6 +43,9 @@ public class Main {
                         prev = i;
                         v = list[i];
                         bomed = true;
+                    } else {
+                        prev = i;
+                        v = list[i];
                     }
                 }
             }
@@ -52,6 +55,7 @@ public class Main {
                     list[i] = 0;
                     cnt++;
                 }
+
                 bomed = true;
             }
 
