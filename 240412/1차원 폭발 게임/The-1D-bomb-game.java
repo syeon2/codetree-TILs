@@ -30,9 +30,7 @@ public class Main {
                 if (endIdx - startIdx + 1 >= M) {
                     checkBomb(startIdx, endIdx);
                     bombed = true;
-                }
-
-                startIdx = endIdx + 1;
+                } else startIdx = endIdx + 1;
             }
 
         } while (bombed);
