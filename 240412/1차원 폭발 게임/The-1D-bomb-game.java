@@ -35,7 +35,6 @@ public class Main {
                 startIdx = endIdx + 1;
             }
 
-            sorted();
         } while (bombed);
 
         StringBuilder sb = new StringBuilder();
@@ -48,31 +47,17 @@ public class Main {
         System.out.print(sb.toString());
     }
 
-    public static void sorted() {
-        int idx = 0;
-
-        int[] memo = new int[N];
-        for (int i = 0; i < N; i++) {
-            if (list[i] != 0) memo[idx++] = list[i];
-        }
-
-        int[] temp = new int[idx];
-        for (int i = 0; i < idx; i++) {
-            temp[i] = memo[i];
-        }
-
-        list = temp;
-        N = idx;
-    }
-
     public static void checkBomb(int start, int end) {
-        for (int i = start; i <= end; i++) {
-            list[i] = 0;
+        int cutLen = end - start + 1;
+
+        for (int i = end + 1; i < N; i++) {
+            list[i - cutLen] = list[i];
         }
+
+        N -= cutLen;
     }
 
     public static int findEndValue(int start) {
-
         int value = list[start];
         int endIdx = start + 1;
 
