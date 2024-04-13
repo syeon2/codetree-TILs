@@ -53,7 +53,7 @@ public class Main {
                 }
             } else {
                 for (int k = i - 1; k >= 0; k--) {
-                    if (board[i][col] != 0 && board[k][col] == board[i][col]) {
+                    if (board[k][col] != 0 && board[k][col] == board[i][col]) {
                         board[i][col] *= 2;
                         board[k][col] = 0;
                         break;
