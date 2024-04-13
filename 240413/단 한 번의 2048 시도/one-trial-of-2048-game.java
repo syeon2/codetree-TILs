@@ -48,6 +48,7 @@ public class Main {
                     if (board[k][col] != 0) {
                         board[i][col] = board[k][col];
                         board[k][col] = 0;
+                        i++;
                         break;
                     }
                 }
