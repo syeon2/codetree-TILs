@@ -25,12 +25,18 @@ public class Main {
         }
 
         while (K-- > 0) {
-            bomb();
+            for (int c = 0; c < N; c++) {
+                bomb(c);
+            }
             turnRight();
 
             for (int c = 0; c < N; c++) {
                 drop(c);
             }
+        }
+
+        for (int c = 0; c < N; c++) {
+            bomb(c);
         }
 
         int ans = 0;
@@ -48,37 +54,39 @@ public class Main {
 
         for (int r = 0; r < N; r++) {
             for (int c = 0; c < N; c++) {
-                memo[r][c] = board[c][N - 1 - r];
+                memo[r][c] = board[N - 1 - c][r];
             }
         }
 
         board = memo;
     }
 
-    public static void bomb() {
-        for (int c = 0; c < N; c++) {
-            boolean bombed = true;
+    public static void bomb(int col) {
+        boolean bombed = true;
 
-            while (bombed) {
-                bombed = false;
+        while (bombed) {
+            bombed = false;
 
-                for (int r = 0; r < N; r++) {
-                    if (board[r][c] == 0) continue;
-
-                    int start = r;
-                    int end = getEndIdx(c, r);
+            int idx = 0;
+            while (idx < N) {
+                if (board[idx][col] == 0) idx++;
+                else {
+                    int start = idx;
+                    int end = getEndIdx(col, idx);
 
                     if (end - start >= M) {
                         for (int i = start; i < end; i++) {
-                            board[i][c] = 0;
+                            board[i][col] = 0;
                         }
 
                         bombed = true;
                     }
-                }
 
-                drop(c);
+                    idx = end;
+                }
             }
+
+            drop(col);
         }
     }
 
