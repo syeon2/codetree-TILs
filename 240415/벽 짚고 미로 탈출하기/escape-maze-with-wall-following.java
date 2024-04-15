@@ -40,12 +40,13 @@ public class Main {
             int nx = curX + dx[curDirec];
             int ny = curY + dy[curDirec];
 
-            if (isRange(nx, ny) && memo[ny][nx] == 2) {
+            if (isRange(nx, ny) && memo[ny][nx] == 5) {
                 trapped = true;
                 break;
             }
 
             if (isRange(nx, ny) && board[ny][nx] == '#') {
+                memo[ny][nx]++;
                 curDirec = turnDirec(curDirec);
             } else if (isRange(nx, ny) && board[ny][nx] == '.') {
                 int rightDirec = turnDirecRight(curDirec);
