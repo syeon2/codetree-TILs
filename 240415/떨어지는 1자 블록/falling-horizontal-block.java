@@ -27,15 +27,12 @@ public class Main {
 
         for (int r = 0; r < N; r++) {
             for (int c = (K - 1); c <= (K - 1) + M - 1; c++) {
-                if (board[r][c] != 0) {
+                if (r != 0) board[r - 1][c] = 0;
+                board[r][c] = 1;
+            }
 
-                    for (int i = (K - 1); i <= (K - 1) + M - 1; i++) {
-                        board[r - 1][i] = 1;
-                    }
-
-                    isDone = true;
-                    break;
-                }
+            for (int c = (K - 1); c <= (K - 1) + M - 1; c++) {
+                if (r == N || board[r + 1][c] != 0) isDone = true;
             }
 
             if (isDone) break;
