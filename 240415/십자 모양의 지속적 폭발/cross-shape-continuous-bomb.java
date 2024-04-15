@@ -1,14 +1,11 @@
 import java.util.*;
 
 public class Main {
-
-    public static int[] dx = {0, 1, 0, -1};
-    public static int[] dy = {-1, 0, 1, 0};
-
     public static int N;
     public static int M;
-
     public static int[][] board;
+
+    public static int[][] memo;
 
     public static void main(String[] args) {
         // 여기에 코드를 작성해주세요.
@@ -18,23 +15,27 @@ public class Main {
         M = sc.nextInt();
 
         board = new int[N][N];
+        memo = new int[N][N];
+
         for (int i = 0; i < N; i++) {
             for (int k = 0; k < N; k++) {
                 board[i][k] = sc.nextInt();
             }
         }
 
-        for (int m = 0; m < M; m++) {
+        while (M-- > 0) {
             int col = sc.nextInt() - 1;
+            int row = getBombedRow(col);
 
-            bomb(col);
-            drop();
+            if (row == -1) continue;
+
+            bomb(col, row);
         }
 
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < N; i++) {
-            for (int k = 0; k < N; k++) {
-                sb.append(board[i][k]).append(" ");
+        for (int r = 0; r < N; r++) {
+            for (int c = 0; c < N; c++) {
+                sb.append(board[r][c]).append(" ");
             }
 
             sb.append("\n");
@@ -43,51 +44,36 @@ public class Main {
         System.out.print(sb);
     }
 
+    public static void bomb(int x, int y) {
+        int range = board[y][x];
+
+        for (int r = 0; r < N; r++) {
+            for (int c = 0; c < N; c++) {
+                if ((r == y || c == x) && Math.abs(r - y) + Math.abs(c - x) < range) board[r][c] = 0;
+            }
+        }
+
+        drop();
+    } 
+
     public static void drop() {
         for (int c = 0; c < N; c++) {
+            int idx = N - 1;
+
             for (int r = N - 1; r >= 0; r--) {
-                if (board[r][c] != 0) continue;
-
-                for (int r2 = r - 1; r2 >= 0; r2--) {
-                    if (board[r2][c] == 0) continue;
-
-                    board[r][c] = board[r2][c];
-                    board[r2][c] = 0;
-                    break;
-                }
+                if (board[r][c] != 0) memo[idx--][c] = board[r][c];
             }
         }
+
+        board = memo;
+        memo = new int[N][N];
     }
 
-    public static void bomb(int col) {
+    public static int getBombedRow(int col) {
         for (int r = 0; r < N; r++) {
-            if (board[r][col] == 0) continue;
-
-            for (int i = 0; i < 4; i++) {
-                int curX = col;
-                int curY = r;
-
-                int cnt = board[r][col];
-                
-                while (cnt-- > 1) {
-                    int nx = curX + dx[i];
-                    int ny = curY + dy[i];
-
-                    if (isRange(nx, ny)) board[ny][nx] = 0;
-
-                    curX = nx;
-                    curY = ny;
-                }
-            }
-
-            board[r][col] = 0;
-            break;
+            if (board[r][col] != 0) return r;
         }
-    }
 
-    public static boolean isRange(int x, int y) {
-        if (x >= 0 && x < N && y >= 0 && y < N) return true;
-
-        return false;
+        return -1;
     }
 }
