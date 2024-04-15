@@ -48,7 +48,9 @@ public class Main {
             if (isRange(nx, ny) && board[ny][nx] == '#') {
                 curDirec = turnDirec(curDirec);
             } else if (isRange(nx, ny) && board[ny][nx] == '.') {
-                if (isRange(nx, ny + 1) && board[ny + 1][nx] == '.') curDirec = turnDirecRight(curDirec);
+                int rightDirec = turnDirecRight(curDirec);
+
+                if (isRange(nx + dx[rightDirec], ny + dy[rightDirec]) && board[nx + dx[rightDirec]][ny + dy[rightDirec]] == '.') curDirec = turnDirecRight(curDirec);
 
                 memo[ny][nx]++;
 
