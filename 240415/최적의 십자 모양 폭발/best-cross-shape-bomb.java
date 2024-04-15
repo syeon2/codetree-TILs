@@ -6,6 +6,7 @@ public class Main {
     public static int[] dy = {0, 1, 0, -1};
 
     public static int N;
+
     public static int[][] board;
     public static int[][] memo;
 
@@ -19,22 +20,18 @@ public class Main {
         board = new int[N][N];
         memo = new int[N][N];
 
-        for (int i = 0; i < N; i++) {
-            for (int k = 0; k < N; k++) {
-                board[i][k] = sc.nextInt();
+        for (int r = 0; r < N; r++) {
+            for (int c = 0; c < N; c++) {
+                board[r][c] = sc.nextInt();
             }
         }
 
         for (int r = 0; r < N; r++) {
             for (int c = 0; c < N; c++) {
-
                 initialize();
-
                 bomb(c, r);
 
-                for (int i = 0; i < N; i++) {
-                    drop(i);
-                }
+                drop();
 
                 checkPair();
             }
@@ -48,30 +45,31 @@ public class Main {
 
         for (int r = 0; r < N; r++) {
             for (int c = 0; c < N; c++) {
-                if (memo[r][c] == 0) continue;
+                int value = memo[r][c];
 
-                for (int i = 0; i < 2; i++) {
-                    int nx = c + dx[i];
-                    int ny = r + dy[i];
+                if (value == 0) continue;
 
-                    if (isRange(nx, ny) && memo[r][c] == memo[ny][nx] && (!isRange(nx + dx[i], ny + dy[i]) || (isRange(nx + dx[i], ny + dy[i]) && memo[r][c] != memo[ny + dy[i]][nx + dx[i]]))) temp++;
-                }
+                if (isRange(c, r + 1) && memo[r + 1][c] == value) temp++;
+                if (isRange(c + 1, r) && memo[r][c + 1] == value) temp++;
             }
         }
-    
+
         ans = Math.max(ans, temp);
     }
 
-    public static void drop(int col) {
-        int[] temp = new int[N];
+    public static void drop() {
+        for (int c = 0; c < N; c++) {
+            int[] temp = new int[N];
 
-        int idx = N - 1;
-        for (int r = N - 1; r >= 0; r--) {
-            if (memo[r][col] != 0) temp[idx--] = memo[r][col];
-        }
+            int idx = N - 1;
 
-        for (int r = 0; r < N; r++) {
-            memo[r][col] = temp[r];
+            for (int r = N - 1; r >= 0; r--) {
+                if (memo[r][c] != 0) temp[idx--] = memo[r][c];
+            }
+
+            for (int r = 0; r < N; r++) {
+                memo[r][c] = temp[r];
+            }
         }
     }
 
@@ -81,15 +79,25 @@ public class Main {
         return false;
     }
 
-    public static void bomb(int x, int y) {
-        for (int i = 0; i < 4; i++) {
-            int cnt = memo[y][x];
-            memo[y][x] = 0;
+    public static void initialize() {
+        for (int r = 0; r < N; r++) {
+            for (int c = 0; c < N; c++) {
+                memo[r][c] = board[r][c];
+            }
+        }
+    }
 
+    public static void bomb(int x, int y) {
+        int cnt = memo[y][x];
+        memo[y][x] = 0;
+
+        for (int i = 0; i < 4; i++) {
             int curX = x;
             int curY = y;
 
-            while (cnt-- > 1) {
+            int temp = cnt;
+
+            while (temp-- > 1) {
                 int nx = curX + dx[i];
                 int ny = curY + dy[i];
 
@@ -97,14 +105,6 @@ public class Main {
 
                 curX = nx;
                 curY = ny;
-            }
-        }
-    }
-
-    public static void initialize() {
-        for (int r = 0; r < N; r++) {
-            for (int c = 0; c < N; c++) {
-                memo[r][c] = board[r][c];
             }
         }
     }
