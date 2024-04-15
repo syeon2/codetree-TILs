@@ -2,37 +2,39 @@ import java.util.*;
 
 public class Main {
 
-    public static int N;
-    public static char[][] board;
-    public static int[][] memo;
-
     public static int[] dx = {1, 0, -1, 0};
     public static int[] dy = {0, -1, 0, 1};
+
+    public static int N;
+    public static int R;
+    public static int C;
+
+    public static char[][] board;
+    public static int[][] memo;
 
     public static void main(String[] args) {
         // 여기에 코드를 작성해주세요.
         Scanner sc = new Scanner(System.in);
 
         N = sc.nextInt();
-        int R = sc.nextInt() - 1;
-        int C = sc.nextInt() - 1;
+        R = sc.nextInt();
+        C = sc.nextInt();
 
         board = new char[N][N];
         memo = new int[N][N];
 
-        for (int i = 0; i < N; i++) {
+        for (int r = 0; r < N; r++) {
             char[] list = sc.next().toCharArray();
 
-            for (int k = 0; k < N; k++) {
-                board[i][k] = list[k];
+            for (int c = 0; c < N; c++) {
+                board[r][c] = list[c];
             }
         }
 
-        boolean trapped = false;
         int ans = 0;
 
-        int curX = C;
-        int curY = R;
+        int curX = C - 1;
+        int curY = R - 1;
 
         int curDirec = 0;
 
@@ -41,44 +43,45 @@ public class Main {
             int ny = curY + dy[curDirec];
 
             if (isRange(nx, ny) && memo[ny][nx] == 5) {
-                trapped = true;
+                ans = -1;
                 break;
             }
 
             if (isRange(nx, ny) && board[ny][nx] == '#') {
-                memo[ny][nx]++;
-                curDirec = turnDirec(curDirec);
+                memo[curY][curX]++;
+                curDirec = turnLeft(curDirec);
             } else if (isRange(nx, ny) && board[ny][nx] == '.') {
-                int rightDirec = turnDirecRight(curDirec);
-
-                if (isRange(nx + dx[rightDirec], ny + dy[rightDirec]) && board[nx + dx[rightDirec]][ny + dy[rightDirec]] == '.') curDirec = turnDirecRight(curDirec);
-
+                ans++;
                 memo[ny][nx]++;
-
                 curX = nx;
                 curY = ny;
-                ans++;
+
+                int rightDirec = turnRight(curDirec);
+
+                int rightX = curX + dx[rightDirec];
+                int rightY = curY + dy[rightDirec];
+
+                if (isRange(rightX, rightY) && board[rightY][rightX] == '.') curDirec = rightDirec;
             } else if (!isRange(nx, ny)) {
                 ans++;
                 break;
             }
         }
 
-        if (trapped) System.out.print(-1);
-        else System.out.print(ans);
+        System.out.print(ans);
     }
 
     public static boolean isRange(int x, int y) {
         if (x >= 0 && x < N && y >= 0 && y < N) return true;
-        
+
         return false;
     }
 
-    public static int turnDirecRight(int direc) {
+    public static int turnRight(int direc) {
         return (direc + 4 - 1) % 4;
     }
 
-    public static int turnDirec(int direc) {
+    public static int turnLeft(int direc) {
         return (direc + 1) % 4;
     }
 }
