@@ -17,7 +17,7 @@ public class Main {
         N = sc.nextInt();
         M = sc.nextInt();
 
-        board = new int[N][M];
+        board = new int[N][N];
         for (int i = 0; i < N; i++) {
             for (int k = 0; k < N; k++) {
                 board[i][k] = sc.nextInt();
