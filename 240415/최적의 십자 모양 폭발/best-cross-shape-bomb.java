@@ -54,7 +54,7 @@ public class Main {
                     int nx = c + dx[i];
                     int ny = r + dy[i];
 
-                    if (isRange(nx, ny) && memo[r][c] == memo[ny][nx]) temp++;
+                    if (isRange(nx, ny) && memo[r][c] == memo[ny][nx] && (!isRange(nx + dx[i], ny + dy[i]) || (isRange(nx + dx[i], ny + dy[i]) && memo[r][c] != memo[ny + dy[i]][nx + dx[i]]))) temp++;
                 }
             }
         }
