@@ -32,7 +32,7 @@ public class Main {
             }
 
             for (int c = (K - 1); c <= (K - 1) + M - 1; c++) {
-                if (r == N || board[r + 1][c] != 0) isDone = true;
+                if (r == N - 1 || board[r + 1][c] != 0) isDone = true;
             }
 
             if (isDone) break;
