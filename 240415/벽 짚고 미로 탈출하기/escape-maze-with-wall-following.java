@@ -39,13 +39,13 @@ public class Main {
         int curDirec = 0;
 
         while (true) {
-            int nx = curX + dx[curDirec];
-            int ny = curY + dy[curDirec];
-
-            if (isRange(nx, ny) && memo[ny][nx] == 5) {
+            if (memo[curY][curX] == 5) {
                 ans = -1;
                 break;
             }
+            
+            int nx = curX + dx[curDirec];
+            int ny = curY + dy[curDirec];
 
             if (isRange(nx, ny) && board[ny][nx] == '#') {
                 memo[curY][curX]++;
