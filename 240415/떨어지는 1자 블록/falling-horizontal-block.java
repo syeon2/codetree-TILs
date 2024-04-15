@@ -23,30 +23,34 @@ public class Main {
             }
         }
 
-        boolean isDone = false;
+        int startX = K - 1;
+        int endX = (K - 1) + M - 1;
 
-        for (int r = 0; r < N; r++) {
-            for (int c = (K - 1); c <= (K - 1) + M - 1; c++) {
-                if (r != 0) board[r - 1][c] = 0;
-                board[r][c] = 1;
-            }
+        int row = getLimitRow(startX, endX);
 
-            for (int c = (K - 1); c <= (K - 1) + M - 1; c++) {
-                if (r == N - 1 || board[r + 1][c] != 0) isDone = true;
-            }
-
-            if (isDone) break;
+        for (int c = startX; c <= endX; c++) {
+            board[row][c] = 1;
         }
 
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < N; i++) {
-            for (int k = 0; k < N; k++) {
-                sb.append(board[i][k]).append(" ");
+        for (int r = 0; r < N; r++) {
+            for (int c = 0; c < N; c++) {
+                sb.append(board[r][c]).append(" ");
             }
 
             sb.append("\n");
         }
 
         System.out.print(sb);
+    }
+
+    public static int getLimitRow(int startX, int endX) {
+        for (int r = 0; r < N; r++) {
+            for (int c = startX; c <= endX; c++) {
+                if (board[r][c] != 0) return r - 1;
+            }
+        }
+
+        return N - 1;
     }
 }
