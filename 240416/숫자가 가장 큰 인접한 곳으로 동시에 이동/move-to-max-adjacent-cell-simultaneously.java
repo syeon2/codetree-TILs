@@ -11,7 +11,6 @@ public class Main {
 
     public static int[][] board;
     public static int[][] marble;
-
     public static int[][] memo;
 
     public static void main(String[] args) {
@@ -23,8 +22,9 @@ public class Main {
         T = sc.nextInt();
 
         board = new int[N][N];
-        memo = new int[N][N];
         marble = new int[N][N];
+        memo = new int[N][N];
+
         for (int r = 0; r < N; r++) {
             for (int c = 0; c < N; c++) {
                 board[r][c] = sc.nextInt();
@@ -42,15 +42,13 @@ public class Main {
             for (int r = 0; r < N; r++) {
                 for (int c = 0; c < N; c++) {
                     if (marble[r][c] == 1) {
-                        simulate(c, r);
+
+                        simulation(c, r);
                     }
                 }
             }
 
-            marble = memo;
-            memo = new int[N][N];
-
-            check();
+            reInit();
         }
 
         int ans = 0;
@@ -69,15 +67,21 @@ public class Main {
         return false;
     }
 
-    public static void check() {
+    public static void reInit() {
+        int[][] temp = new int[N][N];
+
         for (int r = 0; r < N; r++) {
             for (int c = 0; c < N; c++) {
-                if (marble[r][c] >= 2) board[r][c] = 0;
+                if (memo[r][c] == 1) temp[r][c] = 1;
             }
         }
+
+        board = temp;
+        memo = new int[N][N];
     }
 
-    public static void simulate(int x, int y) {
+    public static void simulation(int x, int y) {
+
         int maxValue = 0;
         int maxX = 0;
         int maxY = 0;
