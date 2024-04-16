@@ -24,52 +24,13 @@ public class Main {
             }
         }
 
-        // D
-        for (int c = 0; c < N; c++) {
-            int curX = c;
-            int curY = 0;
-
-            int direc = (board[curY][curX] != 0) ? turnDirec(1, board[curY][curX]) : 1;
-            int sec = simulate(curX, curY, direc);
-
-            ans = Math.max(ans, sec);
+        for (int i = 0; i < N; i++) {
+            ans = Math.max(ans, simulate(i, 0, turnDirec(1, board[0][i])));
+            ans = Math.max(ans, simulate(N - 1, i, turnDirec(2, board[i][N - 1])));
+            ans = Math.max(ans, simulate(i, N - 1, turnDirec(3, board[N - 1][i])));
+            ans = Math.max(ans, simulate(0, i, turnDirec(0, board[i][0])));
         }
-
-        // L
-        for (int r = 0; r < N; r++) {
-            int curX = N - 1;
-            int curY = r;
-
-            int direc = (board[curY][curX] != 0) ? turnDirec(2, board[curY][curX]) : 2;
-            int sec = simulate(curX, curY, direc);
-
-            ans = Math.max(ans, sec);
-        }
-
-        // U
-        for (int c = 0; c < N; c++) {
-            int curX = c;
-            int curY = N - 1;
-
-            int direc = (board[curY][curX] != 0) ? turnDirec(3, board[curY][curX]) : 3;
-
-            int sec = simulate(curX, curY, direc);
-
-            ans = Math.max(ans, sec);
-        }
-
-        // R
-        for (int r = 0; r < N; r++) {
-            int curX = 0;
-            int curY = r;
-
-            int direc = (board[curY][curX] != 0) ? turnDirec(0, board[curY][curX]) : 0;
-
-            int sec = simulate(curX, curY, direc);
-
-            ans = Math.max(ans, sec);
-        }
-
+        
         System.out.print(ans);
     }
 
@@ -114,6 +75,8 @@ public class Main {
     }
 
     public static int turnDirec(int direc, int bar) {
+        if (bar == 0) return direc;
+
         if (direc == 0) {
             if (bar == 1) return 3;
             else return 1;
