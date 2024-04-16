@@ -1,4 +1,5 @@
-import java.util.*;
+import java.io.*;
+import java.util.StringTokenizer;
 
 public class Main {
 
@@ -12,24 +13,31 @@ public class Main {
     public static Marble[][] board;
     public static Marble[][] memo;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         // 여기에 코드를 작성해주세요.
-        Scanner sc = new Scanner(System.in);
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        StringBuilder sb = new StringBuilder();
+        StringTokenizer st;
 
-        T = sc.nextInt();
+        T = Integer.parseInt(br.readLine());
 
         while (T-- > 0) {
-            N = sc.nextInt();
-            M = sc.nextInt();
+            st = new StringTokenizer(br.readLine());
+
+            N = Integer.parseInt(st.nextToken());
+            M = Integer.parseInt(st.nextToken());
 
             board = new Marble[N][N];
             memo = new Marble[N][N];
 
             while (M-- > 0) {
-                int r = sc.nextInt() - 1;
-                int c = sc.nextInt() - 1;
+                st = new StringTokenizer(br.readLine());
 
-                int direc = getDirec(sc.next().charAt(0));
+                int r = Integer.parseInt(st.nextToken()) - 1;
+                int c = Integer.parseInt(st.nextToken()) - 1;
+
+                int direc = getDirec(st.nextToken().charAt(0));
 
                 board[r][c] = new Marble(direc);
             }
@@ -53,8 +61,12 @@ public class Main {
                 }
             }
 
-            System.out.println(ans);
+            sb.append(ans).append("\n");
         }
+
+        bw.write(sb.toString());
+        bw.flush();
+        bw.close();
     }
 
     public static boolean isRange(int x, int y) {
