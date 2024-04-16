@@ -76,7 +76,7 @@ public class Main {
             }
         }
 
-        board = temp;
+        marble = temp;
         memo = new int[N][N];
     }
 
