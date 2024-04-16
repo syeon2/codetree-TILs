@@ -41,10 +41,7 @@ public class Main {
         while (T-- > 0) {
             for (int r = 0; r < N; r++) {
                 for (int c = 0; c < N; c++) {
-                    if (marble[r][c] == 1) {
-
-                        simulation(c, r);
-                    }
+                    if (marble[r][c] == 1) simulation(c, r);
                 }
             }
 
@@ -68,23 +65,20 @@ public class Main {
     }
 
     public static void reInit() {
-        int[][] temp = new int[N][N];
-
         for (int r = 0; r < N; r++) {
             for (int c = 0; c < N; c++) {
-                if (memo[r][c] == 1) temp[r][c] = 1;
+                if (memo[r][c] >= 2) memo[r][c] = 0;
             }
         }
 
-        marble = temp;
+        marble = memo;
         memo = new int[N][N];
     }
 
     public static void simulation(int x, int y) {
-
         int maxValue = 0;
-        int maxX = 0;
-        int maxY = 0;
+        int maxX = -1;
+        int maxY = -1;
 
         for (int i = 0; i < 4; i++) {
             int nx = x + dx[i];
@@ -98,6 +92,6 @@ public class Main {
             }
         }
 
-        memo[maxY][maxX] = 1;
+        memo[maxY][maxX] += 1;
     }
 }
