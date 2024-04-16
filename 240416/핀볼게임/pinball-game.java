@@ -29,7 +29,8 @@ public class Main {
             int curX = c;
             int curY = 0;
 
-            int sec = simulate(curX, curY, 1);
+            int direc = (board[curY][curX] != 0) ? turnDirec(1, board[curY][curX]) : 1;
+            int sec = simulate(curX, curY, direc);
 
             ans = Math.max(ans, sec);
         }
@@ -39,7 +40,8 @@ public class Main {
             int curX = N - 1;
             int curY = r;
 
-            int sec = simulate(curX, curY, 2);
+            int direc = (board[curY][curX] != 0) ? turnDirec(2, board[curY][curX]) : 2;
+            int sec = simulate(curX, curY, direc);
 
             ans = Math.max(ans, sec);
         }
@@ -49,7 +51,9 @@ public class Main {
             int curX = c;
             int curY = N - 1;
 
-            int sec = simulate(curX, curY, 3);
+            int direc = (board[curY][curX] != 0) ? turnDirec(3, board[curY][curX]) : 3;
+
+            int sec = simulate(curX, curY, direc);
 
             ans = Math.max(ans, sec);
         }
@@ -59,7 +63,9 @@ public class Main {
             int curX = 0;
             int curY = r;
 
-            int sec = simulate(curX, curY, 0);
+            int direc = (board[curY][curX] != 0) ? turnDirec(0, board[curY][curX]) : 0;
+
+            int sec = simulate(curX, curY, direc);
 
             ans = Math.max(ans, sec);
         }
