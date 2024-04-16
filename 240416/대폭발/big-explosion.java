@@ -32,8 +32,9 @@ public class Main {
             for (int r = 0; r < N; r++) {
                 for (int c = 0; c < N; c++) {
                     if (board[r][c] == 1) {
-                        memo[r][c] = 1;
-                        simulate(c, r, m);
+                        int range = getRange(m);
+
+                        simulate(c, r, range);
                     }
                 }
             }
@@ -52,6 +53,16 @@ public class Main {
         System.out.print(ans);
     }
 
+    public static int getRange(int m) {
+        int prod = 1;
+
+        while (m-- > 1) {
+            prod *= 2;
+        }
+
+        return prod;
+    }
+
     public static boolean isRange(int x, int y) {
         if (x >= 0 && x < N && y >= 0 && y < N) return true;
 
@@ -59,6 +70,8 @@ public class Main {
     }
 
     public static void simulate(int x, int y, int range) {
+        memo[y][x] = 1;
+
         for (int i = 0; i < 4; i++) {
             int nx = x + (dx[i] * range);
             int ny = y + (dy[i] * range);
