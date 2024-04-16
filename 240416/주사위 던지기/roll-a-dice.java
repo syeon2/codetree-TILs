@@ -80,10 +80,10 @@ public class Main {
                 }
 
                 board[ny][nx] = upAndDown[1];
-            }
 
-            C = nx;
-            R = ny;
+                C = nx;
+                R = ny;
+            }
         }
 
         int ans = 0;
