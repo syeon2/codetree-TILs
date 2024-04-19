@@ -25,7 +25,7 @@ public class Main {
 
         Arrays.sort(list, (a, b) -> {
             if (a.start == b.start) {
-                return a.end - b.end;
+                return b.end - a.end;
             }
 
             return a.start - b.start;
