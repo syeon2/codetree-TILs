@@ -2,9 +2,9 @@ import java.util.*;
 
 public class Main {
 
-    public static int[] memo = new int[6];
-    public static String str;
+    public static int[] alp = new int[6];
 
+    public static String str;
     public static int ans = 0;
 
     public static void main(String[] args) {
@@ -20,43 +20,32 @@ public class Main {
 
     public static void perm(int depth) {
         if (depth == 6) {
-            check();
+            renewAns();
             return;
         }
 
         for (int i = 1; i <= 4; i++) {
-            memo[depth] = i;
+            alp[depth] = i;
             perm(depth + 1);
         }
     }
 
-    public static void check() {
-        int result = 0;
+    public static void renewAns() {
+        int idx = 1;
+        
+        int temp = alp[str.charAt(0) - 'a'];
 
-        for (int i = 0; i < str.length(); i++) {
-            if (i == 0) {
-                int idx = str.charAt(0) - 'a';
+        while (idx < str.length()) {
+            char cmd = str.charAt(idx);
+            int nextNum = alp[str.charAt(idx + 1) - 'a'];
 
-                result = memo[idx];
-            } else {
-                if (str.charAt(i) >= '0' && str.charAt(i) <= '9') continue;
-                else {
-                    int idx = str.charAt(i + 1) - 'a';
+            if (cmd == '+') temp += nextNum;
+            else if (cmd == '-') temp -= nextNum;
+            else temp *= nextNum;
 
-                    if (str.charAt(i) == '+') {
-                        result += memo[idx];
-                        i++;
-                    } else if (str.charAt(i) == '-') {
-                        result -= memo[idx];
-                        i++;
-                    } else {
-                        result *= memo[idx];
-                        i++;
-                    }
-                }
-            }
+            idx += 2;
         }
 
-        ans = Math.max(ans, result);
+        ans = Math.max(ans, temp);
     }
 }
