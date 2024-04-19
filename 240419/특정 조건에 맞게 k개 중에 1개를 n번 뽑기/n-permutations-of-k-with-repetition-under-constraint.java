@@ -39,7 +39,7 @@ public class Main {
                 memo[depth] = i;
                 perm(depth + 1);
             } else {
-                if (memo[i - 2] == memo[i - 1] && memo[i - 1] == i) continue;
+                if (memo[depth - 2] == memo[depth - 1] && memo[depth - 1] == i) continue;
                 else {
                     memo[depth] = i;
                     perm(depth + 1);
