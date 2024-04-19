@@ -41,19 +41,18 @@ public class Main {
         int[] tempList = new int[N];
 
         for (int i = 0; i < N; i++) {
-            int temp = i;
+            tempList[i] = i;
+        }
 
-            for (int k = 0; k < M; k++) {
-                if (!used[k]) continue;
+        for (int i = 0; i < M; i++) {
+            if (!used[i]) continue;
 
-                int start = list[k].start;
-                int end = start + 1;
+            int start = list[i].start;
+            int end = start + 1;
 
-                if (temp == start) temp = end;
-                else if (temp == end) temp = start;
-            }
-
-            tempList[i] = temp;
+            int temp = tempList[start];
+            tempList[start] = tempList[end];
+            tempList[end] = temp;
         }
 
         for (int i = 0; i < N; i++) {
