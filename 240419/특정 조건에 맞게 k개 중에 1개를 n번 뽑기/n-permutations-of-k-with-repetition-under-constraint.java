@@ -35,7 +35,7 @@ public class Main {
         }
 
         for (int i = 1; i <= K; i++) {
-            if (i < 3) {
+            if (depth < 3) {
                 memo[depth] = i;
                 perm(depth + 1);
             } else {
