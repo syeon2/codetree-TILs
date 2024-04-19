@@ -55,7 +55,7 @@ public class Main {
 
         int score = 0;
         for (int i = 1; i <= K; i++) {
-            if (temp[i] >= M) score++;
+            if (temp[i] >= M - 1) score++;
         }
 
         ans = Math.max(ans, score);
