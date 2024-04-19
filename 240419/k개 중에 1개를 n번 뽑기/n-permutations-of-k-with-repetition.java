@@ -7,6 +7,8 @@ public class Main {
 
     public static int[] list;
 
+    public static StringBuilder sb = new StringBuilder();
+
     public static void main(String[] args) {
         // 여기에 코드를 작성해주세요.
         Scanner sc = new Scanner(System.in);
@@ -16,15 +18,17 @@ public class Main {
         list = new int[N];
 
         perm(0);
+
+        System.out.print(sb);
     }
 
     public static void perm(int depth) {
         if (depth == N) {
             for (int i = 0; i < list.length; i++) {
-                System.out.printf("%d ", list[i]);
+                sb.append(list[i]).append(" ");
             }
 
-            System.out.println();
+            sb.append("\n");
             return;
         }
 
