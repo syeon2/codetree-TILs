@@ -33,16 +33,11 @@ public class Main {
     }
 
     public static boolean isBeautifulNum() {
-        int idx = 0;
+        for (int i = 0; i < N; i += list[i]) {
 
-        while (idx < N) {
-            int num = list[idx];
-
-            for (int i = idx; i < idx + num; i++) {
-                if (i >= N || list[idx] != list[i]) return false;
+            for (int k = i; k < i + list[i]; k++) {
+                if (k >= N || list[i] != list[k]) return false;
             }
-
-            idx += num;
         }
 
         return true;
