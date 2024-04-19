@@ -5,7 +5,7 @@ public class Main {
     public static int[] alp = new int[6];
 
     public static String str;
-    public static long ans = 0;
+    public static int ans = Integer.MIN_VALUE;
 
     public static void main(String[] args) {
         // 여기에 코드를 작성해주세요.
@@ -31,9 +31,8 @@ public class Main {
     }
 
     public static void renewAns() {
+        int temp = alp[str.charAt(0) - 'a'];
         int idx = 1;
-        
-        long temp = alp[str.charAt(0) - 'a'];
 
         while (idx < str.length()) {
             char cmd = str.charAt(idx);
