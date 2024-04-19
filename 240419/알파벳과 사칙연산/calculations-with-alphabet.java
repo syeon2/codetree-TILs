@@ -33,7 +33,7 @@ public class Main {
     public static void renewAns() {
         int idx = 1;
         
-        int temp = alp[str.charAt(0) - 'a'];
+        long temp = alp[str.charAt(0) - 'a'];
 
         while (idx < str.length()) {
             char cmd = str.charAt(idx);
