@@ -4,7 +4,8 @@ public class Main {
 
     public static int N;
     public static Pair[] list;
-    public static boolean[] memo;
+
+    public static List<Pair> memo = new ArrayList<>();
 
     public static int ans = 0;
 
@@ -14,18 +15,17 @@ public class Main {
 
         N = sc.nextInt();
         list = new Pair[N];
-        memo = new boolean[N];
 
-        for (int i = 0; i < N; i++) {
+        for (int n = 0; n < N; n++) {
             int start = sc.nextInt();
             int end = sc.nextInt();
 
-            list[i] = new Pair(start, end);
+            list[n] = new Pair(start, end);
         }
 
         Arrays.sort(list, (a, b) -> {
             if (a.start == b.start) {
-                return b.end - a.end;
+                return a.end - b.end;
             }
 
             return a.start - b.start;
@@ -38,34 +38,16 @@ public class Main {
 
     public static void perm(int depth) {
         if (depth == N) {
-            int cnt = 0;
-            for (int i = 0; i < N; i++) {
-                if (memo[i]) cnt++;
-            }
+            ans = Math.max(ans, memo.size());
 
-            ans = Math.max(ans, cnt);
             return;
         }
 
-        if (depth == 0) {
-            memo[depth] = true;
+        if (memo.isEmpty() || memo.get(memo.size() - 1).end < list[depth].start) {
+            memo.add(list[depth]);
             perm(depth + 1);
-            memo[depth] = false;
-        } else {
-            int idx = 0;
-            for (int i = depth - 1; i >= 0; i--) {
-                if (memo[i]) {
-                    idx = i;
-                    break;
-                }
-            }
-
-            if (list[idx].end < list[depth].start) {
-                memo[depth] = true;
-                perm(depth + 1);
-                memo[depth] = false;
-            } else perm(depth + 1);
-        }
+            memo.remove(memo.size() - 1);
+        } else perm(depth + 1);
     }
 
     public static class Pair {
