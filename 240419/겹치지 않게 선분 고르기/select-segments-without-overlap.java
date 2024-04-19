@@ -47,7 +47,9 @@ public class Main {
             memo.add(list[depth]);
             perm(depth + 1);
             memo.remove(memo.size() - 1);
-        } else perm(depth + 1);
+        }
+
+        perm(depth + 1);
     }
 
     public static class Pair {
