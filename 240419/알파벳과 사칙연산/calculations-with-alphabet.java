@@ -5,7 +5,7 @@ public class Main {
     public static int[] alp = new int[6];
 
     public static String str;
-    public static int ans = 0;
+    public static long ans = 0;
 
     public static void main(String[] args) {
         // 여기에 코드를 작성해주세요.
