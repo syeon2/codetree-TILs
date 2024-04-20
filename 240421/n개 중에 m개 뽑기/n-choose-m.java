@@ -24,18 +24,20 @@ public class Main {
     }
 
     public static void perm(int idx, int depth) {
-        if (depth == M) {
-            for (int i = 0; i < M; i++) {
-                sb.append(memo[i]).append(" ");
+        if (idx == N + 1) {
+            if (depth == M) {
+                for (int i = 0; i < M; i++) {
+                    sb.append(memo[i]).append(" ");
+                }
+
+                sb.append("\n");
             }
 
-            sb.append("\n");
             return;
         }
 
-        for (int i = idx; i <= N; i++) {
-            memo[depth] = i;
-            perm(i + 1, depth + 1);
-        }
+        memo[depth] = idx;
+        perm(idx + 1, depth + 1);
+        perm(idx + 1, depth);
     }
 }
