@@ -12,12 +12,9 @@ public class Main {
 
         N = sc.nextInt();
 
-        if (N == 2) System.out.print(45);
-        else {
-            perm("", 0);
+        perm("", 0);
 
-            System.out.print(ans);
-        }
+        System.out.print(ans);
     }
 
     public static void perm(String str, int depth) {
@@ -28,15 +25,18 @@ public class Main {
             return;
         }
 
-        for (int i = 1; i <= str.length() / 2; i++) {
-            String a = str.substring(str.length() - (i * 2), str.length() - i);
-            String b = str.substring(str.length() - i);
+        for (int k = 4; k <= 6; k++) {
+            String temp = str + k;
+            boolean flag = true;
 
-            if (a.equals(b)) return;
-        }
+            for (int i = 1; i <= temp.length() / 2; i++) {
+                String a = temp.substring(temp.length() - (i * 2), temp.length() - i);
+                String b = temp.substring(temp.length() - i);
 
-        for (int i = 4; i <= 6; i++) {
-            perm(str + i, depth + 1);
+                if (a.equals(b)) flag = false;
+            }
+
+            if (flag) perm(temp, depth + 1);
         }
     }
 }
