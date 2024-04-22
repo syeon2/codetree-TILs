@@ -35,7 +35,7 @@ public class Main {
         }
 
         for (int i = idx; i < N; i++) {
-            memo[depth] = i;
+            memo[depth] = list[i];
             perm(i + 1, depth + 1);
         }
     }
