@@ -34,7 +34,7 @@ public class Main {
             }
         }
 
-        perm(0, 0);
+        perm(0);
 
         if (ans == Integer.MAX_VALUE) System.out.print(-1);
         else System.out.print(ans);
@@ -45,14 +45,18 @@ public class Main {
 
         int curX = start[0];
         int curY = start[1];
+        int value = 0;
 
         for (int i = 0; i < 3; i++) {
             Pair node = list.get(memo[i]);
+
+            if (node.value <= value) return;
 
             dist += Math.abs(curX - node.x) + Math.abs(curY - node.y);
 
             curX = node.x;
             curY = node.y;
+            value = node.value;
         }
 
         dist += Math.abs(curX - end[0]) + Math.abs(curY - end[1]);
@@ -60,16 +64,16 @@ public class Main {
         ans = Math.min(ans, dist);
     }
 
-    public static void perm(int idx, int depth) {
+    public static void perm(int depth) {
         if (depth == 3) {
             getMinDist();
 
             return;
         }
 
-        for (int i = idx; i < list.size(); i++) {
+        for (int i = 0; i < list.size(); i++) {
             memo[depth] = i;
-            perm(i + 1, depth + 1);
+            perm(depth + 1);
         }
     }
 
