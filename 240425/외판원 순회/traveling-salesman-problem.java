@@ -19,7 +19,7 @@ public class Main {
         visited = new boolean[N];
 
         visited[0] = true;
-        
+
         for (int r = 0; r < N; r++) {
             for (int c = 0; c < N; c++) {
                 board[r][c] = sc.nextInt();
@@ -35,7 +35,11 @@ public class Main {
         int dist = board[0][memo[0]];
 
         for (int i = 1; i < N; i++) {
-            dist += board[memo[i - 1]][memo[i]];
+            int d = board[memo[i - 1]][memo[i]];
+
+            if (d == 0) return;
+
+            dist += d;
         }
 
         dist += board[memo[N - 1]][0];
