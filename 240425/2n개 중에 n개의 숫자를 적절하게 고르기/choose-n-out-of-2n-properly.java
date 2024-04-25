@@ -7,7 +7,6 @@ public class Main {
     public static int[] memo;
 
     public static int total = 0;
-
     public static int ans = Integer.MAX_VALUE;
 
     public static void main(String[] args) {
@@ -15,13 +14,12 @@ public class Main {
         Scanner sc = new Scanner(System.in);
 
         N = sc.nextInt();
-
         list = new int[N * 2];
         memo = new int[N];
 
-        for (int n = 0; n < 2 * N; n++) {
-            list[n] = sc.nextInt();
-            total += list[n];
+        for (int i = 0; i < N * 2; i++) {
+            list[i] = sc.nextInt();
+            total += list[i];
         }
 
         perm(0, 0);
@@ -29,7 +27,7 @@ public class Main {
         System.out.print(ans);
     }
 
-    public static void getMinSub() {
+    public static void getMinAns() {
         int one = 0;
         int another = 0;
 
@@ -44,15 +42,14 @@ public class Main {
 
     public static void perm(int idx, int depth) {
         if (depth == N) {
-            getMinSub();
+            getMinAns();
 
             return;
         }
 
-        if (idx == 2 * N) return;
-
-        perm(idx + 1, depth);
-        memo[depth] = list[idx];
-        perm(idx + 1, depth + 1);
+        for (int i = idx; i < N * 2; i++) {
+            memo[depth] = list[i];
+            perm(i + 1, depth + 1);
+        }
     }
 }
