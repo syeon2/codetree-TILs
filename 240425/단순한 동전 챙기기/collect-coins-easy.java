@@ -4,11 +4,10 @@ public class Main {
 
     public static int N;
     public static List<Pair> list = new ArrayList<>();
+    public static List<Pair> memo = new ArrayList<>();
 
-    public static int[] memo = new int[3];
-
-    public static int[] start = new int[2];
-    public static int[] end = new int[2];
+    public static Pair startPos;
+    public static Pair endPos;
 
     public static int ans = Integer.MAX_VALUE;
 
@@ -24,57 +23,49 @@ public class Main {
             for (int c = 0; c < N; c++) {
                 if (cList[c] >= '0' && cList[c] <= '9') {
                     list.add(new Pair(c, r, cList[c] - '0'));
-                } else if (cList[c] == 'S') {
-                    start[0] = c;
-                    start[1] = r;
-                } else if (cList[c] == 'E') {
-                    end[0] = c;
-                    end[1] = r;
-                }
+                } else if (cList[c] == 'S') startPos = new Pair(c, r, cList[c] - '0');
+                else if (cList[c] == 'E') endPos = new Pair(c, r, cList[c] - '0');
             }
         }
 
-        perm(0);
+        list.sort((a, b) -> {
+            return a.value - b.value;
+        });
+
+        perm(0, 0);
 
         if (ans == Integer.MAX_VALUE) System.out.print(-1);
         else System.out.print(ans);
     }
 
+    public static int getDist(Pair node1, Pair node2) {
+        return Math.abs(node1.x - node2.x) + Math.abs(node1.y - node2.y);
+    }
+
     public static void getMinDist() {
-        int dist = 0;
+        int dist = getDist(startPos, memo.get(0));
 
-        int curX = start[0];
-        int curY = start[1];
-        int value = 0;
-
-        for (int i = 0; i < 3; i++) {
-            Pair node = list.get(memo[i]);
-
-            if (node.value <= value) return;
-
-            dist += Math.abs(curX - node.x) + Math.abs(curY - node.y);
-
-            curX = node.x;
-            curY = node.y;
-            value = node.value;
+        for (int i = 1; i < 3; i++) {
+            dist += getDist(memo.get(i - 1), memo.get(i));
         }
 
-        dist += Math.abs(curX - end[0]) + Math.abs(curY - end[1]);
+        dist += getDist(endPos, memo.get(2));
 
         ans = Math.min(ans, dist);
     }
 
-    public static void perm(int depth) {
+    public static void perm(int idx, int depth) {
         if (depth == 3) {
             getMinDist();
-
             return;
         }
 
-        for (int i = 0; i < list.size(); i++) {
-            memo[depth] = i;
-            perm(depth + 1);
-        }
+        if (idx == list.size()) return;
+
+        memo.add(list.get(idx));
+        perm(idx + 1, depth + 1);
+        memo.remove(memo.size() - 1);
+        perm(idx + 1, depth);
     }
 
     public static class Pair {
