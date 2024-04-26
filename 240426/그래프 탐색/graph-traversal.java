@@ -5,7 +5,7 @@ public class Main {
     public static int N;
     public static int M;
 
-    public static int[][] grid;
+    public static List<List<Integer>> list = new ArrayList<>();
     public static boolean[] visited;
 
     public static int ans = 0;
@@ -17,30 +17,36 @@ public class Main {
         N = sc.nextInt();
         M = sc.nextInt();
 
-        grid = new int[N + 1][N + 1];
-        visited = new boolean[N + 1];
-
-        while (M-- > 0) {
-            int n1 = sc.nextInt();
-            int n2 = sc.nextInt();
-
-            grid[n1][n2] = 1;
-            grid[n2][n1] = 1;
+        visited = new boolean[N];
+        for (int i = 0; i < N; i++) {
+            list.add(new ArrayList<>());
         }
 
-        visited[1] = true;
-        dfs(1);
+        while (M-- > 0) {
+            int n1 = sc.nextInt() - 1;
+            int n2 = sc.nextInt() - 1;
+
+            list.get(n1).add(n2);
+            list.get(n2).add(n1);
+        }
+
+        visited[0] = true;
+        dfs(0);
 
         System.out.print(ans);
     }
 
     public static void dfs(int node) {
-        for (int i = 1; i <= N; i++) {
-            if (grid[node][i] == 1 && !visited[i]) {
-                visited[i] = true;
-                ans++;
-                dfs(i);
-            }
+        List<Integer> nodeList = list.get(node);
+
+        for (int i = 0; i < nodeList.size(); i++) {
+            int nextNode = nodeList.get(i);
+
+            if (visited[nextNode]) continue;
+
+            visited[nextNode] = true;
+            ans++;
+            dfs(nextNode);
         }
     }
 }
