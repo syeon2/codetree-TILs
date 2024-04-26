@@ -8,7 +8,7 @@ public class Main {
     public static int[][] grid;
     public static boolean[] visited;
 
-    public static int ans = -1;
+    public static int ans = 0;
 
     public static void main(String[] args) {
         // 여기에 코드를 작성해주세요.
@@ -36,11 +36,12 @@ public class Main {
     public static void dfs(int node) {
         if (visited[node]) return;
 
-        visited[node] = true;
-        ans++;
-
         for (int i = 1; i <= N; i++) {
-            if (grid[node][i] == 1) dfs(i);
+            if (grid[node][i] == 1 && !visited[i]) {
+                visited[i] = true;
+                ans++;
+                dfs(i);
+            }
         }
     }
 }
