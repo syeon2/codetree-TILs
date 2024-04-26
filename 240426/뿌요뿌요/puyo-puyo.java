@@ -36,11 +36,9 @@ public class Main {
 
                 dfs(c, r, block);
 
-                if (tempArea >= 4) {
-                    ansCnt++;
-                    maxArea = Math.max(maxArea, tempArea);
-                }
+                if (tempArea >= 4) ansCnt++;
 
+                maxArea = Math.max(maxArea, tempArea);
                 tempArea = 0;
             }
         }
