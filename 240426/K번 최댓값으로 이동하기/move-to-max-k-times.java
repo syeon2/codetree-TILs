@@ -41,6 +41,7 @@ public class Main {
 
             Queue<Pair> que = new LinkedList<>();
             que.add(startNode);
+            visited[startNode.y][startNode.x] = true;
 
             int maxValue = 0;
             int tempX = -1;
@@ -48,13 +49,13 @@ public class Main {
 
             while (!que.isEmpty()) {
                 Pair node = que.remove();
-                visited[node.y][node.x] = true;
 
                 for (int i = 0; i < 4; i++) {
                     int nx = node.x + dx[i];
                     int ny = node.y + dy[i];
 
                     if (isRange(nx, ny) && !visited[ny][nx] && board[ny][nx] < board[startNode.y][startNode.x]) {
+                        visited[ny][nx] = true;
                         que.add(new Pair(nx, ny));
 
                         if (maxValue < board[ny][nx] || (maxValue == board[ny][nx] && tempY > ny) || (maxValue == board[ny][nx] && tempY == ny && tempX > nx)) {
