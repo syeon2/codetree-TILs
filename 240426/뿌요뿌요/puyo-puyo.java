@@ -9,9 +9,10 @@ public class Main {
     public static int[][] board;
     public static boolean[][] visited;
 
-    public static int ansBlockCnt = 0;
-    public static int ansBlockArea = 0;
-    public static int tempBlockArea = 1;
+    public static int ansCnt = 0;
+    public static int maxArea = 0;
+
+    public static int tempArea = 0;
 
     public static void main(String[] args) {
         // 여기에 코드를 작성해주세요.
@@ -32,20 +33,19 @@ public class Main {
                 if (visited[r][c]) continue;
 
                 int block = board[r][c];
-                visited[r][c] = true;
 
                 dfs(c, r, block);
 
-                if (tempBlockArea >= 4) {
-                    ansBlockCnt++;
-                    ansBlockArea = Math.max(ansBlockArea, tempBlockArea);
+                if (tempArea >= 4) {
+                    ansCnt++;
+                    maxArea = Math.max(maxArea, tempArea);
                 }
 
-                tempBlockArea = 1;
+                tempArea = 0;
             }
         }
 
-        System.out.printf("%d %d", ansBlockCnt, ansBlockArea);
+        System.out.printf("%d %d", ansCnt, maxArea);
     }
 
     public static boolean isRange(int x, int y) {
@@ -55,13 +55,16 @@ public class Main {
     }
 
     public static void dfs(int x, int y, int block) {
+        if (visited[y][x] || board[y][x] != block) return;
+
+        tempArea++;
+        visited[y][x] = true;
+
         for (int i = 0; i < 4; i++) {
             int nx = x + dx[i];
             int ny = y + dy[i];
 
             if (isRange(nx, ny) && !visited[ny][nx] && board[ny][nx] == block) {
-                tempBlockArea++;
-                visited[ny][nx] = true;
                 dfs(nx, ny, block);
             }
         }
