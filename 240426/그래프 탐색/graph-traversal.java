@@ -28,14 +28,13 @@ public class Main {
             grid[n2][n1] = 1;
         }
 
+        visited[1] = true;
         dfs(1);
 
         System.out.print(ans);
     }
 
     public static void dfs(int node) {
-        if (visited[node]) return;
-
         for (int i = 1; i <= N; i++) {
             if (grid[node][i] == 1 && !visited[i]) {
                 visited[i] = true;
