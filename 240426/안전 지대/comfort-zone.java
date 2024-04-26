@@ -11,8 +11,8 @@ public class Main {
     public static int[][] board;
     public static boolean[][] visited;
 
-    public static int ansSeaLevel = 0;
-    public static int ansArea = 0;
+    public static int ansSeaLevel = -1;
+    public static int ansArea = -1;
 
     public static void main(String[] args) {
         // 여기에 코드를 작성해주세요.
