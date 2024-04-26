@@ -11,7 +11,7 @@ public class Main {
 
     public static int ansBlockCnt = 0;
     public static int ansBlockArea = 0;
-    public static int tempBlockArea = 0;
+    public static int tempBlockArea = 1;
 
     public static void main(String[] args) {
         // 여기에 코드를 작성해주세요.
@@ -32,6 +32,8 @@ public class Main {
                 if (visited[r][c]) continue;
 
                 int block = board[r][c];
+                visited[r][c] = true;
+
                 dfs(c, r, block);
 
                 if (tempBlockArea >= 4) {
@@ -39,7 +41,7 @@ public class Main {
                     ansBlockArea = Math.max(ansBlockArea, tempBlockArea);
                 }
 
-                tempBlockArea = 0;
+                tempBlockArea = 1;
             }
         }
 
