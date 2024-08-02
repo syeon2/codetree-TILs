@@ -8,7 +8,11 @@ public class Main {
         int a = 97;
         int b = 13;
 
-        bw.write(String.valueOf(a + " - " + b + " = " + (a - b)));
+        StringBuilder sb = new StringBuilder();
+
+        sb.append(a).append(" - ").append(b).append(" = ").append(a - b);
+
+        bw.write(sb.toString());
         bw.flush();
         bw.close();
     }
