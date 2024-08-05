@@ -11,10 +11,10 @@ public class Main {
         int b = Integer.parseInt(list[0]);
         int a = Integer.parseInt(list[1]);
 
-        while (a <= b) {
-            if (a % 2 == 0) sb.append(a).append(" ");
+        while (b >= a) {
+            if (b % 2 == 0) sb.append(b).append(" ");
 
-            a++;
+            b--;
         }
 
         bw.write(sb.toString());
