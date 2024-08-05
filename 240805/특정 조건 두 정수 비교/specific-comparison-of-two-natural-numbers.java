@@ -10,10 +10,8 @@ public class Main {
         int a = Integer.parseInt(list[0]);
         int b = Integer.parseInt(list[1]);
 
-        if (a < b) bw.write("1");
-        else bw.write("0");
-
-        bw.newLine();
+        if (a < b) bw.write("1 ");
+        else bw.write("0 ");
 
         if (a == b) bw.write("1");
         else bw.write("0");
