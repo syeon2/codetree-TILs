@@ -7,7 +7,7 @@ public class Main {
         StringBuilder sb = new StringBuilder();
 
         int start = 26;
-        while (start >= 1) {
+        while (start >= 10) {
             sb.append(start--).append(" ");
         }
 
