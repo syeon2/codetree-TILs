@@ -11,8 +11,8 @@ public class Main {
         int aE = Integer.parseInt(a[1]);
 
         String[] b = br.readLine().split(" ");
-        int bM = Integer.parseInt(a[0]);
-        int bE = Integer.parseInt(a[1]);
+        int bM = Integer.parseInt(b[0]);
+        int bE = Integer.parseInt(b[1]);
 
         if (aM > bM) bw.write("A");
         else if (aM == bM && aE > bE) bw.write("A");
