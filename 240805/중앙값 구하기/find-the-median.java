@@ -13,7 +13,7 @@ public class Main {
 
         if (a >= b && a <= c) bw.write(String.valueOf(a));
         else if (b >= a && b <= c) bw.write(String.valueOf(b));
-        else if (c >= a && c <= b) bw.write(String.valueOf(a));
+        else if (c >= a && c <= b) bw.write(String.valueOf(c));
 
         bw.flush();
         bw.flush();
