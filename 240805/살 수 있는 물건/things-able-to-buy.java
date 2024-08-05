@@ -8,7 +8,7 @@ public class Main {
 
         int n = Integer.parseInt(br.readLine());
 
-        String item = (n >= 3000) ? "book" : "mask";
+        String item = (n >= 3000) ? "book" : (n >= 1000) ? "mask" : "no";
 
         bw.write(item);
         bw.flush();
