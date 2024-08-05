@@ -11,9 +11,9 @@ public class Main {
         int b = Integer.parseInt(list[1]);
         int c = Integer.parseInt(list[2]);
 
-        if (a >= b && a <= c) bw.write(String.valueOf(a));
-        else if (b >= a && b <= c) bw.write(String.valueOf(b));
-        else if (c >= a && c <= b) bw.write(String.valueOf(c));
+        if ((a >= b && a <= c) || (a >= c && a <= b)) bw.write(String.valueOf(a));
+        else if ((b >= a && b <= c) || (b >= c && b <= a)) bw.write(String.valueOf(b));
+        else if ((c >= a && c <= b) || (c >= b && c <= a)) bw.write(String.valueOf(c));
 
         bw.flush();
         bw.flush();
