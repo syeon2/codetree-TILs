@@ -10,6 +10,12 @@ public class Main {
         int a = Integer.parseInt(list[0]);
         int b = Integer.parseInt(list[1]);
 
+        if (a > b) {
+            int temp = a;
+            a = b;
+            b = temp;
+        }
+
         int sum = 0;
         for (int i = a; i <= b; i++) {
             if (i % 5 == 0) sum += i;
