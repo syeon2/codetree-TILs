@@ -11,7 +11,7 @@ public class Main {
         int start = 1;
 
         for (int i = start; i <= n; i++) {
-            if (i % 3 == 0 || i % 10 == 3 || i % 10 == 6 || i % 10 == 9) {
+            if (i % 3 == 0 || i % 10 == 3 || i % 10 == 6 || i % 10 == 9 || i / 10 == 3 || i / 10 == 6 || i / 10 == 9) {
                 sb.append(0).append(" ");
             } else sb.append(i).append(" ");
         }
