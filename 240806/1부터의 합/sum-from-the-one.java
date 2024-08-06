@@ -8,11 +8,16 @@ public class Main {
 
         int n = Integer.parseInt(br.readLine());
 
+        int sum = 0;
         int ans = 0;
-        for (int i = 1; i <= 100; i++) {
-            ans += i;
 
-            if (ans >= n) break;
+        for (int i = 1; i <= 100; i++) {
+            sum += i;
+
+            if (sum >= n) {
+                ans = i;
+                break;
+            }
         }
 
         bw.write(String.valueOf(ans));
