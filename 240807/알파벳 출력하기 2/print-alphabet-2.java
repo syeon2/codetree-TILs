@@ -18,6 +18,8 @@ public class Main {
 
             for (int k = 1; k <= (n - i) + 1; k++) {
                 sb.append(c++).append(" ");
+
+                if (c == 'Z' + 1) c = 'A';
             }
 
             sb.append("\n");
