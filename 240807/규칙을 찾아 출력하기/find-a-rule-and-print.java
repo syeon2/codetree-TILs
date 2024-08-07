@@ -9,25 +9,14 @@ public class Main {
 
         int n = Integer.parseInt(br.readLine());
 
-        for (int i = 1; i <= n; i++) {
-            if (i == 1 || i == n) {
-                for (int k = 1; k <= n; k++) {
-                    sb.append("* ");
-                }
-            } else {
-                for (int k = 1; k <= i - 1; k++) {
-                    sb.append("* ");
-                }
+		for (int i = 1; i <= n; i++) {
+			for (int j = 1; j <= n; j++) {
+				if (i == 1 || j == n || i > j) sb.append("* ");
+				else sb.append("  ");
+			}
 
-                for (int k = 1; k <= (n - 1) - (i - 1); k++) {
-                    sb.append("  ");
-                }
-
-                sb.append("* ");
-            }
-
-            sb.append("\n");
-        }
+			sb.append("\n");
+		}
 
         bw.write(sb.toString());
         bw.flush();
