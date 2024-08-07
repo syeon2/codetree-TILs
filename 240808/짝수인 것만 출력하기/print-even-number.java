@@ -19,7 +19,7 @@ public class Main {
             }
         }
 
-        for (int i = cnt - 1; i >= 0; i--) {
+        for (int i = 0; i < cnt; i++) {
             bw.write(String.format("%d ", ansList[i]));
         }
 
