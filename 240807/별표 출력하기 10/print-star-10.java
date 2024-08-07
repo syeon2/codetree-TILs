@@ -7,47 +7,49 @@ public class Main {
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         StringBuilder sb = new StringBuilder();
 
-        int N = Integer.parseInt(br.readLine());
+        int n = Integer.parseInt(br.readLine());
 
         int odd = 1;
-        int even = N;
+        int even = n;
 
-        for (int i = 1; i <= N; i++) {
-            if (i % 2 == 1) {
-                for (int k = 1; k <= odd; k++) {
-                    sb.append("* ");
-                }
-
-                sb.append("\n");
-                odd++;
-            } else {
-                for (int k = 1; k <= even; k++) {
-                    sb.append("* ");
-                }
-
-                sb.append("\n");
-                even--;
-            }
-        }
-
-        odd--;
-        even++;
-
-        for (int i = 1; i <= N; i++) {
-            if (i % 2 == 1) {
-                for (int k = 1; k <= odd; k++) {
-                    sb.append("* ");
-                }
-
-                sb.append("\n");
+        for (int i = 1; i <= (n * 2); i++) {
+            if (i == n + 1) {
                 odd--;
-            } else {
-                for (int k = 1; k <= even; k++) {
-                    sb.append("* ");
-                }
-
-                sb.append("\n");
                 even++;
+            }
+
+            if (i <= n) {
+                if (i % 2 == 1) {
+                    for (int k = 1; k <= odd; k++) {
+                        sb.append("* ");
+                    }
+
+                    odd++;
+                    sb.append("\n");
+                } else {
+                    for (int k = 1; k <= even; k++) {
+                        sb.append("* ");
+                    }
+
+                    even--;
+                    sb.append("\n");
+                }
+            } else {
+                if (i % 2 == 0) {
+                    for (int k = 1; k <= odd; k++) {
+                        sb.append("* ");
+                    }
+
+                    odd--;
+                    sb.append("\n");
+                } else {
+                    for (int k = 1; k <= even; k++) {
+                        sb.append("* ");
+                    }
+
+                    even++;
+                    sb.append("\n");
+                }
             }
         }
 
