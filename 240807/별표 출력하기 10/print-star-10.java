@@ -9,48 +9,18 @@ public class Main {
 
         int n = Integer.parseInt(br.readLine());
 
-        int odd = 1;
-        int even = n;
-
-        for (int i = 1; i <= (n * 2); i++) {
-            if (i == n + 1) {
-                odd--;
-                even++;
-            }
-
-            if (i <= n) {
-                if (i % 2 == 1) {
-                    for (int k = 1; k <= odd; k++) {
-                        sb.append("* ");
-                    }
-
-                    odd++;
-                    sb.append("\n");
-                } else {
-                    for (int k = 1; k <= even; k++) {
-                        sb.append("* ");
-                    }
-
-                    even--;
-                    sb.append("\n");
+        for (int i = 0; i < (n * 2); i++) {
+            if (i % 2 == 0) {
+                for (int k = 1; k <= (i / 2) + 1; k++) {
+                    sb.append("* ");
                 }
             } else {
-                if (i % 2 == 0) {
-                    for (int k = 1; k <= odd; k++) {
-                        sb.append("* ");
-                    }
-
-                    odd--;
-                    sb.append("\n");
-                } else {
-                    for (int k = 1; k <= even; k++) {
-                        sb.append("* ");
-                    }
-
-                    even++;
-                    sb.append("\n");
+                for (int k = 1; k <= (n - (i / 2)); k++) {
+                    sb.append("* ");
                 }
             }
+
+            sb.append("\n");
         }
 
         bw.write(sb.toString());
