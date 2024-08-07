@@ -10,7 +10,7 @@ public class Main {
         int sum = 0;
 
         for (int i = 0; i < 10; i++) {
-            sum += Integer.parseInt(list[0]);
+            sum += Integer.parseInt(list[i]);
         }
 
         bw.write(String.valueOf(sum));
