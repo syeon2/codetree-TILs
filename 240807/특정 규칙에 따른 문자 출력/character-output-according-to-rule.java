@@ -28,10 +28,6 @@ public class Main {
                 sb.append("@ ");
             }
 
-            for (int k = 1; k <= (n - i); k++) {
-                sb.append("  ");
-            }
-
             sb.append("\n");
         }
 
