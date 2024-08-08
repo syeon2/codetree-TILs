@@ -7,26 +7,26 @@ public class Main {
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         StringBuilder sb = new StringBuilder();
 
-        int N = Integer.parseInt(br.readLine());
+        int n = Integer.parseInt(br.readLine());
         String[] list = br.readLine().split(" ");
 
-        int endIdx = N;
+        int[] nList = new int[n];
+        for (int i = 0; i < n; i++) {
+            nList[i] = Integer.parseInt(list[i]);
+        }
 
-        while (endIdx != 0) {
-            int max = Integer.MIN_VALUE;
-            int maxIdx = -1;
+        int[] ans = new int[n];
+        int idx = 0;
 
-            for (int i = 0; i < endIdx; i++) {
-                int num = Integer.parseInt(list[i]);
-
-                if (num > max) {
-                    max = num;
-                    maxIdx = i;
-                }
+        for (int i = 0; i < n; i++) {
+            if (nList[idx] < nList[i]) {
+                ans[++idx] = i;
+                idx = i;
             }
+        }
 
-            sb.append(maxIdx + 1).append(" ");
-            endIdx = maxIdx;
+        for (int i = idx - 1; i >= 0; i--) {
+            sb.append(ans[i] + 1).append(" ");
         }
 
         bw.write(sb.toString());
