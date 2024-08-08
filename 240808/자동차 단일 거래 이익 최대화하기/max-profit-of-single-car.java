@@ -9,19 +9,17 @@ public class Main {
         int n = Integer.parseInt(br.readLine());
         String[] list = br.readLine().split(" ");
 
-        int ans = 0;
+        int min = Integer.parseInt(list[0]);
+        int maxProfix = 0;
 
-        for (int i = 0; i < list.length; i++) {
-            int bDate = Integer.parseInt(list[i]);
+        for (int i = 1; i < n; i++) {
+            int sell = Integer.parseInt(list[i]);
 
-            for (int k = i + 1; k < list.length; k++) {
-                int sDate = Integer.parseInt(list[k]);
-
-                if (ans < (sDate - bDate)) ans = sDate - bDate;    
-            }
+            if (sell - min > maxProfix) maxProfix = sell - min;
+            if (sell < min) min = sell;
         }
 
-        bw.write(String.valueOf(ans));
+        bw.write(String.valueOf(maxProfix));
         bw.flush();
         bw.close();
     }
