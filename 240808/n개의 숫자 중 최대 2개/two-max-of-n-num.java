@@ -9,26 +9,21 @@ public class Main {
         int n = Integer.parseInt(br.readLine());
         String[] list = br.readLine().split(" ");
 
-        int max = Integer.MIN_VALUE;
-        int idx = 0;
+        int f = Integer.MIN_VALUE;
+        int s = Integer.MIN_VALUE;
+
         for (int i = 0; i < n; i++) {
             int num = Integer.parseInt(list[i]);
 
-            if (max < num) {
-                max = num;
-                idx = i;
+            if (num >= f) {
+                s = f;
+                f = num;
+            } else if (num > s) {
+                s = num;
             }
         }
 
-        int secondMax = Integer.MIN_VALUE;
-
-        for (int i = 0; i < n; i++) {
-            int num = Integer.parseInt(list[i]);
-
-            if (secondMax < num && i != idx) secondMax = num;
-        }
-
-        bw.write(String.format("%d %d", max, secondMax));
+        bw.write(String.format("%d %d", f, s));
         bw.flush();
         bw.close();
     }
