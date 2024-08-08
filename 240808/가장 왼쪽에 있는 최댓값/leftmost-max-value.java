@@ -17,15 +17,16 @@ public class Main {
 
         int[] ans = new int[n];
         int idx = 0;
+        int value = nList[idx];
 
         for (int i = 0; i < n; i++) {
-            if (nList[idx] < nList[i]) {
+            if (value < nList[i]) {
                 ans[++idx] = i;
-                idx = i;
+                value = nList[i];
             }
         }
 
-        for (int i = idx - 1; i >= 0; i--) {
+        for (int i = idx; i >= 0; i--) {
             sb.append(ans[i] + 1).append(" ");
         }
 
