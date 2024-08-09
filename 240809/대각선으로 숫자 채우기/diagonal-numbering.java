@@ -14,23 +14,16 @@ public class Main {
         int[][] board = new int[n][m];
         int cnt = 1;
 
-        for (int i = 0; i < m; i++) {
-            int w = i;
+        for (int i = 0; i < n; i++) {
+            for (int k = 0; k < m; k++) {
+                if (board[i][k] == 0) {
+                    int w = k;
+                    int h = i;
 
-            for (int k = 0; k < n; k++) {
-                if (w < 0) break;
-
-                board[k][w--] = cnt++;
-            }
-        }
-
-        for (int i = 1; i < n; i++) {
-            int h = i;
-
-            for (int k = n - 1; k >= 0; k--) {
-                if (h == n) break;
-
-                board[h++][k] = cnt++;
+                    while (w >= 0 && h < n) {
+                        board[h++][w--] = cnt++;
+                    }
+                }
             }
         }
 
