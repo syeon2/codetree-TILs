@@ -13,7 +13,7 @@ public class Main {
         int cnt = 1;
 
         for (int i = n - 1; i >= 0; i--) {
-            if (i % 2 == 1) {
+            if ((n % 2 == 0 && i % 2 == 1) || (n % 2 == 1 && i % 2 == 0)) {
                 for (int k = n - 1; k >= 0; k--) {
                     board[k][i] = cnt++;
                 }
