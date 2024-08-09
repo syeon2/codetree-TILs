@@ -10,8 +10,9 @@ public class Main {
         for (int i = 0; i < 4; i++) {
             int sum = 0;
             String[] list = br.readLine().split(" ");
+
             for (int k = 0; k < 4; k++) {
-                sum += Integer.parseInt(list[i]);
+                sum += Integer.parseInt(list[k]);
             }
 
             sb.append(sum).append("\n");
