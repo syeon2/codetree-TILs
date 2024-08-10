@@ -6,12 +6,18 @@ public class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        boolean isEmpty = true;
+        String[] list = new String[10];
         for (int i = 0; i < 10; i++) {
-            String str = br.readLine();
+            list[i] = br.readLine();
+        }
 
-            if (str.charAt(str.length() - 1) == 'e') {
-                bw.write(str + "\n");
+        String str = br.readLine();
+
+        boolean isEmpty = true;
+
+        for (int i = 0; i < 10; i++) {
+            if (list[i].charAt(list[i].length() - 1) == str.charAt(0)) {
+                bw.write(list[i] + "\n");
                 isEmpty = false;
             }
         }
