@@ -9,7 +9,7 @@ public class Main {
         String str = br.readLine();
         int n = Integer.parseInt(br.readLine());
 
-        for (int i = str.length() - 1; i >= str.length() - n; i--) {
+        for (int i = str.length() - 1; i >= Math.max(str.length() - n, 0); i--) {
             bw.write(String.valueOf(str.charAt(i)));
         }
 
