@@ -15,9 +15,8 @@ public class Main {
             String str = br.readLine();
 
             totalCnt += str.length();
-            for (int k = 0; k < str.length(); k++) {
-                if (str.charAt(k) == 'a') aCnt++;
-            }
+            
+            if (str.charAt(0) == 'a') aCnt++;
         }
 
         bw.write(totalCnt + " " + aCnt);
