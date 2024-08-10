@@ -17,7 +17,7 @@ public class Main {
             str1 = str1.substring(str1.length() - 1) + str1.substring(0, str1.length() - 1);
         }
 
-        if (cnt == str1.length()) bw.write("-1");
+        if (cnt >= str1.length()) bw.write("-1");
         else bw.write(String.valueOf(cnt));
         bw.flush();
         bw.close();
