@@ -12,14 +12,25 @@ public class Main {
         String cmd = list[1];
         int b = Integer.parseInt(list[2]);
 
-        sb.append(a).append(" ")
-            .append(cmd).append(" ")
-            .append(b).append(" ")
-            .append("= ").append(operation(a, b, cmd));
+        if (isOperation(cmd)) {
+            sb.append(a).append(" ")
+                .append(cmd).append(" ")
+                .append(b).append(" ")
+                .append("= ").append(operation(a, b, cmd));
 
-        bw.write(sb.toString());
+            bw.write(sb.toString());
+        } else {
+            bw.write("False");
+        }
+
         bw.flush();
         bw.close();
+    }
+
+    public static boolean isOperation(String cmd) {
+        if (cmd.equals("+") || cmd.equals("-") || cmd.equals("*") || cmd.equals("/")) return true;
+        
+        return false;
     }
 
     public static int operation(int a, int b, String cmd) {
