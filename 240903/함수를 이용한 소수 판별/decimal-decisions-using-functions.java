@@ -10,10 +10,19 @@ public class Main {
         int a = Integer.parseInt(list[0]);
         int b = Integer.parseInt(list[1]);
 
-        int sum = 0;
+        boolean[] isNotPrime = new boolean[101];
+        isNotPrime[0] = isNotPrime[1] = true;
 
+        for (int i = 2; i <= 100; i++) {
+
+            for (int k = i + i; k <= 100; k += i) {
+                isNotPrime[k] = true;
+            }
+        }
+
+        int sum = 0;
         for (int i = a; i <= b; i++) {
-            if (isPrime(i)) sum += i;
+            if (!isNotPrime[i]) sum += i;
         }
 
         bw.write(String.valueOf(sum));
@@ -23,7 +32,7 @@ public class Main {
 
     public static boolean isPrime(int n) {
         if (n == 1) return false;
-        
+
         for (int i = 2; i < n; i++) {
             if (n % i == 0) return false;
         }
