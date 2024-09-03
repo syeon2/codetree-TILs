@@ -14,7 +14,7 @@ public class Main {
     }
 
     public static boolean isYunYear(int n) {
-        if (n % 4 == 0 || !(n % 100 == 0 && n % 400 != 0)) return true;
-        else return false;
+        if (n % 4 != 0 || (n % 100 == 0 && n % 400 != 0)) return false;
+        else return true;
     }
 }
