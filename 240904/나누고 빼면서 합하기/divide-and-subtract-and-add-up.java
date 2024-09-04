@@ -17,10 +17,18 @@ public class Main {
             A[i] = Integer.parseInt(list[i]);
         }
 
+        int ans = sum(A, m);
+
+        bw.write(String.valueOf(ans));
+        bw.flush();
+        bw.close();
+    }
+
+    public static int sum(int[] list, int m) {
         int sum = 0;
 
         while (true) {
-            sum += A[m - 1];
+            sum += list[m - 1];
 
             if (m == 1) break;
 
@@ -28,8 +36,6 @@ public class Main {
             else m -= 1;
         }
 
-        bw.write(String.valueOf(sum));
-        bw.flush();
-        bw.close();
+        return sum;
     }
 }
