@@ -8,23 +8,16 @@ public class Main {
 
         int N = Integer.parseInt(br.readLine());
 
-        int first = 1;
-        int second = 1;
-
-        int ans = recurFibo(first, second, N, 3);
+        int ans = fibo(N);
 
         bw.write(String.valueOf(ans));
         bw.flush();
         bw.close();
     }
 
-    public static int recurFibo(int f, int s, int n, int start) {
-        if (n == 1) return f;
-        else if (n == s) return s;
-        else if (start > n) return s;
+    public static int fibo(int n) {
+        if (n == 1 || n == 2) return 1;
 
-        int nextNum = f + s;
-
-        return recurFibo(s, nextNum, n, start + 1);
+        return fibo(n - 1) + fibo(n - 2);
     }
 }
