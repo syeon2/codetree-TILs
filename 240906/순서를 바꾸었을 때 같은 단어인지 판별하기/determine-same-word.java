@@ -15,11 +15,14 @@ public class Main {
 
         boolean ans = true;
 
-        for (int i = 0; i < list1.length; i++) {
-            if (list1[i] != list2[i]) ans = false;
+        if (list1.length != list2.length) ans = false;
+        else {
+            for (int i = 0; i < list1.length; i++) {
+                if (list1[i] != list2[i]) ans = false;
+            }
         }
 
-        if (ans && list1.length == list2.length) bw.write("Yes");
+        if (ans) bw.write("Yes");
         else bw.write("No");
 
         bw.flush();
