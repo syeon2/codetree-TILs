@@ -19,7 +19,7 @@ public class Main {
             if (list1[i] != list2[i]) ans = false;
         }
 
-        if (ans) bw.write("Yes");
+        if (ans && list1.length == list2.length) bw.write("Yes");
         else bw.write("No");
 
         bw.flush();
