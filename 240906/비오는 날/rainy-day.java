@@ -16,9 +16,9 @@ public class Main {
 
         Date ans = null;
 
-        for (int i = 1; i < N; i++) {
+        for (int i = 0; i < N; i++) {
             if (ans == null && list[i].weather.equals("Rain")) ans = list[i];
-            else if (ans.date.compareTo(list[i].date) > 0 && list[i].weather.equals("Rain")) ans = list[i];
+            else if (ans != null && ans.date.compareTo(list[i].date) > 0 && list[i].weather.equals("Rain")) ans = list[i];
         }
 
         ans.printAns();
