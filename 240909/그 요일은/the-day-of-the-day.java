@@ -20,7 +20,12 @@ public class Main {
 
         int diff = numOfDay(m2, d2) - numOfDay(m1, d1);
 
-        int ans = (diff / 7) + 1;
+        int ans = (diff / 7);
+
+        int remain = (diff % 7);
+        for (int i = 0; i <= remain; i++) {
+            if (dayOfWeek[i].equals(date)) ans++;
+        }
 
         bw.write(String.valueOf(ans));
         bw.flush();
