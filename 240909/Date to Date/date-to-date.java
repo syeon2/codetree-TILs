@@ -15,21 +15,21 @@ public class Main {
         int m2 = Integer.parseInt(list[2]);
         int d2 = Integer.parseInt(list[3]);
 
-        int total = 1;
+        int ans = numOfDay(m2, d2) - numOfDay(m1, d1) + 1;
 
-        while (true) {
-            if (m1 == m2 && d1 == d2) break;
-
-            if (++d1 > monthes[m1]) {
-                d1 = 1;
-                m1++;
-            }
-
-            total++;
-        }
-
-        bw.write(String.valueOf(total));
+        bw.write(String.valueOf(ans));
         bw.flush();
         bw.close();
+    }
+
+    public static int numOfDay(int m, int d) {
+        int days = 0;
+        for (int i = 1; i < m; i++) {
+            days += monthes[i];
+        }
+
+        days += d;
+
+        return days;
     }
 }
