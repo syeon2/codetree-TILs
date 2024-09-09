@@ -21,7 +21,7 @@ public class Main {
         int diff = numOfDay(m2, d2) - numOfDay(m1, d1);
 
         int ans = diff / 7;
-        if (diff % 7 > 0) ans++;
+        if (diff % 7 > 0 || ans == 0) ans++;
 
         bw.write(String.valueOf(ans));
         bw.flush();
