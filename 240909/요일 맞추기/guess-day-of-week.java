@@ -18,16 +18,9 @@ public class Main {
 
         int days = numOfDay(m2, d2) - numOfDay(m1, d1);
 
-        if (days >= 0) {
-            days %= 7;
+        days = (days + 7) % 7;
 
-            bw.write(dayOfWeek[days]);
-        } else {
-            days = 7 - (Math.abs(days) % 7);
-
-            bw.write(dayOfWeek[days]);
-        }
-
+        bw.write(dayOfWeek[days]);
         bw.flush();
         bw.close();
     }
