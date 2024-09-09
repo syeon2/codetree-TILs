@@ -6,15 +6,12 @@ public class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        int n = Integer.parseInt(br.readLine());
+        String n = br.readLine();
 
         int ans = 0;
-        int prod = 1;
-        while (n != 0) {
-            ans += (prod * (n % 10));
 
-            prod *= 2;
-            n /= 10;
+        for (int i = 0; i < n.length(); i++) {
+            ans = (ans * 2) + (n.charAt(i) - '0');
         }
 
         bw.write(String.valueOf(ans));
