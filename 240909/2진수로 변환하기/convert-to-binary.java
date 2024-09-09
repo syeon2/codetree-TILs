@@ -9,11 +9,11 @@ public class Main {
         int n = Integer.parseInt(br.readLine());
 
         StringBuilder sb = new StringBuilder();
-        while (n != 0) {
+        do {
             sb.append(n % 2);
 
             n /= 2;
-        }
+        } while(n != 0);
 
         bw.write(sb.reverse().toString());
         bw.flush();
