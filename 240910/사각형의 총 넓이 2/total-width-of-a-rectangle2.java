@@ -13,10 +13,10 @@ public class Main {
         for (int i = 0; i < N; i++) {
             String[] strs = br.readLine().split(" ");
 
-            int x1 = Integer.parseInt(strs[0]);
-            int y1 = Integer.parseInt(strs[1]);
-            int x2 = Integer.parseInt(strs[2]);
-            int y2 = Integer.parseInt(strs[3]);
+            int x1 = Integer.parseInt(strs[0]) + 100;
+            int y1 = Integer.parseInt(strs[1]) + 100;
+            int x2 = Integer.parseInt(strs[2]) + 100;
+            int y2 = Integer.parseInt(strs[3]) + 100;
 
             for (int y = y1; y < y2; y++) {
                 for (int x = x1; x < x2; x++) {
