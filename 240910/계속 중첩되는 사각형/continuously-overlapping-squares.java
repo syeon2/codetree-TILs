@@ -8,15 +8,15 @@ public class Main {
 
         int N = Integer.parseInt(br.readLine());
 
-        int[][] board = new int[2001][2001];
+        int[][] board = new int[201][201];
 
         for (int n = 1; n <= N; n++) {
             String[] strs = br.readLine().split(" ");
 
-            int x1 = Integer.parseInt(strs[0]) + 1000;
-            int y1 = Integer.parseInt(strs[1]) + 1000;
-            int x2 = Integer.parseInt(strs[2]) + 1000;
-            int y2 = Integer.parseInt(strs[3]) + 1000;
+            int x1 = Integer.parseInt(strs[0]) + 100;
+            int y1 = Integer.parseInt(strs[1]) + 100;
+            int x2 = Integer.parseInt(strs[2]) + 100;
+            int y2 = Integer.parseInt(strs[3]) + 100;
 
             for (int y = y1; y < y2; y++) {
                 for (int x = x1; x < x2; x++) {
@@ -27,8 +27,8 @@ public class Main {
         }
 
         int ans = 0;
-        for (int i = 0; i < 2001; i++) {
-            for (int k = 0; k < 2001; k++) {
+        for (int i = 0; i < 201; i++) {
+            for (int k = 0; k < 201; k++) {
                 if (board[i][k] == 2) ans++;
             }
         }
