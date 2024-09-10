@@ -45,7 +45,7 @@ public class Main {
                 else if (board[y][x] > 0 && start > 0) end = x;
             }
 
-            if (width == 0 && height == 0) continue;
+            if (start == 0 && end == 0) continue;
             width = Math.max(width, end - start + 1);
         }
 
@@ -58,7 +58,7 @@ public class Main {
                 else if (board[y][x] > 0 && start > 0) end = y;
             }
 
-            if (width == 0 && height == 0) continue;
+            if (start == 0 && end == 0) continue;
             height = Math.max(height, end - start + 1);
         }
 
