@@ -33,7 +33,7 @@ public class Main {
 
             for (int x = 0; x < 2001; x++) {
                 if (board[y][x] > 0 && start == -1) start = x;
-                else if (board[y][x] > 0 && start > 0) end = x;
+                else if (board[y][x] > 0 && start >= 0) end = x;
             }
 
             if (start == -1) continue;
@@ -46,7 +46,7 @@ public class Main {
 
             for (int y = 0; y < 2001; y++) {
                 if (board[y][x] > 0 && start == -1) start = y;
-                else if (board[y][x] > 0 && start > 0) end = y;
+                else if (board[y][x] > 0 && start >= 0) end = y;
             }
 
             if (start == -1) continue;
