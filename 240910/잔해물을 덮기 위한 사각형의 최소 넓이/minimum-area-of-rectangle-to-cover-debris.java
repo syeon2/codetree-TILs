@@ -24,36 +24,31 @@ public class Main {
             }
         }
 
-        int width = 0;
-        int height = 0;
+        boolean isChanged = false;
+        int ansX1 = Integer.MAX_VALUE;
+        int ansX2 = Integer.MIN_VALUE;
+        int ansY1 = Integer.MAX_VALUE;
+        int ansY2 = Integer.MIN_VALUE;
 
         for (int y = 0; y < 2001; y++) {
-            int start = -1;
-            int end = 0;
-
             for (int x = 0; x < 2001; x++) {
-                if (board[y][x] > 0 && start == -1) start = x;
-                else if (board[y][x] > 0 && start >= 0) end = x;
-            }
+                if (board[y][x] == 1) {
+                    isChanged = true;
 
-            if (start == -1) continue;
-            width = Math.max(width, end - start + 1);
+                    ansX1 = Math.min(ansX1, x);
+                    ansX2 = Math.max(ansX2, x);
+                    ansY1 = Math.min(ansY1, y);
+                    ansY2 = Math.max(ansY2, y);
+                }
+            }
         }
 
-        for (int x = 0; x < 2001; x++) {
-            int start = -1;
-            int end = 0;
-
-            for (int y = 0; y < 2001; y++) {
-                if (board[y][x] > 0 && start == -1) start = y;
-                else if (board[y][x] > 0 && start >= 0) end = y;
-            }
-
-            if (start == -1) continue;
-            height = Math.max(height, end - start + 1);
+        if (isChanged) {
+            bw.write(String.valueOf((ansX2 - ansX1 + 1) * (ansY2 - ansY1 + 1)));
+        } else {
+            bw.write("0");
         }
 
-        bw.write(String.valueOf(width * height));
         bw.flush();
         bw.close();
         
