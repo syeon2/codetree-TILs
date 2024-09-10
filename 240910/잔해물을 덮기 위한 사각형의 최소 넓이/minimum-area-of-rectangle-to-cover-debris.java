@@ -37,23 +37,27 @@ public class Main {
         int height = 0;
 
         for (int y = 0; y < 2001; y++) {
-            int temp = 0;
+            int start = 0;
+            int end = 0;
 
             for (int x = 0; x < 2001; x++) {
-                if (board[y][x] > 0) temp++;
+                if (board[y][x] > 0 && start == 0) start = x;
+                else if (board[y][x] > 0 && start > 0) end = x;
             }
 
-            width = Math.max(width, temp);
+            width = Math.max(width, end - start + 1);
         }
 
         for (int x = 0; x < 2001; x++) {
-            int temp = 0;
+            int start = 0;
+            int end = 0;
 
             for (int y = 0; y < 2001; y++) {
-                if (board[y][x] > 0) temp++;
+                if (board[y][x] > 0 && start == 0) start = y;
+                else if (board[y][x] > 0 && start > 0) end = y;
             }
 
-            height = Math.max(height, temp);
+            height = Math.max(height, end - start + 1);
         }
 
         bw.write(String.valueOf(width * height));
