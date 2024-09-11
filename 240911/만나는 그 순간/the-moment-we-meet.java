@@ -13,11 +13,6 @@ public class Main {
         int[] nList = new int[1000001];
         int[] mList = new int[1000001];
 
-        for (int i = 1; i < 1000001; i++) {
-            nList[i] = Integer.MAX_VALUE;
-            mList[i] = Integer.MAX_VALUE;
-        }
-
         int nt = 1;
         int mt = 1;
 
@@ -55,12 +50,10 @@ public class Main {
             }
         }
 
-        int ans = 0;
-        for (int i = 1; i <= 1000001; i++) {
+        int ans = -1;
+        for (int i = 1; i < nt; i++) {
             if (nList[i] == mList[i]) {
-                if (nList[i] == Integer.MAX_VALUE) ans = -1;
-                else ans = i;
-
+                ans = i;
                 break;
             }
         }
