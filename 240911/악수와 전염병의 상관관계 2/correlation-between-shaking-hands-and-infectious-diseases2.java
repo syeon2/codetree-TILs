@@ -40,15 +40,22 @@ public class Main {
 
             if (x.isInfected == 0 && y.isInfected == 0) continue;
 
-            if (x.isInfected == 1 && x.infectCnt > 0) {
+            if (x.isInfected == 1 && x.infectCnt > 0 && y.isInfected == 0) {
                 y.isInfected = 1;
                 x.infectCnt--;
+
+                continue;
             }
 
-            if (y.isInfected == 1 && y.infectCnt > 0) {
+            if (y.isInfected == 1 && y.infectCnt > 0 && x.isInfected == 0) {
                 x.isInfected = 1;
                 y.infectCnt--;
+
+                continue;
             }
+
+            x.infectCnt--;
+            y.infectCnt--;
         }
 
         for (int i = 1; i <= N; i++) {
