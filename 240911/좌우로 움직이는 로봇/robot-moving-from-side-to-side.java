@@ -31,6 +31,10 @@ public class Main {
             }
         }
 
+        for (int n = nt; n < 1000001; n++) {
+            nList[n] = nList[n - 1];
+        }
+
         int mt = 1;
         for (int m = 0; m < M; m++) {
             list = br.readLine().split(" ");
@@ -47,6 +51,10 @@ public class Main {
 
                 mt++;
             }
+        }
+
+        for (int m = mt; m < 1000001; m++) {
+            mList[m] = mList[m - 1];
         }
 
         int ans = 0;
