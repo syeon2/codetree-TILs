@@ -14,8 +14,8 @@ public class Main {
         int[] mList = new int[1001];
 
         for (int i = 1; i < 1001; i++) {
-            nList[i] = -1;
-            mList[i] = -1;
+            nList[i] = Integer.MAX_VALUE;
+            mList[i] = Integer.MAX_VALUE;
         }
 
         int nt = 1;
@@ -58,9 +58,9 @@ public class Main {
         int ans = 0;
         for (int i = 1; i <= 1000; i++) {
             if (nList[i] == mList[i]) {
-                if (nList[i] == -1) ans = -1;
+                if (nList[i] == Integer.MAX_VALUE) ans = -1;
                 else ans = i;
-                
+
                 break;
             }
         }
