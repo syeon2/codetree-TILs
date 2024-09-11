@@ -13,7 +13,7 @@ public class Main {
         int[] nList = new int[1001];
         int[] mList = new int[1001];
 
-        for (int i = 0; i < 1001; i++) {
+        for (int i = 1; i < 1001; i++) {
             nList[i] = -1;
             mList[i] = -1;
         }
@@ -58,7 +58,9 @@ public class Main {
         int ans = 0;
         for (int i = 1; i <= 1000; i++) {
             if (nList[i] == mList[i]) {
-                ans = i;
+                if (nList[i] == -1) ans = -1;
+                else ans = i;
+                
                 break;
             }
         }
