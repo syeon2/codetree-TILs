@@ -10,10 +10,10 @@ public class Main {
         int N = Integer.parseInt(list[0]);
         int M = Integer.parseInt(list[1]);
 
-        int[] nList = new int[1002];
-        int[] mList = new int[1002];
+        int[] nList = new int[1000001];
+        int[] mList = new int[1000001];
 
-        for (int i = 1; i < 1001; i++) {
+        for (int i = 1; i < 1000001; i++) {
             nList[i] = Integer.MAX_VALUE;
             mList[i] = Integer.MAX_VALUE;
         }
@@ -56,7 +56,7 @@ public class Main {
         }
 
         int ans = 0;
-        for (int i = 1; i <= 1000; i++) {
+        for (int i = 1; i <= 1000001; i++) {
             if (nList[i] == mList[i]) {
                 if (nList[i] == Integer.MAX_VALUE) ans = -1;
                 else ans = i;
