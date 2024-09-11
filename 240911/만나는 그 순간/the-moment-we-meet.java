@@ -10,8 +10,8 @@ public class Main {
         int N = Integer.parseInt(list[0]);
         int M = Integer.parseInt(list[1]);
 
-        int[] nList = new int[1001];
-        int[] mList = new int[1001];
+        int[] nList = new int[1002];
+        int[] mList = new int[1002];
 
         for (int i = 1; i < 1001; i++) {
             nList[i] = Integer.MAX_VALUE;
