@@ -39,15 +39,15 @@ public class Main {
         }
 
         int cnt = 0;
-        curDir = firstGetDir(k, N);
+        curDir = firstGetDir(K, N);
 
         while (isRange(curX, curY, N)) {
             cnt++;
 
             curDir = turnDir(curDir, board[curY][curX]);
 
-            curX = curX + dx[curDir];
-            curY = curY + dy[curDir];
+            curX += dx[curDir];
+            curY += dy[curDir];
         }
 
         bw.write(String.valueOf(cnt));
