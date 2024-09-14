@@ -18,8 +18,9 @@ public class Main {
             int temp = 0;
 
             for (int k = 0; k < N; k++) {
-                if (i <= k) temp += (k - i) * nList[k];
-                else temp += (N - i + k) * nList[k];
+                int dist = (N + k - i) % N;
+
+                temp += dist * nList[k];
             }
 
             ans = Math.min(ans, temp);
