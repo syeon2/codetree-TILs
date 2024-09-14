@@ -9,13 +9,15 @@ public class Main {
         char[] list = br.readLine().toCharArray();
         
         int max = 0;
-        for (int i = 1; i < list.length; i++) {
+        for (int i = 0; i < list.length; i++) {
 
+            char value = (list[i] == '1') ? '0' : '1';
             int temp = 0;
-            for (int k = 0; k < list.length; k++) {
-                char value = (i == k) ? '1' : list[k];
 
-                temp = (temp * 2) + (value - '0');
+            for (int k = 0; k < list.length; k++) {
+                char v = (i == k) ? value : list[k];
+
+                temp = (temp * 2) + (v - '0');
             }
 
             max = Math.max(max, temp);
