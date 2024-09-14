@@ -21,22 +21,39 @@ public class Main {
 
         for (int r = 0; r < 19; r++) {
 
-            for (int c = 0; c <= 14; c++) {
+            for (int c = 0; c < 19; c++) {
                 int target = board[r][c];
 
                 if (target == 0) continue;
 
                 boolean isWin = true;
-                for (int i = c; i < c + 5; i++) {
-                    if (target != board[r][i]) isWin = false;
+
+                if (c <= 14) {
+                    for (int i = 0; i < 5; i++) {
+                        if (target != board[r][c + i]) isWin = false;
+                    }
+
+                    if (isWin) {
+                        ans = target;
+                        ansR = r + 1;
+                        ansC = c + 3;
+
+                        break;
+                    }
                 }
 
-                if (isWin) {
-                    ans = target;
-                    ansR = r + 1;
-                    ansC = c + 3;
+                if (c >= 4) {
+                    for (int i = 0; i < 5; i++) {
+                        if (target != board[r][c - i]) isWin = false;
+                    }
 
-                    break;
+                    if (isWin) {
+                        ans = target;
+                        ansR = r + 1;
+                        ansC = c - 1;
+
+                        break;
+                    }
                 }
 
                 if (r >= 15) break;
