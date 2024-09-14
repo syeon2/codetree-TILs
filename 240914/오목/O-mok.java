@@ -90,8 +90,10 @@ public class Main {
         }
 
         bw.write(String.valueOf(ans));
-        bw.newLine();
-        bw.write(ansR + " " + ansC);
+        if (ans != 0) {
+            bw.newLine();
+            bw.write(ansR + " " + ansC);
+        }
         bw.flush();
         bw.close();
     }
