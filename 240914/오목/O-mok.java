@@ -52,7 +52,7 @@ public class Main {
 
                     if (isWin) {
                         ans = target;
-                        ansR = r - 1;
+                        ansR = r + 3;
                         ansC = c - 1;
 
                         break;
