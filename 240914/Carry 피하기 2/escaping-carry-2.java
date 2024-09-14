@@ -12,7 +12,7 @@ public class Main {
             nList[i] = Integer.parseInt(br.readLine());
         }
 
-        int ans = 0;
+        int ans = -1;
         for (int i = 0; i < N; i++) {
 
             for (int k = i + 1; k < N; k++) {
