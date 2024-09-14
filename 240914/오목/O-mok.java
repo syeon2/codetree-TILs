@@ -42,21 +42,22 @@ public class Main {
                     }
                 }
 
+                if (r >= 15) break;
+
+                isWin = true;
                 if (c >= 4) {
                     for (int i = 0; i < 5; i++) {
-                        if (target != board[r][c - i]) isWin = false;
+                        if (target != board[r + i][c - i]) isWin = false;
                     }
 
                     if (isWin) {
                         ans = target;
-                        ansR = r + 1;
+                        ansR = r - 1;
                         ansC = c - 1;
 
                         break;
                     }
                 }
-
-                if (r >= 15) break;
 
                 isWin = true;
                 for (int i = 0; i < 5; i++) {
