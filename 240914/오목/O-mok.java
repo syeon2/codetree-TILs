@@ -43,7 +43,7 @@ public class Main {
 
                 isWin = true;
                 for (int i = 0; i < 5; i++) {
-                    if (target != board[r + i][c + 1]) isWin = false;
+                    if (target != board[r + i][c + i]) isWin = false;
                 }
 
                 if (isWin) {
