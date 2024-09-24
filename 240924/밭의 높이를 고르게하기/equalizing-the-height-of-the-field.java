@@ -19,14 +19,16 @@ public class Main {
         }
 
         int min = Integer.MAX_VALUE;
-        for (int i = 0; i <= N - T; i++) {
+        for (int t = T; t <= N; t++) {
+            for (int i = 0; i <= N - t; i++) {
 
-            int temp = 0;
-            for (int k = i; k < i + T; k++) {
-                temp += Math.abs(land[k] - H);
+                int temp = 0;
+                for (int k = i; k < i + t; k++) {
+                    temp += Math.abs(land[k] - H);
+                }
+
+                min = Math.min(min, temp);
             }
-
-            min = Math.min(min, temp);
         }
 
         bw.write(String.valueOf(min));
