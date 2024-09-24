@@ -23,7 +23,7 @@ public class Main {
 
             int temp = 0;
 
-            for (int j = i; j <= i + 2; j++) {
+            for (int j = i; j < i + k; j++) {
                 temp += nList[j];
             }
 
