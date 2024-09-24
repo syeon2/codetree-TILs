@@ -36,7 +36,7 @@ public class Main {
                     int diff8 = Math.abs((j + N) - aList[2]);
                     int diff9 = Math.abs(j - (aList[2] + N));
 
-                    if ((diff1 <= 2 || diff2 <= 2 || diff3 <= 2) && (diff4 <= 2 || diff5 <= 2 || diff6 <= 2) && (diff7 <= 2 || diff8 <= 2 || diff8 <= 2)) {
+                    if ((diff1 <= 2 || diff2 <= 2 || diff3 <= 2) && (diff4 <= 2 || diff5 <= 2 || diff6 <= 2) && (diff7 <= 2 || diff8 <= 2 || diff9 <= 2)) {
                         cnt++;
                         continue;
                     }
@@ -53,7 +53,7 @@ public class Main {
                     diff8 = Math.abs((j + N) - bList[2]);
                     diff9 = Math.abs(j - (bList[2] + N));
 
-                    if ((diff1 <= 2 || diff2 <= 2 || diff3 <= 2) && (diff4 <= 2 || diff5 <= 2 || diff6 <= 2) && (diff7 <= 2 || diff8 <= 2 || diff8 <= 2)) {
+                    if ((diff1 <= 2 || diff2 <= 2 || diff3 <= 2) && (diff4 <= 2 || diff5 <= 2 || diff6 <= 2) && (diff7 <= 2 || diff8 <= 2 || diff9 <= 2)) {
                         cnt++;
                         continue;
                     }
