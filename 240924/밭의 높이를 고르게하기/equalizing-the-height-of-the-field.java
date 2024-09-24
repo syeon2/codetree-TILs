@@ -9,8 +9,8 @@ public class Main {
         String[] strs = br.readLine().split(" ");
 
         int N = Integer.parseInt(strs[0]);
-        int T = Integer.parseInt(strs[1]);
-        int H = Integer.parseInt(strs[2]);
+        int H = Integer.parseInt(strs[1]);
+        int T = Integer.parseInt(strs[2]);
 
         int[] land = new int[N];
         strs = br.readLine().split(" ");
