@@ -26,10 +26,9 @@ public class Main {
                 if (i == k) tempN -= students[k] / 2;
                 else tempN -= students[k];
 
-                if (tempN < 0) {
-                    ans = Math.max(ans, k);
-                    break;
-                }
+                if (tempN >= 0) {
+                    ans = Math.max(ans, k + 1);
+                } else break;
             }
         }
 
