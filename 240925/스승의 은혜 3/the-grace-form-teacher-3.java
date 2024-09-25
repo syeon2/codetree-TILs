@@ -28,9 +28,13 @@ public class Main {
 
 			if (price1 > price2) {
 				return 1;
-			} else {
+			} else if (price2 > price1) {
 				return -1;
-			}
+			} else {
+                if (o1.s >= o2.s) {
+                    return -1;
+                } else return 1;
+            }
 		});
 
         int ans = 0;
