@@ -32,8 +32,8 @@ public class Main {
 				return -1;
 			} else {
                 if (o1.s >= o2.s) {
-                    return -1;
-                } else return 1;
+                    return 1;
+                } else return -1;
             }
 		});
 
