@@ -22,34 +22,24 @@ public class Main {
             list[n] = new Node(p, s);
         }
 
-		Arrays.sort(list, (o1, o2) -> {
-			int price1 = (o1.p / 2) + o1.s;
-			int price2 = (o2.p / 2) + o2.s;
-
-			if (price1 > price2) {
-				return 1;
-			} else if (price2 > price1) {
-				return -1;
-			} else {
-                if (o1.p >= o2.p) {
-                    return 1;
-                } else return -1;
-            }
-		});
-
         int ans = 0;
 
         for (int i = 0; i < N; i++) {
+            int[] price = new int[N];
+
+            for (int k = 0; k < N; k++) {
+                if (i == k) price[k] = ((list[k].p / 2) + list[k].s);
+                else price[k] = (list[k].p + list[k].s);
+            }
+
+            Arrays.sort(price);
             int tempB = B;
 
             for (int k = 0; k < N; k++) {
+                tempB -= price[k];
 
-                if (i == k) tempB -= ((list[k].p / 2) + list[k].s);
-                else tempB -= (list[k].p + list[k].s);
-
-                if (tempB >= 0) {
-                    ans = Math.max(ans, k + 1);
-                } else break;
+                if (tempB >= 0) ans = Math.max(ans, k + 1);
+                else break;
             }
         }
 
