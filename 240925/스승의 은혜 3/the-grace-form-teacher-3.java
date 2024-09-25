@@ -31,7 +31,7 @@ public class Main {
 			} else if (price2 > price1) {
 				return -1;
 			} else {
-                if (o1.s >= o2.s) {
+                if (o1.p >= o2.p) {
                     return 1;
                 } else return -1;
             }
