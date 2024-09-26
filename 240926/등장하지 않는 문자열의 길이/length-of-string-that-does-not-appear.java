@@ -14,7 +14,7 @@ public class Main {
             boolean isExist = false;
 
             for (int k = 0; k <= N - i; k++) {
-                for (int j = k + i; j <= N - i; j++) {
+                for (int j = k + 1; j <= N - i; j++) {
 
                     boolean temp = true;
                     for (int l = 0; l < i; l++) {
