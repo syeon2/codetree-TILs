@@ -31,12 +31,14 @@ public class Main {
             num /= 10;
         }
 
+        int one = 0;
         int temp = 0;
         for (int i = 0; i < 10; i++) {
-            if (list[i] == 1) temp++;
+            if (list[i] == 1) one++;
+            else if (list[i] == 0) temp++;
         }
 
-        if (temp == 1) return true;
+        if (one == 1 && temp == 8) return true;
         else return false;
     }
 }
