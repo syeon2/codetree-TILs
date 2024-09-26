@@ -26,15 +26,15 @@ public class Main {
 
             for (int k = 0; k < N; k++) {
                 int sum = 0;
+                int prev = -1;
 
-                for (int j = 1; j < N; j++) {
-                    if (k == 0 && j == 1) continue;
-                    else if (k == N - 1 && j == N - 1) continue;
-                    else if (k == j) continue;
-                    else if (k == j - 1) {
-                        sum += Math.abs(temp[j - 2] - temp[j]);
-                    } else {
-                        sum += Math.abs(temp[j - 1] - temp[j]);
+                for (int j = 0; j < N; j++) {
+                    if (k == j) continue;
+
+                    if (prev == -1) prev = temp[j];
+                    else {
+                        sum += Math.abs(prev - temp[j]);
+                        prev = temp[j];
                     }
                 }
 
