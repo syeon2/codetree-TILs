@@ -18,11 +18,11 @@ public class Main {
         int ans = 0;
         for (int i = 0; i < N; i++) {
 
-            int temp = 0;
+            int temp = 1;
             for (int k = 0; k < N; k++) {
                 if (i == k) continue;
 
-                if (Math.abs(list[i] - list[k]) <= K) temp++;
+                if (list[k] - list[i] <= K && list[k] - list[i] >= 0) temp++;
             }
 
             ans = Math.max(ans, temp);
