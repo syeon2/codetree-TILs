@@ -12,29 +12,26 @@ public class Main {
 
         strs = br.readLine().split(" ");
         int[] list = new int[N];
-        
         for (int n = 0; n < N; n++) {
             list[n] = Integer.parseInt(strs[n]);
         }
 
-        int ans = Math.max(list[0], list[N - 1]);
+        int ans = 0;
+        for (int i = Math.max(list[0], list[N - 1]); i <= 100; i++) {
 
-        int idx = 0;
-        while (idx < N - 1) {
-            int start = idx + 1;
-            int end = idx + K;
+            boolean canJump = true;
+            int lastIndex = 0;
 
-            int nextIdx = 0;
-            int num = 101;
-            for (int i = start; i <= Math.min(end, N - 1); i++) {
-                if (list[i] < num) {
-                    nextIdx = i;
-                    num = list[i];
-                }
+            for (int k = 0; k < N; k++) {
+                if (list[k] <= i && k - lastIndex <= K) {
+                    lastIndex = k;
+                } else if (k - lastIndex > K) canJump = false;
             }
 
-            ans = Math.max(ans, num);
-            idx = nextIdx;
+            if (canJump) {
+                ans = i;
+                break;
+            }
         }
 
         bw.write(String.valueOf(ans));
