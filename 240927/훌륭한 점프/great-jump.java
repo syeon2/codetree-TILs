@@ -17,26 +17,24 @@ public class Main {
             list[n] = Integer.parseInt(strs[n]);
         }
 
-        int ans = list[0];
+        int ans = Math.max(list[0], list[N - 1]);
 
         int idx = 0;
-        while (idx < N) {
-            if (idx + 2 < N) {
-                int f = list[idx + 1];
-                int s = list[idx + 2];
+        while (idx < N - 1) {
+            int start = idx + 1;
+            int end = idx + K;
 
-                if (f < s) {
-                    idx += 1;
-                    ans = Math.max(ans, f);
-                } else {
-                    idx += 2;
-                    ans = Math.max(ans, s);
+            int nextIdx = 0;
+            int num = 101;
+            for (int i = start; i <= Math.min(end, N - 1); i++) {
+                if (list[i] < num) {
+                    nextIdx = i;
+                    num = list[i];
                 }
-            } else if (idx + 1 < N) {
-                int f = list[idx++ + 1];
+            }
 
-                ans = Math.max(ans, f);
-            } else break;
+            ans = Math.max(ans, num);
+            idx = nextIdx;
         }
 
         bw.write(String.valueOf(ans));
