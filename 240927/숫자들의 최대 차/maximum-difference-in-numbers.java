@@ -16,13 +16,11 @@ public class Main {
         }
 
         int ans = 0;
-        for (int i = 0; i < N; i++) {
+        for (int i = 1; i <= 10000; i++) {
 
-            int temp = 1;
-            for (int k = 0; k < N; k++) {
-                if (i == k) continue;
-
-                if (list[k] - list[i] <= K && list[k] - list[i] >= 0) temp++;
+            int temp = 0;
+            for (int n = 0; n < N; n++) {
+                if (list[n] >= i && list[n] <= i + K) temp++;
             }
 
             ans = Math.max(ans, temp);
