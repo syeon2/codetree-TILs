@@ -1,5 +1,4 @@
 import java.io.*;
-import java.util.*;
 
 public class Main {
     public static void main(String[] args) throws IOException {
@@ -12,26 +11,21 @@ public class Main {
         int K = Integer.parseInt(strs[1]);
 
         int[] list = new int[N];
-        for (int i = 0; i < N; i++) {
-            list[i] = Integer.parseInt(br.readLine());
+        for (int n = 0; n < N; n++) {
+            list[n] = Integer.parseInt(br.readLine());
         }
 
-        Arrays.sort(list);
-
         int ans = 0;
+        for (int i = 0; i < N; i++) {
 
-        int sIdx = 0;
-        int eIdx = N - 1;
+            int temp = 0;
+            for (int k = 0; k < N; k++) {
+                if (i == k) continue;
 
-        while (sIdx <= eIdx) {
-            if (list[eIdx] - list[sIdx] <= K) {
-                ans = (eIdx - sIdx) + 1;
-                break;
+                if (Math.abs(list[i] - list[k]) <= K) temp++;
             }
 
-            if ((sIdx + 1 < N && (list[eIdx] - list[sIdx + 1] < list[eIdx - 1] - list[sIdx]))) {
-                sIdx += 1;
-            } else eIdx -= 1;
+            ans = Math.max(ans, temp);
         }
 
         bw.write(String.valueOf(ans));
